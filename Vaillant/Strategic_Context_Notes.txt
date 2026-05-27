@@ -1,0 +1,38 @@
+Strategic Context Notes — Group AI Direction
+
+These are my own raw notes ahead of the AI strategy session next week. Brain-dump,
+not a document. Please help me turn this into something structured.
+
+What we know publicly about ourselves (anchor points):
+- Vision is "taking care of a better climate" — the energy-transition narrative
+- 8 brands, 60+ countries, ~16,000 employees
+- Heat pumps + digital services + efficient gas boilers — three legs
+- New aroTHERM pro heat pump launched April 2026 — compact form factor
+- Sustainability programme aligned to 1.5 degree target
+- Johann Vaillant Technology Center is our innovation showcase
+
+What's changed in the market in the last 12 months:
+- AI moved from "interesting" to "expected" in board conversations
+- Customers asking smarter questions earlier in the buying cycle
+- Partners and trade now have AI tools — they want vendors that integrate
+- Regulators are talking about AI disclosure alongside energy disclosure
+- Internal teams are quietly using consumer AI tools whether we approve or not
+
+What I keep going back to:
+- We are not a software company. We make products that last 15-20 years in homes.
+- Trust is our moat. Anything AI does has to strengthen trust, not erode it.
+- Our energy-transition story is too important to outsource to a chatbot.
+- But our energy-transition story is also too important to NOT tell at AI scale.
+
+Three framings I'm testing:
+1. "AI as a sustainability accelerator" — faster decisions on cleaner products
+2. "AI as a brand consistency engine" — 8 brands, one voice, every country
+3. "AI inside the product" — connected devices, smarter homes, energy autonomy
+
+Open questions:
+- Where do we lead vs follow the market?
+- Do we build AI capability in-house or partner deeply?
+- What's the role of our internal GPT vs platform AI from hyperscalers?
+- How do we sequence: own teams first, then customers, then partners?
+
+Help me turn this into a structured strategy outline I can present.
