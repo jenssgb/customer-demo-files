@@ -1,0 +1,61 @@
+FIEGE Logistik — Logistics Operations
+Q2 2026 Weekly Operations Review
+
+Date: April 16, 2026
+Location: Greven HQ, Room Westfalen / Teams
+Duration: 45 minutes
+
+Attendees (planned)
+-------------------
+- Lisa Taylor — Head of Operations, Contract Logistics (Chair)
+- Alex Weyer — Warehouse Manager, Greven & Ibbenbüren
+- Dakota Sanchez — Client Account Manager
+- Omar Bennett — Transport Coordination Lead
+- Amber Rodriguez — Quality & Compliance (first 20 minutes only)
+
+---
+
+AGENDA
+------
+
+[00:00] 1. Welcome & Objectives (Lisa Taylor, 3 min)
+   - Purpose: Review Week 15 performance, address client escalations,
+     align on Mytheresa onboarding and carrier issues
+
+[00:03] 2. Week 15 KPI Review (Alex Weyer + Omar Bennett, 10 min)
+   - Total throughput: 847,000 units across 12 sites
+   - On-time shipping rate: 94.2% — target 95% missed
+   - Greven site pulling average down: 89.1% OTD (staffing gap in night shift)
+   - Ibbenbüren: 97.3% OTD — top performer
+   - Transport cost per unit: EUR 1.42 (up 3% from Q4 — fuel surcharge)
+   - Pick accuracy: 99.7% (within target)
+
+[00:13] 3. Client Escalations (Dakota Sanchez, 10 min)
+   - Zalando: delayed pick-up on April 11 — carrier no-show, 4,200 units affected
+     Action: Omar to escalate with TransEuropa, backup carrier activated
+   - Hugo Boss: label mismatch on 320 units (wrong barcode format)
+     Action: Alex to implement label verification step in Greven WMS
+   - DocMorris: temperature exceedance in cold chain section (2°C above range for 45 min)
+     Action: Amber to file incident report, sensor calibration by April 18
+
+[00:23] 4. Carrier Performance — TransEuropa Escalation (Omar Bennett, 7 min)
+   - Q1 on-time delivery: 78% vs. 95% SLA target — third month in a row below threshold
+   - Root cause: driver shortages, route optimization failures
+   - Decision needed: formal escalation letter + corrective action plan deadline
+   - Alternative carriers evaluated: Dachser (95.2% OTD), Rhenus (93.8%)
+
+[00:30] 5. Mytheresa Onboarding — May 1 Launch (Dakota Sanchez, 8 min)
+   - Scope: 15,000 SKUs, fashion fulfillment, same-day dispatch target
+   - Warehouse: Ibbenbüren, dedicated 2,400 sqm section
+   - IT integration: WMS connector ready, OMS interface in testing (go/no-go April 25)
+   - Staffing: 18 FTE allocated, 12 trained, 6 in onboarding
+   - Open: returns process definition, packaging specs from client (due April 18)
+
+[00:38] 6. Quality & Compliance Update (Amber Rodriguez, 5 min)
+   - ISO 9001 audit scheduled for May 14 — Greven + Ibbenbüren
+   - GDP compliance review for DocMorris cold chain — corrective action in progress
+   - CSDDD reporting requirements: first due date Q3 2026 — template in development
+
+[00:43] 7. AOB & Next Steps (Lisa Taylor, 2 min)
+   - Action items recap
+   - Next review: April 23, 2026 (same time)

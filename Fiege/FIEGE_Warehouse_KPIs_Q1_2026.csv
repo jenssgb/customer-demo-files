@@ -1,0 +1,51 @@
+Order ID,Date,Site,Client,Client Reference,Units Shipped,Total Cost EUR,Revenue EUR,On-Time,Status,Carrier
+FG-20260001,2026-03-23,Emmerich,,,4148,3442.89,4023.9,No,Completed,FastLane Logistics
+FG-20260002,2026-01-05,Marktredwitz,,,1476,1346.75,1559.76,No,Completed,OstExpress
+FG-20260003,2026-02-27,Greven,ElectroWholesale Ltd,CR-38221,9615,17031.21,18762.0,Yes,Completed,WestLogistik
+FG-20260004,2026-02-18,Worms,FoodService Logistics,CR-59615,3669,4515.71,5355.58,Yes,In Progress,EuroFreight
+FG-20260005,2026-03-22,Ibbenbüren,PharmaSupply Co,CR-40512,12350,18436.36,23527.43,Yes,Completed,EuroFreight
+FG-20260006,2026-02-28,Worms,TechDistributor AG,CR-32431,12454,12394.03,14734.24,No,In Progress,OstExpress
+FG-20260007,2026-01-21,Neuss,ElectroWholesale Ltd,CR-17331,15647,19642.41,26465.81,Yes,Delayed,NordSpedition
+FG-20260008,2026-02-10,Marktredwitz,ElectroWholesale Ltd,CR-75435,13645,15299.99,17637.0,Yes,In Progress,ReliableShip
+FG-20260009,2026-01-19,Neuss,TextileTrade BV,CR-86484,9179,8881.2,11423.42,Yes,Completed,OstExpress
+FG-20260010,2026-01-18,Hamburg,HomeGoods International,CR-65333,17196,23940.6,30858.13,No,Completed,FastLane Logistics
+FG-20260011,2026-02-18,Ibbenbüren,TechDistributor AG,CR-80381,15837,22725.1,30514.57,Yes,Delayed,CentralCargo
+FG-20260012,2026-01-15,Worms,HomeGoods International,CR-23947,10117,13371.82,16225.78,Yes,Delayed,OstExpress
+FG-20260013,2026-01-20,Neuss,TextileTrade BV,CR-12552,12752,21869.85,27005.87,Yes,Completed,EuroFreight
+FG-20260014,2026-01-31,Hamburg,,CR-19071,2398,2611.53,3243.1,No,Delayed,SüdTrans
+FG-20260015,2026-01-17,Neuss,AutoParts Express,CR-80686,16074,31122.77,35519.85,Yes,In Progress,EuroFreight
+FG-20260016,2026-02-21,Hamburg,TechDistributor AG,CR-87110,12736,16884.37,20757.54,No,Completed,OstExpress
+FG-20260017,2026-01-01,Hamburg,ElectroWholesale Ltd,,2826,4661.23,5195.96,Yes,Completed,ReliableShip
+FG-20260018,2026-01-28,Marktredwitz,FoodService Logistics,CR-34957,4835,8064.89,10650.46,Yes,Completed,FastLane Logistics
+FG-20260019,2026-02-15,Ibbenbüren,TechDistributor AG,,14379,18596.69,24472.49,Yes,Delayed,WestLogistik
+FG-20260020,2026-02-01,Groß-Gerau,FoodService Logistics,CR-19880,6778,6969.48,8448.08,Yes,Delayed,WestLogistik
+FG-20260021,2026-01-07,Emmerich,FoodService Logistics,CR-62565,983,1929.43,2569.21,Yes,Completed,FastLane Logistics
+FG-20260022,2026-01-01,Apfelstädt,BuildMaterials Plus,CR-73788,13293,14864.81,19265.06,Yes,Completed,EuroFreight
+FG-20260023,2026-01-28,Dieburg,,CR-75909,2416,3611.96,4462.75,No,Completed,NordSpedition
+FG-20260024,2026-03-07,Hamburg,SportEquip Europe,CR-84668,3125,5692.53,6359.3,Yes,In Progress,NordSpedition
+FG-20260025,2026-03-21,Neuss,PharmaSupply Co,CR-51180,3186,4151.58,5172.53,Yes,Completed,FastLane Logistics
+FG-20260026,2026-01-17,Hamburg,,CR-83792,10330,13931.76,18560.65,Yes,Completed,OstExpress
+FG-20260027,2026-03-06,Hamburg,ElectroWholesale Ltd,CR-67433,9190,8812.73,10462.93,No,In Progress,EuroFreight
+FG-20260028,2026-03-20,Worms,TechDistributor AG,CR-27601,17832,14433.0,18824.62,Yes,Completed,WestLogistik
+FG-20260029,2026-03-12,Dieburg,PharmaSupply Co,CR-42914,5593,6302.29,7885.47,Yes,Completed,FastLane Logistics
+FG-20260030,2026-02-05,Worms,FoodService Logistics,CR-66057,1944,1563.47,2021.22,No,Completed,WestLogistik
+FG-20260031,2026-01-10,Marktredwitz,AutoParts Express,,5384,7832.15,10249.53,Yes,Completed,NordSpedition
+FG-20260032,2026-02-15,Dieburg,AutoParts Express,CR-30257,7383,11949.24,15136.5,Yes,Delayed,SüdTrans
+FG-20260033,2026-01-23,Dieburg,AutoParts Express,CR-42527,14010,11624.71,14927.77,Yes,Completed,WestLogistik
+FG-20260034,2026-02-18,Apfelstädt,SportEquip Europe,CR-96511,1768,3235.99,3739.54,Yes,Completed,CentralCargo
+FG-20260035,2026-02-05,Neuss,BuildMaterials Plus,CR-13617,2774,5437.78,6361.01,Yes,Completed,SüdTrans
+FG-20260036,2026-03-16,Dieburg,ElectroWholesale Ltd,CR-77033,9198,7780.67,9719.17,Yes,Completed,OstExpress
+FG-20260037,2026-02-02,Neuss,SportEquip Europe,CR-19171,1954,3225.16,3549.04,Yes,In Progress,CentralCargo
+FG-20260038,2026-03-26,Worms,ElectroWholesale Ltd,CR-48752,4583,7624.76,8959.71,No,Completed,OstExpress
+FG-20260039,2026-02-23,Marktredwitz,AutoParts Express,CR-10053,12923,20841.98,27630.24,Yes,Completed,OstExpress
+FG-20260040,2026-02-25,Emmerich,HomeGoods International,CR-47196,11059,15017.97,18179.85,No,In Progress,CentralCargo
+FG-20260041,2026-01-12,Emmerich,,,8196,13173.88,15231.12,Yes,In Progress,WestLogistik
+FG-20260042,2026-02-28,Groß-Gerau,SportEquip Europe,,14080,26236.17,32635.64,Yes,Delayed,WestLogistik
+FG-20260043,2026-02-24,Neuss,BuildMaterials Plus,CR-25906,7670,7754.86,10387.57,Yes,Completed,ReliableShip
+FG-20260044,2026-03-27,Apfelstädt,BuildMaterials Plus,CR-81810,17904,35547.87,44394.42,Yes,Completed,ReliableShip
+FG-20260045,2026-02-27,Worms,BuildMaterials Plus,CR-41358,8993,15307.27,20052.0,Yes,Completed,WestLogistik
+FG-20260046,2026-02-06,Neuss,,,8183,9214.53,10872.48,Yes,In Progress,SüdTrans
+FG-20260047,2026-01-28,Apfelstädt,SportEquip Europe,CR-61049,2604,3379.58,3997.1,No,In Progress,NordSpedition
+FG-20260048,2026-03-15,Worms,AutoParts Express,CR-81582,12964,17791.48,23763.82,No,Completed,ReliableShip
+FG-20260049,2026-01-29,Dieburg,AutoParts Express,CR-71261,9443,12493.12,13833.08,Yes,In Progress,NordSpedition
+FG-20260050,2026-02-20,Apfelstädt,PharmaSupply Co,CR-37742,1388,1250.22,1509.21,Yes,Completed,CentralCargo
