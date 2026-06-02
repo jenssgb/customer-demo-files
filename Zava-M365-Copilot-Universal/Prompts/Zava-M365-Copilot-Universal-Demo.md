@@ -1,141 +1,141 @@
-# Zava Top M365 Copilot Demo
+# Zava Top Microsoft 365 Copilot Demo
 
-## 1 · Copilot Chat Lagebild
+## 1 - Copilot Chat Situation Brief
 
-### Boardroom Brief erstellen
+### Create the boardroom brief
 
 ```prompt
-Du bist mein Chief of Staff bei Zava. Nutze Zava_Rush_Order_Context.md, Zava_Email_Thread.html, Zava_Meeting_Transcript.md und Zava_Executive_Decision_Memo.md. Erstelle ein Boardroom Briefing in 7 Punkten: Entscheidung, Deadline, Kundenziel, kritische Abhaengigkeiten, Risiken, offene Owner-Actions und empfohlene Haltung.
+You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.md, Zava_Email_Thread.html, Zava_Meeting_Transcript.md, and Zava_Executive_Decision_Memo.md. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance.
 ```
 
 ### Presenter Action
 
 ```demo
-Oeffne Microsoft 365 Copilot Chat, lade die Dateien hoch oder referenziere sie aus OneDrive. Betone: Copilot macht aus verstreutem Kontext eine entscheidungsfaehige Lage.
+Open Microsoft 365 Copilot Chat and upload the files or reference them from OneDrive. Emphasize that Copilot turns scattered context into a decision-ready situation brief.
 ```
 
-### Copilot Page strukturieren
+### Structure the Copilot Page
 
 ```prompt
-Formatiere das Briefing als Copilot Page mit drei Bereichen: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Schreibe so, dass Zoe, Maya, Omar, Lena und Rafael direkt weiterarbeiten koennen.
+Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from it immediately.
 ```
 
-## 2 · Analyst Style Reasoning
+## 2 - Analyst-Style Reasoning
 
-### Feasibility und Preisfloor analysieren
+### Analyze feasibility and price floor
 
 ```prompt
-Analysiere Zava_Order_Analysis.xlsx sowie Zava_Risk_Register.csv und Zava_Pricing_Assumptions.csv. Beantworte: 1) Kann Zava 20.000 Einheiten in 14 Tagen zusagen? 2) Welche SKU oder Abhaengigkeit ist der Engpass? 3) Welcher Preisfloor schuetzt 32 Prozent Marge? 4) Welche Bedingungen muessen in die Kundenantwort?
+Analyze Zava_Order_Analysis.xlsx, Zava_Risk_Register.csv, and Zava_Pricing_Assumptions.csv. Answer four questions: 1) Can Zava commit to 20,000 units within 14 days? 2) Which SKU or dependency is the bottleneck? 3) Which price floor protects a 32 percent gross margin? 4) Which conditions must appear in the customer response?
 ```
 
-### Entscheidungstabelle fuer Zoe
+### Build the decision table for Zoe
 
 ```prompt
-Erstelle eine Entscheidungstabelle mit den Spalten: Entscheidungspunkt, Fakt, Risiko, Owner, Bedingung fuer Zusage, Kommunikationshinweis. Schließe mit einer 3-Satz-Empfehlung fuer Zoe.
+Create a decision table with these columns: decision point, fact, risk, owner, condition for commitment, and communication guidance. Close with a three-sentence recommendation for Zoe.
 ```
 
 ### Presenter Action
 
 ```demo
-Nutze wenn verfuegbar Think deeper oder Analyst-artiges Reasoning. Zeige, dass Copilot nicht nur zusammenfasst, sondern Abhaengigkeiten gegeneinander abwaegt.
+Use Think Deeper or an analyst-style reasoning mode if available. Show that Copilot is not only summarizing; it is weighing dependencies against the decision criteria.
 ```
 
-## 3 · Excel Workbook
+## 3 - Excel Workbook
 
-### Dashboard erklaeren
+### Explain the dashboard
 
 ```prompt
-Analysiere dieses Workbook. Starte auf dem Executive Summary Sheet. Erklaere die wichtigsten Zahlen, identifiziere die Engpaesse nach SKU/Farbe/Groesse und schlage zwei Visualisierungen vor, die Zoe in 60 Sekunden versteht.
+Analyze this workbook. Start on the Executive Summary sheet. Explain the most important numbers, identify bottlenecks by SKU, color, and size, and suggest two visuals that Zoe can understand in 60 seconds.
 ```
 
-### Management Summary erzeugen
+### Create the management summary
 
 ```prompt
-Fuege eine Management Summary hinzu: 1) Gesamtversorgung vs. Anfrage, 2) Risikoampel je Farbe, 3) empfohlener Preisfloor, 4) naechste Aktion je Owner. Erzeuge danach ein Chart fuer Total14DaySupply nach Farbe.
+Add a management summary with four parts: 1) total supply versus requested quantity, 2) risk indicator by color, 3) recommended price floor, 4) next action by owner. Then create a chart for Total14DaySupply by color.
 ```
 
 ### Presenter Action
 
 ```demo
-Oeffne Zava_Order_Analysis.xlsx in Excel. Zeige Executive Summary, Inventory-Formeln und den Chart. Danach Copilot um ein Management Summary bitten.
+Open Zava_Order_Analysis.xlsx in Excel. Show the Executive Summary, the inventory formulas, and the chart. Then ask Copilot to create the management summary.
 ```
 
-## 4 · Outlook Kundenantwort
+## 4 - Outlook Customer Response
 
-### Antwort formulieren
+### Draft the reply
 
 ```prompt
-Entwirf eine Antwort an events-procurement@microsoft.example. Ton: ruhig, verbindlich, executive-ready. Sage: Zava kann grundsaetzlich zusagen, wenn heute Kapazitaet, NFC-Aktivierung und Singapore-Freight bestaetigt werden. Nenne EUR 25.80 als Preisfloor, erwaehne White XL/XXL transparent und schlage einen 15-Minuten-Call heute vor.
+Draft a response to events-procurement@microsoft.example. Tone: calm, confident, and executive-ready. Say that Zava can make a conditional commitment if capacity, NFC activation, and Singapore freight are confirmed today. Name EUR 25.80 as the price floor, mention the White XL/XXL constraint transparently, and propose a 15-minute alignment call today.
 ```
 
-### Coach by Copilot
+### Improve with Copilot coaching
 
 ```prompt
-Verbessere die Antwort auf Klarheit, Ton und Risiko-Transparenz. Entferne interne Kostendetails. Mache die Bedingungen fuer die Zusage explizit, aber kundenfreundlich.
+Improve the reply for clarity, tone, and risk transparency. Remove internal cost details. Make the commitment conditions explicit but customer-friendly.
 ```
 
 ### Presenter Action
 
 ```demo
-Wechsle in Outlook oder nutze den Email Thread in Copilot Chat. Zeige: Die Antwort ist nicht generisch, sondern basiert auf Analyse, Risiko und Preisfloor.
+Switch to Outlook or use the email thread in Copilot Chat. Show that the response is grounded in analysis, risk, and price floor rather than generic wording.
 ```
 
-## 5 · Word Operations Plan
+## 5 - Word Operations Plan
 
-### Plan verbessern
+### Improve the operations plan
 
 ```prompt
-Oeffne Zava_Operations_Plan.docx und ueberarbeite ihn fuer Zoe. Ergaenze eine Executive Summary, eine Risikoampel und eine Tabelle "Next 4 hours" mit Owner, Deadline, Dependency und Done Definition.
+Open Zava_Operations_Plan.docx and improve it for Zoe. Add an executive summary, a risk indicator section, and a table called "Next 4 hours" with owner, deadline, dependency, and definition of done.
 ```
 
-### Word Agent Alternative
+### Word Agent alternative
 
 ```prompt
-Erstelle ein neues Word-Dokument mit dem Titel "Zava Rush Order War Room Plan". Nutze alle Zava-Dateien als Kontext. Struktur: Decision, Evidence, Risks, Workstreams, Customer Message, Executive Approval Checklist.
+Create a new Word document titled "Zava Rush Order War Room Plan". Use all Zava files as context. Structure it as: Decision, Evidence, Risks, Workstreams, Customer Message, Executive Approval Checklist.
 ```
 
 ### Presenter Action
 
 ```demo
-Zeige den Unterschied zwischen Kundenantwort und internem Operations-Plan. Optional: Word Agent aus Copilot Chat verwenden, wenn verfuegbar.
+Show the difference between the customer response and the internal operations plan. Optionally use the Word Agent from Copilot Chat if it is available in the tenant.
 ```
 
-## 6 · PowerPoint Executive Story
+## 6 - PowerPoint Executive Story
 
-### Deck verbessern
+### Improve the executive deck
 
 ```prompt
-Oeffne Zava_Executive_Story.pptx. Verbessere das Deck fuer Zoe: fuege Sprecherhinweise hinzu, mache die Entscheidung auf Slide 5 noch klarer und ergaenze auf Slide 3 eine klare Risikoampel fuer White XL/XXL, NFC activation und Singapore freight.
+Open Zava_Executive_Story.pptx. Improve the deck for Zoe: add speaker notes, make the decision on slide 5 clearer, and add a risk indicator on slide 3 for White XL/XXL, NFC activation, and Singapore freight.
 ```
 
-### PowerPoint Agent Alternative
+### PowerPoint Agent alternative
 
 ```prompt
-Erstelle eine neue 6-Slide Praesentation fuer die COO-Entscheidung. Nutze Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.md, Zava_Risk_Register.csv und Zava_Meeting_Transcript.md. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
+Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.md, Zava_Risk_Register.csv, and Zava_Meeting_Transcript.md. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
 ```
 
 ### Presenter Action
 
 ```demo
-Oeffne den PowerPoint-Seed oder nutze den PowerPoint Agent. Ziel: Executive Story statt Folienmalerei.
+Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show executive storytelling, not manual slide production.
 ```
 
-## 7 · Agent Builder Skalierung
+## 7 - Agent Builder Scale-Out
 
-### Order Desk Agent entwerfen
+### Design the Order Desk agent
 
 ```prompt
-Entwirf einen Zava Order Desk Agent fuer Microsoft 365 Copilot. Nutze Zava_Agent_Builder_Brief.md als Grundlage. Gib aus: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules und Beispielantwort fuer eine neue Rush Order.
+Design a Zava Order Desk Agent for Microsoft 365 Copilot. Use Zava_Agent_Builder_Brief.md as the foundation. Provide: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules, and an example response for a new rush order.
 ```
 
-### Agent Test Case
+### Test the agent with a second order
 
 ```prompt
-Teste den Agenten mit Request ZO-1044 aus Zava_Order_Intake.csv. Fasse die Order zusammen, nenne die drei wichtigsten Pruefpunkte und formuliere eine knappe Empfehlung fuer Sales Operations.
+Test the agent with request ZO-1044 from Zava_Order_Intake.csv. Summarize the order, name the three most important checks, and provide a concise recommendation for Sales Operations.
 ```
 
 ### Presenter Action
 
 ```demo
-Oeffne Agent Builder in Microsoft 365 Copilot. Nutze den Output als Bauplan. Erklaere: Aus einem manuellen Copilot-Flow wird ein wiederholbarer Order-Desk-Prozess.
+Open Agent Builder in Microsoft 365 Copilot. Use the output as the build plan. Explain that the manual Copilot flow becomes a repeatable Order Desk process.
 ```

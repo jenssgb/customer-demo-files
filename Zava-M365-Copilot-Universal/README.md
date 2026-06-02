@@ -1,26 +1,26 @@
-# Zava Top M365 Copilot Demo
+# Zava Top Microsoft 365 Copilot Demo
 
-Top-Demo fuer Microsoft 365 Copilot auf Basis der fiktiven Microsoft-Firma **Zava**. Ziel ist ein universelles, kundentaugliches E2E-Szenario im Stil der KN/Vaillant-Runbooks: Business-Story, Live-Prompts, echte Demo-Dateien, Office-Artefakte, Public-Download und One-Liner.
+A complete, customer-ready Microsoft 365 Copilot demo based on Microsoft's fictional company **Zava**. The goal is a universal end-to-end scenario in the style of the premium KN and Vaillant runbooks: business story, live prompts, realistic demo files, Office artifacts, public download, and a one-line setup command.
 
-## Ziel
+## Goal
 
-Eine universelle, kundenunabhaengige Demo, die in 30 bis 40 Minuten zeigt, wie Microsoft 365 Copilot vom ersten Business-Signal bis zur entscheidungsreifen Antwort arbeitet:
+This demo shows, in 30 to 40 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision:
 
-1. Copilot Chat erkennt aus Mail, Meeting, Memo und Briefing den Rush-Order-Kontext.
-2. Analyst/Reasoning-Style Prompting bewertet Feasibility, Engpass und Preisfloor.
-3. Excel analysiert Bestand, Kapazitaet, Marge und Risiko im Workbook.
-4. Outlook formuliert eine belastbare Kundenantwort.
-5. Word erstellt einen Operations-Plan.
-6. PowerPoint erzeugt eine Executive Story.
-7. Agent Builder skizziert einen wiederverwendbaren Order-Desk-Agenten.
+1. Copilot Chat identifies the rush-order context from email, meeting notes, memo, and briefing files.
+2. Analyst-style reasoning evaluates feasibility, bottlenecks, and price floor.
+3. Excel analyzes inventory, capacity, margin, and risk in a prepared workbook.
+4. Outlook drafts a customer response with explicit conditions.
+5. Word creates an operational execution plan.
+6. PowerPoint turns the decision into an executive story.
+7. Agent Builder turns the manual flow into a reusable Order Desk agent.
 
 ## Zava Research Summary
 
-Zava ist eine fiktive Microsoft-Demo-Firma aus dem Retail-/Athletic-Wear-Kontext. Microsoft Ignite beschreibt Zava als fictional athletic-wear company in einer Demo zu kollaborativer AI und Produktlaunch-Vorbereitung.
+Zava is a fictional Microsoft demo company in the retail and athletic-wear space. Microsoft Ignite describes Zava as a fictional athletic-wear company used in a demo about collaborative AI and product launch preparation.
 
-Diese Demo nutzt daraus die stabilste Storyline: **Zava erhaelt eine dringende Grossbestellung fuer 20.000 smarte Launch-Shirts und muss Bestand, Produktionsoptionen, Marge, Risiken und Kundenantwort schnell klaeren.**
+This demo uses the strongest generic storyline: **Zava receives an urgent enterprise order for 20,000 smart launch shirts and must quickly validate inventory, production options, margin, operational risks, and the customer response.**
 
-## Quellen
+## Sources
 
 - Microsoft Ignite Session `BRK284`: https://ignite.microsoft.com/en-US/sessions/BRK284
 - Microsoft 365 Copilot Chat overview: https://learn.microsoft.com/copilot/overview
@@ -28,43 +28,45 @@ Diese Demo nutzt daraus die stabilste Storyline: **Zava erhaelt eine dringende G
 - Microsoft 365 Copilot overview: https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview
 - Word, Excel, and PowerPoint Agents: https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents
 - Enterprise data protection: https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection
+- Agent Builder: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder
+- Microsoft 365 Copilot release notes: https://learn.microsoft.com/microsoft-365/copilot/release-notes
 
-## Dateien
+## Files
 
-| Datei | Zweck |
+| File | Purpose |
 | --- | --- |
-| `Zava-M365-Copilot-Universal-Briefing.html` | Live-Runbook im Clawpilot-Stil mit Copy-Buttons |
-| `Prompts/Zava-M365-Copilot-Universal-Demo.md` | PromptPrompter-Datei |
-| `Zava_Order_Analysis.xlsx` | Excel-Dashboard mit Inventory, Orders, Pricing, Risk Register und Formeln |
-| `Zava_Operations_Plan.docx` | Word-Seed fuer den Operations-Plan |
-| `Zava_Executive_Story.pptx` | PowerPoint-Seed fuer die Executive Story |
-| `data/Zava_Rush_Order_Context.md` | Business-Kontext fuer Chat, Word und PowerPoint |
-| `data/Zava_Inventory_Snapshot.csv` | Inventory-Daten fuer Analyse und Charts |
-| `data/Zava_Order_Intake.csv` | Mehrere Rush-Order-Requests fuer Agent-Testcases |
-| `data/Zava_Risk_Register.csv` | Risiko-Register mit Ownern und Mitigations |
-| `data/Zava_Pricing_Assumptions.csv` | Preisfloor- und Margin-Annahmen |
-| `data/Zava_Email_Thread.html` | Outlook-/Edge-Kontext fuer Zusammenfassung und Antwort |
-| `data/Zava_Launch_Brief.md` | Produkt- und Kampagnenkontext |
-| `data/Zava_Meeting_Transcript.md` | Meeting-Kontext fuer Action Items |
-| `data/Zava_Executive_Decision_Memo.md` | COO-Entscheidungsvorlage |
-| `data/Zava_Agent_Builder_Brief.md` | Agent Builder Instructions und Guardrails |
-| `Deploy-Zava-Demo-Content.ps1` | Upload in den CDX OneDrive/SharePoint Demo-Folder |
+| `Zava-M365-Copilot-Universal-Briefing.html` | Live runbook in the Clawpilot style with copy buttons |
+| `Prompts/Zava-M365-Copilot-Universal-Demo.md` | PromptPrompter-ready demo script |
+| `Zava_Order_Analysis.xlsx` | Excel dashboard with inventory, orders, pricing, risk register, and formulas |
+| `Zava_Operations_Plan.docx` | Word seed document for the operations plan |
+| `Zava_Executive_Story.pptx` | PowerPoint seed deck for the executive story |
+| `data/Zava_Rush_Order_Context.md` | Business context for Chat, Word, and PowerPoint |
+| `data/Zava_Inventory_Snapshot.csv` | Inventory data for analysis and charts |
+| `data/Zava_Order_Intake.csv` | Multiple rush-order requests for agent test cases |
+| `data/Zava_Risk_Register.csv` | Risk register with owners and mitigations |
+| `data/Zava_Pricing_Assumptions.csv` | Price-floor and margin assumptions |
+| `data/Zava_Email_Thread.html` | Email-thread context for Outlook and Copilot Chat |
+| `data/Zava_Launch_Brief.md` | Product and campaign context |
+| `data/Zava_Meeting_Transcript.md` | Meeting context and action items |
+| `data/Zava_Executive_Decision_Memo.md` | COO decision memo |
+| `data/Zava_Agent_Builder_Brief.md` | Agent Builder instructions and guardrails |
+| `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
 
-## Microsoft Learn MCP Feature-Matrix
+## Microsoft Learn MCP Feature Matrix
 
-Stand: 02.06.2026. Geprueft ueber Microsoft Learn MCP Search + Fetch.
+Status: June 2, 2026. Verified with Microsoft Learn MCP Search and Fetch.
 
-| Funktion | Was kann es aktuell? | Grenzen / Voraussetzungen | Demo-Implikation | Quelle |
+| Feature | Current capability | Limits and requirements | Demo implication | Source |
 | --- | --- | --- | --- | --- |
-| Copilot Chat + Datei-Upload | Sichere AI-Chat-Erfahrung mit Web-Grounding, Datei-Upload, Copilot Pages, Image Generation und Agents. | Ohne Microsoft 365 Copilot Add-on nicht automatisch Graph-grounded; Org-Kontext muss hochgeladen, geoeffnet oder ueber Agent bereitgestellt werden. | Zava-Dateien explizit hochladen oder aus OneDrive referenzieren. | https://learn.microsoft.com/copilot/overview |
-| Enterprise Data Protection | Prompts und Antworten fuer Entra-Nutzer fallen unter DPA/Product Terms; Zugriffskontrollen und Policies gelten je nach Plan. | Webqueries und Anthropic-Modelle haben eigene Hinweise; keine pauschalen Compliance-Versprechen. | Compliance sauber positionieren, keine Ueberzusage. | https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection |
-| Excel Edit with Copilot | Workbook per Chat bearbeiten, Tabellen, Charts, PivotTables und Formeln erstellen oder anpassen. | Ehemals Agent Mode; Verfuegbarkeit haengt von Lizenz, Client, Rollout und Tenant-Konfiguration ab. | Workbook vorbereiten; Backup: Copilot Chat Analyse mit XLSX Upload. | https://learn.microsoft.com/microsoft-365/copilot/release-notes |
-| Word, Excel, PowerPoint Agents | Dateien direkt aus Copilot Chat erstellen; fuer lizenzierte Nutzer mit Work-IQ/Org-Daten. | Anthropic-Modelle muessen aktiviert sein; region-/tenant-/sovereign-cloud-Einschraenkungen beachten. | Optionaler Wow-Moment; Seed-Dateien als Backup. | https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents |
-| Agent Builder | Declarative Agents per natuerlicher Sprache bauen, Wissensquellen angeben, testen und teilen. | Nicht mobil; fuer komplexe Actions Copilot Studio nutzen; Admin Controls und bekannte Limits beachten. | Zava Order Desk als declarative agent skizzieren, keine externen Actions versprechen. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
+| Copilot Chat and file upload | Secure AI chat with web grounding, file upload, Copilot Pages, image generation, and agents. | Without a Microsoft 365 Copilot add-on license, Copilot Chat is not automatically grounded in Microsoft Graph data. Organizational context must be uploaded, opened in supported apps, or provided through an agent. | Upload or reference the Zava files explicitly. | https://learn.microsoft.com/copilot/overview |
+| Enterprise Data Protection | Prompts and responses for Entra-signed-in users are covered by DPA and Product Terms; access controls and policies apply depending on the plan. | Web queries and Anthropic-based capabilities have additional data-handling notes. Do not overstate compliance coverage. | Position security clearly and avoid blanket compliance claims. | https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection |
+| Excel Edit with Copilot | Users can edit workbooks through chat, including tables, charts, PivotTables, and formulas. | Formerly Agent Mode; availability depends on license, client, rollout, and tenant configuration. | Keep the prepared workbook ready; use Copilot Chat with XLSX upload as backup. | https://learn.microsoft.com/microsoft-365/copilot/release-notes |
+| Word, Excel, and PowerPoint Agents | Create Office files directly from Copilot Chat; licensed users can work with organizational data through Work IQ. | Anthropic models must be enabled; region, tenant, government cloud, and sovereign cloud restrictions apply. | Treat as an optional wow moment; seed files are the backup path. | https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents |
+| Agent Builder | Build declarative agents with natural language, add knowledge sources, test, and share. | Not available on mobile; complex actions should move to Copilot Studio; admin controls and known limitations apply. | Build the Zava Order Desk as a declarative agent and do not promise external actions. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
 
 ## Demo Files One-Liner
 
-Das Public Demo-Repo enthaelt den Ordner `Zava-M365-Copilot-Universal/`. Dieser One-Liner kopiert das Paket auf den Desktop der Demo-VM:
+The public demo repository contains the `Zava-M365-Copilot-Universal/` folder. This one-liner copies the complete package to the demo VM desktop:
 
 ```powershell
 $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"
@@ -72,20 +74,20 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://
 
 ## Presenter Setup
 
-1. Demo-Dateien per One-Liner auf den Desktop kopieren.
-2. Den Ordner `ZAVA-Demo` in OneDrive/SharePoint bereitstellen oder einzelne Dateien in Copilot Chat hochladen.
-3. Microsoft 365 Copilot Chat oeffnen: https://m365copilot.com
-4. Excel im Browser oder Desktop mit `Zava_Order_Analysis.xlsx` oeffnen.
-5. Outlook mit dem Email-Thread oder dem generierten Reply-Prompt zeigen.
-6. Word und PowerPoint Seeds fuer Office-Agent-/Copilot-Verbesserungen oeffnen.
+1. Copy the demo files to the desktop with the one-liner.
+2. Place the `ZAVA-Demo` folder in OneDrive or SharePoint, or upload individual files directly in Copilot Chat.
+3. Open Microsoft 365 Copilot Chat: https://m365copilot.com
+4. Open `Zava_Order_Analysis.xlsx` in Excel for web or desktop.
+5. Use the email thread or reply prompt for the Outlook section.
+6. Open the Word and PowerPoint seed files for Office Copilot or Office Agents.
 
 ## Demo Arc
 
-| Segment | Dauer | Kernaussage |
+| Segment | Duration | Core message |
 | --- | ---: | --- |
-| Signal | 6 min | Copilot findet aus Mail, Meeting, Memo und Briefing die eigentliche Entscheidung. |
-| Reasoning | 6 min | Copilot bewertet Feasibility, Engpass, Preisfloor und Bedingungen. |
-| Analyse | 8 min | Excel/Copilot macht aus Rohdaten ein belastbares Fulfillment-Bild. |
-| Antwort | 7 min | Outlook und Word wandeln Entscheidung in Kundenkommunikation und Operations-Plan. |
-| Story | 5 min | PowerPoint erzeugt die Executive Narrative. |
-| Scale | 5 min | Agent Builder macht aus dem Ablauf einen wiederholbaren Prozess. |
+| Signal | 6 min | Copilot identifies the real decision from email, meeting notes, memo, and briefing files. |
+| Reasoning | 6 min | Copilot evaluates feasibility, bottlenecks, price floor, and conditions. |
+| Analysis | 8 min | Excel and Copilot turn raw data into a reliable fulfillment view. |
+| Response | 7 min | Outlook and Word turn the decision into customer communication and an operations plan. |
+| Story | 5 min | PowerPoint creates the executive narrative. |
+| Scale | 5 min | Agent Builder turns the flow into a repeatable process. |
