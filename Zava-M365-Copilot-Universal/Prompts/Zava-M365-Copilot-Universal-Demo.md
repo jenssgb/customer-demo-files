@@ -139,3 +139,81 @@ Test the agent with request ZO-1044 from Zava_Order_Intake.csv. Summarize the or
 ```demo
 Open Agent Builder in Microsoft 365 Copilot. Use the output as the build plan. Explain that the manual Copilot flow becomes a repeatable Order Desk process.
 ```
+
+## 8 - Ultimate Track: Researcher, Analyst, and Coaches
+
+### Researcher market and supplier brief
+
+```prompt
+Use Researcher for this task if it is available. Build a market and supplier readiness brief for Zava's 20,000-unit smart launch shirt order. Cover event demand signals, supplier capacity questions, logistics risk, sustainability concerns, and a one-page executive recommendation. Use the Zava files as internal context and clearly separate internal facts from external research assumptions.
+```
+
+### Analyst deep scenario model
+
+```prompt
+Use Analyst or code interpreter if available. Analyze Zava_Order_Analysis.xlsx, Zava_Inventory_Snapshot.csv, Zava_Order_Intake.csv, and Zava_Risk_Register.csv. Run three scenarios: commit today, split delivery, and decline unless constraints clear. For each scenario, estimate operational risk, customer impact, margin exposure, and recommended executive decision.
+```
+
+### Prompt Coach improvement
+
+```prompt
+Use Prompt Coach if available. Improve this prompt for a senior operations user: "Can we accept the Zava rush order?" Make it specific, grounded, role-aware, and safe. Include required files, decision criteria, output format, and assumptions to verify.
+```
+
+### Presenter Action
+
+```demo
+Use this section as the premium extension after the core Zava flow. Researcher and Analyst are optional first-party experiences; if they are not available, run the same prompts in Copilot Chat with uploaded files and explain the backup path.
+```
+
+## 9 - Ultimate Track: Teams Facilitator and Interpreter
+
+### Facilitator war-room prompt
+
+```prompt
+@Facilitator summarize the Zava rush-order war room so far. Capture decisions, unresolved risks, owners, deadlines, and the exact customer response principles we agreed to. Create a concise action list for Zoe, Maya, Omar, Lena, and Rafael.
+```
+
+### Facilitator action tracking
+
+```prompt
+@Facilitator turn the discussion into a 4-hour execution plan. Track tasks for capacity confirmation, NFC activation, Singapore freight, finance approval, and customer response. Mark dependencies and escalation points.
+```
+
+### Interpreter global meeting moment
+
+```prompt
+Use the Teams Interpreter agent if available. Demonstrate how a German production lead, an English-speaking COO, and a Singapore logistics owner can follow the same Zava decision meeting in their preferred language. Keep the explanation short and focus on global collaboration.
+```
+
+### Presenter Action
+
+```demo
+Only show Facilitator or Interpreter live if the tenant, Teams policy, license, and meeting type are ready. Otherwise use Zava_Meeting_Transcript.md as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
+```
+
+## 10 - Ultimate Track: Visual Creator, Copilot Studio, and Foundry
+
+### Visual Creator launch concept
+
+```prompt
+Use Visual Creator if available. Create a premium concept visual for the Zava smart launch shirt campaign. Style: modern athletic retail, executive-safe, clean product focus, no fake logos, no unrealistic claims. Provide three concept directions and the best prompt to generate the final visual.
+```
+
+### Copilot Studio escalation path
+
+```prompt
+Transform the Zava Order Desk Agent into a Copilot Studio production concept. Include triggers, knowledge sources, actions, approval steps, human-in-the-loop controls, analytics, environment governance, and the first three systems it should integrate with.
+```
+
+### Foundry pro-code extension path
+
+```prompt
+Design a pro-code Zava Fulfillment Sentinel in Microsoft Foundry. It should ingest order events, retrieve policy and inventory context, evaluate risk, propose a recommendation, and create an auditable decision record. Include evaluation criteria, monitoring signals, and rollback or human review rules.
+```
+
+### Presenter Action
+
+```demo
+Use this as the executive platform close. Agent Builder is the fastest path to a reusable agent; Copilot Studio is the low-code production path; Foundry is the pro-code path for governed, evaluated, monitored agents.
+```

@@ -4,7 +4,7 @@ A complete, customer-ready Microsoft 365 Copilot demo based on Microsoft's ficti
 
 ## Goal
 
-This demo shows, in 30 to 40 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision:
+This demo shows, in 30 to 40 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision. It also includes an optional 60-minute **Ultimate Track** that folds in the strongest patterns from the KN, Vaillant, BPW, Copilot Chat Sidebar, Excel Agent Mode, and M365 Agents demo packages.
 
 1. Copilot Chat identifies the rush-order context from email, meeting notes, memo, and briefing files.
 2. Analyst-style reasoning evaluates feasibility, bottlenecks, and price floor.
@@ -13,6 +13,15 @@ This demo shows, in 30 to 40 minutes, how Microsoft 365 Copilot turns a scattere
 5. Word creates an operational execution plan.
 6. PowerPoint turns the decision into an executive story.
 7. Agent Builder turns the manual flow into a reusable Order Desk agent.
+
+Optional Ultimate Track modules:
+
+8. Researcher creates a market, supplier, and event-readiness brief for the rush order.
+9. Analyst or code interpreter performs a deeper scenario analysis from the workbook and CSV files.
+10. Teams Facilitator captures the war-room meeting, tracks decisions, and turns discussion into actions.
+11. Teams Interpreter demonstrates multilingual executive collaboration for global launch stakeholders.
+12. Prompt Coach, Writing Coach, Idea Coach, and Visual Creator sharpen prompts, messages, and launch concepts.
+13. Copilot Studio or Foundry becomes the pro-developer / low-code extension path when declarative Agent Builder is not enough.
 
 ## Zava Research Summary
 
@@ -63,6 +72,11 @@ Status: June 2, 2026. Verified with Microsoft Learn MCP Search and Fetch.
 | Excel Edit with Copilot | Users can edit workbooks through chat, including tables, charts, PivotTables, and formulas. | Formerly Agent Mode; availability depends on license, client, rollout, and tenant configuration. | Keep the prepared workbook ready; use Copilot Chat with XLSX upload as backup. | https://learn.microsoft.com/microsoft-365/copilot/release-notes |
 | Word, Excel, and PowerPoint Agents | Create Office files directly from Copilot Chat; licensed users can work with organizational data through Work IQ. | Anthropic models must be enabled; region, tenant, government cloud, and sovereign cloud restrictions apply. | Treat as an optional wow moment; seed files are the backup path. | https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents |
 | Agent Builder | Build declarative agents with natural language, add knowledge sources, test, and share. | Not available on mobile; complex actions should move to Copilot Studio; admin controls and known limitations apply. | Build the Zava Order Desk as a declarative agent and do not promise external actions. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
+| Researcher and Analyst | First-party Microsoft experiences available from Copilot Chat Tools for research and analysis tasks. Researcher and Analyst are Microsoft-installed experiences and are governed differently from normal custom agents. | Built-in agents such as Researcher and Analyst are not available in GCC, GCCH, or DoD. Availability and tenant rollout can vary. | Use as optional premium moments. Keep the normal Copilot Chat and workbook prompts as backup. | https://learn.microsoft.com/training/modules/explore-prebuilt-microsoft-365-copilot-agents/ |
+| Teams Facilitator | Provides collaborative real-time notes, AI-powered Q&A, visual timeline markers, Teams Rooms support, mobile capture, and meeting interaction by mentioning Facilitator. | Requires Microsoft 365 Copilot and Teams licensing. Some capabilities, including Planner task tracking and Word or Loop drafting, are public preview. Not supported in 1:1 chats, group chats, or external meetings. | Use for a Zava war-room meeting only when the tenant and meeting policy are ready. Otherwise show the transcript file and explain the live pattern. | https://learn.microsoft.com/microsoftteams/facilitator-teams |
+| Teams Interpreter | Real-time speech-to-speech translation in Teams meetings, with supported spoken and listening languages including English, German, French, Spanish, Italian, Portuguese, Japanese, Korean, and Mandarin. | Requires eligible Microsoft 365 base license, Teams license, and Microsoft 365 Copilot license. 20 hours per user per month are included, subject to capacity. Not supported for town halls, webinars, Teams free, unscheduled 1:1 calls, or Teams Rooms scheduled meetings. | Use as an optional global-leadership moment for the Zava COO, Singapore logistics, and German production stakeholders. | https://learn.microsoft.com/microsoftteams/interpreter-agent-teams |
+| Prompt Coach, Writing Coach, Idea Coach, Visual Creator | Prebuilt Microsoft 365 Copilot agents help improve prompts, writing, ideation, and visual concepts. | Availability can depend on tenant rollout, licensing, and admin controls. Do not position these as custom business-process automation. | Use as short polish moments: improve the customer prompt, sharpen the response, brainstorm mitigation options, or create a campaign visual concept. | https://learn.microsoft.com/training/modules/explore-prebuilt-microsoft-365-copilot-agents/ |
+| Copilot Studio and advanced actions | Use Copilot Studio when the scenario requires actions, external systems, richer orchestration, or more complex agent capabilities than Agent Builder. | Requires the right Power Platform, Copilot Studio, billing, governance, environment, and admin configuration. | Position as the escalation path from a declarative Zava Order Desk agent to a production-grade fulfillment agent. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
 
 ## Demo Files One-Liner
 
@@ -91,3 +105,17 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://
 | Response | 7 min | Outlook and Word turn the decision into customer communication and an operations plan. |
 | Story | 5 min | PowerPoint creates the executive narrative. |
 | Scale | 5 min | Agent Builder turns the flow into a repeatable process. |
+
+## Ultimate Demo Coverage
+
+This package now intentionally covers the complete top-demo surface area:
+
+| Track | Demo moments | Best source package reused |
+| --- | --- | --- |
+| Work IQ and Chat | Situation brief, file upload, Copilot Pages, Edge-style sidebar backup | Copilot Chat Sidebar, KN Work IQ |
+| Reasoning and data | Analyst-style reasoning, Excel workbook, Python/code-interpreter style analysis backup | Excel Agent Mode, KN Analyst Agent |
+| Office creation | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Office Agents |
+| Meeting intelligence | War-room transcript, Teams Facilitator optional live path, Interpreter optional global meeting path | KN executive showcase, M365 Agents |
+| Agent scale-out | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
+
+Presenter rule: show only the modules available in the tenant. For anything preview-gated, admin-gated, region-limited, or model-provider-dependent, use the included seed files and transcripts as the backup path.
