@@ -1,0 +1,16 @@
+Item,Color,Size,FinishedInventory,ReservedUnits,AvailableUnits,UnitCostEUR,TargetPriceEUR,NFCTagStatus,ProductionPartner,AdditionalCapacity14Days,ExpediteCostEUR,DeliveryRisk
+Smart Launch Shirt,Black,S,1850,300,1550,12.40,24.90,Ready,Zava Central,0,0,Low
+Smart Launch Shirt,Black,M,2600,500,2100,12.60,24.90,Ready,Zava Central,0,0,Low
+Smart Launch Shirt,Black,L,2450,450,2000,12.80,24.90,Ready,Zava Central,0,0,Low
+Smart Launch Shirt,Black,XL,1600,250,1350,13.10,25.90,Ready,Zava Central,0,0,Low
+Smart Launch Shirt,Black,XXL,750,150,600,13.50,26.90,Ready,Zava Central,0,0,Medium
+Smart Launch Shirt,Cobalt,S,900,100,800,12.70,24.90,Partial,Berlin Printworks,1200,1.80,Low
+Smart Launch Shirt,Cobalt,M,1100,200,900,12.90,24.90,Partial,Berlin Printworks,1800,1.80,Low
+Smart Launch Shirt,Cobalt,L,1050,150,900,13.10,24.90,Partial,Berlin Printworks,1700,1.80,Low
+Smart Launch Shirt,Cobalt,XL,650,100,550,13.40,25.90,Partial,Berlin Printworks,1500,1.80,Medium
+Smart Launch Shirt,Cobalt,XXL,300,50,250,13.90,26.90,Partial,Berlin Printworks,1300,1.80,Medium
+Smart Launch Shirt,White,S,700,100,600,12.20,23.90,Pending,Porto Apparel Lab,900,1.20,Medium
+Smart Launch Shirt,White,M,850,150,700,12.40,23.90,Pending,Porto Apparel Lab,1200,1.20,Medium
+Smart Launch Shirt,White,L,800,125,675,12.60,23.90,Pending,Porto Apparel Lab,1200,1.20,Medium
+Smart Launch Shirt,White,XL,500,75,425,12.90,24.90,Pending,Porto Apparel Lab,900,1.20,High
+Smart Launch Shirt,White,XXL,250,50,200,13.30,25.90,Pending,Porto Apparel Lab,800,1.20,High
