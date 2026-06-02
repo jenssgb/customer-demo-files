@@ -50,6 +50,18 @@ Diese Demo nutzt daraus die stabilste Storyline: **Zava erhaelt eine dringende G
 | `data/Zava_Agent_Builder_Brief.md` | Agent Builder Instructions und Guardrails |
 | `Deploy-Zava-Demo-Content.ps1` | Upload in den CDX OneDrive/SharePoint Demo-Folder |
 
+## Microsoft Learn MCP Feature-Matrix
+
+Stand: 02.06.2026. Geprueft ueber Microsoft Learn MCP Search + Fetch.
+
+| Funktion | Was kann es aktuell? | Grenzen / Voraussetzungen | Demo-Implikation | Quelle |
+| --- | --- | --- | --- | --- |
+| Copilot Chat + Datei-Upload | Sichere AI-Chat-Erfahrung mit Web-Grounding, Datei-Upload, Copilot Pages, Image Generation und Agents. | Ohne Microsoft 365 Copilot Add-on nicht automatisch Graph-grounded; Org-Kontext muss hochgeladen, geoeffnet oder ueber Agent bereitgestellt werden. | Zava-Dateien explizit hochladen oder aus OneDrive referenzieren. | https://learn.microsoft.com/copilot/overview |
+| Enterprise Data Protection | Prompts und Antworten fuer Entra-Nutzer fallen unter DPA/Product Terms; Zugriffskontrollen und Policies gelten je nach Plan. | Webqueries und Anthropic-Modelle haben eigene Hinweise; keine pauschalen Compliance-Versprechen. | Compliance sauber positionieren, keine Ueberzusage. | https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection |
+| Excel Edit with Copilot | Workbook per Chat bearbeiten, Tabellen, Charts, PivotTables und Formeln erstellen oder anpassen. | Ehemals Agent Mode; Verfuegbarkeit haengt von Lizenz, Client, Rollout und Tenant-Konfiguration ab. | Workbook vorbereiten; Backup: Copilot Chat Analyse mit XLSX Upload. | https://learn.microsoft.com/microsoft-365/copilot/release-notes |
+| Word, Excel, PowerPoint Agents | Dateien direkt aus Copilot Chat erstellen; fuer lizenzierte Nutzer mit Work-IQ/Org-Daten. | Anthropic-Modelle muessen aktiviert sein; region-/tenant-/sovereign-cloud-Einschraenkungen beachten. | Optionaler Wow-Moment; Seed-Dateien als Backup. | https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents |
+| Agent Builder | Declarative Agents per natuerlicher Sprache bauen, Wissensquellen angeben, testen und teilen. | Nicht mobil; fuer komplexe Actions Copilot Studio nutzen; Admin Controls und bekannte Limits beachten. | Zava Order Desk als declarative agent skizzieren, keine externen Actions versprechen. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
+
 ## Demo Files One-Liner
 
 Das Public Demo-Repo enthaelt den Ordner `Zava-M365-Copilot-Universal/`. Dieser One-Liner kopiert das Paket auf den Desktop der Demo-VM:
