@@ -1,0 +1,6 @@
+RiskId,Area,Risk,Impact,Probability,Owner,Mitigation,Status
+R-01,NFC activation,NFC tag activation capacity may delay final packing,High,Medium,Omar Haddad,"Reserve evening activation slot; pre-stage Cobalt and Black runs first",Open
+R-02,Supply chain,White XL and XXL availability below demand buffer,High,High,Omar Haddad,"Offer substitution rules; cap White XL/XXL mix; disclose risk to customer",Open
+R-03,Freight,Singapore hub has customs clearance uncertainty,Medium,Medium,Rafael Ortiz,"Ship 48 hours earlier; use premium freight lane",Open
+R-04,Finance,Expedite fees can erode gross margin,High,Medium,Lena Vogt,"Set pricefloor at or above EUR 25.80; approve exception only with COO sign-off",Open
+R-05,Customer comms,Overpromising before partner confirmation,High,Low,Maya Chen,"Use conditional commitment language until partner capacity is locked",Open

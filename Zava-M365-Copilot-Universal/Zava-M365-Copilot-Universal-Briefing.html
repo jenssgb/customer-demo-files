@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="de" data-theme="light">
+<!-- Current version: v2.0 | 02.06.2026 | Zava Top M365 Copilot Demo -->
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zava - M365 Copilot Universal Demo</title>
+  <title>Zava - Top M365 Copilot Demo</title>
   <script>
     (() => {
       const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
@@ -12,317 +13,52 @@
     })();
   </script>
   <style>
-    :root {
-      color-scheme: light;
-      --cp-bg: #f7f4ef;
-      --cp-bg-elevated: #fcfbf8;
-      --cp-surface: #ffffff;
-      --cp-surface-soft: #f5f5f5;
-      --cp-border: #dedede;
-      --cp-text: #242424;
-      --cp-text-muted: #5c5c5c;
-      --cp-accent: #b11f4b;
-      --cp-accent-hover: #9a1a41;
-      --cp-accent-soft: rgba(177,31,75,.08);
-      --cp-link: #0078d4;
-      --cp-chat: #0078d4;
-      --cp-chat-soft: rgba(0,120,212,.10);
-      --cp-excel: #107c41;
-      --cp-excel-soft: rgba(16,124,65,.10);
-      --cp-office: #b91c1c;
-      --cp-office-soft: rgba(185,28,28,.09);
-      --cp-agent: #7b2d8e;
-      --cp-agent-soft: rgba(123,45,142,.10);
-      --cp-cowork: #f0a500;
-      --cp-cowork-soft: rgba(240,165,0,.12);
-    }
-    html[data-theme="dark"] {
-      color-scheme: dark;
-      --cp-bg: #3d3b3a;
-      --cp-bg-elevated: #343231;
-      --cp-surface: #292929;
-      --cp-surface-soft: #2e2e2e;
-      --cp-border: #474747;
-      --cp-text: #dedede;
-      --cp-text-muted: #b0b0b0;
-      --cp-accent: #fd8ea1;
-      --cp-accent-hover: #fb7b91;
-      --cp-accent-soft: rgba(253,142,161,.14);
-      --cp-link: #4da6ff;
-      --cp-chat: #4da6ff;
-      --cp-chat-soft: rgba(77,166,255,.15);
-      --cp-excel: #4ade80;
-      --cp-excel-soft: rgba(74,222,128,.14);
-      --cp-office: #f87171;
-      --cp-office-soft: rgba(248,113,113,.13);
-      --cp-agent: #d8b4fe;
-      --cp-agent-soft: rgba(216,180,254,.14);
-      --cp-cowork: #fbbf24;
-      --cp-cowork-soft: rgba(251,191,36,.14);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font-family: "Segoe UI", Aptos, Calibri, sans-serif; }
-    button { font: inherit; }
-    .shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: 100vh; }
-    aside { background: var(--cp-bg-elevated); border-right: 1px solid var(--cp-border); height: 100vh; overflow-y: auto; padding: 20px; position: sticky; top: 0; }
-    main { padding: 36px 44px 72px; }
-    section { border-bottom: 1px solid var(--cp-border); max-width: 1120px; padding: 34px 0; }
-    section:first-child { padding-top: 0; }
-    .brand { color: var(--cp-accent); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
-    .version-badge { background: var(--cp-accent-soft); border: 1px solid var(--cp-border); border-radius: 999px; color: var(--cp-accent); display: inline-block; font-size: 12px; font-weight: 800; margin-top: 10px; padding: 6px 9px; }
-    nav { display: grid; gap: 8px; margin-top: 22px; }
-    nav a, .ctrl { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 10px; color: var(--cp-text); cursor: pointer; font-weight: 800; padding: 10px 12px; text-align: left; text-decoration: none; }
-    nav a.chat { border-left: 3px solid var(--cp-chat); }
-    nav a.excel { border-left: 3px solid var(--cp-excel); }
-    nav a.office { border-left: 3px solid var(--cp-office); }
-    nav a.agent { border-left: 3px solid var(--cp-agent); }
-    nav a.cowork { border-left: 3px solid var(--cp-cowork); }
-    .ctrl { margin-top: 10px; width: 100%; }
-    h1, h2, h3, p { margin: 0; }
-    h1 { font-size: clamp(42px, 7vw, 76px); letter-spacing: -.055em; line-height: .95; max-width: 980px; }
-    h2 { font-size: clamp(30px, 4vw, 48px); letter-spacing: -.04em; line-height: 1; }
-    h3 { font-size: 20px; letter-spacing: -.02em; line-height: 1.15; }
-    .eyebrow { color: var(--cp-accent); display: block; font-size: 12px; font-weight: 900; letter-spacing: .14em; margin-bottom: 10px; text-transform: uppercase; }
-    .subtitle { color: var(--cp-text-muted); font-size: clamp(18px, 2vw, 25px); line-height: 1.32; margin-top: 14px; max-width: 940px; }
-    .note, .muted { color: var(--cp-text-muted); line-height: 1.5; }
-    .grid { display: grid; gap: 14px; margin-top: 20px; }
-    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card, .prompt-card, .callout { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border); padding: 18px; }
-    .card p, .callout p { color: var(--cp-text-muted); line-height: 1.45; margin-top: 8px; }
-    .card[data-block="chat"], .prompt-card[data-block="chat"] { border-left: 4px solid var(--cp-chat); }
-    .card[data-block="excel"], .prompt-card[data-block="excel"] { border-left: 4px solid var(--cp-excel); }
-    .card[data-block="office"], .prompt-card[data-block="office"] { border-left: 4px solid var(--cp-office); }
-    .card[data-block="agent"], .prompt-card[data-block="agent"] { border-left: 4px solid var(--cp-agent); }
-    .card[data-block="cowork"], .prompt-card[data-block="cowork"] { border-left: 4px solid var(--cp-cowork); }
-    .timing { display: grid; gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
-    .timing li { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 10px; display: grid; gap: 12px; grid-template-columns: 90px minmax(0, 1fr); padding: 14px; }
-    .when { color: var(--cp-accent); font-weight: 900; }
-    .what { font-weight: 900; }
-    .prompt-card { margin-top: 16px; }
-    .prompt-head { align-items: start; display: flex; gap: 12px; justify-content: space-between; margin-bottom: 12px; }
-    .prompt-meta { color: var(--cp-text-muted); line-height: 1.45; margin-top: 6px; }
-    .audience-line { background: var(--cp-accent-soft); border: 1px solid var(--cp-border); border-radius: 10px; font-size: 17px; font-weight: 850; line-height: 1.35; margin-bottom: 12px; padding: 12px 14px; }
-    .prompt-card[data-block="chat"] .audience-line { background: var(--cp-chat-soft); }
-    .prompt-card[data-block="excel"] .audience-line { background: var(--cp-excel-soft); }
-    .prompt-card[data-block="office"] .audience-line { background: var(--cp-office-soft); }
-    .prompt-card[data-block="agent"] .audience-line { background: var(--cp-agent-soft); }
-    .prompt-card[data-block="cowork"] .audience-line { background: var(--cp-cowork-soft); }
-    pre { background: var(--cp-surface-soft); border: 1px solid var(--cp-border); border-radius: 10px; color: var(--cp-text); font-family: Consolas, "Cascadia Code", monospace; font-size: 13px; line-height: 1.5; margin: 0; overflow-x: auto; padding: 14px; white-space: pre-wrap; }
-    .copy { background: var(--cp-accent); border: 0; border-radius: 10px; color: #fff; cursor: pointer; font-weight: 900; padding: 9px 12px; }
-    .copy:hover { background: var(--cp-accent-hover); }
-    .file-tags { display: grid; gap: 10px; margin-top: 18px; }
-    .file-tag { align-items: center; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 12px; display: grid; gap: 12px; grid-template-columns: 52px minmax(0, 1fr); padding: 12px; }
-    .file-icon { border-radius: 10px; color: #fff; font-size: 12px; font-weight: 900; padding: 10px 6px; text-align: center; text-transform: uppercase; }
-    .file-icon.md { background: var(--cp-chat); }
-    .file-icon.csv { background: var(--cp-excel); }
-    .file-icon.html { background: var(--cp-office); }
-    .file-name { font-weight: 900; }
-    .file-dl { color: var(--cp-text-muted); font-size: 14px; margin-top: 2px; }
-    details { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 12px; margin-top: 18px; padding: 16px; }
-    summary { cursor: pointer; font-weight: 900; }
-    a { color: var(--cp-link); }
-    @media (max-width: 860px) {
-      .shell { display: block; }
-      aside { height: auto; position: relative; }
-      main { padding: 24px 18px 48px; }
-      .grid.two, .grid.three, .timing li { grid-template-columns: 1fr; }
-    }
+    :root { color-scheme: light; --cp-bg:#f7f4ef; --cp-bg-elevated:#fcfbf8; --cp-surface:#fff; --cp-surface-soft:#f5f5f5; --cp-border:#dedede; --cp-text:#242424; --cp-text-muted:#5c5c5c; --cp-accent:#b11f4b; --cp-accent-hover:#9a1a41; --cp-accent-soft:rgba(177,31,75,.08); --cp-accent-dark:#7f1536; --cp-link:#0078d4; --cp-chat:#0078d4; --cp-chat-soft:rgba(0,120,212,.10); --cp-excel:#107c41; --cp-excel-soft:rgba(16,124,65,.10); --cp-office:#b91c1c; --cp-office-soft:rgba(185,28,28,.10); --cp-agent:#7b2d8e; --cp-agent-soft:rgba(123,45,142,.11); --cp-cowork:#f0a500; --cp-cowork-soft:rgba(240,165,0,.13); --cp-dark:#262626; }
+    html[data-theme="dark"] { color-scheme: dark; --cp-bg:#1f1e1d; --cp-bg-elevated:#2a2928; --cp-surface:#302f2e; --cp-surface-soft:#3a3837; --cp-border:#4a4a4a; --cp-text:#ededed; --cp-text-muted:#b7b0aa; --cp-accent:#fd8ea1; --cp-accent-hover:#ff9daf; --cp-accent-soft:rgba(253,142,161,.15); --cp-accent-dark:#b11f4b; --cp-link:#6cb8f6; --cp-chat:#6cb8f6; --cp-chat-soft:rgba(108,184,246,.15); --cp-excel:#4ade80; --cp-excel-soft:rgba(74,222,128,.15); --cp-office:#f87171; --cp-office-soft:rgba(248,113,113,.14); --cp-agent:#d8b4fe; --cp-agent-soft:rgba(216,180,254,.15); --cp-cowork:#fbbf24; --cp-cowork-soft:rgba(251,191,36,.15); --cp-dark:#121212; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--cp-bg);color:var(--cp-text);font-family:"Segoe UI Variable","Segoe UI",Aptos,Calibri,sans-serif;font-size:14px;line-height:1.6} button{font:inherit} a{color:var(--cp-link)}
+    .shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh} aside{background:var(--cp-bg-elevated);border-right:1px solid var(--cp-border);height:100vh;overflow-y:auto;padding:20px;position:sticky;top:0} main{max-width:1160px;padding:36px 44px 84px} section{border-bottom:1px solid var(--cp-border);padding:34px 0} section:first-child{padding-top:0} section:last-child{border-bottom:0}
+    .brand-mark{background:linear-gradient(135deg,var(--cp-accent) 0%,var(--cp-accent-dark) 100%);border-radius:8px;color:#fff;font-size:15px;font-weight:900;letter-spacing:.16em;line-height:1.1;padding:12px;text-transform:uppercase}.brand-mark span{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;margin-top:4px;opacity:.82}.version-badge{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;color:var(--cp-text-muted);display:block;font-size:11px;font-weight:800;margin:14px 0;padding:8px 10px}.version-badge strong{color:var(--cp-accent)}
+    nav{display:grid;gap:6px} nav .nav-section{color:var(--cp-text-muted);font-size:10.5px;font-weight:900;letter-spacing:.12em;margin:14px 0 2px;padding-left:4px;text-transform:uppercase} nav a,.ctrl{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;color:var(--cp-text);cursor:pointer;font-size:13px;font-weight:800;padding:8px 11px;text-align:left;text-decoration:none} nav a:hover,.ctrl:hover{background:var(--cp-surface-soft)} nav a.chat{border-left:3px solid var(--cp-chat)} nav a.excel{border-left:3px solid var(--cp-excel)} nav a.office{border-left:3px solid var(--cp-office)} nav a.agent{border-left:3px solid var(--cp-agent)} nav a.cowork{border-left:3px solid var(--cp-cowork)} .ctrl{margin-top:10px;width:100%}
+    h1,h2,h3,p{margin:0} h1{font-size:clamp(44px,7vw,78px);letter-spacing:-.055em;line-height:.95;max-width:1030px} h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;line-height:1.02} h3{font-size:18px;letter-spacing:-.015em;line-height:1.15}.eyebrow{color:var(--cp-accent);display:block;font-size:12px;font-weight:950;letter-spacing:.14em;margin-bottom:10px;text-transform:uppercase}.subtitle{color:var(--cp-text-muted);font-size:clamp(17px,2vw,24px);line-height:1.35;margin-top:14px;max-width:980px}.muted,.note{color:var(--cp-text-muted)}
+    .grid{display:grid;gap:14px;margin-top:20px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.card,.prompt-card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.04);padding:18px}.card p{color:var(--cp-text-muted);line-height:1.45;margin-top:8px}[data-block="chat"]{border-left:4px solid var(--cp-chat)}[data-block="excel"]{border-left:4px solid var(--cp-excel)}[data-block="office"]{border-left:4px solid var(--cp-office)}[data-block="agent"]{border-left:4px solid var(--cp-agent)}[data-block="cowork"]{border-left:4px solid var(--cp-cowork)}
+    .hero-strip{display:grid;gap:10px;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:24px}.stat{background:var(--cp-dark);border-radius:8px;color:#fff;padding:18px}.stat strong{display:block;font-size:30px;letter-spacing:-.04em;line-height:1}.stat span{display:block;font-size:12px;font-weight:700;margin-top:6px;opacity:.78}.timing{display:grid;gap:8px;list-style:none;margin:20px 0 0;padding:0}.timing li{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:12px;grid-template-columns:90px minmax(0,1fr);padding:14px}.when{color:var(--cp-accent);font-weight:950}.what{font-weight:950}
+    .prompt-card{margin-top:16px}.prompt-head{align-items:flex-start;display:flex;gap:12px;justify-content:space-between;margin-bottom:12px}.prompt-meta{color:var(--cp-text-muted);font-size:13px;line-height:1.45;margin-top:6px}.audience-line{background:var(--cp-accent-soft);border:1px solid var(--cp-border);border-radius:8px;font-size:16px;font-weight:850;line-height:1.35;margin-bottom:12px;padding:12px 14px}.prompt-card[data-block="chat"] .audience-line{background:var(--cp-chat-soft)}.prompt-card[data-block="excel"] .audience-line{background:var(--cp-excel-soft)}.prompt-card[data-block="office"] .audience-line{background:var(--cp-office-soft)}.prompt-card[data-block="agent"] .audience-line{background:var(--cp-agent-soft)}.prompt-card[data-block="cowork"] .audience-line{background:var(--cp-cowork-soft)}
+    pre{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:8px;color:var(--cp-text);font-family:Consolas,"Cascadia Code",monospace;font-size:13px;line-height:1.5;margin:0;overflow-x:auto;padding:14px;white-space:pre-wrap}.copy{background:var(--cp-accent);border:0;border-radius:8px;color:#fff;cursor:pointer;font-weight:950;padding:9px 12px}.copy:hover{background:var(--cp-accent-hover)}.file-tags{display:grid;gap:10px;margin-top:18px}.file-tag{align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:12px;grid-template-columns:54px minmax(0,1fr);padding:12px}.file-icon{border-radius:8px;color:#fff;font-size:11px;font-weight:950;padding:10px 6px;text-align:center;text-transform:uppercase}.file-icon.xlsx{background:var(--cp-excel)}.file-icon.docx{background:var(--cp-office)}.file-icon.pptx{background:var(--cp-cowork);color:#2b1b00}.file-icon.md,.file-icon.csv{background:var(--cp-chat)}.file-name{font-weight:950;overflow-wrap:anywhere}.file-dl{color:var(--cp-text-muted);font-size:13px;margin-top:2px} details{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;margin-top:18px;padding:16px} summary{cursor:pointer;font-weight:950}.source-line{color:var(--cp-text-muted);font-size:12.5px;margin-top:16px}
+    @media (max-width:920px){.shell{display:block} aside{height:auto;position:relative} main{padding:24px 18px 48px}.grid.two,.grid.four,.hero-strip,.timing li{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="shell">
     <aside>
-      <div class="brand">Zava Universal Demo</div>
-      <div class="version-badge">M365 Copilot · June 2026</div>
+      <div class="brand-mark">Zava<span>Top M365 Copilot Demo</span></div>
+      <div class="version-badge"><strong>v2.0</strong> · June 2026 · E2E Bundle</div>
       <nav>
-        <a class="chat" href="#hero">Session at a glance</a>
-        <a class="cowork" href="#story">Story arc</a>
-        <a class="chat" href="#customer">Zava research</a>
-        <a class="cowork" href="#setup">Setup checklist</a>
-        <a class="cowork" href="#demo-files">Demo files & one-liner</a>
-        <a class="cowork" href="#timing">Timing</a>
-        <a class="chat" href="#chat">Copilot Chat</a>
-        <a class="excel" href="#excel">Excel analysis</a>
-        <a class="office" href="#outlook-word">Outlook + Word</a>
-        <a class="office" href="#powerpoint">PowerPoint</a>
-        <a class="agent" href="#agent">Agent Builder</a>
-        <a class="chat" href="#qa">Likely questions</a>
+        <a class="chat" href="#hero">Session at a glance</a><a class="cowork" href="#story">Executive story arc</a><a class="chat" href="#customer">Zava context</a><a class="cowork" href="#setup">Setup + one-liner</a><a class="cowork" href="#demo-files">Demo files & one-liner</a><a class="cowork" href="#timing">Timing</a>
+        <div class="nav-section">Live demos</div>
+        <a class="chat" href="#chat">1 · Copilot Chat</a><a class="excel" href="#analyst">2 · Analyst reasoning</a><a class="excel" href="#excel">3 · Excel workbook</a><a class="office" href="#outlook">4 · Outlook response</a><a class="office" href="#word">5 · Word plan</a><a class="office" href="#powerpoint">6 · PowerPoint story</a><a class="agent" href="#agent">7 · Agent Builder</a><a class="chat" href="#qa">Likely questions</a>
       </nav>
       <button id="theme" class="ctrl" type="button">🌓 Toggle theme</button>
     </aside>
     <main>
-      <section id="hero">
-        <span class="eyebrow">Session at a glance</span>
-        <h1>Zava rush order to decision</h1>
-        <p class="subtitle">Eine universelle Microsoft 365 Copilot Demo: vom Kunden-Signal ueber Analyse und Kommunikation bis zum wiederverwendbaren Agenten.</p>
-        <div class="grid three">
-          <div class="card" data-block="chat"><h3>Slot</h3><p>25 bis 35 Minuten, auch als 15-Minuten-Version spielbar.</p></div>
-          <div class="card" data-block="excel"><h3>Audience</h3><p>Business Entscheider, Modern Work, Operations, Sales, Finance.</p></div>
-          <div class="card" data-block="agent"><h3>Focus</h3><p>Copilot als Arbeitsfluss: verstehen, rechnen, antworten, dokumentieren, skalieren.</p></div>
-        </div>
-      </section>
-
-      <section id="story">
-        <span class="eyebrow">Story arc</span>
-        <h2>Vier Tueren in dieselbe Entscheidung</h2>
-        <div class="grid two">
-          <div class="card" data-block="chat"><h3>1 · Signal</h3><p>Eine dringende Kundenanfrage kommt rein. Copilot fasst Mail, Briefing und Kontext zu einer Lage zusammen.</p></div>
-          <div class="card" data-block="excel"><h3>2 · Evidence</h3><p>Excel zeigt Bestand, Kapazitaet, Kosten und Risiko statt Bauchgefuehl.</p></div>
-          <div class="card" data-block="office"><h3>3 · Commitment</h3><p>Outlook und Word machen aus der Entscheidung eine Kundenantwort und einen Operations-Plan.</p></div>
-          <div class="card" data-block="agent"><h3>4 · Scale</h3><p>Agent Builder verwandelt den manuellen Flow in einen Order-Desk-Agenten.</p></div>
-        </div>
-      </section>
-
-      <section id="customer">
-        <span class="eyebrow">Customer briefing</span>
-        <h2>Was ist Zava?</h2>
-        <p class="subtitle">Zava ist eine fiktive Microsoft-Demo-Firma aus dem Athletic-Wear-/Retail-Kontext. Fuer diese Demo ist Zava bewusst generisch: jede Branche erkennt den Ablauf wieder.</p>
-        <details open>
-          <summary>Research Notes</summary>
-          <p class="note">Microsoft Ignite beschreibt Zava als fictional athletic-wear company fuer eine kollaborative AI/Product-Launch-Demo. Oeffentliche Ignite-Snippets verwenden Zava ausserdem als Retailer fuer Grossbestellungen, Inventory, Quote und Kundenantwort mit Microsoft 365 Copilot und Agents.</p>
-          <p class="note">Offizielle Feature-Basis: Microsoft 365 Copilot Chat bietet sichere AI Chat Experience, Datei-Upload, Copilot Pages, Agents und Enterprise Data Protection. Microsoft 365 Copilot ergaenzt Grounding in Arbeitsdaten, Office-App-Integration, Analyst/Researcher und umfassenderen Agent-Zugriff.</p>
-        </details>
-        <p class="note">Quellen: <a href="https://ignite.microsoft.com/en-US/sessions/BRK284">Microsoft Ignite BRK284</a>, <a href="https://learn.microsoft.com/copilot/overview">Copilot Chat overview</a>, <a href="https://learn.microsoft.com/copilot/faq">Copilot Chat FAQ</a>.</p>
-      </section>
-
-      <section id="setup">
-        <span class="eyebrow">Setup checklist</span>
-        <h2>10 Minuten vor der Demo</h2>
-        <article class="prompt-card" data-block="cowork" style="margin-top:20px;">
-          <div class="prompt-head"><div><h3>Demo files auf VM Desktop kopieren</h3><p class="prompt-meta">Ein Copy-Paste-Befehl fuer PowerShell. Details im Abschnitt Demo files.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">Presenter sagt: "Ich starte mit denselben Dateien, die jeder Nutzer auch in OneDrive haette."</div>
-          <pre>$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"</pre>
-        </article>
-        <div class="grid two">
-          <div class="card"><h3>Tabs</h3><p>Copilot Chat, Excel, Outlook, Word, PowerPoint, optional Agent Builder.</p></div>
-          <div class="card"><h3>Files</h3><p>Kontext-MD, Inventory CSV, Email HTML und Launch Brief in OneDrive oder lokal bereitstellen.</p></div>
-          <div class="card"><h3>License</h3><p>Am besten Microsoft 365 Copilot. Copilot Chat Basic funktioniert fuer Datei-Upload-Teile, aber nicht fuer alle Office-App-Erlebnisse.</p></div>
-          <div class="card"><h3>Backup</h3><p>Wenn eine App langsam ist, im Copilot Chat mit Datei-Upload weiterspielen und den Prompt aus dem Runbook nutzen.</p></div>
-        </div>
-      </section>
-
-      <section id="demo-files">
-        <span class="eyebrow">Demo files</span>
-        <h2>Full bundle & one-liner</h2>
-        <article class="prompt-card" data-block="cowork">
-          <div class="prompt-head"><div><h3>PowerShell one-liner</h3><p class="prompt-meta">Laedt den Public-Demo-Repo-Zip und verschiebt nur den Zava-Unterordner auf den Desktop.</p></div><button class="copy" type="button">Copy</button></div>
-          <pre>$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"</pre>
-        </article>
-        <div class="file-tags">
-          <div class="file-tag"><div class="file-icon md">md</div><div><div class="file-name">Zava_Rush_Order_Context.md</div><div class="file-dl">Rollen, Constraints, Entscheidungskriterien.</div></div></div>
-          <div class="file-tag"><div class="file-icon csv">csv</div><div><div class="file-name">Zava_Inventory_Snapshot.csv</div><div class="file-dl">Bestand, Kosten, Kapazitaet, Risiko.</div></div></div>
-          <div class="file-tag"><div class="file-icon html">html</div><div><div class="file-name">Zava_Email_Thread.html</div><div class="file-dl">Kundenmail plus interne Antworten.</div></div></div>
-          <div class="file-tag"><div class="file-icon md">md</div><div><div class="file-name">Zava_Launch_Brief.md</div><div class="file-dl">Brand Tone und Executive Narrative.</div></div></div>
-        </div>
-      </section>
-
-      <section id="timing">
-        <span class="eyebrow">Timing</span>
-        <h2>Live Run</h2>
-        <ul class="timing">
-          <li><span class="when">00:00</span><span><span class="what">Setup story</span><br><span class="muted">Zava bekommt eine Rush Order fuer 20.000 smarte Launch-Shirts.</span></span></li>
-          <li><span class="when">03:00</span><span><span class="what">Copilot Chat</span><br><span class="muted">Kontext verdichten und Entscheidungsfrage formulieren.</span></span></li>
-          <li><span class="when">10:00</span><span><span class="what">Excel</span><br><span class="muted">Bestand, Kapazitaet, Marge, Risiko analysieren.</span></span></li>
-          <li><span class="when">18:00</span><span><span class="what">Outlook + Word</span><br><span class="muted">Kundenantwort und Operations-Plan erstellen.</span></span></li>
-          <li><span class="when">25:00</span><span><span class="what">PowerPoint + Agent</span><br><span class="muted">Executive Story und wiederverwendbaren Agenten skizzieren.</span></span></li>
-        </ul>
-      </section>
-
-      <section id="chat">
-        <span class="eyebrow">Live demo 1</span>
-        <h2>Copilot Chat: Signal zu Entscheidung</h2>
-        <article class="prompt-card" data-block="chat">
-          <div class="prompt-head"><div><h3>Kontext zusammenfassen</h3><p class="prompt-meta">Dateien: Rush Order Context, Email Thread, Launch Brief.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Copilot bringt Mail, Briefing und Business-Kontext in eine entscheidbare Lage."</div>
-          <pre>Du bist mein Chief of Staff bei Zava. Nutze die bereitgestellten Dateien Zava_Rush_Order_Context.md, Zava_Email_Thread.html und Zava_Launch_Brief.md. Fasse die Situation in 6 Bullet Points zusammen: Kundennachfrage, Deadline, Entscheidung, Risiken, offene Fragen und empfohlener naechster Schritt.</pre>
-        </article>
-        <article class="prompt-card" data-block="chat">
-          <div class="prompt-head"><div><h3>Entscheidungsfrage schaerfen</h3><p class="prompt-meta">Aus Zusammenfassung wird Management-Frage.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Das ist der Punkt: nicht mehr Information, sondern die richtige Frage."</div>
-          <pre>Formuliere daraus eine klare Go/No-Go-Frage fuer Zoe, COO von Zava. Gib mir ausserdem die 5 Datenpunkte, die wir vor der Kundenantwort pruefen muessen.</pre>
-        </article>
-      </section>
-
-      <section id="excel">
-        <span class="eyebrow">Live demo 2</span>
-        <h2>Excel: Bestand, Marge, Risiko</h2>
-        <article class="prompt-card" data-block="excel">
-          <div class="prompt-head"><div><h3>Fulfillment berechnen</h3><p class="prompt-meta">CSV in Excel oeffnen oder in Copilot Chat hochladen.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Jetzt kommt der Moment, in dem Copilot rechnen muss, nicht nur schreiben."</div>
-          <pre>Analysiere Zava_Inventory_Snapshot.csv. Berechne verfuegbare Einheiten plus zusaetzliche 14-Tage-Kapazitaet nach Farbe und Groesse. Reicht das fuer 20.000 Einheiten? Zeige Engpaesse und die kritischsten Risiken.</pre>
-        </article>
-        <article class="prompt-card" data-block="excel">
-          <div class="prompt-head"><div><h3>Preisfloor empfehlen</h3><p class="prompt-meta">Management Summary mit Marge und Sofortmassnahmen.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Aus der Tabelle wird eine kommerzielle Entscheidung."</div>
-          <pre>Berechne eine Preisempfehlung, die mindestens 32 Prozent Bruttomarge schuetzt. Beruecksichtige UnitCostEUR und ExpediteCostEUR. Gib mir eine kurze Management-Empfehlung mit Preisfloor, Risikoannahmen und operativen Sofortmassnahmen.</pre>
-        </article>
-      </section>
-
-      <section id="outlook-word">
-        <span class="eyebrow">Live demo 3</span>
-        <h2>Outlook + Word: Antwort und Plan</h2>
-        <article class="prompt-card" data-block="office">
-          <div class="prompt-head"><div><h3>Kundenantwort</h3><p class="prompt-meta">In Outlook oder Copilot Chat mit Email-Kontext.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Copilot formuliert nicht generisch, sondern mit Preis, Bedingungen und Risiko."</div>
-          <pre>Entwirf eine Antwort an events-procurement@microsoft.example. Ton: verbindlich, professionell, ruhig. Sage, dass Zava die 20.000 Einheiten grundsaetzlich erfuellen kann, nenne den empfohlenen Preisfloor EUR 25.80, die zwei operativen Voraussetzungen und den transparenten Risikohinweis zu White XL/XXL. Schlage einen 15-Minuten-Call heute vor.</pre>
-        </article>
-        <article class="prompt-card" data-block="office">
-          <div class="prompt-head"><div><h3>Operations Plan</h3><p class="prompt-meta">Word Copilot oder Word Agent.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Die Antwort nach aussen braucht sofort einen Plan nach innen."</div>
-          <pre>Erstelle einen einseitigen Operations Plan fuer die Zava Rush Order. Struktur: Ziel, Entscheidung, Workstreams, Owner, Deadline heute, Risiken, Mitigations, Kommunikationsplan. Nutze die Rollen aus dem Kontext.</pre>
-        </article>
-      </section>
-
-      <section id="powerpoint">
-        <span class="eyebrow">In-app demo</span>
-        <h2>PowerPoint: Executive Story</h2>
-        <article class="prompt-card" data-block="office">
-          <div class="prompt-head"><div><h3>5-Slide Story</h3><p class="prompt-meta">PowerPoint Copilot oder PowerPoint Agent in Copilot Chat.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Die Story ist jetzt praesentierbar, bevor jemand Folien sortiert."</div>
-          <pre>Erstelle eine 5-Slide Executive Story fuer Zoe: 1) Situation, 2) Fulfillment-Plan, 3) Finanzielle Leitplanken, 4) Risiken und Mitigation, 5) Entscheidung und naechste 4 Stunden. Nutze einen modernen Retail-Tech-Ton fuer Zava.</pre>
-        </article>
-      </section>
-
-      <section id="agent">
-        <span class="eyebrow">Scale</span>
-        <h2>Agent Builder: Order Desk Agent</h2>
-        <article class="prompt-card" data-block="agent">
-          <div class="prompt-head"><div><h3>Agent Bauplan</h3><p class="prompt-meta">Der manuelle Demo-Flow wird zum wiederverwendbaren Agenten.</p></div><button class="copy" type="button">Copy</button></div>
-          <div class="audience-line">"Ein guter Agent ist kein Chatbot. Er ist ein wiederholbarer Arbeitsprozess."</div>
-          <pre>Entwirf einen Zava Order Desk Agent fuer Microsoft 365 Copilot. Der Agent soll Rush Orders aus Mails, Inventory-Dateien und Launch-Briefings zusammenfassen, Fulfillment-Risiken erkennen, Preisfloor und naechste Aktionen vorschlagen und eine Outlook-Antwort vorbereiten. Gib Instructions, Knowledge Sources, Starter Prompts und Guardrails aus.</pre>
-        </article>
-        <p class="note">Quelle fuer Feature-Positionierung: <a href="https://learn.microsoft.com/copilot/overview">Microsoft 365 Copilot Chat overview</a> und <a href="https://learn.microsoft.com/copilot/faq">Copilot Chat FAQ</a>.</p>
-      </section>
-
-      <section id="qa">
-        <span class="eyebrow">Likely questions</span>
-        <h2>Q&A</h2>
-        <div class="grid two">
-          <div class="card"><h3>Ist das echte Kundendaten-Grounding?</h3><p>Mit Microsoft 365 Copilot ja, sofern der Nutzer Zugriff auf Dateien, Mails und Meetings hat. Copilot Chat Basic kann Dateien hochladen, ist aber nicht automatisch in Arbeitsdaten geerdet.</p></div>
-          <div class="card"><h3>Warum Zava?</h3><p>Zava ist neutral, modern und nicht kundenspezifisch. Der Retail-/Operations-Flow passt trotzdem zu Manufacturing, Logistics, Sales und Finance.</p></div>
-          <div class="card"><h3>Was ist der Aha-Moment?</h3><p>Nicht ein einzelner Prompt, sondern der durchgaengige Arbeitsfluss von Signal zu Entscheidung zu Kommunikation.</p></div>
-          <div class="card"><h3>Was ist der Agent-Mehrwert?</h3><p>Der Ablauf wird nicht jedes Mal neu erfunden. Der Agent kapselt Quellen, Instructions, Starter Prompts und Guardrails.</p></div>
-        </div>
-      </section>
+      <section id="hero"><span class="eyebrow">Session at a glance</span><h1>Zava: vom Rush Order Signal zur Executive Entscheidung</h1><p class="subtitle">Eine Top Microsoft 365 Copilot Demo im KN/Vaillant-Stil: Copilot Chat, Datei-Upload, Excel, Outlook, Word, PowerPoint, Office Agents und Agent Builder in einem durchgaengigen Business-Flow.</p><div class="hero-strip"><div class="stat"><strong>20k</strong><span>smarte Launch-Shirts</span></div><div class="stat"><strong>14 Tage</strong><span>Lieferfenster</span></div><div class="stat"><strong>25.80</strong><span>EUR Preisfloor</span></div><div class="stat"><strong>17:00</strong><span>Customer deadline</span></div></div></section>
+      <section id="story"><span class="eyebrow">Executive story arc</span><h2>Eine Demo, sieben Aha-Momente</h2><div class="grid four"><div class="card" data-block="chat"><h3>1 · Signal</h3><p>Copilot macht aus Mail, Meeting und Briefing eine entscheidbare Lage.</p></div><div class="card" data-block="excel"><h3>2 · Evidence</h3><p>Aus Inventory und Pricing wird eine belastbare Go/No-Go-Analyse.</p></div><div class="card" data-block="office"><h3>3 · Commitment</h3><p>Outlook, Word und PowerPoint machen die Entscheidung umsetzbar.</p></div><div class="card" data-block="agent"><h3>4 · Scale</h3><p>Agent Builder kapselt den Prozess als wiederholbaren Order Desk Agent.</p></div></div></section>
+      <section id="customer"><span class="eyebrow">Customer briefing</span><h2>Warum Zava funktioniert</h2><p class="subtitle">Zava ist neutral genug fuer jede Kundengruppe und konkret genug fuer eine echte Business-Demo: Retail, Supply Chain, Finance, Sales und Executive Decisioning in einem Szenario.</p><details open><summary>Research & positioning</summary><p class="note">Microsoft Ignite nutzt Zava als fiktive Athletic-Wear-Demo-Firma. Diese Version baut daraus eine universelle M365 Copilot Demo: ein dringender Auftrag, verstreute Informationen, echte operative Risiken und ein Executive-Commitment.</p><p class="note">Feature-Grounding: Copilot Chat bietet sichere AI-Chat-Erfahrung mit Enterprise Data Protection, Datei-Upload, Copilot Pages und Agents. Microsoft 365 Copilot ergaenzt Work-Grounding ueber Microsoft Graph, Office-App-Integration und umfassenderen Agent-Zugriff.</p></details><p class="source-line">Quellen: <a href="https://ignite.microsoft.com/en-US/sessions/BRK284">Microsoft Ignite BRK284</a> · <a href="https://learn.microsoft.com/copilot/overview">Copilot Chat overview</a> · <a href="https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview">Microsoft 365 Copilot overview</a>.</p></section>
+      <section id="setup"><span class="eyebrow">Setup checklist</span><h2>10 Minuten vor der Demo</h2><article class="prompt-card" data-block="cowork"><div class="prompt-head"><div><h3>Demo files auf VM Desktop kopieren</h3><p class="prompt-meta">Ein Copy-Paste-Befehl fuer PowerShell. Der Befehl laedt das Public Bundle und oeffnet den ZAVA-Demo-Ordner.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">Presenter sagt: "Ich starte mit einem kompletten Business-Kontext, so wie er in OneDrive oder SharePoint liegen wuerde."</div><pre>$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"</pre></article><div class="grid two"><div class="card"><h3>Tabs</h3><p>m365copilot.com, Excel, Outlook, Word, PowerPoint, Agent Builder. Optional: Office Agents in Copilot Chat.</p></div><div class="card"><h3>Files</h3><p>Alle Dateien aus dem ZAVA-Demo-Ordner in OneDrive legen oder schrittweise hochladen.</p></div><div class="card"><h3>Model choice</h3><p>Bei komplexen Analyse-Prompts Think deeper bzw. reasoning-faehigen Modus nutzen, wenn verfuegbar.</p></div><div class="card"><h3>Backup</h3><p>Wenn Office-Integration langsam ist: den Prompt in Copilot Chat mit Datei-Upload spielen.</p></div></div></section>
+      <section id="demo-files"><span class="eyebrow">Demo files</span><h2>Full bundle & one-liner</h2><article class="prompt-card" data-block="cowork"><div class="prompt-head"><div><h3>PowerShell one-liner</h3><p class="prompt-meta">Laedt den GitHub-Zip und verschiebt nur den Zava-Unterordner auf den Desktop.</p></div><button class="copy" type="button">Copy</button></div><pre>$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"</pre></article><div class="file-tags"><div class="file-tag"><div class="file-icon xlsx">xlsx</div><div><div class="file-name">Zava_Order_Analysis.xlsx</div><div class="file-dl">Excel-Dashboard mit Inventory, Orders, Pricing, Risk Register und Formeln.</div></div></div><div class="file-tag"><div class="file-icon docx">docx</div><div><div class="file-name">Zava_Operations_Plan.docx</div><div class="file-dl">Word-Seed fuer Plan, Owner, Deadlines und Customer Guidance.</div></div></div><div class="file-tag"><div class="file-icon pptx">pptx</div><div><div class="file-name">Zava_Executive_Story.pptx</div><div class="file-dl">PowerPoint-Seed mit 5-Slide Executive Narrative.</div></div></div><div class="file-tag"><div class="file-icon md">md</div><div><div class="file-name">Context, Meeting Transcript, Executive Memo, Agent Brief</div><div class="file-dl">Grounding-Dateien fuer Chat, Word, PowerPoint und Agent Builder.</div></div></div><div class="file-tag"><div class="file-icon csv">csv</div><div><div class="file-name">Inventory, Orders, Pricing, Risk Register</div><div class="file-dl">Tabellarische Daten fuer Excel/Analyst-Style Prompts.</div></div></div></div><p class="source-line">Cloud source: <a href="https://github.com/jenssgb/customer-demo-files/tree/main/Zava-M365-Copilot-Universal">customer-demo-files/Zava-M365-Copilot-Universal</a>.</p></section>
+      <section id="timing"><span class="eyebrow">Timing</span><h2>35-Minuten Live Run</h2><ul class="timing"><li><span class="when">00:00</span><span><span class="what">Frame the stakes</span><br><span class="muted">20.000 Shirts, 14 Tage, Antwort bis 17:00.</span></span></li><li><span class="when">03:00</span><span><span class="what">Copilot Chat</span><br><span class="muted">Kontext verdichten, Meeting-Actions finden, Entscheidung formulieren.</span></span></li><li><span class="when">10:00</span><span><span class="what">Analyst + Excel</span><br><span class="muted">Feasibility, Risiko, Preisfloor und Management-Summary.</span></span></li><li><span class="when">20:00</span><span><span class="what">Outlook + Word</span><br><span class="muted">Kundenantwort und Operations-Plan.</span></span></li><li><span class="when">28:00</span><span><span class="what">PowerPoint + Agent</span><br><span class="muted">Executive Story und Agent Builder Skalierung.</span></span></li></ul></section>
+      <section id="chat"><span class="eyebrow">Live demo 1</span><h2>Copilot Chat: aus verstreutem Kontext wird Lagebild</h2><article class="prompt-card" data-block="chat"><div class="prompt-head"><div><h3>Boardroom Brief</h3><p class="prompt-meta">Dateien: Context, Email Thread, Meeting Transcript, Executive Memo.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Copilot liest nicht nur Dateien, sondern baut eine entscheidbare Lage daraus."</div><pre>Du bist mein Chief of Staff bei Zava. Nutze Zava_Rush_Order_Context.md, Zava_Email_Thread.html, Zava_Meeting_Transcript.md und Zava_Executive_Decision_Memo.md. Erstelle ein Boardroom Briefing in 7 Punkten: Entscheidung, Deadline, Kundenziel, kritische Abhaengigkeiten, Risiken, offene Owner-Actions und empfohlene Haltung.</pre></article><article class="prompt-card" data-block="chat"><div class="prompt-head"><div><h3>Copilot Pages Moment</h3><p class="prompt-meta">Output als Page/Arbeitsnotiz speichern.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Das Ergebnis bleibt nicht im Chat haengen, sondern wird zur gemeinsamen Arbeitsflaeche."</div><pre>Formatiere das Briefing als Copilot Page mit drei Bereichen: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Schreibe so, dass Zoe, Maya, Omar, Lena und Rafael direkt weiterarbeiten koennen.</pre></article><p class="source-line">Quelle: <a href="https://learn.microsoft.com/copilot/overview">Microsoft 365 Copilot Chat overview</a>.</p></section>
+      <section id="analyst"><span class="eyebrow">Live demo 2</span><h2>Analyst style reasoning: Feasibility und Preisfloor</h2><article class="prompt-card" data-block="excel"><div class="prompt-head"><div><h3>Reasoning Prompt</h3><p class="prompt-meta">Nutze CSVs oder das Excel-Workbook. Ideal mit Think deeper/Analyst-Style Modus.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Jetzt wird Copilot zum Sparringspartner fuer die Entscheidung, nicht zum Textgenerator."</div><pre>Analysiere Zava_Order_Analysis.xlsx sowie Zava_Risk_Register.csv und Zava_Pricing_Assumptions.csv. Beantworte: 1) Kann Zava 20.000 Einheiten in 14 Tagen zusagen? 2) Welche SKU oder Abhaengigkeit ist der Engpass? 3) Welcher Preisfloor schuetzt 32 Prozent Marge? 4) Welche Bedingungen muessen in die Kundenantwort?</pre></article><article class="prompt-card" data-block="excel"><div class="prompt-head"><div><h3>Executive Decision Table</h3><p class="prompt-meta">Output als Entscheidungstabelle fuer Zoe.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Die Demo kippt von Datenanalyse zu Fuehrungsentscheidung."</div><pre>Erstelle eine Entscheidungstabelle mit den Spalten: Entscheidungspunkt, Fakt, Risiko, Owner, Bedingung fuer Zusage, Kommunikationshinweis. Schließe mit einer 3-Satz-Empfehlung fuer Zoe.</pre></article><p class="source-line">Quelle: <a href="https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview">Microsoft 365 Copilot overview</a>.</p></section>
+      <section id="excel"><span class="eyebrow">Live demo 3</span><h2>Excel: Dashboard, Engpass, Visualisierung</h2><article class="prompt-card" data-block="excel"><div class="prompt-head"><div><h3>Workbook analysieren</h3><p class="prompt-meta">Datei: Zava_Order_Analysis.xlsx.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Excel zeigt, wo der Plan traegt und wo er bricht."</div><pre>Analysiere dieses Workbook. Starte auf dem Executive Summary Sheet. Erklaere die wichtigsten Zahlen, identifiziere die Engpaesse nach SKU/Farbe/Groesse und schlage zwei Visualisierungen vor, die Zoe in 60 Sekunden versteht.</pre></article><article class="prompt-card" data-block="excel"><div class="prompt-head"><div><h3>Formel-/Chart-Moment</h3><p class="prompt-meta">Excel Copilot: Formel, Insight, Chart.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Das ist der Excel-Aha-Moment: Datenarbeit ohne Tabellenmagie."</div><pre>Fuege eine Management Summary hinzu: 1) Gesamtversorgung vs. Anfrage, 2) Risikoampel je Farbe, 3) empfohlener Preisfloor, 4) naechste Aktion je Owner. Erzeuge danach ein Chart fuer Total14DaySupply nach Farbe.</pre></article></section>
+      <section id="outlook"><span class="eyebrow">Live demo 4</span><h2>Outlook: Kundenantwort mit Bedingungen</h2><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>Reply draft</h3><p class="prompt-meta">Nutze Email Thread + Analyseergebnis.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Die Antwort ist nicht nett formuliert, sondern fuehrbar: Zusage, Preis, Bedingungen, Risiko."</div><pre>Entwirf eine Antwort an events-procurement@microsoft.example. Ton: ruhig, verbindlich, executive-ready. Sage: Zava kann grundsaetzlich zusagen, wenn heute Kapazitaet, NFC-Aktivierung und Singapore-Freight bestaetigt werden. Nenne EUR 25.80 als Preisfloor, erwaehne White XL/XXL transparent und schlage einen 15-Minuten-Call heute vor.</pre></article><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>Coach by Copilot</h3><p class="prompt-meta">Outlook Coaching Moment.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Copilot hilft beim Ton: selbstbewusst, ohne zu ueberversprechen."</div><pre>Verbessere die Antwort auf Klarheit, Ton und Risiko-Transparenz. Entferne interne Kostendetails. Mache die Bedingungen fuer die Zusage explizit, aber kundenfreundlich.</pre></article></section>
+      <section id="word"><span class="eyebrow">Live demo 5</span><h2>Word: Operations Plan aus der Entscheidung</h2><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>Plan verbessern</h3><p class="prompt-meta">Datei: Zava_Operations_Plan.docx.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Eine gute Kundenantwort braucht sofort einen internen Plan."</div><pre>Oeffne Zava_Operations_Plan.docx und ueberarbeite ihn fuer Zoe. Ergaenze eine Executive Summary, eine Risikoampel und eine Tabelle "Next 4 hours" mit Owner, Deadline, Dependency und Done Definition.</pre></article><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>Word Agent Alternative</h3><p class="prompt-meta">Falls Word Agent verfuegbar ist.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Office Agents erstellen ein Dokument aus Conversation und Kontext."</div><pre>Erstelle ein neues Word-Dokument mit dem Titel "Zava Rush Order War Room Plan". Nutze alle Zava-Dateien als Kontext. Struktur: Decision, Evidence, Risks, Workstreams, Customer Message, Executive Approval Checklist.</pre></article><p class="source-line">Quelle: <a href="https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents">Word, Excel, and PowerPoint Agents in Microsoft 365 Copilot</a>.</p></section>
+      <section id="powerpoint"><span class="eyebrow">Live demo 6</span><h2>PowerPoint: Executive Story</h2><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>Deck verbessern</h3><p class="prompt-meta">Datei: Zava_Executive_Story.pptx.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Aus Analyse wird eine Fuehrungsstory, die in 5 Minuten entschieden werden kann."</div><pre>Oeffne Zava_Executive_Story.pptx. Verbessere das Deck fuer Zoe: fuege Sprecherhinweise hinzu, mache die Entscheidung auf Slide 5 noch klarer und ergaenze auf Slide 3 eine klare Risikoampel fuer White XL/XXL, NFC activation und Singapore freight.</pre></article><article class="prompt-card" data-block="office"><div class="prompt-head"><div><h3>PowerPoint Agent Alternative</h3><p class="prompt-meta">Multi-file creation aus Copilot Chat/Agent.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Wenn die Dateien sauber sind, kann Copilot die Story aus mehreren Quellen ziehen."</div><pre>Erstelle eine neue 6-Slide Praesentation fuer die COO-Entscheidung. Nutze Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.md, Zava_Risk_Register.csv und Zava_Meeting_Transcript.md. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.</pre></article></section>
+      <section id="agent"><span class="eyebrow">Live demo 7</span><h2>Agent Builder: Zava Order Desk Agent</h2><article class="prompt-card" data-block="agent"><div class="prompt-head"><div><h3>Agent aus Demo-Flow bauen</h3><p class="prompt-meta">Datei: Zava_Agent_Builder_Brief.md plus Demo-Ergebnisse.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Ein guter Agent ist kein Chatbot. Er ist ein wiederholbarer Arbeitsprozess."</div><pre>Entwirf einen Zava Order Desk Agent fuer Microsoft 365 Copilot. Nutze Zava_Agent_Builder_Brief.md als Grundlage. Gib aus: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules und Beispielantwort fuer eine neue Rush Order.</pre></article><article class="prompt-card" data-block="agent"><div class="prompt-head"><div><h3>Agent Test Case</h3><p class="prompt-meta">Demonstriert Skalierung mit zweiter Order.</p></div><button class="copy" type="button">Copy</button></div><div class="audience-line">"Jetzt sieht man den Skalierungseffekt: derselbe Prozess fuer die naechste Anfrage."</div><pre>Teste den Agenten mit Request ZO-1044 aus Zava_Order_Intake.csv. Fasse die Order zusammen, nenne die drei wichtigsten Pruefpunkte und formuliere eine knappe Empfehlung fuer Sales Operations.</pre></article><p class="source-line">Quellen: <a href="https://learn.microsoft.com/copilot/overview">Copilot Chat agents</a> · <a href="https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection">Enterprise data protection</a>.</p></section>
+      <section id="qa"><span class="eyebrow">Likely questions</span><h2>Antworten fuer die Diskussion</h2><div class="grid two"><div class="card"><h3>Copilot Chat vs. M365 Copilot?</h3><p>Copilot Chat ist der sichere Einstieg mit Web-Grounding, Datei-Upload, Pages und Agents. M365 Copilot bringt Work-Grounding ueber Microsoft Graph und tiefe Office-Integration.</p></div><div class="card"><h3>Warum so viele Dateien?</h3><p>Top-Demos brauchen echtes Grounding: Mail, Meeting, Daten, Memo, Risk Register und Office-Artefakte zeigen den Arbeitsfluss realistisch.</p></div><div class="card"><h3>Was ist der wichtigste Aha-Moment?</h3><p>Die Demo zeigt nicht Prompting, sondern Decision Flow: Signal, Evidence, Commitment, Scale.</p></div><div class="card"><h3>Was ist der Agent-Mehrwert?</h3><p>Der Agent wiederholt den Prozess fuer neue Orders und kapselt Quellen, Regeln und Eskalation.</p></div></div></section>
     </main>
   </div>
   <script>
-    document.getElementById("theme").addEventListener("click", () => {
-      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-    });
-    document.querySelectorAll(".copy").forEach((button) => {
-      button.addEventListener("click", async () => {
-        const block = button.closest(".prompt-card, section").querySelector("pre");
-        if (!block) return;
-        await navigator.clipboard.writeText(block.textContent);
-        const original = button.textContent;
-        button.textContent = "Copied";
-        setTimeout(() => { button.textContent = original; }, 1200);
-      });
-    });
+    document.getElementById("theme").addEventListener("click", () => { const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", next); });
+    document.querySelectorAll(".copy").forEach((button) => { button.addEventListener("click", async () => { const block = button.closest(".prompt-card, section").querySelector("pre"); if (!block) return; await navigator.clipboard.writeText(block.textContent); const original = button.textContent; button.textContent = "Copied"; setTimeout(() => { button.textContent = original; }, 1200); }); });
   </script>
 </body>
 </html>
