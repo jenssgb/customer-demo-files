@@ -218,30 +218,72 @@ Design a pro-code Zava Fulfillment Sentinel in Microsoft Foundry. It should inge
 Use this as the executive platform close. Agent Builder is the fastest path to a reusable agent; Copilot Studio is the low-code production path; Foundry is the pro-code path for governed, evaluated, monitored agents.
 ```
 
-## 11 - Microsoft Agent 365: Observe, Govern, Secure
+## 11 - Microsoft Agent 365 E2E: Agent Builder, Copilot Studio, Control Plane
 
-### Open the Agent 365 control plane
-
-```demo
-Open the Microsoft 365 admin center and go to Agents > Overview or Agents > All agents. Position Agent 365 as the control plane after you have shown Agent Builder and the Copilot Studio escalation path. The message is: building agents is not enough; enterprises need to observe, govern, and secure every agent at scale.
-```
-
-### Explain the Zava agent inventory
+### Build the Agent Builder agent
 
 ```prompt
-Create a presenter explanation for Microsoft Agent 365 using the Zava Order Desk Agent as the example. Explain how Agent 365 helps an AI admin see agent inventory, ownership, publisher, platform, connectors or tools, environment, activity, risk signals, and governance actions. Structure it as: Observe, Govern, Secure, and close with the business risk if this control plane is missing.
-```
-
-### Compare Agent Builder and Copilot Studio governance
-
-```prompt
-Compare the Zava Order Desk Agent built with Agent Builder and the production Zava Fulfillment Agent built with Copilot Studio. Create a table with: agent type, ideal use case, data sources, actions, how it appears in Agent 365, telemetry available, admin approval path, governance actions, and demo backup if Agent 365 is not visible in the tenant.
+Use data/agent-365/AgentBuilder_OrderDesk_Brief.docx and data/agent-365/Zava_Rush_Order_Context.docx to design a Zava Order Desk Agent for Microsoft 365 Copilot. Create the agent purpose, instructions, knowledge sources, starter prompts, guardrails, escalation rules, and an example answer for rush order ZO-3101.
 ```
 
 ### Presenter Action
 
 ```demo
-If Agent 365 is visible, show All agents, agent details, activity or usage, and governance actions such as block, reassign, or delete where available. If the tenant does not expose Agent 365 yet, show this as a slide-style talk track using the Learn-verified matrix: Agent Builder and Copilot Studio agents integrate into Agent 365; Copilot Studio agents appear in the registry and emit telemetry automatically; the all-agents activity view is preview and user-scoped.
+Open Microsoft 365 Copilot Chat, choose Agent Builder or New agent, and use the output as the build plan. Add the Word documents as knowledge where the tenant experience allows it. The message is: Agent Builder is the fastest path for a declarative, grounded business agent.
+```
+
+### Test the Agent Builder agent
+
+```prompt
+Use data/agent-365/Zava_Order_Intake.csv. Test the Zava Order Desk Agent with order ZO-3102. Summarize the request, identify the top three checks, apply the guardrails, and return a recommendation with escalation owner and next action.
+```
+
+### Design the Copilot Studio production agent
+
+```prompt
+Use data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx and data/agent-365/Agent365_Governance_Checklist.docx. Transform the Zava Order Desk Agent into a Copilot Studio production agent. Include topics, triggers, actions, connectors, human approval steps, DLP/environment controls, analytics signals, and the publishing path to Microsoft 365 Copilot and Teams.
+```
+
+### Presenter Action
+
+```demo
+Open Copilot Studio. Create or describe the Zava Fulfillment Escalation Agent. Show where actions, topics, knowledge, authentication, environment, analytics, and publish channels would be configured. If the tenant is not ready, use the prompt output as the build blueprint.
+```
+
+### Prepare the admin request
+
+```prompt
+Create an admin review package for the Zava Fulfillment Escalation Agent. Include agent name, owner, publisher, data sources, tools/actions, connectors, target users, business justification, risks, mitigations, and publish scope recommendation.
+```
+
+### Review the requested Copilot Studio agent
+
+```demo
+Open Microsoft 365 admin center. Go to Agents > All agents > Requests. Select the requested Copilot Studio agent if available. Review Data & tools, owner, capabilities, sources, actions, and requested publish scope. Do not publish broadly in a live customer demo unless the tenant is prepared.
+```
+
+### Explain Agent 365 registry
+
+```prompt
+Use data/agent-365/Agent365_Agent_Review_Register.csv. Explain how Microsoft Agent 365 helps the AI admin observe the Zava Order Desk Agent and Zava Fulfillment Escalation Agent. Structure the answer as: inventory, ownership, platform, environment, connectors/actions, risk signals, governance actions, and what would be unsafe without this registry.
+```
+
+### Explain telemetry and activity
+
+```prompt
+Create a presenter explanation for Agent 365 observability. Explain that Copilot Studio agents automatically appear in the Agent 365 registry and send telemetry for agent invocations and tool/connector invocations without manual SDK instrumentation. Also explain the preview limitations of the all-agents activity view.
+```
+
+### Executive governance close
+
+```prompt
+Create the executive close for the Zava Agent 365 E2E demo. Explain how the organization moves from agent experimentation to managed agents using Agent 365: observe, govern, secure. Include publish/reject, assign, block, reassign, delete, ownerless-agent review, Purview audit/DLP, Defender threat detection, and Entra identity/access positioning.
+```
+
+### Presenter Action
+
+```demo
+If Agent 365 is visible, show All agents, agent details, registry fields, activity or usage, and governance actions such as block, reassign, publish/reject, or delete where available. If the tenant does not expose Agent 365 yet, use the Learn-verified matrix and data/agent-365/Agent365_Agent_Review_Register.csv as the backup talk track. Do not click destructive actions live.
 ```
 
 ## 12 - Microsoft 365 Copilot Notebooks Extension: Executive Decision Room

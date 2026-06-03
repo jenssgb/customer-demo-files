@@ -67,6 +67,12 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `data/Zava_Executive_Decision_Memo.docx` | COO decision memo |
 | `data/Zava_Agent_Builder_Brief.docx` | Agent Builder instructions and guardrails |
 | `data/Zava_Copilot_Notebook_Setup.docx` | Microsoft 365 Copilot Notebooks setup guide and reference list |
+| `data/agent-365/AgentBuilder_OrderDesk_Brief.docx` | Agent Builder source brief for the Agent 365 E2E module |
+| `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` | Copilot Studio production-agent specification for the Agent 365 E2E module |
+| `data/agent-365/Agent365_Governance_Checklist.docx` | Observe, govern, secure checklist for Agent 365 presenter and admin review |
+| `data/agent-365/Agent365_Agent_Review_Register.csv` | Mock agent inventory and review register for Agent 365 backup talk track |
+| `data/agent-365/Zava_Order_Intake.csv` | Agent Builder and Copilot Studio test orders for the Agent 365 E2E module |
+| `data/agent-365/Zava_Rush_Order_Context.docx` | Business context for the Agent Builder agent in the Agent 365 E2E module |
 | `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
 | `data/legal-review/` | Contract, legal playbook, and counterparty memo for the Word Legal Agent extension |
 | `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
@@ -111,16 +117,18 @@ Quick map as of June 3, 2026:
 
 ## Microsoft Agent 365 Demo Pattern
 
-Agent 365 is not positioned as another assistant in the Zava story. It is the enterprise control plane that appears after the presenter has shown **Agent Builder in Microsoft 365 Copilot** and the **Copilot Studio** escalation path.
+Agent 365 is not positioned as another assistant in the Zava story. It is the enterprise control plane that appears after the presenter has built or described both **Agent Builder in Microsoft 365 Copilot** and **Microsoft Copilot Studio** agents.
 
 | Step | Product / capability | What to show | Backup path |
 | --- | --- | --- | --- |
-| 1 | Agent Builder in Microsoft 365 Copilot | Zava Order Desk Agent as a declarative, reusable business process with grounded knowledge and guardrails. | Use the Agent Builder prompt output as the build plan if authoring is unavailable. |
-| 2 | Microsoft Copilot Studio | Zava Fulfillment Agent concept with triggers, actions, approvals, environment governance, and analytics. | Use the Copilot Studio prompt output as an implementation roadmap. |
-| 3 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | Use the HTML Agent 365 section as a slide-style talk track. |
-| 4 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
-| 5 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
-| 6 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra Agent ID, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
+| 1 | Agent Builder in Microsoft 365 Copilot | Build the Zava Order Desk Agent from `data/agent-365/AgentBuilder_OrderDesk_Brief.docx` and `data/agent-365/Zava_Rush_Order_Context.docx`. | Use the prompt output as the build plan if authoring is unavailable. |
+| 2 | Agent Builder test | Test order ZO-3102 from `data/agent-365/Zava_Order_Intake.csv` to prove the repeatable agent workflow. | Run in Copilot Chat with uploaded files if the built agent is not ready. |
+| 3 | Microsoft Copilot Studio | Build or describe the Zava Fulfillment Escalation Agent with topics, actions, approvals, environment governance, analytics, and publish channels. | Use `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` as the implementation blueprint. |
+| 4 | Requested Copilot Studio agent | Microsoft 365 admin center > Agents > All agents > Requests. Review Data & tools, owner, actions, and publish scope. | Use `data/agent-365/Agent365_Agent_Review_Register.csv` if no pending request exists. |
+| 5 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | Use the HTML Agent 365 E2E section as a slide-style talk track. |
+| 6 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
+| 7 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
+| 8 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra identity/access, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
 
 ## Demo Files One-Liner
 
@@ -139,6 +147,7 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP
 5. Use the email thread or reply prompt for the Outlook section.
 6. Open the Word and PowerPoint seed files for Office Copilot or Word, Excel, and PowerPoint Agents.
 7. For the Notebook module, create a Microsoft 365 Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
+8. For the Agent 365 E2E module, keep `data/agent-365/` ready for Agent Builder, Copilot Studio, requested-agent review, registry, and governance prompts.
 
 ## Demo Arc
 
