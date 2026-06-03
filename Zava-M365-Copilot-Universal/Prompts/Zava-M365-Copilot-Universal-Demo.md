@@ -217,3 +217,73 @@ Design a pro-code Zava Fulfillment Sentinel in Microsoft Foundry. It should inge
 ```demo
 Use this as the executive platform close. Agent Builder is the fastest path to a reusable agent; Copilot Studio is the low-code production path; Foundry is the pro-code path for governed, evaluated, monitored agents.
 ```
+
+## 11 - Finance Close Extension: SAP Actuals vs TM1 Forecast
+
+### Open the finance close files
+
+```demo
+Open the ZAVA-Demo folder on the VM desktop. Use data/finance-close/SAP_TM1_Variance_Flat_Table.csv for the fast path, or upload SAP_Actuals_May2026.xlsx and TM1_Budget_Forecast_May2026.xlsx together for the heavier analyst path. Position the story as Zava's Finance team preparing month-end commentary for the COO.
+```
+
+### Find the biggest close variances
+
+```prompt
+You are the Finance Business Partner for Zava's month-end close. Analyze SAP_TM1_Variance_Flat_Table.csv. Identify the top 10 absolute variances versus TM1 forecast, grouped by Revenue, Opex, Capex, and Working Capital. For each variance, show actual, forecast, variance amount, variance percent, whether it is favorable or unfavorable, likely driver, owner, and the follow-up action needed before close sign-off.
+```
+
+### Separate business variance from data quality issues
+
+```prompt
+Review the SAP/TM1 variance data for items that look like timing issues, mapping problems, late postings, or manual journal anomalies. Create a close-control table with: issue type, evidence from the data, affected property or cost center, account, amount, risk to the close, owner, and recommended next step.
+```
+
+### Create the CFO close commentary
+
+```prompt
+Create an executive-ready month-end close commentary for Zava's CFO. Structure it as: 1) headline result, 2) top favorable drivers, 3) top unfavorable drivers, 4) risks and open items, 5) decisions needed today, 6) wording for the COO update. Keep it concise, factual, and ready to paste into a close deck.
+```
+
+### Presenter Action
+
+```demo
+Show this as the finance extension after the core Zava Excel section. The message is: Copilot can move Finance from raw SAP/TM1 extracts to variance explanation, close controls, and executive commentary. If Analyst is available, use it for multi-file reasoning. If not, use Copilot Chat with CSV/XLSX upload or Excel Copilot with the flat table.
+```
+
+## 12 - Legal Extension: Contract Review in Word
+
+### Open the legal review files
+
+```demo
+Open data/legal-review/Northwind_Property_Services_Agreement.docx in Word. Keep Contoso_Legal_Playbook_Service_Agreements.docx and Counterparty_Position_Memo.docx ready for Copilot Chat upload or Legal Agent context. Position the story as Zava Legal reviewing a vendor agreement before signing a time-critical services contract.
+```
+
+### Summarize the contract for General Counsel
+
+```prompt
+Summarize this property services agreement for Zava's General Counsel. Focus on commercial structure, high-risk clauses, negotiation pressure points, and what must be escalated before signature. Keep it to 10 bullets and cite the clause numbers you rely on.
+```
+
+### Perform a clause-level risk scan
+
+```prompt
+Review the agreement for legal and commercial risk. Prioritize subcontracting, service credits, indexation, data protection, confidentiality, audit rights, liability, termination, governing law, and AI use. For each issue, explain the risk, cite the source clause, and suggest a negotiation position.
+```
+
+### Compare against the legal playbook
+
+```prompt
+Compare the agreement against Contoso_Legal_Playbook_Service_Agreements.docx. Identify every clause that does not match Zava's preferred position or fallback. Create a table with: topic, current contract position, playbook position, risk level, suggested redline, and whether legal escalation is required.
+```
+
+### Draft targeted redlines
+
+```prompt
+Draft negotiation-ready redlines for the highest-risk clauses. Preserve the original commercial intent where possible, but align with Zava's playbook. Focus on subcontractor approval, data processing purpose limitation, confidentiality survival, audit rights, liability cap carve-outs, termination fee, and AI tool controls.
+```
+
+### Presenter Action
+
+```demo
+Use Legal Agent in Word if it is available in the tenant. If Legal Agent is not visible, use normal Copilot in Word for the open contract and Copilot Chat with all three legal files uploaded for the playbook comparison. Be explicit: this is legal operations acceleration and counsel review support, not final legal advice.
+```

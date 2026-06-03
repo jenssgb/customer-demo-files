@@ -4,7 +4,7 @@ A complete, customer-ready Microsoft 365 Copilot demo based on Microsoft's ficti
 
 ## Goal
 
-This demo shows, in 30 to 40 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision. It also includes an optional 60-minute **Ultimate Track** that folds in the strongest patterns from the KN, Vaillant, BPW, Copilot Chat Sidebar, Excel Agent Mode, and M365 Agents demo packages.
+This demo shows, in 30 to 45 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision. It also includes an optional 60-minute **Ultimate Track** that folds in the strongest patterns from the KN, Vaillant, BPW, Copilot Chat Sidebar, Excel Agent Mode, M365 Agents, Finance Close, and Legal Agent demo packages.
 
 1. Copilot Chat identifies the rush-order context from email, meeting notes, memo, and briefing files.
 2. Analyst-style reasoning evaluates feasibility, bottlenecks, and price floor.
@@ -22,6 +22,8 @@ Optional Ultimate Track modules:
 11. Teams Interpreter demonstrates multilingual executive collaboration for global launch stakeholders.
 12. Prompt Coach, Writing Coach, Idea Coach, and Visual Creator sharpen prompts, messages, and launch concepts.
 13. Copilot Studio or Foundry becomes the pro-developer / low-code extension path when declarative Agent Builder is not enough.
+14. Finance month-end close uses SAP actuals and TM1 forecast data to produce variance analysis, close controls, and CFO commentary.
+15. Legal review uses Word, Legal Agent if available, and Copilot Chat fallback to review a vendor agreement against a playbook.
 
 ## Zava Research Summary
 
@@ -59,6 +61,8 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `data/Zava_Meeting_Transcript.md` | Meeting context and action items |
 | `data/Zava_Executive_Decision_Memo.md` | COO decision memo |
 | `data/Zava_Agent_Builder_Brief.md` | Agent Builder instructions and guardrails |
+| `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
+| `data/legal-review/` | Contract, legal playbook, and counterparty memo for the Word Legal Agent extension |
 | `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
 
 ## Microsoft Learn MCP Feature Matrix
@@ -83,7 +87,7 @@ Status: June 2, 2026. Verified with Microsoft Learn MCP Search and Fetch.
 The public demo repository contains the `Zava-M365-Copilot-Universal/` folder. This one-liner copies the complete package to the demo VM desktop:
 
 ```powershell
-$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo" -r -fo -ea 0;Expand-Archive $z "$env:TEMP\zava" -Force;mv "$env:TEMP\zava\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,"$env:TEMP\zava" -r -fo;ii "$d\ZAVA-Demo"
+$d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP\zava";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo",$t -r -fo -ea 0;Expand-Archive $z $t -Force;mv "$t\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,$t -r -fo;Start-Process msedge "$d\ZAVA-Demo\Zava-M365-Copilot-Universal-Briefing.html";ii "$d\ZAVA-Demo"
 ```
 
 ## Presenter Setup
@@ -105,6 +109,8 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";iwr 'https://
 | Response | 7 min | Outlook and Word turn the decision into customer communication and an operations plan. |
 | Story | 5 min | PowerPoint creates the executive narrative. |
 | Scale | 5 min | Agent Builder turns the flow into a repeatable process. |
+| Finance Close | 7 min | SAP/TM1 variance data becomes close commentary, controls, and CFO actions. |
+| Legal Review | 7 min | A vendor agreement becomes a risk matrix, playbook comparison, and redline proposal. |
 
 ## Ultimate Demo Coverage
 
@@ -117,5 +123,7 @@ This package now intentionally covers the complete top-demo surface area:
 | Office creation | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Office Agents |
 | Meeting intelligence | War-room transcript, Teams Facilitator optional live path, Interpreter optional global meeting path | KN executive showcase, M365 Agents |
 | Agent scale-out | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
+| Finance close | SAP actuals vs. TM1 forecast, variance analysis, close controls, CFO commentary | SAP/TM1 Month-End Close |
+| Legal review | Word contract summary, Legal Agent path, playbook comparison, redline fallback | Legal Agent Word |
 
 Presenter rule: show only the modules available in the tenant. For anything preview-gated, admin-gated, region-limited, or model-provider-dependent, use the included seed files and transcripts as the backup path.
