@@ -22,8 +22,9 @@ Optional Ultimate Track modules:
 11. Teams Interpreter demonstrates multilingual executive collaboration for global launch stakeholders.
 12. Prompt Coach, Writing Coach, Idea Coach, and Visual Creator sharpen prompts, messages, and launch concepts.
 13. Copilot Studio or Foundry becomes the pro-developer / low-code extension path when declarative Agent Builder is not enough.
-14. Finance month-end close uses SAP actuals and TM1 forecast data to produce variance analysis, close controls, and CFO commentary.
-15. Legal Agent in Word uses Word, Legal Agent if available, and Copilot Chat fallback to review a vendor agreement against a playbook.
+14. Microsoft Agent 365 shows how IT observes, governs, and secures Agent Builder and Copilot Studio agents.
+15. Finance month-end close uses SAP actuals and TM1 forecast data to produce variance analysis, close controls, and CFO commentary.
+16. Legal Agent in Word uses Word, Legal Agent if available, and Copilot Chat fallback to review a vendor agreement against a playbook.
 
 ## Zava Research Summary
 
@@ -40,6 +41,10 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 - Word, Excel, and PowerPoint Agents: https://learn.microsoft.com/microsoft-365/copilot/wordexcelppt-agents
 - Enterprise data protection: https://learn.microsoft.com/microsoft-365/copilot/enterprise-data-protection
 - Agent Builder: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder
+- Microsoft Agent 365 overview: https://learn.microsoft.com/microsoft-agent-365/overview
+- Copilot Studio and Agent 365: https://learn.microsoft.com/microsoft-agent-365/builder/overview
+- Agent activity view: https://learn.microsoft.com/microsoft-agent-365/observe-agents-microsoft-365-copilot
+- Manage Agent 365 agents: https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#view-available-agents
 - Microsoft 365 Copilot release notes: https://learn.microsoft.com/microsoft-365/copilot/release-notes
 
 ## Files
@@ -101,7 +106,21 @@ Quick map as of June 3, 2026:
 | Teams Interpreter | Real-time speech-to-speech translation in Teams meetings, with supported spoken and listening languages including English, German, French, Spanish, Italian, Portuguese, Japanese, Korean, and Mandarin. | Requires eligible Microsoft 365 base license, Teams license, and Microsoft 365 Copilot license. 20 hours per user per month are included, subject to capacity. Not supported for town halls, webinars, Teams free, unscheduled 1:1 calls, or Teams Rooms scheduled meetings. | Use as an optional global-leadership moment for the Zava COO, Singapore logistics, and German production stakeholders. | https://learn.microsoft.com/microsoftteams/interpreter-agent-teams |
 | Prompt Coach, Writing Coach, Idea Coach, Visual Creator | Prebuilt Microsoft 365 Copilot agents help improve prompts, writing, ideation, and visual concepts. | Availability can depend on tenant rollout, licensing, and admin controls. Do not position these as custom business-process automation. | Use as short polish moments: improve the customer prompt, sharpen the response, brainstorm mitigation options, or create a campaign visual concept. | https://learn.microsoft.com/training/modules/explore-prebuilt-microsoft-365-copilot-agents/ |
 | Copilot Studio and advanced actions | Use Copilot Studio when the scenario requires actions, external systems, richer orchestration, or more complex agent capabilities than Agent Builder. | Requires the right Power Platform, Copilot Studio, billing, governance, environment, and admin configuration. | Position as the escalation path from a declarative Zava Order Desk agent to a production-grade fulfillment agent. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
+| Microsoft Agent 365 | Control plane to observe, govern, and secure agents. Provides centralized registry, visibility into adoption/activity/health, lifecycle governance, access/compliance guardrails, and security integrations with Entra, Purview, and Defender. Copilot Studio agents automatically appear in the registry and emit telemetry to Agent 365. | Agent 365 is commercially GA as of May 1, 2026, but some views, such as all-agents activity in Microsoft 365 Copilot, are preview, read-only, user-scoped, and retain activity for 30 days. At least one qualifying Agent 365 license is required to enable Agent 365. | Show Agent 365 after Agent Builder and Copilot Studio: registry, ownership, platform, connectors/tools, environment, activity, risk, and governance actions. If unavailable, use the Learn-verified matrix as the talk-track backup. | https://learn.microsoft.com/microsoft-agent-365/overview |
 | Microsoft 365 Copilot Notebooks | Secure AI-powered workspace to gather, synthesize, and act on organizational content for structured problem solving; supports references from communications and files, insights, audio summaries, drafts, and collaboration through Copilot Pages. | Availability depends on tenant rollout, licensing, and client experience. | Use as the persistent executive decision room after the Chat and Office moments; use Copilot Pages as backup. | https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot#feature-availability |
+
+## Microsoft Agent 365 Demo Pattern
+
+Agent 365 is not positioned as another assistant in the Zava story. It is the enterprise control plane that appears after the presenter has shown **Agent Builder in Microsoft 365 Copilot** and the **Copilot Studio** escalation path.
+
+| Step | Product / capability | What to show | Backup path |
+| --- | --- | --- | --- |
+| 1 | Agent Builder in Microsoft 365 Copilot | Zava Order Desk Agent as a declarative, reusable business process with grounded knowledge and guardrails. | Use the Agent Builder prompt output as the build plan if authoring is unavailable. |
+| 2 | Microsoft Copilot Studio | Zava Fulfillment Agent concept with triggers, actions, approvals, environment governance, and analytics. | Use the Copilot Studio prompt output as an implementation roadmap. |
+| 3 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | Use the HTML Agent 365 section as a slide-style talk track. |
+| 4 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
+| 5 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
+| 6 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra Agent ID, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
 
 ## Demo Files One-Liner
 
@@ -131,6 +150,7 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP
 | Copilot in Outlook and Copilot in Word | 7 min | Copilot in Outlook and Copilot in Word turn the decision into customer communication and an operations plan. |
 | Copilot in PowerPoint | 5 min | PowerPoint creates the executive narrative. |
 | Agent Builder in Microsoft 365 Copilot | 5 min | Agent Builder turns the flow into a repeatable process. |
+| Microsoft Agent 365 | 5 min | Agent 365 shows how IT observes, governs, and secures Agent Builder and Copilot Studio agents. |
 | Microsoft 365 Copilot Notebooks | 6 min | Notebooks becomes the persistent decision workspace for operations, finance, and legal context. |
 | Analyst agent + Copilot in Excel | 7 min | SAP/TM1 variance data becomes close commentary, controls, and CFO actions. |
 | Legal Agent in Word | 7 min | A vendor agreement becomes a risk matrix, playbook comparison, and redline proposal. |
@@ -146,6 +166,7 @@ This package now intentionally covers the complete top-demo surface area:
 | Copilot in Word, Excel, PowerPoint, and Outlook | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Word, Excel, and PowerPoint Agents |
 | Meeting intelligence | War-room transcript, Teams Facilitator optional live path, Interpreter optional global meeting path | KN executive showcase, M365 Agents |
 | Agent Builder in Microsoft 365 Copilot | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
+| Microsoft Agent 365 | Agent registry, activity/observability, lifecycle governance, Entra/Purview/Defender positioning for Agent Builder and Copilot Studio agents | New Zava module |
 | Microsoft 365 Copilot Notebooks | Microsoft 365 Copilot Notebooks setup, reference collection, decision map, COO briefing | New Zava module |
 | Analyst agent + Copilot in Excel | SAP actuals vs. TM1 forecast, variance analysis, close controls, CFO commentary | SAP/TM1 Month-End Close |
 | Legal Agent in Word | Word contract summary, Legal Agent path, playbook comparison, redline fallback | Legal Agent Word |
