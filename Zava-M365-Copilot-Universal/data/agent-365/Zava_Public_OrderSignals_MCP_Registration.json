@@ -1,0 +1,21 @@
+{
+  "serverName": "ext_ZavaOrderSignals",
+  "serverUrl": "https://ordersignals.zava.example/mcp",
+  "authType": "NoAuth",
+  "description": "Demo registration template for a public Zava order-signal MCP server that exposes read-only order risk and supplier signal tools.",
+  "publisherName": "Zava Demo",
+  "tools": [
+    {
+      "name": "get_order_risk_signal",
+      "description": "Return read-only order risk signals for a Zava order ID. Demo tool for Copilot Studio MCP onboarding."
+    },
+    {
+      "name": "search_supplier_signals",
+      "description": "Search public supplier and logistics risk signals relevant to a Zava rush order. Demo tool for Copilot Studio MCP onboarding."
+    }
+  ],
+  "remoteScopes": null,
+  "externalOAuth": null,
+  "apiKey": null,
+  "demoNote": "Replace the serverUrl with a real public streamable MCP endpoint before live registration. BYO MCP is preview and is not currently supported for Microsoft 365 Declarative Agents / Agent Builder. Use this as the Agent 365 admin approval and Copilot Studio tool pattern."
+}

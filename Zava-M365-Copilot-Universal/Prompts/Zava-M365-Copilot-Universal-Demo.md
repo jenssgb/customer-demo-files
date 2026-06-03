@@ -238,6 +238,24 @@ Open Microsoft 365 Copilot Chat, choose Agent Builder or New agent, and use the 
 Use data/agent-365/Zava_Order_Intake.csv. Test the Zava Order Desk Agent with order ZO-3102. Summarize the request, identify the top three checks, apply the guardrails, and return a recommendation with escalation owner and next action.
 ```
 
+### Extend Agent Builder with public knowledge and Copilot Connectors
+
+```prompt
+Use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv. Design a Zava Supplier Signal Scout for Agent Builder. Create the exact Agent Builder fields: name, description, instructions, knowledge sources, capabilities, starter prompts, and test prompt. Show two knowledge lanes: public website URLs that work immediately, and a Microsoft 365 Copilot connector such as a GitHub connector after the admin has enabled it in the tenant. Be explicit that Agent Builder uses connectors as knowledge, not as arbitrary action tools.
+```
+
+### Presenter Action
+
+```demo
+Open Agent Builder > New agent > Skip to configure. In Knowledge, show Enter URL for public websites and explain that admin-enabled Microsoft 365 Copilot connectors can also appear as knowledge sources. Use public websites as the live path; use the Copilot connector lane as the admin-enabled enterprise path. Do not claim that BYO MCP servers are directly usable in Agent Builder.
+```
+
+### Plan the Copilot Studio MCP extension
+
+```prompt
+Use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv and data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json. Create a two-minute presenter explanation for how Zava would expose real-time order-risk signals through an MCP server. Include developer registration, Agent 365 Tools request review, admin approve/reject/block controls, Copilot Studio > Tools > Add a tool > Model Context Protocol, and the limitation that BYO MCP preview is supported for Copilot Studio but not currently for Microsoft 365 Declarative Agents / Agent Builder.
+```
+
 ### Design the Copilot Studio production agent
 
 ```prompt
