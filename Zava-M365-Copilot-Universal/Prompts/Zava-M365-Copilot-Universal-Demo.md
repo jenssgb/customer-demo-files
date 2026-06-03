@@ -268,6 +268,12 @@ Open Microsoft 365 admin center. Go to Agents > All agents > Requests. Select th
 Use data/agent-365/Agent365_Agent_Review_Register.csv. Explain how Microsoft Agent 365 helps the AI admin observe the Zava Order Desk Agent and Zava Fulfillment Escalation Agent. Structure the answer as: inventory, ownership, platform, environment, connectors/actions, risk signals, governance actions, and what would be unsafe without this registry.
 ```
 
+### Power Platform Governance vs Agent 365 objection handling
+
+```prompt
+Use data/agent-365/Agent365_vs_PowerPlatform_Governance.csv. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and Zava Order Desk Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
+```
+
 ### Explain telemetry and activity
 
 ```prompt

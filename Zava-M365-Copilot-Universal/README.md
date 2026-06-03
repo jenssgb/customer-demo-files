@@ -71,6 +71,7 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` | Copilot Studio production-agent specification for the Agent 365 E2E module |
 | `data/agent-365/Agent365_Governance_Checklist.docx` | Observe, govern, secure checklist for Agent 365 presenter and admin review |
 | `data/agent-365/Agent365_Agent_Review_Register.csv` | Mock agent inventory and review register for Agent 365 backup talk track |
+| `data/agent-365/Agent365_vs_PowerPlatform_Governance.csv` | Concrete objection-handling dataset: Power Platform Governance vs Agent 365 |
 | `data/agent-365/Zava_Order_Intake.csv` | Agent Builder and Copilot Studio test orders for the Agent 365 E2E module |
 | `data/agent-365/Zava_Rush_Order_Context.docx` | Business context for the Agent Builder agent in the Agent 365 E2E module |
 | `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
@@ -125,10 +126,15 @@ Agent 365 is not positioned as another assistant in the Zava story. It is the en
 | 2 | Agent Builder test | Test order ZO-3102 from `data/agent-365/Zava_Order_Intake.csv` to prove the repeatable agent workflow. | Run in Copilot Chat with uploaded files if the built agent is not ready. |
 | 3 | Microsoft Copilot Studio | Build or describe the Zava Fulfillment Escalation Agent with topics, actions, approvals, environment governance, analytics, and publish channels. | Use `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` as the implementation blueprint. |
 | 4 | Requested Copilot Studio agent | Microsoft 365 admin center > Agents > All agents > Requests. Review Data & tools, owner, actions, and publish scope. | Use `data/agent-365/Agent365_Agent_Review_Register.csv` if no pending request exists. |
-| 5 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | Use the HTML Agent 365 E2E section as a slide-style talk track. |
-| 6 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
-| 7 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
-| 8 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra identity/access, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
+| 5 | Power Platform Governance vs Agent 365 | Show that Power Platform Governance covers environments, connectors, DLP and maker controls, while Agent 365 adds agent-level registry, ownership, usage, activity, risk and lifecycle governance across supported agent platforms. | Use `data/agent-365/Agent365_vs_PowerPlatform_Governance.csv` as the objection-handling proof. |
+| 6 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | Use the HTML Agent 365 E2E section as a slide-style talk track. |
+| 7 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
+| 8 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
+| 9 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra identity/access, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
+
+### Power Platform Governance vs Agent 365 presenter stance
+
+Power Platform Governance remains essential. It governs Power Platform environments, managed environments, makers, DLP/data policies, connector use, sharing, pipelines, insights and other Power Platform controls. Agent 365 is complementary: it governs agents as enterprise assets across supported Microsoft and connected agent platforms, including Agent Builder, Copilot Studio, SharePoint, Foundry, Agents Toolkit, Microsoft-built and some non-Microsoft agent sources. The strongest demo line is: Power Platform Governance answers "is this Copilot Studio environment and connector use allowed?" Agent 365 answers "what agents exist across the tenant, who owns them, who can use them, what are they doing, which ones are risky, and what lifecycle action should IT take?"
 
 ## Demo Files One-Liner
 
