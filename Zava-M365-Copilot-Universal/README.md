@@ -4,10 +4,10 @@ A complete, customer-ready Microsoft 365 Copilot demo based on Microsoft's ficti
 
 ## Goal
 
-This demo shows, in 30 to 45 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision. It also includes an optional 60-minute **Ultimate Track** that folds in the strongest patterns from the KN, Vaillant, BPW, Copilot Chat Sidebar, Excel Agent Mode, M365 Agents, Finance Close, and Legal Agent demo packages.
+This demo shows, in 30 to 45 minutes, how Microsoft 365 Copilot turns a scattered business signal into an executive-ready decision. It also includes an optional 60-minute **Ultimate Track** that folds in the strongest patterns from the KN, Vaillant, BPW, Copilot Chat Sidebar, Excel Agent Mode, M365 Agents, Analyst agent + Copilot in Excel, and Legal Agent demo packages.
 
 1. Copilot Chat identifies the rush-order context from email, meeting notes, memo, and briefing files.
-2. Analyst-style reasoning evaluates feasibility, bottlenecks, and price floor.
+2. Microsoft 365 Copilot Analyst agent evaluates feasibility, bottlenecks, and price floor.
 3. Excel analyzes inventory, capacity, margin, and risk in a prepared workbook.
 4. Outlook drafts a customer response with explicit conditions.
 5. Word creates an operational execution plan.
@@ -23,7 +23,7 @@ Optional Ultimate Track modules:
 12. Prompt Coach, Writing Coach, Idea Coach, and Visual Creator sharpen prompts, messages, and launch concepts.
 13. Copilot Studio or Foundry becomes the pro-developer / low-code extension path when declarative Agent Builder is not enough.
 14. Finance month-end close uses SAP actuals and TM1 forecast data to produce variance analysis, close controls, and CFO commentary.
-15. Legal review uses Word, Legal Agent if available, and Copilot Chat fallback to review a vendor agreement against a playbook.
+15. Legal Agent in Word uses Word, Legal Agent if available, and Copilot Chat fallback to review a vendor agreement against a playbook.
 
 ## Zava Research Summary
 
@@ -61,7 +61,7 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `data/Zava_Meeting_Transcript.docx` | Meeting context and action items |
 | `data/Zava_Executive_Decision_Memo.docx` | COO decision memo |
 | `data/Zava_Agent_Builder_Brief.docx` | Agent Builder instructions and guardrails |
-| `data/Zava_Copilot_Notebook_Setup.docx` | Copilot Notebook setup guide and reference list |
+| `data/Zava_Copilot_Notebook_Setup.docx` | Microsoft 365 Copilot Notebooks setup guide and reference list |
 | `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
 | `data/legal-review/` | Contract, legal playbook, and counterparty memo for the Word Legal Agent extension |
 | `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
@@ -70,7 +70,7 @@ Note: The PromptPrompter script and this README remain Markdown because they are
 
 ## Microsoft Learn MCP Feature Matrix
 
-Status: June 2, 2026. Verified with Microsoft Learn MCP Search and Fetch.
+Status: June 3, 2026. Verified with Microsoft Learn MCP Search and Fetch. Scenario labels use visible product, feature, or agent names; Work IQ is grounding context, not a live scenario title.
 
 | Feature | Current capability | Limits and requirements | Demo implication | Source |
 | --- | --- | --- | --- | --- |
@@ -101,22 +101,22 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP
 3. Open Microsoft 365 Copilot Chat: https://m365copilot.com
 4. Open `Zava_Order_Analysis.xlsx` in Excel for web or desktop.
 5. Use the email thread or reply prompt for the Outlook section.
-6. Open the Word and PowerPoint seed files for Office Copilot or Office Agents.
-7. For the Notebook module, create a Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
+6. Open the Word and PowerPoint seed files for Office Copilot or Word, Excel, and PowerPoint Agents.
+7. For the Notebook module, create a Microsoft 365 Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
 
 ## Demo Arc
 
 | Segment | Duration | Core message |
 | --- | ---: | --- |
-| Signal | 6 min | Copilot identifies the real decision from email, meeting notes, memo, and briefing files. |
-| Reasoning | 6 min | Copilot evaluates feasibility, bottlenecks, price floor, and conditions. |
-| Analysis | 8 min | Excel and Copilot turn raw data into a reliable fulfillment view. |
-| Response | 7 min | Outlook and Word turn the decision into customer communication and an operations plan. |
-| Story | 5 min | PowerPoint creates the executive narrative. |
-| Scale | 5 min | Agent Builder turns the flow into a repeatable process. |
-| Notebook | 6 min | Copilot Notebook becomes the persistent decision workspace for operations, finance, and legal context. |
-| Finance Close | 7 min | SAP/TM1 variance data becomes close commentary, controls, and CFO actions. |
-| Legal Review | 7 min | A vendor agreement becomes a risk matrix, playbook comparison, and redline proposal. |
+| Microsoft 365 Copilot Chat | 6 min | Copilot identifies the real decision from email, meeting notes, memo, and briefing files. |
+| Microsoft 365 Copilot Analyst agent | 6 min | Analyst evaluates feasibility, bottlenecks, price floor, and conditions. Backup: Copilot Chat or Copilot in Excel. |
+| Copilot in Excel | 8 min | Excel and Copilot turn raw data into a reliable fulfillment view. |
+| Copilot in Outlook and Copilot in Word | 7 min | Copilot in Outlook and Copilot in Word turn the decision into customer communication and an operations plan. |
+| Copilot in PowerPoint | 5 min | PowerPoint creates the executive narrative. |
+| Agent Builder in Microsoft 365 Copilot | 5 min | Agent Builder turns the flow into a repeatable process. |
+| Microsoft 365 Copilot Notebooks | 6 min | Notebooks becomes the persistent decision workspace for operations, finance, and legal context. |
+| Analyst agent + Copilot in Excel | 7 min | SAP/TM1 variance data becomes close commentary, controls, and CFO actions. |
+| Legal Agent in Word | 7 min | A vendor agreement becomes a risk matrix, playbook comparison, and redline proposal. |
 
 ## Ultimate Demo Coverage
 
@@ -124,13 +124,13 @@ This package now intentionally covers the complete top-demo surface area:
 
 | Track | Demo moments | Best source package reused |
 | --- | --- | --- |
-| Work IQ and Chat | Situation brief, file upload, Copilot Pages, Edge-style sidebar backup | Copilot Chat Sidebar, KN Work IQ |
-| Reasoning and data | Analyst-style reasoning, Excel workbook, Python/code-interpreter style analysis backup | Excel Agent Mode, KN Analyst Agent |
-| Office creation | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Office Agents |
+| Microsoft 365 Copilot Chat and Work IQ grounding | Situation brief, file upload, Copilot Pages, Edge-style sidebar backup | Copilot Chat Sidebar, KN Work IQ |
+| Analyst agent and Copilot in Excel | Microsoft 365 Copilot Analyst agent, Copilot in Excel, Python/code-interpreter style analysis backup | Excel Agent Mode, KN Analyst Agent |
+| Copilot in Word, Excel, PowerPoint, and Outlook | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Word, Excel, and PowerPoint Agents |
 | Meeting intelligence | War-room transcript, Teams Facilitator optional live path, Interpreter optional global meeting path | KN executive showcase, M365 Agents |
-| Agent scale-out | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
-| Notebook workspace | Copilot Notebook setup, reference collection, decision map, COO briefing | New Zava module |
-| Finance close | SAP actuals vs. TM1 forecast, variance analysis, close controls, CFO commentary | SAP/TM1 Month-End Close |
-| Legal review | Word contract summary, Legal Agent path, playbook comparison, redline fallback | Legal Agent Word |
+| Agent Builder in Microsoft 365 Copilot | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
+| Microsoft 365 Copilot Notebooks | Microsoft 365 Copilot Notebooks setup, reference collection, decision map, COO briefing | New Zava module |
+| Analyst agent + Copilot in Excel | SAP actuals vs. TM1 forecast, variance analysis, close controls, CFO commentary | SAP/TM1 Month-End Close |
+| Legal Agent in Word | Word contract summary, Legal Agent path, playbook comparison, redline fallback | Legal Agent Word |
 
 Presenter rule: show only the modules available in the tenant. For anything preview-gated, admin-gated, region-limited, or model-provider-dependent, use the included seed files and transcripts as the backup path.

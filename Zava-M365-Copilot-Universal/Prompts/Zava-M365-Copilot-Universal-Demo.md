@@ -20,7 +20,7 @@ Open Microsoft 365 Copilot Chat and upload the files or reference them from OneD
 Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from it immediately.
 ```
 
-## 2 - Analyst-Style Reasoning
+## 2 - Microsoft 365 Copilot Analyst Agent
 
 ### Analyze feasibility and price floor
 
@@ -37,10 +37,10 @@ Create a decision table with these columns: decision point, fact, risk, owner, c
 ### Presenter Action
 
 ```demo
-Use Think Deeper or an analyst-style reasoning mode if available. Show that Copilot is not only summarizing; it is weighing dependencies against the decision criteria.
+Use the Microsoft 365 Copilot Analyst agent if it is available. If Analyst is not visible in Copilot Chat Tools, use Copilot Chat with the uploaded files or Copilot in Excel as the backup path. Show that Copilot is weighing dependencies against the decision criteria, not only summarizing text.
 ```
 
-## 3 - Excel Workbook
+## 3 - Copilot in Excel
 
 ### Explain the dashboard
 
@@ -60,7 +60,7 @@ Add a management summary with four parts: 1) total supply versus requested quant
 Open Zava_Order_Analysis.xlsx in Excel. Show the Executive Summary, the inventory formulas, and the chart. Then ask Copilot to create the management summary.
 ```
 
-## 4 - Outlook Customer Response
+## 4 - Copilot in Outlook
 
 ### Draft the reply
 
@@ -80,7 +80,7 @@ Improve the reply for clarity, tone, and risk transparency. Remove internal cost
 Switch to Outlook or use the email thread in Copilot Chat. Show that the response is grounded in analysis, risk, and price floor rather than generic wording.
 ```
 
-## 5 - Word Operations Plan
+## 5 - Copilot in Word
 
 ### Improve the operations plan
 
@@ -100,7 +100,7 @@ Create a new Word document titled "Zava Rush Order War Room Plan". Use all Zava 
 Show the difference between the customer response and the internal operations plan. Optionally use the Word Agent from Copilot Chat if it is available in the tenant.
 ```
 
-## 6 - PowerPoint Executive Story
+## 6 - Copilot in PowerPoint
 
 ### Improve the executive deck
 
@@ -120,7 +120,7 @@ Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysi
 Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show executive storytelling, not manual slide production.
 ```
 
-## 7 - Agent Builder Scale-Out
+## 7 - Agent Builder in Microsoft 365 Copilot
 
 ### Design the Order Desk agent
 
@@ -140,7 +140,7 @@ Test the agent with request ZO-1044 from Zava_Order_Intake.csv. Summarize the or
 Open Agent Builder in Microsoft 365 Copilot. Use the output as the build plan. Explain that the manual Copilot flow becomes a repeatable Order Desk process.
 ```
 
-## 8 - Ultimate Track: Researcher, Analyst, and Coaches
+## 8 - Microsoft 365 Copilot Researcher, Analyst, and Coach Agents
 
 ### Researcher market and supplier brief
 
@@ -166,7 +166,7 @@ Use Prompt Coach if available. Improve this prompt for a senior operations user:
 Use this section as the premium extension after the core Zava flow. Researcher and Analyst are optional first-party experiences; if they are not available, run the same prompts in Copilot Chat with uploaded files and explain the backup path.
 ```
 
-## 9 - Ultimate Track: Teams Facilitator and Interpreter
+## 9 - Teams Facilitator and Interpreter Agents
 
 ### Facilitator war-room prompt
 
@@ -192,7 +192,7 @@ Use the Teams Interpreter agent if available. Demonstrate how a German productio
 Only show Facilitator or Interpreter live if the tenant, Teams policy, license, and meeting type are ready. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
 ```
 
-## 10 - Ultimate Track: Visual Creator, Copilot Studio, and Foundry
+## 10 - Visual Creator Agent, Copilot Studio, and Azure AI Foundry
 
 ### Visual Creator launch concept
 
@@ -218,7 +218,7 @@ Design a pro-code Zava Fulfillment Sentinel in Microsoft Foundry. It should inge
 Use this as the executive platform close. Agent Builder is the fastest path to a reusable agent; Copilot Studio is the low-code production path; Foundry is the pro-code path for governed, evaluated, monitored agents.
 ```
 
-## 11 - Finance Close Extension: SAP Actuals vs TM1 Forecast
+## 11 - Microsoft 365 Copilot Analyst Agent + Copilot in Excel: SAP Actuals vs TM1 Forecast
 
 ### Open the finance close files
 
@@ -250,12 +250,12 @@ Create an executive-ready month-end close commentary for Zava's CFO. Structure i
 Show this as the finance extension after the core Zava Excel section. The message is: Copilot can move Finance from raw SAP/TM1 extracts to variance explanation, close controls, and executive commentary. If Analyst is available, use it for multi-file reasoning. If not, use Copilot Chat with CSV/XLSX upload or Excel Copilot with the flat table.
 ```
 
-## 12 - Legal Extension: Contract Review in Word
+## 12 - Legal Agent in Word (Frontier): Contract Review
 
 ### Open the legal review files
 
 ```demo
-Open data/legal-review/Northwind_Property_Services_Agreement.docx in Word. Keep Contoso_Legal_Playbook_Service_Agreements.docx and Counterparty_Position_Memo.docx ready for Copilot Chat upload or Legal Agent context. Position the story as Zava Legal reviewing a vendor agreement before signing a time-critical services contract.
+Open data/legal-review/Northwind_Property_Services_Agreement.docx in Word. Keep Contoso_Legal_Playbook_Service_Agreements.docx and Counterparty_Position_Memo.docx ready for Copilot Chat upload or Legal Agent context. Position the story as Zava Legal Agent in Word reviewing a vendor agreement before signing a time-critical services contract.
 ```
 
 ### Summarize the contract for General Counsel
@@ -288,12 +288,12 @@ Draft negotiation-ready redlines for the highest-risk clauses. Preserve the orig
 Use Legal Agent in Word if it is available in the tenant. If Legal Agent is not visible, use normal Copilot in Word for the open contract and Copilot Chat with all three legal files uploaded for the playbook comparison. Be explicit: this is legal operations acceleration and counsel review support, not final legal advice.
 ```
 
-## 13 - Copilot Notebook Extension: Executive Decision Room
+## 13 - Microsoft 365 Copilot Notebooks Extension: Executive Decision Room
 
 ### Create the Zava notebook
 
 ```demo
-Open Microsoft 365 Copilot and create a new Copilot Notebook named "Zava Executive Decision Room". Use Zava_Copilot_Notebook_Setup.docx as the presenter checklist. Add the core Zava Word documents, Zava_Order_Analysis.xlsx, the finance close variance CSV, and the legal review documents as notebook references if the tenant experience supports them.
+Open Microsoft 365 Copilot and create a new Microsoft 365 Copilot Notebook named "Zava Executive Decision Room". Use Zava_Copilot_Notebook_Setup.docx as the presenter checklist. Add the core Zava Word documents, Zava_Order_Analysis.xlsx, the finance close variance CSV, and the legal review documents as notebook references if the tenant experience supports them.
 ```
 
 ### Build the decision map
@@ -311,11 +311,11 @@ Using the notebook references, synthesize the strongest executive recommendation
 ### Create the final COO briefing
 
 ```prompt
-Draft the final COO briefing from this notebook. Format it as: Situation, Recommendation, Evidence, Finance Close Watchpoints, Legal Review Watchpoints, Decision Needed, Next 4 Hours. Keep it concise enough for a five-minute executive review.
+Draft the final COO briefing from this notebook. Format it as: Situation, Recommendation, Evidence, Analyst agent + Copilot in Excel Watchpoints, Legal Agent in Word Watchpoints, Decision Needed, Next 4 Hours. Keep it concise enough for a five-minute executive review.
 ```
 
 ### Presenter Action
 
 ```demo
-Use this as the persistence and deep-thinking moment. Copilot Chat is good for one task; a Copilot Notebook is the reusable workspace where the same references, prompts, and decisions stay together. If Copilot Notebooks are not available in the tenant, use Copilot Pages as the backup working surface.
+Use this as the persistence and deep-thinking moment. Copilot Chat is good for one task; a Microsoft 365 Copilot Notebooks is the reusable workspace where the same references, prompts, and decisions stay together. If Microsoft 365 Copilot Notebooks are not available in the tenant, use Copilot Pages as the backup working surface.
 ```
