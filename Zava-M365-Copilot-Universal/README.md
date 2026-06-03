@@ -51,19 +51,22 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `Zava_Order_Analysis.xlsx` | Excel dashboard with inventory, orders, pricing, risk register, and formulas |
 | `Zava_Operations_Plan.docx` | Word seed document for the operations plan |
 | `Zava_Executive_Story.pptx` | PowerPoint seed deck for the executive story |
-| `data/Zava_Rush_Order_Context.md` | Business context for Chat, Word, and PowerPoint |
+| `data/Zava_Rush_Order_Context.docx` | Business context for Chat, Word, and PowerPoint |
 | `data/Zava_Inventory_Snapshot.csv` | Inventory data for analysis and charts |
 | `data/Zava_Order_Intake.csv` | Multiple rush-order requests for agent test cases |
 | `data/Zava_Risk_Register.csv` | Risk register with owners and mitigations |
 | `data/Zava_Pricing_Assumptions.csv` | Price-floor and margin assumptions |
-| `data/Zava_Email_Thread.html` | Email-thread context for Outlook and Copilot Chat |
-| `data/Zava_Launch_Brief.md` | Product and campaign context |
-| `data/Zava_Meeting_Transcript.md` | Meeting context and action items |
-| `data/Zava_Executive_Decision_Memo.md` | COO decision memo |
-| `data/Zava_Agent_Builder_Brief.md` | Agent Builder instructions and guardrails |
+| `data/Zava_Email_Thread.docx` | Email-thread context for Outlook and Copilot Chat |
+| `data/Zava_Launch_Brief.docx` | Product and campaign context |
+| `data/Zava_Meeting_Transcript.docx` | Meeting context and action items |
+| `data/Zava_Executive_Decision_Memo.docx` | COO decision memo |
+| `data/Zava_Agent_Builder_Brief.docx` | Agent Builder instructions and guardrails |
+| `data/Zava_Copilot_Notebook_Setup.docx` | Copilot Notebook setup guide and reference list |
 | `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
 | `data/legal-review/` | Contract, legal playbook, and counterparty memo for the Word Legal Agent extension |
 | `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
+
+Note: The PromptPrompter script and this README remain Markdown because they are tooling and documentation files. The demo grounding data in `data/` is now Word, Excel, CSV, or PowerPoint friendly; no Markdown files are used as Copilot grounding data.
 
 ## Microsoft Learn MCP Feature Matrix
 
@@ -81,6 +84,7 @@ Status: June 2, 2026. Verified with Microsoft Learn MCP Search and Fetch.
 | Teams Interpreter | Real-time speech-to-speech translation in Teams meetings, with supported spoken and listening languages including English, German, French, Spanish, Italian, Portuguese, Japanese, Korean, and Mandarin. | Requires eligible Microsoft 365 base license, Teams license, and Microsoft 365 Copilot license. 20 hours per user per month are included, subject to capacity. Not supported for town halls, webinars, Teams free, unscheduled 1:1 calls, or Teams Rooms scheduled meetings. | Use as an optional global-leadership moment for the Zava COO, Singapore logistics, and German production stakeholders. | https://learn.microsoft.com/microsoftteams/interpreter-agent-teams |
 | Prompt Coach, Writing Coach, Idea Coach, Visual Creator | Prebuilt Microsoft 365 Copilot agents help improve prompts, writing, ideation, and visual concepts. | Availability can depend on tenant rollout, licensing, and admin controls. Do not position these as custom business-process automation. | Use as short polish moments: improve the customer prompt, sharpen the response, brainstorm mitigation options, or create a campaign visual concept. | https://learn.microsoft.com/training/modules/explore-prebuilt-microsoft-365-copilot-agents/ |
 | Copilot Studio and advanced actions | Use Copilot Studio when the scenario requires actions, external systems, richer orchestration, or more complex agent capabilities than Agent Builder. | Requires the right Power Platform, Copilot Studio, billing, governance, environment, and admin configuration. | Position as the escalation path from a declarative Zava Order Desk agent to a production-grade fulfillment agent. | https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder |
+| Microsoft 365 Copilot Notebooks | Secure AI-powered workspace to gather, synthesize, and act on organizational content for structured problem solving; supports references from communications and files, insights, audio summaries, drafts, and collaboration through Copilot Pages. | Availability depends on tenant rollout, licensing, and client experience. | Use as the persistent executive decision room after the Chat and Office moments; use Copilot Pages as backup. | https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot#feature-availability |
 
 ## Demo Files One-Liner
 
@@ -98,6 +102,7 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP
 4. Open `Zava_Order_Analysis.xlsx` in Excel for web or desktop.
 5. Use the email thread or reply prompt for the Outlook section.
 6. Open the Word and PowerPoint seed files for Office Copilot or Office Agents.
+7. For the Notebook module, create a Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
 
 ## Demo Arc
 
@@ -109,6 +114,7 @@ $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP
 | Response | 7 min | Outlook and Word turn the decision into customer communication and an operations plan. |
 | Story | 5 min | PowerPoint creates the executive narrative. |
 | Scale | 5 min | Agent Builder turns the flow into a repeatable process. |
+| Notebook | 6 min | Copilot Notebook becomes the persistent decision workspace for operations, finance, and legal context. |
 | Finance Close | 7 min | SAP/TM1 variance data becomes close commentary, controls, and CFO actions. |
 | Legal Review | 7 min | A vendor agreement becomes a risk matrix, playbook comparison, and redline proposal. |
 
@@ -123,6 +129,7 @@ This package now intentionally covers the complete top-demo surface area:
 | Office creation | Word, Excel, and PowerPoint seed files plus Office Agent alternatives | BPW Cowork and Office Agents |
 | Meeting intelligence | War-room transcript, Teams Facilitator optional live path, Interpreter optional global meeting path | KN executive showcase, M365 Agents |
 | Agent scale-out | Agent Builder baseline, Copilot Studio escalation path, Foundry/pro-code positioning | Agent Builder E2E, KN Foundry Sentinel |
+| Notebook workspace | Copilot Notebook setup, reference collection, decision map, COO briefing | New Zava module |
 | Finance close | SAP actuals vs. TM1 forecast, variance analysis, close controls, CFO commentary | SAP/TM1 Month-End Close |
 | Legal review | Word contract summary, Legal Agent path, playbook comparison, redline fallback | Legal Agent Word |
 

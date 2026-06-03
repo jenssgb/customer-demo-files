@@ -5,7 +5,7 @@
 ### Create the boardroom brief
 
 ```prompt
-You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.md, Zava_Email_Thread.html, Zava_Meeting_Transcript.md, and Zava_Executive_Decision_Memo.md. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance.
+You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, and Zava_Executive_Decision_Memo.docx. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance.
 ```
 
 ### Presenter Action
@@ -111,7 +111,7 @@ Open Zava_Executive_Story.pptx. Improve the deck for Zoe: add speaker notes, mak
 ### PowerPoint Agent alternative
 
 ```prompt
-Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.md, Zava_Risk_Register.csv, and Zava_Meeting_Transcript.md. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
+Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.docx, Zava_Risk_Register.csv, and Zava_Meeting_Transcript.docx. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
 ```
 
 ### Presenter Action
@@ -125,7 +125,7 @@ Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show e
 ### Design the Order Desk agent
 
 ```prompt
-Design a Zava Order Desk Agent for Microsoft 365 Copilot. Use Zava_Agent_Builder_Brief.md as the foundation. Provide: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules, and an example response for a new rush order.
+Design a Zava Order Desk Agent for Microsoft 365 Copilot. Use Zava_Agent_Builder_Brief.docx as the foundation. Provide: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules, and an example response for a new rush order.
 ```
 
 ### Test the agent with a second order
@@ -189,7 +189,7 @@ Use the Teams Interpreter agent if available. Demonstrate how a German productio
 ### Presenter Action
 
 ```demo
-Only show Facilitator or Interpreter live if the tenant, Teams policy, license, and meeting type are ready. Otherwise use Zava_Meeting_Transcript.md as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
+Only show Facilitator or Interpreter live if the tenant, Teams policy, license, and meeting type are ready. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
 ```
 
 ## 10 - Ultimate Track: Visual Creator, Copilot Studio, and Foundry
@@ -286,4 +286,36 @@ Draft negotiation-ready redlines for the highest-risk clauses. Preserve the orig
 
 ```demo
 Use Legal Agent in Word if it is available in the tenant. If Legal Agent is not visible, use normal Copilot in Word for the open contract and Copilot Chat with all three legal files uploaded for the playbook comparison. Be explicit: this is legal operations acceleration and counsel review support, not final legal advice.
+```
+
+## 13 - Copilot Notebook Extension: Executive Decision Room
+
+### Create the Zava notebook
+
+```demo
+Open Microsoft 365 Copilot and create a new Copilot Notebook named "Zava Executive Decision Room". Use Zava_Copilot_Notebook_Setup.docx as the presenter checklist. Add the core Zava Word documents, Zava_Order_Analysis.xlsx, the finance close variance CSV, and the legal review documents as notebook references if the tenant experience supports them.
+```
+
+### Build the decision map
+
+```prompt
+Create an executive decision map for the Zava rush order. Connect operational feasibility, customer deadline, margin guardrails, SAP/TM1 finance close signals, legal contract risk, owners, and unresolved dependencies. Separate confirmed facts from assumptions and show what Zoe must decide today.
+```
+
+### Synthesize across operations, finance, and legal
+
+```prompt
+Using the notebook references, synthesize the strongest executive recommendation. Include: recommended decision, evidence, finance impact, legal risk, customer response language, owner actions, and what should not be promised until confirmed.
+```
+
+### Create the final COO briefing
+
+```prompt
+Draft the final COO briefing from this notebook. Format it as: Situation, Recommendation, Evidence, Finance Close Watchpoints, Legal Review Watchpoints, Decision Needed, Next 4 Hours. Keep it concise enough for a five-minute executive review.
+```
+
+### Presenter Action
+
+```demo
+Use this as the persistence and deep-thinking moment. Copilot Chat is good for one task; a Copilot Notebook is the reusable workspace where the same references, prompts, and decisions stay together. If Copilot Notebooks are not available in the tenant, use Copilot Pages as the backup working surface.
 ```
