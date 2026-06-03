@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Current version: v2.6 | 03.06.2026, 10:56 CET | Zava Top Microsoft 365 Copilot Demo | Added Microsoft Agent 365 control-plane demo -->
+<!-- Current version: v2.7 | 03.06.2026, 11:02 CET | Zava Top Microsoft 365 Copilot Demo | Added prominent file requirement icons for prompt cards -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -23,7 +23,7 @@
     .grid{display:grid;gap:14px;margin-top:20px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.card,.prompt-card{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;box-shadow:var(--cp-shadow);padding:18px}.card p{color:var(--cp-text-muted);line-height:1.45;margin-top:8px}[data-block="chat"]{border-left:4px solid var(--cp-chat)}[data-block="excel"]{border-left:4px solid var(--cp-excel)}[data-block="office"]{border-left:4px solid var(--cp-office)}[data-block="agent"]{border-left:4px solid var(--cp-agent)}[data-block="cowork"]{border-left:4px solid var(--cp-cowork)}
     .hero-strip{display:grid;gap:10px;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:24px}.stat{background:var(--cp-dark);border-radius:8px;color:var(--cp-surface);padding:18px}.stat strong{display:block;font-size:30px;letter-spacing:-.04em;line-height:1}.stat span{display:block;font-size:12px;font-weight:700;margin-top:6px;opacity:.78}.timing{display:grid;gap:8px;list-style:none;margin:20px 0 0;padding:0}.timing li{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:12px;grid-template-columns:90px minmax(0,1fr);padding:14px}.when{color:var(--cp-accent);font-weight:950}.what{font-weight:950}
     .prompt-card{margin-top:16px}.prompt-head{align-items:flex-start;display:flex;gap:12px;justify-content:space-between;margin-bottom:12px}.prompt-meta{color:var(--cp-text-muted);font-size:13px;line-height:1.45;margin-top:6px}.audience-line{background:var(--cp-accent-soft);border:1px solid var(--cp-border);border-radius:8px;font-size:16px;font-weight:850;line-height:1.35;margin-bottom:12px;padding:12px 14px}.prompt-card[data-block="chat"] .audience-line{background:var(--cp-chat-soft)}.prompt-card[data-block="excel"] .audience-line{background:var(--cp-excel-soft)}.prompt-card[data-block="office"] .audience-line{background:var(--cp-office-soft)}.prompt-card[data-block="agent"] .audience-line{background:var(--cp-agent-soft)}.prompt-card[data-block="cowork"] .audience-line{background:var(--cp-cowork-soft)}
-    pre{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:8px;color:var(--cp-text);font-family:Consolas,"Cascadia Code",monospace;font-size:13px;line-height:1.5;margin:0;overflow-x:auto;padding:14px;white-space:pre-wrap}.copy{background:var(--cp-accent);border:0;border-radius:8px;color:var(--cp-accent-fg);cursor:pointer;font-weight:950;padding:9px 12px}.copy:hover{background:var(--cp-accent-hover)}.file-tags{display:grid;gap:10px;margin-top:18px}.file-tag{align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:12px;grid-template-columns:54px minmax(0,1fr);padding:12px}.file-icon{border-radius:8px;color:var(--cp-accent-fg);font-size:11px;font-weight:950;padding:10px 6px;text-align:center;text-transform:uppercase}.file-icon.xlsx{background:var(--cp-excel)}.file-icon.docx{background:var(--cp-office)}.file-icon.pptx{background:var(--cp-cowork);color:var(--cp-text)}.file-icon.csv{background:var(--cp-chat)}.file-name{font-weight:950;overflow-wrap:anywhere}.file-dl{color:var(--cp-text-muted);font-size:13px;margin-top:2px} details{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;margin-top:18px;padding:16px} summary{cursor:pointer;font-weight:950}.source-line{color:var(--cp-text-muted);font-size:12.5px;margin-top:16px}
+    pre{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:8px;color:var(--cp-text);font-family:Consolas,"Cascadia Code",monospace;font-size:13px;line-height:1.5;margin:0;overflow-x:auto;padding:14px;white-space:pre-wrap}.copy{background:var(--cp-accent);border:0;border-radius:8px;color:var(--cp-accent-fg);cursor:pointer;font-weight:950;padding:9px 12px}.copy:hover{background:var(--cp-accent-hover)}.file-tags{display:grid;gap:10px;margin-top:18px}.file-tag{align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:12px;grid-template-columns:54px minmax(0,1fr);padding:12px}.file-icon{border-radius:8px;color:var(--cp-accent-fg);font-size:11px;font-weight:950;padding:10px 6px;text-align:center;text-transform:uppercase}.file-icon.xlsx{background:var(--cp-excel)}.file-icon.docx{background:var(--cp-office)}.file-icon.pptx{background:var(--cp-cowork);color:var(--cp-text)}.file-icon.csv{background:var(--cp-chat)}.file-name{font-weight:950;overflow-wrap:anywhere}.file-dl{color:var(--cp-text-muted);font-size:13px;margin-top:2px}.file-req{background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:8px;margin:0 0 12px;padding:12px}.file-req-title{color:var(--cp-accent);font-size:11px;font-weight:950;letter-spacing:.12em;margin-bottom:10px;text-transform:uppercase}.file-req-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}.file-req-item{align-items:center;background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;display:grid;gap:10px;grid-template-columns:46px minmax(0,1fr);min-height:64px;padding:9px}.file-docicon{background:var(--cp-link);border-radius:6px;color:#fff;display:grid;font-size:10px;font-weight:950;height:48px;letter-spacing:.04em;line-height:1;place-items:end center;padding:0 5px 7px;position:relative;text-transform:uppercase}.file-docicon::after{border-left:12px solid transparent;border-top:12px solid rgba(255,255,255,.75);content:"";position:absolute;right:0;top:0}.file-docicon.xlsx{background:var(--cp-excel)}.file-docicon.docx{background:var(--cp-office)}.file-docicon.pptx{background:var(--cp-cowork);color:var(--cp-text)}.file-docicon.csv{background:var(--cp-chat)}.file-req-name{font-size:13px;font-weight:950;line-height:1.2;overflow-wrap:anywhere}.file-req-path{color:var(--cp-text-muted);font-size:11.5px;line-height:1.25;margin-top:2px;overflow-wrap:anywhere} details{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:8px;margin-top:18px;padding:16px} summary{cursor:pointer;font-weight:950}.source-line{color:var(--cp-text-muted);font-size:12.5px;margin-top:16px}
     @media (max-width:920px){.shell{display:block} aside{height:auto;position:relative} main{padding:24px 18px 48px}.grid.two,.grid.four,.hero-strip,.timing li{grid-template-columns:1fr}}
   </style>
 </head>
@@ -31,7 +31,7 @@
   <div class="shell">
     <aside>
       <div class="brand-mark">Zava<span>Top M365 Copilot Demo</span></div>
-      <div class="version-badge"><strong>v2.6</strong> | 03.06.2026, 10:56 CET | English edition</div>
+      <div class="version-badge"><strong>v2.7</strong> | 03.06.2026, 11:02 CET | English edition</div>
       <nav>
         <a class="chat" href="#hero">Session at a glance</a><a class="cowork" href="#story">Executive story arc</a><a class="chat" href="#customer">Zava context</a><a class="chat" href="#feature-matrix">Learn-verified matrix</a><a class="agent" href="#license-map">Copilot license map</a><a class="cowork" href="#setup">Setup + one-liner</a><a class="cowork" href="#demo-files">Demo files & one-liner</a><a class="cowork" href="#timing">Timing</a>
         <div class="nav-section">Live demos</div>
@@ -84,6 +84,55 @@
       document.execCommand("copy");
       textarea.remove();
     }
+    const manualPromptFiles = {
+      "Boardroom brief": ["data/Zava_Rush_Order_Context.docx", "data/Zava_Email_Thread.docx", "data/Zava_Meeting_Transcript.docx", "data/Zava_Executive_Decision_Memo.docx"],
+      "Analyst agent prompt": ["Zava_Order_Analysis.xlsx", "data/Zava_Risk_Register.csv", "data/Zava_Pricing_Assumptions.csv"],
+      "Analyze the workbook": ["Zava_Order_Analysis.xlsx"],
+      "Formula and chart moment": ["Zava_Order_Analysis.xlsx"],
+      "Reply draft": ["data/Zava_Email_Thread.docx", "Zava_Order_Analysis.xlsx"],
+      "Improve the plan": ["Zava_Operations_Plan.docx"],
+      "Word Agent alternative": ["data/Zava_Rush_Order_Context.docx", "data/Zava_Email_Thread.docx", "data/Zava_Meeting_Transcript.docx", "data/Zava_Executive_Decision_Memo.docx", "Zava_Order_Analysis.xlsx"],
+      "Improve the deck": ["Zava_Executive_Story.pptx"],
+      "PowerPoint Agent alternative": ["Zava_Order_Analysis.xlsx", "data/Zava_Executive_Decision_Memo.docx", "data/Zava_Risk_Register.csv", "data/Zava_Meeting_Transcript.docx"],
+      "Build the agent from the demo flow": ["data/Zava_Agent_Builder_Brief.docx"],
+      "Agent test case": ["data/Zava_Order_Intake.csv"],
+      "Researcher market and supplier brief": ["data/Zava_Rush_Order_Context.docx", "data/Zava_Launch_Brief.docx", "data/Zava_Risk_Register.csv", "data/Zava_Inventory_Snapshot.csv"],
+      "Analyst deep scenario model": ["Zava_Order_Analysis.xlsx", "data/Zava_Inventory_Snapshot.csv", "data/Zava_Order_Intake.csv", "data/Zava_Risk_Register.csv"],
+      "Build the decision map": ["data/Zava_Copilot_Notebook_Setup.docx", "Zava_Order_Analysis.xlsx", "data/finance-close/SAP_TM1_Variance_Flat_Table.csv", "data/legal-review/Northwind_Property_Services_Agreement.docx"],
+      "Final COO briefing": ["data/Zava_Copilot_Notebook_Setup.docx", "Zava_Order_Analysis.xlsx", "data/finance-close/SAP_TM1_Variance_Flat_Table.csv", "data/legal-review/Northwind_Property_Services_Agreement.docx"],
+      "Top variance analysis": ["data/finance-close/SAP_TM1_Variance_Flat_Table.csv"],
+      "Close control scan": ["data/finance-close/SAP_TM1_Variance_Flat_Table.csv"],
+      "CFO close commentary": ["data/finance-close/SAP_TM1_Variance_Flat_Table.csv"],
+      "General Counsel summary": ["data/legal-review/Northwind_Property_Services_Agreement.docx"],
+      "Clause-level risk scan": ["data/legal-review/Northwind_Property_Services_Agreement.docx"],
+      "Playbook comparison and redlines": ["data/legal-review/Northwind_Property_Services_Agreement.docx", "data/legal-review/Contoso_Legal_Playbook_Service_Agreements.docx", "data/legal-review/Counterparty_Position_Memo.docx"]
+    };
+    function fileExt(file) { return (file.split(".").pop() || "file").toLowerCase(); }
+    function fileName(file) { return file.split(/[\\/]/).pop(); }
+    function renderFileRequirements() {
+      const filePattern = /(?:data\/[\w./-]+|[\w-]+)\.(docx|xlsx|csv|pptx)/gi;
+      document.querySelectorAll(".prompt-card").forEach((card) => {
+        const title = card.querySelector("h3")?.textContent?.trim() || "";
+        const text = card.textContent || "";
+        const files = [...(manualPromptFiles[title] || []), ...(text.match(filePattern) || [])];
+        const byName = new Map();
+        files.forEach((file) => {
+          const clean = file.replace(/^Use\s+/i, "");
+          const name = fileName(clean).toLowerCase();
+          if (!byName.has(name) || clean.includes("/")) byName.set(name, clean);
+        });
+        const unique = [...byName.values()];
+        if (!unique.length) return;
+        const existing = card.querySelector(".file-req");
+        if (existing) existing.remove();
+        const wrap = document.createElement("div");
+        wrap.className = "file-req";
+        wrap.innerHTML = `<div class="file-req-title">Files needed for this prompt</div><div class="file-req-grid">${unique.map((file) => `<div class="file-req-item"><div class="file-docicon ${fileExt(file)}">${fileExt(file)}</div><div><div class="file-req-name">${fileName(file)}</div><div class="file-req-path">${file}</div></div></div>`).join("")}</div>`;
+        const anchor = card.querySelector(".audience-line, pre");
+        if (anchor) card.insertBefore(wrap, anchor);
+      });
+    }
+    renderFileRequirements();
     document.querySelectorAll(".copy").forEach((button) => {
       button.addEventListener("click", async () => {
         const block = button.closest(".prompt-card, section").querySelector("pre");
