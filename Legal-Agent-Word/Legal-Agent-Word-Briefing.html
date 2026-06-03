@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legal Agent in Word Demo</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: var(--cp-link); }
+    .shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      border-right: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      overflow: auto;
+    }
+    main { max-width: 1120px; width: 100%; padding: 36px 40px 72px; }
+    .brand { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .version-badge { color: var(--cp-text-muted); font-size: .8rem; margin-bottom: 20px; }
+    nav { display: grid; gap: 8px; }
+    nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--cp-text);
+      border-left: 3px solid var(--cp-accent);
+      padding: 8px 10px;
+      border-radius: 0.625rem;
+      background: var(--cp-surface-soft);
+      font-size: .92rem;
+    }
+    .ctrl, .copy {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      border-radius: 0.625rem;
+      padding: 8px 12px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .ctrl { width: 100%; margin-top: 20px; }
+    section { padding: 28px 0; border-bottom: 1px solid var(--cp-border); }
+    h1 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; margin: 0 0 16px; letter-spacing: 0; }
+    h2 { font-size: 1.7rem; margin: 0 0 12px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; letter-spacing: 0; }
+    .subtitle { color: var(--cp-text-muted); max-width: 760px; font-size: 1.05rem; }
+    .eyebrow { color: var(--cp-accent); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; font-size: .78rem; }
+    .grid { display: grid; gap: 16px; margin-top: 18px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card, .prompt-card, .file-tag {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+    }
+    .prompt-card { border-left: 4px solid var(--cp-accent); margin-top: 16px; }
+    .prompt-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .prompt-meta, .muted { color: var(--cp-text-muted); font-size: .92rem; }
+    .audience-line { background: var(--cp-accent-soft); border-radius: 0.625rem; padding: 10px 12px; margin: 12px 0; font-weight: 600; }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 14px;
+      color: var(--cp-text);
+      margin: 0;
+    }
+    ul.timing { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+    .timing li { display: grid; grid-template-columns: 80px 1fr; gap: 16px; padding: 12px; border: 1px solid var(--cp-border); border-radius: 0.625rem; background: var(--cp-surface); }
+    .when { color: var(--cp-accent); font-weight: 700; }
+    .what { font-weight: 700; }
+    .file-tags { display: grid; gap: 12px; margin-top: 16px; }
+    .file-tag { display: grid; grid-template-columns: 82px 1fr; gap: 12px; align-items: center; }
+    .file-icon { background: var(--cp-accent-soft); color: var(--cp-accent); border: 1px solid var(--cp-border); border-radius: 0.625rem; text-align: center; padding: 10px 6px; font-weight: 800; }
+    .source-line { color: var(--cp-text-muted); font-size: .92rem; }
+    .note { border-left: 4px solid var(--cp-warning); background: var(--cp-surface); padding: 14px 16px; border-radius: 0.625rem; }
+    @media (max-width: 860px) {
+      .shell { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      main { padding: 24px 18px 56px; }
+      .two, .three { grid-template-columns: 1fr; }
+      .timing li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="brand">Legal Agent in Word</div>
+      <div class="version-badge"><strong>v1.0</strong> | Demo runbook | June 2026</div>
+      <nav>
+        <a href="#hero">Session at a glance</a>
+        <a href="#setup">Setup</a>
+        <a href="#files">Demo files</a>
+        <a href="#timing">Timing</a>
+        <a href="#legal-agent">Legal Agent path</a>
+        <a href="#playbook">Playbook review</a>
+        <a href="#redline">Redlining</a>
+        <a href="#backup">Backup path</a>
+        <a href="#sources">Sources</a>
+      </nav>
+      <button id="theme" class="ctrl" type="button">Toggle theme</button>
+    </aside>
+    <main>
+      <section id="hero">
+        <span class="eyebrow">Session at a glance</span>
+        <h1>Contract review inside Word</h1>
+        <p class="subtitle">A legal workflow demo for Microsoft 365 Copilot in Word: summarize a vendor agreement, inspect risk with citations, compare against a legal playbook, draft redlines, and fall back gracefully when the Legal Agent Frontier preview is not available.</p>
+        <div class="grid three">
+          <div class="card"><h3>Primary story</h3><p>General Counsel needs a fast review of a property services agreement before signature.</p></div>
+          <div class="card"><h3>Wow moment</h3><p>Legal Agent in Word can cite source language and propose tracked-change redlines.</p></div>
+          <div class="card"><h3>Backup</h3><p>Normal Copilot in Word or Copilot Chat can still summarize, compare files, and draft review notes.</p></div>
+        </div>
+      </section>
+
+      <section id="setup">
+        <span class="eyebrow">Setup</span>
+        <h2>Five minutes before the demo</h2>
+        <div class="note"><strong>Preview caveat:</strong> Legal Agent is Frontier/Preview. Use it live only when Word desktop, Frontier enrollment, license, region, Office build, and tenant model settings are ready.</div>
+        <div class="grid two">
+          <div class="card"><h3>Legal Agent path</h3><p>Open Word desktop, open the contract, open Copilot, select the plus button in the prompt box, then choose Legal Agent (Frontier).</p></div>
+          <div class="card"><h3>Fallback path</h3><p>Open the contract in Word and use normal Copilot, or upload all three Word files into Copilot Chat and run the backup prompts.</p></div>
+        </div>
+      </section>
+
+      <section id="files">
+        <span class="eyebrow">Demo files</span>
+        <h2>Word assets</h2>
+        <div class="file-tags">
+          <div class="file-tag"><div class="file-icon">docx</div><div><h3>Northwind_Property_Services_Agreement.docx</h3><p class="muted">Vendor agreement with intentional risks: subcontracting, indexation, data use, liability, termination, AI, audit.</p></div></div>
+          <div class="file-tag"><div class="file-icon">docx</div><div><h3>Contoso_Legal_Playbook_Service_Agreements.docx</h3><p class="muted">Internal playbook with preferred position, fallback, and escalation triggers.</p></div></div>
+          <div class="file-tag"><div class="file-icon">docx</div><div><h3>Counterparty_Position_Memo.docx</h3><p class="muted">Business context for Legal, Procurement, Finance, IT Security, and Asset Management.</p></div></div>
+        </div>
+      </section>
+
+      <section id="timing">
+        <span class="eyebrow">Timing</span>
+        <h2>20-minute live run</h2>
+        <ul class="timing">
+          <li><span class="when">00:00</span><span><span class="what">Frame the deal</span><br><span class="muted">GC needs signature recommendation before the service start date.</span></span></li>
+          <li><span class="when">03:00</span><span><span class="what">Summarize and cite</span><br><span class="muted">Contract summary, risks, and clickable source citations.</span></span></li>
+          <li><span class="when">08:00</span><span><span class="what">Playbook compare</span><br><span class="muted">Current clause vs Contoso preferred position.</span></span></li>
+          <li><span class="when">13:00</span><span><span class="what">Redline</span><br><span class="muted">Draft targeted changes and comments for counsel review.</span></span></li>
+          <li><span class="when">18:00</span><span><span class="what">Close</span><br><span class="muted">One-page recommendation and stakeholder prep.</span></span></li>
+        </ul>
+      </section>
+
+      <section id="legal-agent">
+        <span class="eyebrow">Live demo</span>
+        <h2>Contract understanding</h2>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Executive summary</h3><p class="prompt-meta">Run in Legal Agent or normal Copilot in Word.</p></div><button class="copy" type="button">Copy</button></div>
+          <div class="audience-line">The point: Word becomes the review surface, not a place where legal work is pasted after the fact.</div>
+          <pre>Summarize this property services agreement for a General Counsel. Focus on commercial structure, high-risk clauses, negotiation pressure points, and what must be escalated before signature. Keep it to 10 bullets and cite the clause numbers you rely on.</pre>
+        </article>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Risk scan</h3><p class="prompt-meta">Ask for clause-level risk and negotiation posture.</p></div><button class="copy" type="button">Copy</button></div>
+          <div class="audience-line">Click citations if Legal Agent returns them. That is the trust moment.</div>
+          <pre>Review the agreement for legal and commercial risk. Prioritize subcontracting, service credits, indexation, data protection, confidentiality, audit rights, liability, termination, governing law, and AI use. For each issue, explain the risk, cite the source clause, and suggest a negotiation position.</pre>
+        </article>
+      </section>
+
+      <section id="playbook">
+        <span class="eyebrow">Live demo</span>
+        <h2>Review against playbook</h2>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Playbook comparison</h3><p class="prompt-meta">Use Copilot Chat with all files if the Legal Agent cannot access the attached playbook.</p></div><button class="copy" type="button">Copy</button></div>
+          <div class="audience-line">The story moves from document Q&A to controlled legal process.</div>
+          <pre>Compare the agreement against Contoso_Legal_Playbook_Service_Agreements.docx. Identify every clause that does not match the preferred position or fallback. Create a table with: topic, current contract position, playbook position, risk level, suggested redline, and whether legal escalation is required.</pre>
+        </article>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Business overlay</h3><p class="prompt-meta">Bring in the counterparty memo to separate legal must-fix from business trade-off.</p></div><button class="copy" type="button">Copy</button></div>
+          <pre>Use Counterparty_Position_Memo.docx as negotiation context. Which contract issues are legal must-fix items, which are business trade-offs, and which can be accepted with a comment or fallback language? Give me a recommended negotiation sequence.</pre>
+        </article>
+      </section>
+
+      <section id="redline">
+        <span class="eyebrow">Live demo</span>
+        <h2>Redlines and comments</h2>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Targeted redlines</h3><p class="prompt-meta">Legal Agent can propose tracked changes; normal Copilot can draft clause language.</p></div><button class="copy" type="button">Copy</button></div>
+          <div class="audience-line">Keep the reviewer in control: propose, review, accept.</div>
+          <pre>Draft negotiation-ready redlines for the highest-risk clauses. Preserve the original commercial intent where possible, but align with Contoso's playbook. Focus on: subcontractor approval, data processing purpose limitation, confidentiality survival, audit rights, liability cap carve-outs, termination fee, and AI tool controls.</pre>
+        </article>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>Counsel comments</h3><p class="prompt-meta">Use comments to create a review trail for Legal and business owners.</p></div><button class="copy" type="button">Copy</button></div>
+          <pre>Insert or propose short legal review comments for the clauses that need human counsel approval. Each comment should state the issue, why it matters, and the decision needed from Legal or the business owner.</pre>
+        </article>
+      </section>
+
+      <section id="backup">
+        <span class="eyebrow">Backup</span>
+        <h2>When Frontier is not available</h2>
+        <div class="grid two">
+          <div class="card"><h3>Word Copilot</h3><p>Use the open contract for summary, risk scan, and draft replacement language. Manually paste one edit with Track Changes enabled.</p></div>
+          <div class="card"><h3>Copilot Chat</h3><p>Upload contract, playbook, and memo together. Ask for the review matrix and signature recommendation.</p></div>
+        </div>
+        <article class="prompt-card">
+          <div class="prompt-head"><div><h3>All-file fallback</h3><p class="prompt-meta">Works without the Legal Agent.</p></div><button class="copy" type="button">Copy</button></div>
+          <pre>Use the contract, playbook, and position memo I uploaded. Act as a legal operations assistant preparing counsel for review. Do not provide final legal advice. Produce a contract review matrix with citations, risks, proposed language, and owner decisions.</pre>
+        </article>
+      </section>
+
+      <section id="sources">
+        <span class="eyebrow">Sources</span>
+        <h2>Microsoft references</h2>
+        <p class="source-line">Legal Agent Frontier support: <a href="https://support.microsoft.com/en-us/office/get-started-with-the-legal-agent-frontier-c72cc686-552b-45d4-9e46-d731f9d57052">Get started with the Legal Agent (Frontier)</a>.</p>
+        <p class="source-line">Legal use-case training: <a href="https://learn.microsoft.com/training/modules/empower-workforce-microsoft-365-copilot-legal-use-case/">Empower your workforce with Microsoft 365 Copilot: Legal Use Case</a>.</p>
+        <p class="source-line">Microsoft 365 Copilot overview: <a href="https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview">Microsoft 365 Copilot overview</a>.</p>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.getElementById("theme").addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+    });
+    document.querySelectorAll(".copy").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const block = button.closest(".prompt-card, section").querySelector("pre");
+        if (!block) return;
+        await navigator.clipboard.writeText(block.textContent);
+        const original = button.textContent;
+        button.textContent = "Copied";
+        setTimeout(() => { button.textContent = original; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>

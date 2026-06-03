@@ -1,0 +1,26 @@
+﻿SAP_GL_Account,SAP_Account_Name,Account_Group,Statement,Account_Type,TM1_Account,Variance_Direction
+400100,Rental income,Revenue,Income Statement,Revenue,A400_100,Higher is favorable
+400200,Service charge income,Revenue,Income Statement,Revenue,A400_200,Higher is favorable
+401000,Parking income,Revenue,Income Statement,Revenue,A401_000,Higher is favorable
+410000,Other operating income,Revenue,Income Statement,Revenue,A410_000,Higher is favorable
+500100,Property management fees,COGS,Income Statement,Expense,A500_100,Lower is favorable
+510000,Repairs and maintenance,OpEx,Income Statement,Expense,A510_000,Lower is favorable
+511000,Utilities electricity,OpEx,Income Statement,Expense,A511_000,Lower is favorable
+511100,Utilities heating,OpEx,Income Statement,Expense,A511_100,Lower is favorable
+512000,Security services,OpEx,Income Statement,Expense,A512_000,Lower is favorable
+513000,Cleaning services,OpEx,Income Statement,Expense,A513_000,Lower is favorable
+520000,Insurance,OpEx,Income Statement,Expense,A520_000,Lower is favorable
+530000,Property tax,OpEx,Income Statement,Expense,A530_000,Lower is favorable
+540000,Professional services,OpEx,Income Statement,Expense,A540_000,Lower is favorable
+550000,IT software and licenses,OpEx,Income Statement,Expense,A550_000,Lower is favorable
+560000,Travel and meetings,OpEx,Income Statement,Expense,A560_000,Lower is favorable
+570000,Marketing leasing campaigns,OpEx,Income Statement,Expense,A570_000,Lower is favorable
+580000,Bad debt expense,OpEx,Income Statement,Expense,A580_000,Lower is favorable
+590000,Other operating expense,OpEx,Income Statement,Expense,A590_000,Lower is favorable
+600000,Depreciation buildings,Depreciation,Income Statement,Expense,A600_000,Lower is favorable
+610000,Amortization lease incentives,Depreciation,Income Statement,Expense,A610_000,Lower is favorable
+700000,Interest expense,Finance,Income Statement,Expense,A700_000,Lower is favorable
+710000,FX gain loss,Finance,Income Statement,Mixed,A710_FX_GL,Context dependent
+800000,Income tax expense,Tax,Income Statement,Expense,A800_000,Lower is favorable
+150000,Capex projects WIP,Capex,Balance Sheet,Asset,A150_000,Within approved capex envelope
+151000,Tenant improvements,Capex,Balance Sheet,Asset,A151_000,Within approved capex envelope
