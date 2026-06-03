@@ -238,22 +238,22 @@ Open Microsoft 365 Copilot Chat, choose Agent Builder or New agent, and use the 
 Use data/agent-365/Zava_Order_Intake.csv. Test the Zava Order Desk Agent with order ZO-3102. Summarize the request, identify the top three checks, apply the guardrails, and return a recommendation with escalation owner and next action.
 ```
 
-### Show Agent Builder knowledge sources
+### Show org-wide connector knowledge for Agent Builder
 
 ```demo
-As Preston, open Microsoft 365 Copilot > Agent Builder > New agent > Skip to configure. In Knowledge, click Enter URL and add an approved public Zava/supplier URL. Then point out where admin-enabled Microsoft 365 Copilot connectors appear as selectable knowledge sources when the tenant admin has configured them. Do not ask Copilot to create a presentation or explanation; the proof is the Knowledge UI and the agent test.
+As MOD Administrator, open Microsoft 365 admin center > Settings > Search & intelligence > Data sources. Show the Copilot connector pattern: connector deployed, schema registered, items indexed, admin consent granted, and connector results enabled where appropriate. If the live connector is not available, open data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv and show the Copilot connector rows. Then switch to Preston: Microsoft 365 Copilot > Agent Builder > New agent > Configure > Knowledge. Show where an admin-enabled Microsoft 365 Copilot connector appears as a selectable knowledge source. The point: Agent Builder can reuse admin-provided external knowledge for the organization.
 ```
 
-### Show Copilot Studio MCP tool setup
+### Show MCP/API tools in Copilot Studio
 
 ```demo
-As MOD Administrator, open Copilot Studio > the Zava Fulfillment Escalation Agent > Tools > Add a tool > Model Context Protocol. Use data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json only as the non-secret server registration reference. Show the tool setup screen and the required admin/governance path. Do not claim BYO MCP is directly usable inside Agent Builder.
+As MOD Administrator, open Copilot Studio > Zava Fulfillment Escalation Agent > Tools > Add a tool > Model Context Protocol. Use data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json only as the non-secret server registration reference: server name, streamable endpoint, auth pattern, and read-only tools such as get_order_risk_signal and search_supplier_signals. Explain the boundary clearly: API-like work, actions, and MCP belong in Copilot Studio, not directly in Agent Builder.
 ```
 
 ### Show Agent 365 tool governance
 
 ```demo
-As MOD Administrator, open Microsoft 365 admin center > Agents > Tools > Requests if available. Show approve/reject/block/unblock as the governance function for tools before broad use. If there is no pending request, use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv as the presenter checklist, not as a Copilot prompt.
+As MOD Administrator, open Microsoft 365 admin center > Agents > Tools. If Requests is visible, show the requested MCP/tool entry and the approve, reject, block, and unblock controls. If there is no pending request, use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv and Agent365_Agent_Review_Register.csv as backup evidence. Explain the review questions: owner, data access, agent scope, authentication, tenant-wide consent, monitoring, and rollback path.
 ```
 
 ### Design the Copilot Studio production agent
