@@ -72,6 +72,23 @@ Note: The PromptPrompter script and this README remain Markdown because they are
 
 Status: June 3, 2026. Verified with Microsoft Learn MCP Search and Fetch. Scenario labels use visible product, feature, or agent names; Work IQ is grounding context, not a live scenario title.
 
+## Copilot License and Frontier Map
+
+Use the HTML runbook tab **Copilot license map** for the presenter-ready view. Source of truth: Microsoft 365 Copilot Service Description for generally available / worldwide features, Copilot Chat FAQ for baseline Chat capabilities, and Microsoft Frontier / Agent 365 Learn pages for preview-gated items.
+
+Key rule: call a feature **generally available** only when it is listed as available in the Microsoft 365 Copilot Service Description or release notes. Call a feature **Frontier / preview** when it requires Frontier enrollment, appears with `(Frontier)` in the Agent Store, depends on admin opt-in, Anthropic or other model approval, or is absent from the core Service Description.
+
+Quick map as of June 3, 2026:
+
+| Bucket | Examples | Presenter stance |
+| --- | --- | --- |
+| Microsoft 365 subscription baseline | Copilot Chat, web grounding, Pages, file upload, image generation, previous chats, agents | Included baseline; organizational grounding needs upload/open context/pay-as-you-go agent. |
+| Microsoft 365 Copilot license | Work/web chat, Microsoft Graph grounding, Copilot app, Search, Notebooks, Office app Copilots, built-in/custom agents | Main customer-facing licensing story. |
+| Generally available app experiences | Teams, Outlook, Word, Excel, PowerPoint, OneNote, Loop, Clipchamp, Whiteboard, OneDrive, SharePoint | Check government-cloud caveats before promising. |
+| Generally available extensibility | SharePoint agents, declarative agents, Copilot connectors, Power Platform connectors, Purview, Viva Insights | Safe to position; production automation may need Copilot Studio or governance. |
+| First-party Microsoft agents | Researcher and Analyst | GA / Microsoft-installed for licensed users; not available in GCC, GCCH, or DoD. Researcher GA release note: July 22, 2025. |
+| Frontier / preview | Agent 365 agents with own identity, Shadow AI, Frontier agents, AI-enabled Cloud PCs, Legal Agent in Word when visible only through Frontier | Tenant/admin/user gated; always prepare Copilot Chat or Office Copilot fallback. |
+
 | Feature | Current capability | Limits and requirements | Demo implication | Source |
 | --- | --- | --- | --- | --- |
 | Copilot Chat and file upload | Secure AI chat with web grounding, file upload, Copilot Pages, image generation, and agents. | Without a Microsoft 365 Copilot add-on license, Copilot Chat is not automatically grounded in Microsoft Graph data. Organizational context must be uploaded, opened in supported apps, or provided through an agent. | Upload or reference the Zava files explicitly. | https://learn.microsoft.com/copilot/overview |
