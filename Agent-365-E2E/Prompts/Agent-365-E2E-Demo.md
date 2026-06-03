@@ -48,10 +48,10 @@ Create an admin review package for the Zava Fulfillment Escalation Agent. Includ
 Open Microsoft 365 admin center. Go to Agents > All agents > Requests. Select the requested Copilot Studio agent if available. Review Data & tools, owner, capabilities, sources, actions, and requested publish scope. Do not publish broadly in a live customer demo unless the tenant is prepared.
 ```
 
-### Create the approval talk track
+### Show the approval fields
 
-```prompt
-Using Agent365_Agent_Review_Register.csv, create a five-minute admin approval talk track for the Zava Fulfillment Escalation Agent. Explain what the admin checks before publishing: owner, data sources, connectors/actions, environment, target users, risk, mitigations, and publish/reject decision.
+```demo
+Open Microsoft 365 admin center > Agents > All agents > Requests. Review owner, data sources, connectors/actions, environment, target users, risk, mitigations, and publish/reject decision. If no pending request exists, open Agent365_Agent_Review_Register.csv as backup evidence and show the same fields.
 ```
 
 ## 4 - Microsoft Agent 365: Registry and Inventory
@@ -62,7 +62,7 @@ Using Agent365_Agent_Review_Register.csv, create a five-minute admin approval ta
 Open Microsoft 365 admin center and go to Agents > Overview or Agents > All agents / Agent registry. Show that Agent 365 is the control plane after agents are created. Look for agent inventory, owner, publisher, platform, environment, connectors/tools, status, and governance gaps.
 ```
 
-### Explain the registry
+### Show the registry fields
 
 ```prompt
 Use Agent365_Agent_Review_Register.csv. Explain how Microsoft Agent 365 helps the AI admin observe the Zava Order Desk Agent and Zava Fulfillment Escalation Agent. Structure the answer as: inventory, ownership, platform, environment, connectors/actions, risk signals, governance actions, and what would be unsafe without this registry.
@@ -76,22 +76,22 @@ Use Agent365_Agent_Review_Register.csv. Explain how Microsoft Agent 365 helps th
 In Microsoft 365 Copilot, open All agents and select Agent activity if the preview is visible. Show status/timing, inputs/outputs, actions taken, and results. Say clearly that this activity view is preview, read-only, user-scoped, and retained for 30 days.
 ```
 
-### Telemetry explanation
+### Show activity fields
 
-```prompt
-Create a presenter explanation for Agent 365 observability. Explain that Copilot Studio agents automatically appear in the Agent 365 registry and send telemetry for agent invocations and tool/connector invocations without manual SDK instrumentation. Also explain the preview limitations of the all-agents activity view.
+```demo
+Open Microsoft 365 Copilot > All agents > Agent activity if the preview is visible. Show status, timing, inputs/outputs, actions taken, and results. If the view is not available, state the tenant limitation and continue with the registry and governance controls.
 ```
 
 ## 6 - Microsoft Agent 365: Govern and Secure
 
 ### Governance close
 
-```prompt
-Create the executive close for the Agent 365 E2E demo. Explain how the organization moves from agent experimentation to managed agents using Agent 365: observe, govern, secure. Include publish/reject, assign, block, reassign, delete, ownerless-agent review, Purview audit/DLP, Defender threat detection, and Entra identity/access positioning.
+```demo
+Show Agent 365 governance controls where available: publish/reject, assign, block, reassign, delete, ownerless-agent review, Purview audit/DLP, Defender threat detection, and Entra identity/access positioning. Do not ask Copilot to write the close; close verbally from the controls on screen.
 ```
 
 ### Presenter Action
 
 ```demo
-Show governance actions only as a review, not by clicking destructive actions. If Agent 365 is not enabled in the tenant, use the HTML feature matrix and Agent365_Agent_Review_Register.csv as the backup talk track.
+Show governance actions only as a review, not by clicking destructive actions. If Agent 365 is not enabled in the tenant, use the HTML feature matrix and Agent365_Agent_Review_Register.csv as backup evidence.
 ```

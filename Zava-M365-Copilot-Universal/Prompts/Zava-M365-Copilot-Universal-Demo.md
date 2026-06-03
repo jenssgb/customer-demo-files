@@ -238,22 +238,22 @@ Open Microsoft 365 Copilot Chat, choose Agent Builder or New agent, and use the 
 Use data/agent-365/Zava_Order_Intake.csv. Test the Zava Order Desk Agent with order ZO-3102. Summarize the request, identify the top three checks, apply the guardrails, and return a recommendation with escalation owner and next action.
 ```
 
-### Extend Agent Builder with public knowledge and Copilot Connectors
-
-```prompt
-Use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv. Design a Zava Supplier Signal Scout for Agent Builder. Create the exact Agent Builder fields: name, description, instructions, knowledge sources, capabilities, starter prompts, and test prompt. Show two knowledge lanes: public website URLs that work immediately, and a Microsoft 365 Copilot connector such as a GitHub connector after the admin has enabled it in the tenant. Be explicit that Agent Builder uses connectors as knowledge, not as arbitrary action tools.
-```
-
-### Presenter Action
+### Show Agent Builder knowledge sources
 
 ```demo
-Open Agent Builder > New agent > Skip to configure. In Knowledge, show Enter URL for public websites and explain that admin-enabled Microsoft 365 Copilot connectors can also appear as knowledge sources. Use public websites as the live path; use the Copilot connector lane as the admin-enabled enterprise path. Do not claim that BYO MCP servers are directly usable in Agent Builder.
+As Preston, open Microsoft 365 Copilot > Agent Builder > New agent > Skip to configure. In Knowledge, click Enter URL and add an approved public Zava/supplier URL. Then point out where admin-enabled Microsoft 365 Copilot connectors appear as selectable knowledge sources when the tenant admin has configured them. Do not ask Copilot to create a presentation or explanation; the proof is the Knowledge UI and the agent test.
 ```
 
-### Plan the Copilot Studio MCP extension
+### Show Copilot Studio MCP tool setup
 
-```prompt
-Use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv and data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json. Create a two-minute presenter explanation for how Zava would expose real-time order-risk signals through an MCP server. Include developer registration, Agent 365 Tools request review, admin approve/reject/block controls, Copilot Studio > Tools > Add a tool > Model Context Protocol, and the limitation that BYO MCP preview is supported for Copilot Studio but not currently for Microsoft 365 Declarative Agents / Agent Builder.
+```demo
+As MOD Administrator, open Copilot Studio > the Zava Fulfillment Escalation Agent > Tools > Add a tool > Model Context Protocol. Use data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json only as the non-secret server registration reference. Show the tool setup screen and the required admin/governance path. Do not claim BYO MCP is directly usable inside Agent Builder.
+```
+
+### Show Agent 365 tool governance
+
+```demo
+As MOD Administrator, open Microsoft 365 admin center > Agents > Tools > Requests if available. Show approve/reject/block/unblock as the governance function for tools before broad use. If there is no pending request, use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv as the presenter checklist, not as a Copilot prompt.
 ```
 
 ### Design the Copilot Studio production agent
@@ -292,22 +292,22 @@ Use data/agent-365/Agent365_Agent_Review_Register.csv. Explain how Microsoft Age
 Use data/agent-365/Agent365_vs_PowerPlatform_Governance.csv. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and Zava Order Desk Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
 ```
 
-### Explain telemetry and activity
+### Show telemetry and activity
 
-```prompt
-Create a presenter explanation for Agent 365 observability. Explain that Copilot Studio agents automatically appear in the Agent 365 registry and send telemetry for agent invocations and tool/connector invocations without manual SDK instrumentation. Also explain the preview limitations of the all-agents activity view.
+```demo
+Open Microsoft 365 Copilot > All agents > Agent activity if the preview is visible. Show status, timing, inputs/outputs, actions taken, and results. If the view is not available, state the tenant limitation and continue with the registry and governance controls.
 ```
 
 ### Executive governance close
 
-```prompt
-Create the executive close for the Zava Agent 365 E2E demo. Explain how the organization moves from agent experimentation to managed agents using Agent 365: observe, govern, secure. Include publish/reject, assign, block, reassign, delete, ownerless-agent review, Purview audit/DLP, Defender threat detection, and Entra identity/access positioning.
+```demo
+Show Agent 365 governance controls where available: publish/reject, assign, block, reassign, delete, ownerless-agent review, Purview audit/DLP, Defender threat detection, and Entra identity/access positioning. Do not ask Copilot to write the close; close verbally from the controls on screen.
 ```
 
 ### Presenter Action
 
 ```demo
-If Agent 365 is visible, show All agents, agent details, registry fields, activity or usage, and governance actions such as block, reassign, publish/reject, or delete where available. If the tenant does not expose Agent 365 yet, use the Learn-verified matrix and data/agent-365/Agent365_Agent_Review_Register.csv as the backup talk track. Do not click destructive actions live.
+If Agent 365 is visible, show All agents, agent details, registry fields, activity or usage, and governance actions such as block, reassign, publish/reject, or delete where available. If the tenant does not expose Agent 365 yet, use the Learn-verified matrix and data/agent-365/Agent365_Agent_Review_Register.csv as backup evidence. Do not click destructive actions live.
 ```
 
 ## 12 - Microsoft 365 Copilot Notebooks Extension: Executive Decision Room

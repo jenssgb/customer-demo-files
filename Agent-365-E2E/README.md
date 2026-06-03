@@ -41,7 +41,7 @@ Show what is currently demoable across:
 | `data/Agent365_Governance_Checklist.docx` | Admin and presenter checklist for Agent 365 observe/govern/secure |
 | `data/Zava_Rush_Order_Context.docx` | Business context for the Zava order scenario |
 | `data/Zava_Order_Intake.csv` | Test orders for the Agent Builder agent |
-| `data/Agent365_Agent_Review_Register.csv` | Mock governance register for admin review and backup talk track |
+| `data/Agent365_Agent_Review_Register.csv` | Mock governance register for admin review and backup evidence |
 | `Deploy-Agent365-Demo-Content.ps1` | CDX OneDrive/SharePoint upload script |
 
 ## VM One-Liner
