@@ -1,5 +1,5 @@
 param(
-    [string]$OneDriveUrl = "https://m365cpi98544940-my.sharepoint.com/personal/leilag_m365cpi98544940_onmicrosoft_com",
+    [string]$OneDriveUrl = "https://m365cpi98544940-my.sharepoint.com/personal/prestonm_m365cpi98544940_onmicrosoft_com",
     [string]$TargetFolder = "Documents/Zava-M365-Copilot-Universal",
     [switch]$OpenBriefing
 )

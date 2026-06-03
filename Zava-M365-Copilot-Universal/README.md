@@ -156,16 +156,29 @@ The public demo repository contains the `Zava-M365-Copilot-Universal/` folder. T
 $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP\zava";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri "$d\ZAVA-Demo",$t -r -fo -ea 0;Expand-Archive $z $t -Force;mv "$t\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,$t -r -fo;Start-Process msedge "$d\ZAVA-Demo\Zava-M365-Copilot-Universal-Briefing.html";ii "$d\ZAVA-Demo"
 ```
 
+## Demo Identity Model
+
+| Role | User | UPN | Use in this demo |
+|------|------|-----|------------------|
+| Admin / Maker | MOD Administrator | `admin@M365CPI98544940.onmicrosoft.com` | Administrative settings, Copilot Studio, Power Platform, Agent 365, connector and MCP governance |
+| Primary ZAVA demo user | Preston Morales | `PrestonM@M365CPI98544940.onmicrosoft.com` | End-to-end ZAVA business flow with full Microsoft 365 Copilot license |
+| Copilot Chat baseline | Selma Nyberg | `SelmaN@M365CPI98544940.onmicrosoft.com` | Copilot Chat scenario without full Microsoft 365 Copilot license |
+| Teams meeting simulator | Leila Goncalves | `LeilaG@M365CPI98544940.onmicrosoft.com` | Starts the Teams meeting with Facilitator/Interpreter when needed; meeting voice and transcript can come from the simulator |
+
 ## Presenter Setup
 
-1. Copy the demo files to the desktop with the one-liner.
-2. Place the `ZAVA-Demo` folder in OneDrive or SharePoint, or upload individual files directly in Copilot Chat.
-3. Open Microsoft 365 Copilot Chat: https://m365copilot.com
-4. Open `Zava_Order_Analysis.xlsx` in Excel for web or desktop.
-5. Use the email thread or reply prompt for the Outlook section.
-6. Open the Word and PowerPoint seed files for Office Copilot or Word, Excel, and PowerPoint Agents.
-7. For the Notebook module, create a Microsoft 365 Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
-8. For the Agent 365 E2E module, keep `data/agent-365/` ready for Agent Builder, Copilot Studio, requested-agent review, registry, and governance prompts.
+1. Sign in to the main demo VM as Preston Morales (`PrestonM@M365CPI98544940.onmicrosoft.com`) for the full ZAVA end-to-end flow.
+2. Keep MOD Administrator (`admin@M365CPI98544940.onmicrosoft.com`) separate for admin settings, Copilot Studio, Agent 365, connector, and MCP governance.
+3. Use Selma Nyberg (`SelmaN@M365CPI98544940.onmicrosoft.com`) only for the Copilot Chat baseline without a full Copilot license.
+4. Use Leila Goncalves (`LeilaG@M365CPI98544940.onmicrosoft.com`) only when a Teams meeting, Facilitator, Interpreter, transcript, or meeting simulator is required.
+5. Copy the demo files to Preston's desktop with the one-liner.
+6. Place the `ZAVA-Demo` folder in Preston's OneDrive or SharePoint, or upload individual files directly in Copilot Chat.
+7. Open Microsoft 365 Copilot Chat: https://m365copilot.com
+8. Open `Zava_Order_Analysis.xlsx` in Excel for web or desktop.
+9. Use the email thread or reply prompt for the Outlook section.
+10. Open the Word and PowerPoint seed files for Office Copilot or Word, Excel, and PowerPoint Agents.
+11. For the Notebook module, create a Microsoft 365 Copilot Notebook named `Zava Executive Decision Room` and use `data/Zava_Copilot_Notebook_Setup.docx` as the source checklist.
+12. For the Agent 365 E2E module, keep `data/agent-365/` ready for Agent Builder, Copilot Studio, requested-agent review, registry, and governance prompts.
 
 ## Demo Arc
 

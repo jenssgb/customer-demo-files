@@ -11,7 +11,7 @@ You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.docx, Zava_Email_
 ### Presenter Action
 
 ```demo
-Open Microsoft 365 Copilot Chat and upload the files or reference them from OneDrive. Emphasize that Copilot turns scattered context into a decision-ready situation brief.
+Sign in as Preston Morales for the main ZAVA flow. Open Microsoft 365 Copilot Chat and upload the files or reference them from Preston's OneDrive. Emphasize that Copilot turns scattered context into a decision-ready situation brief.
 ```
 
 ### Structure the Copilot Page
@@ -189,7 +189,7 @@ Use the Teams Interpreter agent if available. Demonstrate how a German productio
 ### Presenter Action
 
 ```demo
-Only show Facilitator or Interpreter live if the tenant, Teams policy, license, and meeting type are ready. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
+Use Leila only to start the Teams meeting with Facilitator/Interpreter when needed; the meeting voice and transcript can come from the simulator. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
 ```
 
 ## 10 - Visual Creator Agent, Copilot Studio, and Azure AI Foundry
