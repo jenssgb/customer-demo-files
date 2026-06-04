@@ -204,30 +204,28 @@ Use the Teams Interpreter agent if available. Demonstrate how a German productio
 Use Leila only to start the Teams meeting with Facilitator/Interpreter when needed; the meeting voice and transcript can come from the simulator. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
 ```
 
-## 10 - Visual Creator Agent, Copilot Studio, and Azure AI Foundry
+## 10 - Agent platform ladder: Builder, Copilot Studio, Foundry (positioning)
 
-### Visual Creator launch concept
+### Place each build tool on the ladder
 
-```prompt
-Use Visual Creator if available. Create a premium concept visual for the Zava smart launch shirt campaign. Style: modern athletic retail, executive-safe, clean product focus, no fake logos, no unrealistic claims. Provide three concept directions and the best prompt to generate the final visual.
+```demo
+This is positioning, not a live build. Make the relationship explicit so the audience stops seeing "random agents". There is one ladder with three build tools and one governance dome:
+1. Agent Builder (declarative) - inside Microsoft 365 Copilot, fields + knowledge, no actions. You built this live in demo 7.
+2. Copilot Studio (low-code) - production path with real tools, actions, approvals, MCP, channels, admin review. You built this live in demo 10/Copilot Studio.
+3. Azure AI Foundry (pro-code) - for AI engineers who need custom orchestration, evaluation, monitoring, and rollback. Not built live; position it as the engineering path.
+Then the dome: whatever tool built the agent, it gets a Microsoft Entra Agent ID and shows up in Microsoft Agent 365, where IT observes, governs, and secures it. That is why we build first and govern second.
 ```
 
-### Copilot Studio escalation path
+### Optional: Foundry pro-code framing for AI-engineering audiences
 
-```prompt
-Transform the Zava Order Desk Agent into a Copilot Studio production concept. Include triggers, knowledge sources, actions, approval steps, human-in-the-loop controls, analytics, environment governance, and the first three systems it should integrate with.
-```
-
-### Foundry pro-code extension path
-
-```prompt
-Design a pro-code Zava Fulfillment Sentinel in Microsoft Foundry. It should ingest order events, retrieve policy and inventory context, evaluate risk, propose a recommendation, and create an auditable decision record. Include evaluation criteria, monitoring signals, and rollback or human review rules.
+```demo
+Only if the audience is technical. Describe a pro-code "Zava Fulfillment Sentinel" in Azure AI Foundry: ingest order events, retrieve policy and inventory context, evaluate risk, propose a recommendation, write an auditable decision record - with evaluation criteria, monitoring signals, and human-review/rollback rules. Stay verbal; do not try to build it live. The point is that Agent 365 governs even this pro-code agent.
 ```
 
 ### Presenter Action
 
 ```demo
-Use this as the executive platform close. Agent Builder is the fastest path to a reusable agent; Copilot Studio is the low-code production path; Foundry is the pro-code path for governed, evaluated, monitored agents.
+Use this as the executive platform close, not a feature dump. One sentence per stage: Agent Builder = fastest reusable agent (demo 7); Copilot Studio = low-code production with tools and admin review (demo 10); Foundry = pro-code engineering path; Agent 365 = the control plane over all three (demo 8/11). Do NOT mix in Visual Creator or other prebuilt agents here - they are a separate creative track and break the platform narrative.
 ```
 
 ## 11 - Microsoft Agent 365 E2E: Agent Builder, Copilot Studio, Control Plane
