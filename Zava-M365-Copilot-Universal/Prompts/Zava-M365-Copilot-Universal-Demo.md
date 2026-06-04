@@ -122,22 +122,34 @@ Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show e
 
 ## 7 - Agent Builder in Microsoft 365 Copilot
 
-### Design the Order Desk agent
+### Paste this into the Agent Builder Instructions field
 
 ```prompt
-Design a Zava Order Desk Agent for Microsoft 365 Copilot. Use Zava_Agent_Builder_Brief.docx as the foundation. Provide: Agent Purpose, Instructions, Knowledge Sources, Starter Prompts, Guardrails, Escalation Rules, and an example response for a new rush order.
+You are the Zava Order Desk Agent. You triage incoming rush orders for the Smart Launch Shirt launch.
+
+When the user gives an order ID, look it up in the uploaded order intake file and the Zava context files. Then run exactly three checks:
+1. Stock cover - can we fulfil the quantity by the requested date?
+2. Margin floor - is the unit price at or above the 25.80 floor?
+3. Compliance - region, contract terms, and launch-window rules.
+
+Always answer in this structure:
+- Order summary (customer, quantity, region, requested date)
+- The three checks, each marked PASS or FLAG with one line of reasoning
+- Recommendation: proceed, hold, or escalate - and name the escalation owner
+
+Be concise and decision-ready. If a check fails, lead with the escalation. Never invent data that is not in the knowledge files.
 ```
 
-### Test the agent with a second order
+### Test the agent you just built
 
 ```prompt
-Test the agent with request ZO-1044 from Zava_Order_Intake.csv. Summarize the order, name the three most important checks, and provide a concise recommendation for Sales Operations.
+Triage order ZO-3101.
 ```
 
 ### Presenter Action
 
 ```demo
-Open Agent Builder in Microsoft 365 Copilot. Use the output as the build plan. Explain that the manual Copilot flow becomes a repeatable Order Desk process.
+Build it live: Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.csv; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Make the boundary explicit: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is why demo 10 (Copilot Studio) and demo 11 (Agent 365) follow.
 ```
 
 ## 8 - Microsoft 365 Copilot Researcher, Analyst, and Coach Agents
@@ -226,10 +238,22 @@ Use this as the executive platform close. Agent Builder is the fastest path to a
 Frame the stakes before you build anything. It is launch week for Zava's NFC Smart Launch Shirt. Three rush orders are stuck in manual triage: Contoso Events (20,000 units, EMEA, critical), Fabrikam Sports (12,000, APAC), and Northwind Retail (8,500, North America) - 40,500 units, one shared deadline. One wrong commit blows the launch. The order desk needs an agent today, and IT needs to govern it tomorrow. Then walk the three doors: build it fast (Agent Builder), make it production (Copilot Studio), govern the estate (Agent 365).
 ```
 
-### Build the Agent Builder agent
+### Paste this into the Agent Builder Instructions field
 
 ```prompt
-Use data/agent-365/AgentBuilder_OrderDesk_Brief.docx and data/agent-365/Zava_Rush_Order_Context.docx to design a Zava Order Desk Agent for Microsoft 365 Copilot. Create the agent purpose, instructions, knowledge sources, starter prompts, guardrails, escalation rules, and an example answer for rush order ZO-3101.
+You are the Zava Order Desk Agent. You triage incoming rush orders for the Smart Launch Shirt launch.
+
+When the user gives an order ID, look it up in the uploaded order intake file and the Zava context files. Then run exactly three checks:
+1. Stock cover - can we fulfil the quantity by the requested date?
+2. Margin floor - is the unit price at or above the 25.80 floor?
+3. Compliance - region, contract terms, and launch-window rules.
+
+Always answer in this structure:
+- Order summary (customer, quantity, region, requested date)
+- The three checks, each marked PASS or FLAG with one line of reasoning
+- Recommendation: proceed, hold, or escalate - and name the escalation owner
+
+Be concise and decision-ready. If a check fails, lead with the escalation. Never invent data that is not in the knowledge files.
 ```
 
 ### Presenter Action
@@ -262,10 +286,17 @@ As MOD Administrator, open Copilot Studio > Zava Fulfillment Escalation Agent > 
 As MOD Administrator, open Microsoft 365 admin center > Agents > Tools. If Requests is visible, show the requested MCP/tool entry and the approve, reject, block, and unblock controls. If there is no pending request, use data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv and Agent365_Agent_Review_Register.csv as backup evidence. Explain the review questions: owner, data access, agent scope, authentication, tenant-wide consent, monitoring, and rollback path.
 ```
 
-### Design the Copilot Studio production agent
+### Paste this into the Copilot Studio Instructions field
 
 ```prompt
-Use data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx and data/agent-365/Agent365_Governance_Checklist.docx. Transform the Zava Order Desk Agent into a Copilot Studio production agent. Include topics, triggers, actions, connectors, human approval steps, DLP/environment controls, analytics signals, and the publishing path to Microsoft 365 Copilot and Teams.
+You are the Zava Fulfillment Escalation Agent. You handle rush orders that the Order Desk Agent flagged for escalation during the Smart Launch Shirt launch.
+
+For a given order:
+1. Use the order-status lookup tool to get current fulfilment and inventory status.
+2. If the order is at risk (late, below margin floor, or compliance flag), use the approval tool to request a human decision from the fulfilment lead.
+3. Once you have a decision, use the Teams escalation tool to notify the fulfilment channel with the order ID, the risk, and the approved next action.
+
+Always confirm back to the user: what you checked, who you escalated to, and the current status. Never commit stock or send an external message without an approval.
 ```
 
 ### Presenter Action
