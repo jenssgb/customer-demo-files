@@ -1,4 +1,0 @@
-RequestId,Customer,EventName,Quantity,TargetDeliveryDate,ResponseDue,ShipToHub,Priority,RequestedColors,RequestedSizes,CommercialSensitivity,Notes
-ZO-1042,Microsoft Events,AI Launch Summit,20000,2026-06-16,2026-06-02 17:00,"Seattle;Dublin;Singapore",Critical,"Black;Cobalt;White","S;M;L;XL;XXL",High,"Customer values reliable delivery over lowest price; wants one clear recommendation."
-ZO-1043,Northwind Sports,Campus Wellness Week,4500,2026-06-25,2026-06-04 12:00,Amsterdam,Medium,"Black;Cobalt","S;M;L;XL",Medium,"Can flex by 3 days; no NFC activation required."
-ZO-1044,Contoso Retail,Store Associate Launch,8500,2026-06-21,2026-06-03 15:00,Chicago,High,"Black;White","M;L;XL",High,"Requires manager approval if price exceeds EUR 25.00."

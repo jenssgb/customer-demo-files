@@ -25,7 +25,7 @@ Format the briefing as a Copilot Page with three sections: 1) Decision statement
 ### Analyze feasibility and price floor
 
 ```prompt
-Analyze Zava_Order_Analysis.xlsx, Zava_Risk_Register.csv, and Zava_Pricing_Assumptions.csv. Answer four questions: 1) Can Zava commit to 20,000 units within 14 days? 2) Which SKU or dependency is the bottleneck? 3) Which price floor protects a 32 percent gross margin? 4) Which conditions must appear in the customer response?
+Analyze Zava_Order_Analysis.xlsx, Zava_Risk_Register.xlsx, and Zava_Pricing_Assumptions.xlsx. Answer four questions: 1) Can Zava commit to 20,000 units within 14 days? 2) Which SKU or dependency is the bottleneck? 3) Which price floor protects a 32 percent gross margin? 4) Which conditions must appear in the customer response?
 ```
 
 ### Build the decision table for Zoe
@@ -111,7 +111,7 @@ Open Zava_Executive_Story.pptx. Improve the deck for Zoe: add speaker notes, mak
 ### PowerPoint Agent alternative
 
 ```prompt
-Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.docx, Zava_Risk_Register.csv, and Zava_Meeting_Transcript.docx. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
+Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysis.xlsx, Zava_Executive_Decision_Memo.docx, Zava_Risk_Register.xlsx, and Zava_Meeting_Transcript.docx. Slides: 1 Situation, 2 Customer ask, 3 Feasibility, 4 Margin guardrails, 5 Risks and mitigations, 6 Decision.
 ```
 
 ### Presenter action
@@ -149,7 +149,7 @@ Triage order ZO-3101.
 ### Build it live
 
 ```demo
-Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.csv; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Make the boundary explicit: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is why the end-to-end story in demo 11 (Copilot Studio for actions, then Agent 365 for governance) follows.
+Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Make the boundary explicit: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is why the end-to-end story in demo 11 (Copilot Studio for actions, then Agent 365 for governance) follows.
 ```
 
 ## 8 - Researcher, Analyst & Coach agents
@@ -163,7 +163,7 @@ Use Researcher for this task if it is available. Build a market and supplier rea
 ### Analyst deep scenario model
 
 ```prompt
-Use Analyst or code interpreter if available. Analyze Zava_Order_Analysis.xlsx, Zava_Inventory_Snapshot.csv, Zava_Order_Intake.csv, and Zava_Risk_Register.csv. Run three scenarios: commit today, split delivery, and decline unless constraints clear. For each scenario, estimate operational risk, customer impact, margin exposure, and recommended executive decision.
+Use Analyst or code interpreter if available. Analyze Zava_Order_Analysis.xlsx, Zava_Inventory_Snapshot.xlsx, Zava_Order_Intake.xlsx, and Zava_Risk_Register.xlsx. Run three scenarios: commit today, split delivery, and decline unless constraints clear. For each scenario, estimate operational risk, customer impact, margin exposure, and recommended executive decision.
 ```
 
 ### Prompt Coach improvement
@@ -259,7 +259,7 @@ Be concise and decision-ready. If a check fails, lead with the escalation. Never
 ### Door 1 — Build it live (Agent Builder)
 
 ```demo
-Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.csv; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Say the boundary out loud: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is exactly why Door 2 exists.
+Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Say the boundary out loud: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is exactly why Door 2 exists.
 ```
 
 ### Door 1 — Test the agent you just built
@@ -296,7 +296,7 @@ Order ZO-3101 was flagged for escalation. Check its status, request approval fro
 ### Door 3 — Enable knowledge safely: connector for Agent Builder (admin)
 
 ```demo
-No prompt box here - this is an admin click-path. As MOD Administrator: Microsoft 365 admin center > Settings > Search & intelligence > Data sources. Show the Copilot connector pattern: connector deployed, schema registered, items indexed, admin consent granted. Then switch to Preston: Microsoft 365 Copilot > Agent Builder > New agent > Configure > Knowledge - show where an admin-enabled connector appears as a selectable knowledge source, and test with a Zava supplier/order-signal question. No live connector? Narrate the same pattern from the connector rows in AgentBuilder_Connector_MCP_Extension_Plan.csv - evidence, not a required input.
+No prompt box here - this is an admin click-path. As MOD Administrator: Microsoft 365 admin center > Settings > Search & intelligence > Data sources. Show the Copilot connector pattern: connector deployed, schema registered, items indexed, admin consent granted. Then switch to Preston: Microsoft 365 Copilot > Agent Builder > New agent > Configure > Knowledge - show where an admin-enabled connector appears as a selectable knowledge source, and test with a Zava supplier/order-signal question. No live connector? Narrate the same pattern from the connector rows in AgentBuilder_Connector_MCP_Extension_Plan.xlsx - evidence, not a required input.
 ```
 
 ### Door 3 — Enable tools safely: MCP in Copilot Studio (admin)
@@ -320,7 +320,7 @@ No prompt box - Agent 365 is the control plane, an admin and governance surface.
 ### Door 4 — Identity: each agent is a real Entra principal (admin)
 
 ```demo
-Microsoft Entra admin center > Agent IDs. Show object identity, owner, and the access package that defines what the agent can reach. Explain: Copilot Studio agents receive an Entra Agent ID automatically - that identity is what makes governance, audit, and Conditional Access possible, just like for an employee. Backup evidence: Agent365_Agent_Review_Register.csv (owner/platform columns show the same concept).
+Microsoft Entra admin center > Agent IDs. Show object identity, owner, and the access package that defines what the agent can reach. Explain: Copilot Studio agents receive an Entra Agent ID automatically - that identity is what makes governance, audit, and Conditional Access possible, just like for an employee. Backup evidence: Agent365_Agent_Review_Register.xlsx (owner/platform columns show the same concept).
 ```
 
 ### Door 4 — Observe: one registry, one Agent Map (admin)
@@ -344,7 +344,7 @@ In Microsoft Purview, point to DLP and audit coverage on the data the agent can 
 ### Door 4 — Objection handling: Power Platform Governance vs Agent 365
 
 ```prompt
-Use data/agent-365/Agent365_vs_PowerPlatform_Governance.csv. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and Zava Order Desk Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
+Use data/agent-365/Agent365_vs_PowerPlatform_Governance.xlsx. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and Zava Order Desk Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
 ```
 
 ### Door 4 — Executive close (say it, do not prompt it)
@@ -358,7 +358,7 @@ Close verbally from the controls on screen - do not ask Copilot to write it. Tie
 ### Create the Zava notebook
 
 ```demo
-Open Microsoft 365 Copilot and create a new Microsoft 365 Copilot Notebook named "Zava Executive Decision Room". Use Zava_Copilot_Notebook_Setup.docx as the presenter checklist. Add the core Zava Word documents, Zava_Order_Analysis.xlsx, the finance close variance CSV, and the legal review documents as notebook references if the tenant experience supports them.
+Open Microsoft 365 Copilot and create a new Microsoft 365 Copilot Notebook named "Zava Executive Decision Room". Use Zava_Copilot_Notebook_Setup.docx as the presenter checklist. Add the core Zava Word documents, Zava_Order_Analysis.xlsx, the finance close variance workbook, and the legal review documents as notebook references if the tenant experience supports them.
 ```
 
 ### Build the decision map
@@ -390,13 +390,13 @@ Use this as the persistence and deep-thinking moment. Copilot Chat is good for o
 ### Open the finance close files
 
 ```demo
-Open the ZAVA-Demo folder on the VM desktop. Use data/finance-close/SAP_TM1_Variance_Flat_Table.csv for the fast path, or upload SAP_Actuals_May2026.xlsx and TM1_Budget_Forecast_May2026.xlsx together for the heavier analyst path. Position the story as Zava's Finance team preparing month-end commentary for the COO.
+Open the ZAVA-Demo folder on the VM desktop. Use data/finance-close/SAP_TM1_Variance_Flat_Table.xlsx for the fast path, or upload SAP_Actuals_May2026.xlsx and TM1_Budget_Forecast_May2026.xlsx together for the heavier analyst path. Position the story as Zava's Finance team preparing month-end commentary for the COO.
 ```
 
 ### Find the biggest close variances
 
 ```prompt
-You are the Finance Business Partner for Zava's month-end close. Analyze SAP_TM1_Variance_Flat_Table.csv. Identify the top 10 absolute variances versus TM1 forecast, grouped by Revenue, Opex, Capex, and Working Capital. For each variance, show actual, forecast, variance amount, variance percent, whether it is favorable or unfavorable, likely driver, owner, and the follow-up action needed before close sign-off.
+You are the Finance Business Partner for Zava's month-end close. Analyze SAP_TM1_Variance_Flat_Table.xlsx. Identify the top 10 absolute variances versus TM1 forecast, grouped by Revenue, Opex, Capex, and Working Capital. For each variance, show actual, forecast, variance amount, variance percent, whether it is favorable or unfavorable, likely driver, owner, and the follow-up action needed before close sign-off.
 ```
 
 ### Separate business variance from data quality issues
@@ -414,7 +414,7 @@ Create an executive-ready month-end close commentary for Zava's CFO. Structure i
 ### Presenter action
 
 ```demo
-Show this as the finance extension after the core Zava Excel section. The message is: Copilot can move Finance from raw SAP/TM1 extracts to variance explanation, close controls, and executive commentary. If Analyst is available, use it for multi-file reasoning. If not, use Copilot Chat with CSV/XLSX upload or Excel Copilot with the flat table.
+Show this as the finance extension after the core Zava Excel section. The message is: Copilot can move Finance from raw SAP/TM1 extracts to variance explanation, close controls, and executive commentary. If Analyst is available, use it for multi-file reasoning. If not, use Copilot Chat with Excel upload or Excel Copilot with the flat table.
 ```
 
 ## 14 - Legal Agent in Word (Frontier): contract review

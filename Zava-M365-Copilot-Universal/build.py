@@ -76,6 +76,38 @@ def render_step(step: dict) -> str:
     )
 
 
+_ICON_SPEC = {
+    "xlsx": ("#217346", "X"), "xls": ("#217346", "X"), "csv": ("#217346", "X"),
+    "docx": ("#2b579a", "W"), "doc": ("#2b579a", "W"),
+    "pptx": ("#c43e1c", "P"), "ppt": ("#c43e1c", "P"),
+    "pdf": ("#d83b01", "PDF"), "json": ("#5b6573", "{ }"),
+}
+
+
+def ext_of(name: str) -> str:
+    n = name.strip().lower()
+    for e in ("xlsx", "xls", "docx", "doc", "pptx", "ppt", "pdf", "json", "csv"):
+        if n.endswith("." + e) or n == e:
+            return e
+    return ""
+
+
+def file_icon_svg(name: str) -> str:
+    """Inline SVG file-type icon (white page, folded corner, colored app band)."""
+    color, letter = _ICON_SPEC.get(ext_of(name), ("#5b6573", "•"))
+    fs = "5.2" if len(letter) <= 1 else "3.4"
+    return (
+        '<svg class="ficon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">'
+        '<path d="M4 1.4h7.2L16 6.2V17a1.4 1.4 0 0 1-1.4 1.4H4A1.4 1.4 0 0 1 2.6 17V2.8A1.4 1.4 0 0 1 4 1.4z" '
+        'fill="#fff" stroke="#cfd4da" stroke-width=".7"/>'
+        '<path d="M11.2 1.4 16 6.2h-4.8z" fill="#e4e8ed"/>'
+        f'<rect x="2.6" y="11" width="13.4" height="6.4" rx="1.2" fill="{color}"/>'
+        f'<text x="9.3" y="15.9" font-size="{fs}" font-weight="700" fill="#fff" '
+        f'text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">{esc(letter)}</text>'
+        "</svg>"
+    )
+
+
 def render_demo_view(demo: dict, prev_id, next_id) -> str:
     did = demo["id"]
     meta_bits = []
@@ -88,7 +120,10 @@ def render_demo_view(demo: dict, prev_id, next_id) -> str:
     files = demo.get("files") or []
     files_html = ""
     if files:
-        tags = "".join(f'<span class="file-chip">{esc(f)}</span>' for f in files)
+        tags = "".join(
+            f'<span class="file-chip">{file_icon_svg(f)}<span>{esc(f)}</span></span>'
+            for f in files
+        )
         files_html = f'<div class="files"><span class="files-label">Files</span>{tags}</div>'
     note_html = f'<p class="demo-note">{esc(demo["note"])}</p>' if demo.get("note") else ""
     steps = "".join(render_step(s) for s in demo.get("steps", []))
@@ -202,7 +237,7 @@ def render_context_views(data: dict) -> str:
     bundle = data.get("bundle", [])
     if bundle:
         tags = "".join(
-            f'<div class="file-tag"><div class="file-icon {esc(b["icon"])}">{esc(b["icon"])}</div>'
+            f'<div class="file-tag">{file_icon_svg(b["icon"])}'
             f'<div><div class="file-name">{esc(b["name"])}</div>'
             f'<div class="file-dl">{esc(b["desc"])}</div></div></div>'
             for b in bundle
@@ -473,8 +508,9 @@ main{padding:34px clamp(20px,4vw,56px);max-width:1180px;width:100%}
 .meta-pill.ghost{background:var(--surface-2);color:var(--muted);border:1px solid var(--border)}
 .files{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:16px}
 .files-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
-.file-chip{font-size:11.5px;font-family:"Cascadia Code",Consolas,monospace;background:var(--surface-2);
-  border:1px solid var(--border);border-radius:7px;padding:3px 8px;color:var(--text)}
+.file-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:var(--surface-2);
+  border:1px solid var(--border);border-radius:7px;padding:3px 9px 3px 6px;color:var(--text)}
+.file-chip .ficon{width:16px;height:16px;flex:none}
 .demo-note{background:var(--accent-soft);border-left:3px solid var(--track,var(--accent));
   padding:11px 15px;border-radius:0 9px 9px 0;font-size:14px;margin:0 0 20px}
 .steps{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
@@ -524,10 +560,7 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .file-tags{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:16px}
 .file-tag{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);
   border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
-.file-icon{font-size:10px;font-weight:800;text-transform:uppercase;color:#fff;border-radius:7px;
-  padding:7px 9px;min-width:42px;text-align:center}
-.file-icon.xlsx{background:#107c41}.file-icon.docx{background:#2b579a}
-.file-icon.pptx{background:#c43e1c}.file-icon.csv{background:#5b6573}
+.file-tag .ficon{width:30px;height:30px;flex:none}
 .file-name{font-weight:700;font-size:13.5px}.file-dl{font-size:12.5px;color:var(--muted)}
 
 @media(max-width:860px){

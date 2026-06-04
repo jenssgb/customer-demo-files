@@ -1,4 +1,0 @@
-AgentName,AgentType,Owner,Platform,Environment,KnowledgeSources,ConnectorsOrActions,RiskLevel,GovernanceReview,DemoMoment
-Zava Order Desk Agent,Agent Builder declarative agent,Maya Patel,Microsoft 365 Copilot,Production,"Order desk brief, order intake CSV, rush order context",No external actions,Medium,Confirm owner and knowledge sources,Agent Builder build and registry discussion
-Zava Fulfillment Escalation Agent,Copilot Studio agent,Omar Haddad,Copilot Studio,Power Platform Default,"Fulfillment agent spec, governance checklist",Teams message, approval record, order status lookup,High,Review requested agent data and tools before publish,Copilot Studio publish request and Agent 365 governance
-Zava Fulfillment Sentinel,Foundry pro-code concept,Rafael Chen,Azure AI Foundry,Dev,"Future order events and policy documents",Event ingestion, policy retrieval, evaluation pipeline,High,Position as future extension only,Agent 365 roadmap close
