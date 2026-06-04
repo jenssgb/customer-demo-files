@@ -11,7 +11,9 @@ Outputs (never hand-edit these):
 from __future__ import annotations
 
 import html
+import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 try:
@@ -23,6 +25,41 @@ ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "source" / "zava.yaml"
 HTML_OUT = ROOT / "Zava-M365-Copilot-Universal-Briefing.html"
 MD_OUT = ROOT / "Prompts" / "Zava-M365-Copilot-Universal-Demo.md"
+
+
+def cet_today() -> str:
+    """Today's date in Europe/Berlin (CET/CEST), falling back to local time."""
+    try:
+        from zoneinfo import ZoneInfo
+
+        return datetime.now(ZoneInfo("Europe/Berlin")).strftime("%Y-%m-%d")
+    except Exception:
+        return datetime.now().strftime("%Y-%m-%d")
+
+
+def stamp_version_and_date() -> str:
+    """Auto-bump meta.version patch segment and set meta.date to today (CET).
+
+    Edits source/zava.yaml in place with a targeted regex so comments and
+    formatting are preserved. Returns the new version string.
+    """
+    text = SRC.read_text(encoding="utf-8")
+    new_version = {"v": ""}
+
+    def _bump(m: re.Match) -> str:
+        parts = (m.group(2).split(".") + ["0", "0"])[:3]
+        try:
+            parts[2] = str(int(parts[2]) + 1)
+        except ValueError:
+            parts[2] = "1"
+        new_version["v"] = ".".join(parts)
+        return f'{m.group(1)}{new_version["v"]}{m.group(3)}'
+
+    text = re.sub(r'(\bversion:\s*")([^"]+)(")', _bump, text, count=1)
+    text = re.sub(r'(\bdate:\s*")[^"]+(")', rf"\g<1>{cet_today()}\g<2>", text, count=1)
+    SRC.write_text(text, encoding="utf-8")
+    return new_version["v"]
+
 
 
 def esc(text: str) -> str:
@@ -683,11 +720,14 @@ def render_md(data: dict) -> str:
 
 
 def main() -> None:
+    bump = "--no-bump" not in sys.argv
+    version = stamp_version_and_date() if bump else None
     data = yaml.safe_load(SRC.read_text(encoding="utf-8"))
     HTML_OUT.write_text(render_html(data), encoding="utf-8")
     MD_OUT.parent.mkdir(parents=True, exist_ok=True)
     MD_OUT.write_text(render_md(data), encoding="utf-8")
-    print(f"OK  {len(data['demos'])} demos")
+    stamp = f"v{version} · {data['meta']['date']}" if version else "(no version bump)"
+    print(f"OK  {len(data['demos'])} demos  {stamp}")
     print(f"    -> {HTML_OUT.name} ({HTML_OUT.stat().st_size:,} bytes)")
     print(f"    -> {MD_OUT.relative_to(ROOT)} ({MD_OUT.stat().st_size:,} bytes)")
 
