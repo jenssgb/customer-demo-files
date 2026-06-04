@@ -120,9 +120,23 @@ Create a new six-slide presentation for the COO decision. Use Zava_Order_Analysi
 Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show executive storytelling, not manual slide production.
 ```
 
-## 7 - Agent Builder in Microsoft 365 Copilot
+## 7 - Agent Builder: three declarative Zava agents
 
-### Paste into the Agent Builder Instructions field
+> Agent Builder agents are declarative: they consume knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10.
+
+### How to build (read once, applies to all three)
+
+```demo
+Build all three as Preston: Microsoft 365 Copilot > Create agent > Skip to configure. Each agent has the same Configure fields — Name (max 30 characters), Description (max 1000 characters; this drives when Copilot picks the agent), Instructions (max 8000 characters), up to 20 Knowledge sources (SharePoint, files, public websites, admin-enabled connectors), optional Capabilities (Code interpreter, Image generator), and Starter prompts. Test each one on the Try it tab (needs name + description + instructions), then Create and share. Say the boundary out loud: these agents read and answer — they do not act.
+```
+
+### Agent 1 — Order Desk: configure
+
+```demo
+Create agent > Skip to configure. Name = Zava Order Desk Agent. Description = Triages incoming Zava rush orders for the Smart Launch Shirt launch against stock cover, the EUR 25.80 margin floor, and launch-window compliance, then recommends proceed, hold, or escalate. Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx (or point to the SharePoint order-desk library). Capabilities = both off. Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Paste the Instructions from the next step, test on Try it, then Create.
+```
+
+### Agent 1 — Instructions (paste into the Instructions field)
 
 ```prompt
 You are the Zava Order Desk Agent. You triage incoming rush orders for the Smart Launch Shirt launch.
@@ -140,16 +154,60 @@ Always answer in this structure:
 Be concise and decision-ready. If a check fails, lead with the escalation. Never invent data that is not in the knowledge files.
 ```
 
-### Test the agent you just built
+### Agent 1 — Try it
 
 ```prompt
 Triage order ZO-3101.
 ```
 
-### Build it live
+### Agent 2 — Supplier Readiness: configure
 
 ```demo
-Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Make the boundary explicit: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is why the end-to-end story in demo 11 (Copilot Studio for actions, then Agent 365 for governance) follows.
+Create agent > Skip to configure. Name = Zava Supplier Readiness. Description = Answers supply-chain readiness questions for the Smart Launch Shirt launch — supplier capacity, lead times, certifications, and inventory cover — grounded only in the Zava supply files. Knowledge = Zava_Rush_Order_Context.docx, Zava_Inventory_Snapshot.xlsx, Zava_Risk_Register.xlsx. Capabilities = both off. Starter prompts = "Can our suppliers cover 20,000 units in 14 days?" and "Which SKU is the supply bottleneck?". Paste the Instructions from the next step, test, then Create.
+```
+
+### Agent 2 — Instructions
+
+```prompt
+You are Zava Supplier Readiness. You answer supply-chain readiness questions for the Smart Launch Shirt launch using only the Zava supply files in your knowledge.
+
+For each question: state what the data shows, name the SKU, color, or size at risk, quantify the gap (required versus available, lead time versus deadline), and give one clear readiness verdict - ready, conditional, or blocked. Cite the file you used.
+
+If the answer is not in your knowledge, say so plainly and do not guess. You explain readiness; you do not place orders or contact suppliers - those are actions for the fulfilment agents in demo 10.
+```
+
+### Agent 2 — Try it
+
+```prompt
+Can our suppliers cover the White XL and XXL demand within 14 days?
+```
+
+### Agent 3 — Margin & Pricing: configure (Code interpreter ON)
+
+```demo
+Create agent > Skip to configure. Name = Zava Margin & Pricing. Description = Calculates landed cost and gross margin for Smart Launch Shirt rush-order scenarios and tests prices against the EUR 25.80 floor, using code interpreter for the maths. Knowledge = Zava_Pricing_Assumptions.xlsx, Zava_Order_Intake.xlsx. Capabilities = turn Code interpreter ON ("Create documents, charts, and code"); Image generator off. Starter prompts = "What price holds a 32 percent gross margin?" and "Show the margin curve from EUR 24 to EUR 30". Paste the Instructions, test, then Create. Point out that code interpreter is what lets a declarative agent do real calculation and charts without an external tool.
+```
+
+### Agent 3 — Instructions
+
+```prompt
+You are Zava Margin & Pricing. You calculate landed cost and gross margin for Smart Launch Shirt rush-order scenarios using the pricing assumptions and order intake in your knowledge.
+
+Use the code interpreter for every calculation - never estimate in your head. For a given price or quantity, compute unit landed cost, gross margin in euro and percent, and the distance to the EUR 25.80 price floor and the 32 percent margin target. When asked, build a small table or chart across a price range.
+
+Always show the numbers and assumptions you used. You do the maths and explain it; you do not approve prices or send quotes.
+```
+
+### Agent 3 — Try it
+
+```prompt
+At EUR 25.80, what gross margin do we hold on 20,000 units, and what price reaches 32 percent?
+```
+
+### Wrap-up — three reusable agents, no actions
+
+```demo
+You now have three declarative Zava agents, each with its own knowledge and a clear boundary: they read and answer, they do not act. That is the deliberate hand-off to demo 10, where Copilot Studio turns this reasoning into real actions (interactive and autonomous), and to demo 11, where Agent 365 governs all of them.
 ```
 
 ## 8 - Researcher, Analyst & Coach agents
@@ -204,71 +262,17 @@ Use the Teams Interpreter agent if available. Demonstrate how a German productio
 Use Leila only to start the Teams meeting with Facilitator/Interpreter when needed; the meeting voice and transcript can come from the simulator. Otherwise use Zava_Meeting_Transcript.docx as the backup and explain that Facilitator/Interpreter are meeting-layer capabilities, not file-processing features.
 ```
 
-## 10 - Agent platform ladder (positioning)
+## 10 - Copilot Studio: interactive + autonomous agents
 
-### Place each build tool on the ladder
+> Agent Builder agents (demo 7) read and answer. These two act. One waits for a person; one runs on its own and gets a Microsoft Entra Agent ID — just like an employee.
 
-```demo
-This is positioning, not a live build. Make the relationship explicit so the audience stops seeing "random agents". There is one ladder with three build tools and one governance dome:
-1. Agent Builder (declarative) - inside Microsoft 365 Copilot, fields + knowledge, no actions. You built this live in demo 7 (and demo 11, Door 1).
-2. Copilot Studio (low-code) - production path with real tools, actions, approvals, MCP, channels, admin review. You build this live in demo 11, Door 2.
-3. Azure AI Foundry (pro-code) - for AI engineers who need custom orchestration, evaluation, monitoring, and rollback. Not built live; position it as the engineering path.
-Then the dome: whatever tool built the agent, it gets a Microsoft Entra Agent ID and shows up in Microsoft Agent 365, where IT observes, governs, and secures it (demo 11, Door 4). That is why we build first and govern second.
-```
-
-### Optional: Foundry pro-code framing
+### Agent A (interactive) — create the Fulfillment Escalation agent
 
 ```demo
-Only if the audience is technical. Describe a pro-code "Zava Fulfillment Sentinel" in Azure AI Foundry: ingest order events, retrieve policy and inventory context, evaluate risk, propose a recommendation, write an auditable decision record - with evaluation criteria, monitoring signals, and human-review/rollback rules. Stay verbal; do not try to build it live. The point is that Agent 365 governs even this pro-code agent.
+Copilot Studio (copilotstudio.microsoft.com) > Create > New agent. Describe it (max 1024 characters): "A Zava fulfilment escalation agent that takes rush orders flagged by the Order Desk, checks live order and inventory status, asks a human for approval when an order is at risk, and notifies the fulfilment team in Teams." Let Copilot Studio generate the name, description, and instructions and suggest triggers, knowledge, and tools, then refine them. Add knowledge = CopilotStudio_Fulfillment_Agent_Spec.docx and Zava_Order_Intake.xlsx. This agent is interactive - it responds to a person in chat.
 ```
 
-### Presenter action
-
-```demo
-Use this as the executive platform close, not a feature dump. One sentence per stage: Agent Builder = fastest reusable agent (demo 7); Copilot Studio = low-code production with tools and admin review (demo 11, Door 2); Foundry = pro-code engineering path; Agent 365 = the control plane over all three (demo 11, Door 4). Do NOT mix in Visual Creator or other prebuilt agents here - they are a separate creative track and break the platform narrative.
-```
-
-## 11 - Microsoft Agent 365 end-to-end
-
-> The integrated story. Demos 7-10 show each tool on its own; this runs the whole arc as one demo — four doors, one launch week.
-
-### Door 0 — Set the compelling event
-
-```demo
-Frame the stakes before you build anything. It is launch week for Zava's NFC Smart Launch Shirt. Three rush orders are stuck in manual triage: Contoso Events (20,000 units, EMEA, critical), Fabrikam Sports (12,000, APAC), and Northwind Retail (8,500, North America) - 40,500 units, one shared deadline. One wrong commit blows the launch. The order desk needs an agent today; IT needs to govern it tomorrow. Then name the four doors out loud: 1) build it fast (Agent Builder), 2) make it production with actions (Copilot Studio), 3) enable knowledge and tools safely (connectors and MCP), 4) govern the whole estate (Agent 365).
-```
-
-### Door 1 — Build it fast: Agent Builder Instructions
-
-```prompt
-You are the Zava Order Desk Agent. You triage incoming rush orders for the Smart Launch Shirt launch.
-
-When the user gives an order ID, look it up in the uploaded order intake file and the Zava context files. Then run exactly three checks:
-1. Stock cover - can we fulfil the quantity by the requested date?
-2. Margin floor - is the unit price at or above the 25.80 floor?
-3. Compliance - region, contract terms, and launch-window rules.
-
-Always answer in this structure:
-- Order summary (customer, quantity, region, requested date)
-- The three checks, each marked PASS or FLAG with one line of reasoning
-- Recommendation: proceed, hold, or escalate - and name the escalation owner
-
-Be concise and decision-ready. If a check fails, lead with the escalation. Never invent data that is not in the knowledge files.
-```
-
-### Door 1 — Build it live (Agent Builder)
-
-```demo
-Microsoft 365 Copilot > Agents > New agent > Skip to configure. Name = Zava Order Desk Agent; Description = triages Zava rush orders against stock, margin, and compliance; Instructions = paste the block above; Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the Try it pane, then Create and share. Say the boundary out loud: Agent Builder consumes knowledge and answers - it cannot run actions or call APIs. That is exactly why Door 2 exists.
-```
-
-### Door 1 — Test the agent you just built
-
-```prompt
-Triage order ZO-3101.
-```
-
-### Door 2 — Make it production: Copilot Studio Instructions
+### Agent A — Instructions (refine the generated text)
 
 ```prompt
 You are the Zava Fulfillment Escalation Agent. You handle rush orders that the Order Desk Agent flagged for escalation during the Smart Launch Shirt launch.
@@ -281,76 +285,125 @@ For a given order:
 Always confirm back to the user: what you checked, who you escalated to, and the current status. Never commit stock or send an external message without an approval.
 ```
 
-### Door 2 — Build it live with real actions (Copilot Studio)
+### Agent A — add the tools (actions)
 
 ```demo
-Copilot Studio > Agents > Create > New agent (or Copy to Copilot Studio from the Agent Builder agent). Instructions = paste the block above; Knowledge = fulfillment spec plus order intake; Tools > Add a tool = add three actions: (1) Microsoft Teams - post message to the fulfilment channel, (2) Approvals - human-in-the-loop decision, (3) Model Context Protocol - read-only order-status lookup. Test in the built-in test panel until the escalation flow passes. Channels > Microsoft 365 Copilot and Microsoft Teams > turn on Make agent available in Microsoft 365 Copilot > Edit details > Save; then Save again to submit for admin review. The point: this agent can ACT - message a person, request approval, look up live status - which Agent Builder cannot. Presenter safety: in a shared tenant, show the tools configured and the "Save for review" hand-off; do not fire real Teams messages unless prepared.
+Tools > Add a tool > New tool. Add three actions and configure each one - Name, Description (the description drives generative orchestration), "Ask end user before running", Authentication, and how it completes (Don't respond / Write with generative AI / Send specific response / Send adaptive card):
+1. Connector - Microsoft Teams "Post message in a chat or channel": posts order ID, risk, and approved action to the fulfilment channel. Authentication = end user.
+2. Approval - request a human decision from the fulfilment lead before any commit; set "Ask end user before running" = Yes.
+3. MCP - read-only order-status lookup (server in Zava_Public_OrderSignals_MCP_Registration.json) with tools like get_order_risk_signal. Leave inputs on "Dynamically fill with AI" where safe. Tools run in the user's context.
 ```
 
-### Door 2 — Test the full tool chain
+### Agent A — add a topic + trigger
+
+```demo
+Show authoring control: Topics > Add a topic > "Escalate flagged order". Set its trigger: either "User says a phrase" (classic; add 5-10 phrases such as "escalate order", "this order is at risk"), or the generative "The agent chooses" trigger so orchestration selects it from the description. Every trigger has a condition (Power Fx) and a priority. This is the interactive entry point - a person starts it.
+```
+
+### Agent A — test the full tool chain
 
 ```prompt
 Order ZO-3101 was flagged for escalation. Check its status, request approval from the fulfilment lead, and notify the fulfilment team with the recommended action.
 ```
 
-### Door 3 — Enable knowledge safely: connector for Agent Builder (admin)
+### Agent A — publish + submit for review
 
 ```demo
-No prompt box here - this is an admin click-path. As MOD Administrator: Microsoft 365 admin center > Settings > Search & intelligence > Data sources. Show the Copilot connector pattern: connector deployed, schema registered, items indexed, admin consent granted. Then switch to Preston: Microsoft 365 Copilot > Agent Builder > New agent > Configure > Knowledge - show where an admin-enabled connector appears as a selectable knowledge source, and test with a Zava supplier/order-signal question. No live connector? Narrate the same pattern from the connector rows in AgentBuilder_Connector_MCP_Extension_Plan.xlsx - evidence, not a required input.
+Channels > Microsoft 365 Copilot and Microsoft Teams. Turn on "Make agent available in Microsoft 365 Copilot" > Edit details > Save, then Publish. Publishing to Microsoft 365 Copilot / Teams submits the agent for admin review - it appears in the Microsoft 365 admin center under Agents > Requests (demo 11). Note: a trial environment cannot publish. Presenter safety: in a shared tenant, show the tools configured and the "Save for review" hand-off; do not fire real Teams messages unless prepared.
 ```
 
-### Door 3 — Enable tools safely: MCP in Copilot Studio (admin)
+### Agent B (autonomous) — enable Entra Agent Identity for the environment (admin, one-time)
 
 ```demo
-No prompt box - admin click-path. Copilot Studio > Zava Fulfillment Escalation Agent > Tools > Add a tool > Model Context Protocol. Walk the non-secret registration: server name, streamable MCP endpoint, auth pattern, and read-only tools such as get_order_risk_signal and search_supplier_signals (reference: Zava_Public_OrderSignals_MCP_Registration.json). State the boundary: the same MCP server cannot be attached directly to Agent Builder - API/tool work belongs in Copilot Studio.
+As Power Platform tenant admin or Environment Admin: Power Platform admin center > Copilot > Settings > "Entra Agent Identity for Copilot Studio" > select the environment > Edit setting > On. Every Copilot Studio agent already receives an Agent ID at creation; this environment setting governs the Entra-backed identity that IT can target with Conditional Access. Blueprint: "Microsoft Copilot Studio agent identity blueprint", blueprint ID 25664c89-cea5-4ab6-b924-a54fd8a19ae0. Entra Agent ID for Copilot Studio is in preview.
 ```
 
-### Door 3 — Govern the tools (admin)
+### Agent B — create the autonomous Inventory Watch agent
 
 ```demo
-No prompt box - admin click-path. Microsoft 365 admin center > Agents > Tools. If Requests is visible, show the requested MCP/tool entry and the approve, reject, block, unblock controls. Walk the review questions out loud: who owns the tool, what data it can access, which agent can call it, what authentication it uses, whether tenant-wide consent is required, and what the rollback path is.
+Copilot Studio > Create > New agent. Describe it: "An autonomous Zava inventory watch agent that monitors Smart Launch Shirt stock and incoming order signals, and when a SKU drops below its safety threshold or a new rush-order signal arrives, evaluates the risk and raises an escalation - without a person starting the conversation." Refine the generated instructions. Add knowledge = Zava_Inventory_Snapshot.xlsx and Zava_Order_Intake.xlsx.
 ```
 
-### Door 4 — Govern the estate: open the agent estate (admin)
-
-```demo
-No prompt box - Agent 365 is the control plane, an admin and governance surface. Microsoft 365 admin center > Agents > All agents. Find BOTH agents you just built: the Zava Order Desk Agent (Agent Builder) and the Zava Fulfillment Escalation Agent (Copilot Studio) - already listed, no manual registration. Open one to show its Microsoft Entra Agent ID, owner, publisher, and status. Say it: "I built these today and they already have their own identity that IT can govern."
-```
-
-### Door 4 — Identity: each agent is a real Entra principal (admin)
-
-```demo
-Microsoft Entra admin center > Agent IDs. Show object identity, owner, and the access package that defines what the agent can reach. Explain: Copilot Studio agents receive an Entra Agent ID automatically - that identity is what makes governance, audit, and Conditional Access possible, just like for an employee. Backup evidence: Agent365_Agent_Review_Register.xlsx (owner/platform columns show the same concept).
-```
-
-### Door 4 — Observe: one registry, one Agent Map (admin)
-
-```demo
-Microsoft 365 admin center > Agents > Overview - show the 30-day snapshot, total agents, usage trends, and actionable insights (pending requests, agents without owners). Open All agents for inventory, ownership, platform, and risk signals on both Zava agents. If available, open Agent Map to visualize which data and tools each agent touches.
-```
-
-### Door 4 — Govern: act on the agent lifecycle (admin)
-
-```demo
-Microsoft 365 admin center > Agents > Requests. Open the pending request for the Zava Fulfillment Escalation Agent (submitted from Copilot Studio in Door 2) and walk the Data and tools review: owner, data sources, tools/actions, target users, risk, mitigations - then publish or reject with a scope. Then show two more lifecycle actions: reassign an ownerless agent to a real owner, and tighten the Entra access package. Backup: Agent365_Governance_Checklist.docx. Do not click destructive actions live.
-```
-
-### Door 4 — Secure: Purview + Defender (admin)
-
-```demo
-In Microsoft Purview, point to DLP and audit coverage on the data the agent can access - for example, preventing it from sharing launch-contract data externally. In Microsoft Defender, show runtime protection that detects and blocks unsafe agent actions (unauthorized access, data exfiltration, prompt injection, tool misuse) and treats the agent as a first-class security principal. Portals not demo-ready? Narrate the control and use Agent365_Governance_Checklist.docx as policy evidence.
-```
-
-### Door 4 — Objection handling: Power Platform Governance vs Agent 365
+### Agent B — Instructions (refine the generated text)
 
 ```prompt
-Use data/agent-365/Agent365_vs_PowerPlatform_Governance.xlsx. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and Zava Order Desk Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
+You are Zava Inventory Watch. You run on a schedule and on inventory and order-signal events for the Smart Launch Shirt launch - no person starts you.
+
+On each run: read the current inventory snapshot and order intake. For every SKU, compare available stock and incoming demand against the safety threshold and the launch deadline. When a SKU is below threshold, or a new rush-order signal would breach cover, take action: post a clear alert (SKU, gap, deadline, recommended action) to the fulfilment channel and open an escalation for the fulfilment lead.
+
+Be conservative: only raise an escalation when a threshold is actually breached, and always include the numbers behind the decision. Log what you checked and what you did.
 ```
 
-### Door 4 — Executive close (say it, do not prompt it)
+### Agent B — make it autonomous: trigger + agent flow
 
 ```demo
-Close verbally from the controls on screen - do not ask Copilot to write it. Tie each control to the Smart Launch Shirt go-live: the Entra Agent ID gives accountability, the registry removes shadow agents, the lifecycle review stops a bad agent before it ships, Purview prevents a contract-data leak, and Defender blocks a compromised agent at runtime. Headline: "Launch week is no longer a risk. Every agent acting for Zava is identified, governed, and secured from one place - so Zava can scale agents with confidence." Known limits to respect: agent activity view is preview, read-only, user-scoped, 30-day retention; Defender/Purview agent surfaces depend on E5 and tenant configuration.
+This agent runs without a user, so it needs a non-conversational trigger and an action to take.
+- Trigger: Triggers > add an event trigger such as "A message is received" or "An activity occurs", or build a scheduled agent flow (a Power Platform flow with a Recurrence trigger, e.g. every 30 minutes) that starts the agent. For an event path, use a connector trigger like "When a new email arrives" or a Dataverse "When a row is added or modified".
+- Action: Tools > Add a tool > Agent flow that reads inventory and order data and, when the threshold is breached, posts an alert to the fulfilment channel and opens an escalation. Because no user is present, set tools to maker-provided authentication (the agent's own identity), not end-user auth.
+```
+
+### Agent B — validate the Entra Agent ID
+
+```demo
+Open the agent > Settings > Advanced > Metadata > read the "Entra Agent ID" GUID. Confirm the same identity in the Entra admin center (entra.microsoft.com > Agent IDs). At publish, the connector API permissions are attached to this Entra Agent ID and can be targeted by Conditional Access; connector actions use on-behalf-of, so each action is logged as the user with agent context. Deleting the agent deletes its identity. This identity is exactly what makes an autonomous agent governable in demo 11.
+```
+
+### Positioning — the platform ladder (say it briefly)
+
+```demo
+One ladder, one governance dome. Agent Builder = declarative, knowledge only (demo 7). Copilot Studio = low-code with real tools, interactive or autonomous (this demo). Azure AI Foundry = pro-code engineering path for custom orchestration, evaluation, and rollback (verbal only, not built live). Whatever tool builds the agent, it gets a Microsoft Entra Agent ID and shows up in Microsoft Agent 365 - which is demo 11. Do not mix in Visual Creator or other prebuilt agents here; they are a separate track and break the platform narrative.
+```
+
+## 11 - Microsoft Agent 365: govern the agent estate
+
+> Demos 7 and 10 built five agents — three in Agent Builder, two in Copilot Studio (one autonomous). Now govern the whole estate as digital workers, with no manual registration.
+
+### Set the stakes (say it first)
+
+```demo
+It is launch week for Zava's NFC Smart Launch Shirt and you just built five agents in minutes - three declarative (Order Desk, Supplier Readiness, Margin & Pricing) and two in Copilot Studio (Fulfillment Escalation, and the autonomous Inventory Watch). Speed is the easy part. The executive question is: who governs them? Agent 365 is the control plane that observes, governs, and secures every one of them as a digital worker.
+```
+
+### Observe — open the registry
+
+```demo
+Microsoft 365 admin center > Agents > Overview for the 30-day snapshot (total agents, usage trends, pending requests, agents without owners). Then Agents > Registry / All agents. Find all five Zava agents already listed - no manual registration; agents emit to the registry automatically. Open one to show type (Agent Builder vs Copilot Studio), owner, publisher, and status. If available, open Agent Map to visualize which data and tools each agent touches.
+```
+
+### Identity — every agent is an Entra principal
+
+```demo
+Open an agent's identity and, for the Copilot Studio agents, show the Microsoft Entra Agent ID (Entra admin center > Agent IDs). Each agent - including the autonomous Inventory Watch - has its own object identity, owner, and access package that defines what it can reach. That identity is what makes audit, lifecycle, and Conditional Access possible, exactly like an employee. Backup evidence: Agent365_Agent_Review_Register.xlsx (owner/platform columns).
+```
+
+### Govern — approve the requested agents
+
+```demo
+Agents > Requests. The two Copilot Studio agents published in demo 10 appear here (Copilot Control System). Open the Fulfillment Escalation request > Data & tools tab: review owner, data sources, tools and actions, target users, risk, and mitigations, then Publish with a scope (everyone / specific people) or Reject. Only an AI Admin or Global Admin can approve. Then show lifecycle actions: reassign an ownerless agent to a real owner, Block / Reassign / Delete, and tighten the Entra access package. Backup: Agent365_Governance_Checklist.docx. Do not click destructive actions live.
+```
+
+### Govern — review the tools
+
+```demo
+Microsoft 365 admin center > Agents > Tools. Show the requested MCP and connector tools from the Copilot Studio agents and the approve, reject, block, unblock controls. Walk the review questions out loud: who owns the tool, what data it can access, which agent can call it, what authentication it uses, whether tenant-wide consent is required, and what the rollback path is.
+```
+
+### Secure — Purview + Defender
+
+```demo
+In Microsoft Purview, point to DLP and audit coverage on the data the agents can reach - for example, stopping the Fulfillment agent from sharing launch-contract data externally. In Microsoft Defender, show runtime protection that detects and blocks unsafe agent actions (unauthorized access, data exfiltration, prompt injection, tool misuse) and treats each agent as a first-class security principal. Portals not demo-ready? Narrate the control and use Agent365_Governance_Checklist.docx as policy evidence.
+```
+
+### Objection handling — Power Platform Governance vs Agent 365
+
+```prompt
+Use data/agent-365/Agent365_vs_PowerPlatform_Governance.xlsx. The customer says: "We already have Power Platform Governance, so why do we need Agent 365?" Create a concrete answer using the Zava Fulfillment Escalation Agent and the autonomous Inventory Watch Agent. Show: what Power Platform Governance already covers, what it does not cover, what Agent 365 adds, and the exact demo click path that proves the difference.
+```
+
+### Executive close (say it, do not prompt it)
+
+```demo
+Close verbally from the controls on screen. Tie each to the Smart Launch Shirt go-live: the Entra Agent ID gives every agent - including the autonomous one - accountability; the registry removes shadow agents; the request review stops a bad agent before it ships; Purview prevents a contract-data leak; and Defender blocks a compromised agent at runtime. Headline: "Five agents built today, all identified, governed, and secured from one place - so Zava can scale agents with confidence." Respect the limits: some agent activity views are preview, read-only, user-scoped, 30-day retention; Defender and Purview agent surfaces depend on E5 and tenant configuration; Entra Agent ID for Copilot Studio is preview.
 ```
 
 ## 12 - Copilot Notebooks: Executive Decision Room
