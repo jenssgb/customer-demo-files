@@ -127,16 +127,35 @@ Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show e
 ### How to build (read once, applies to all three)
 
 ```demo
-Build all three as Preston: Microsoft 365 Copilot > Create agent > Skip to configure. Each agent has the same Configure fields — Name (max 30 characters), Description (max 1000 characters; this drives when Copilot picks the agent), Instructions (max 8000 characters), up to 20 Knowledge sources (SharePoint, files, public websites, admin-enabled connectors), optional Capabilities (Code interpreter, Image generator), and Starter prompts. Test each one on the Try it tab (needs name + description + instructions), then Create and share. Say the boundary out loud: these agents read and answer — they do not act.
+Agent Builder has two tabs. The Describe tab is a chat where you describe the agent in natural language and it drafts the fields for you. For a controlled demo, use the Configure tab instead so every field is deliberate: Microsoft 365 Copilot > Create agent > Skip to configure.
+
+Configure is NOT a single box — you fill SIX fields for each agent:
+1. Icon (optional) - auto or upload.
+2. Name - max 30 characters.
+3. Description - max 1000 characters; this is what Copilot reads to decide when to pick the agent, so write it for the orchestrator, not for humans.
+4. Instructions - max 8000 characters; the behaviour/system prompt.
+5. Knowledge - up to 20 sources (uploaded files, SharePoint/OneDrive, public websites, Teams chat URLs, admin-enabled connectors).
+6. Capabilities - optional toggles: Code interpreter, Image generator.
+7. Starter prompts - the example chips shown to users.
+
+Each agent below gives you the exact value for every field. Test on the Try it tab (needs at least Name + Description + Instructions), then Create and share. Say the boundary out loud: these agents read and answer — they do not act.
 ```
 
-### Agent 1 — Order Desk: configure
+### Agent 1 — Order Desk: fill these fields
 
 ```demo
-Create agent > Skip to configure. Name = Zava Order Desk Agent. Description = Triages incoming Zava rush orders for the Smart Launch Shirt launch against stock cover, the EUR 25.80 margin floor, and launch-window compliance, then recommends proceed, hold, or escalate. Knowledge = upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, and Zava_Order_Intake.xlsx (or point to the SharePoint order-desk library). Capabilities = both off. Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Paste the Instructions from the next step, test on Try it, then Create.
+Create agent > Skip to configure, then fill each field:
+- Name: Zava Order Desk Agent
+- Description: Triages incoming Zava rush orders for the Smart Launch Shirt launch against stock cover, the EUR 25.80 margin floor, and launch-window compliance, then recommends proceed, hold, or escalate.
+- Knowledge: upload AgentBuilder_OrderDesk_Brief.docx, Zava_Rush_Order_Context.docx, Zava_Order_Intake.xlsx (or point to the SharePoint order-desk library).
+- Capabilities: Code interpreter off, Image generator off.
+- Starter prompt 1: Triage order ZO-3101
+- Starter prompt 2: Which orders need escalation today?
+- Instructions: paste the block in the next card.
+Then test on Try it and Create.
 ```
 
-### Agent 1 — Instructions (paste into the Instructions field)
+### Agent 1 — Instructions field (paste this one field)
 
 ```prompt
 You are the Zava Order Desk Agent. You triage incoming rush orders for the Smart Launch Shirt launch.
@@ -160,13 +179,21 @@ Be concise and decision-ready. If a check fails, lead with the escalation. Never
 Triage order ZO-3101.
 ```
 
-### Agent 2 — Supplier Readiness: configure
+### Agent 2 — Supplier Readiness: fill these fields
 
 ```demo
-Create agent > Skip to configure. Name = Zava Supplier Readiness. Description = Answers supply-chain readiness questions for the Smart Launch Shirt launch — supplier capacity, lead times, certifications, and inventory cover — grounded only in the Zava supply files. Knowledge = Zava_Rush_Order_Context.docx, Zava_Inventory_Snapshot.xlsx, Zava_Risk_Register.xlsx. Capabilities = both off. Starter prompts = "Can our suppliers cover 20,000 units in 14 days?" and "Which SKU is the supply bottleneck?". Paste the Instructions from the next step, test, then Create.
+Create agent > Skip to configure, then fill each field:
+- Name: Zava Supplier Readiness
+- Description: Answers supply-chain readiness questions for the Smart Launch Shirt launch — supplier capacity, lead times, certifications, and inventory cover — grounded only in the Zava supply files.
+- Knowledge: Zava_Rush_Order_Context.docx, Zava_Inventory_Snapshot.xlsx, Zava_Risk_Register.xlsx.
+- Capabilities: Code interpreter off, Image generator off.
+- Starter prompt 1: Can our suppliers cover 20,000 units in 14 days?
+- Starter prompt 2: Which SKU is the supply bottleneck?
+- Instructions: paste the block in the next card.
+Then test and Create.
 ```
 
-### Agent 2 — Instructions
+### Agent 2 — Instructions field
 
 ```prompt
 You are Zava Supplier Readiness. You answer supply-chain readiness questions for the Smart Launch Shirt launch using only the Zava supply files in your knowledge.
@@ -182,13 +209,21 @@ If the answer is not in your knowledge, say so plainly and do not guess. You exp
 Can our suppliers cover the White XL and XXL demand within 14 days?
 ```
 
-### Agent 3 — Margin & Pricing: configure (Code interpreter ON)
+### Agent 3 — Margin & Pricing: fill these fields (Code interpreter ON)
 
 ```demo
-Create agent > Skip to configure. Name = Zava Margin & Pricing. Description = Calculates landed cost and gross margin for Smart Launch Shirt rush-order scenarios and tests prices against the EUR 25.80 floor, using code interpreter for the maths. Knowledge = Zava_Pricing_Assumptions.xlsx, Zava_Order_Intake.xlsx. Capabilities = turn Code interpreter ON ("Create documents, charts, and code"); Image generator off. Starter prompts = "What price holds a 32 percent gross margin?" and "Show the margin curve from EUR 24 to EUR 30". Paste the Instructions, test, then Create. Point out that code interpreter is what lets a declarative agent do real calculation and charts without an external tool.
+Create agent > Skip to configure, then fill each field:
+- Name: Zava Margin & Pricing
+- Description: Calculates landed cost and gross margin for Smart Launch Shirt rush-order scenarios and tests prices against the EUR 25.80 floor, using code interpreter for the maths.
+- Knowledge: Zava_Pricing_Assumptions.xlsx, Zava_Order_Intake.xlsx.
+- Capabilities: turn Code interpreter ON ("Create documents, charts, and code"); Image generator off. This is the field that makes a declarative agent do real maths and charts without an external tool.
+- Starter prompt 1: What price holds a 32 percent gross margin?
+- Starter prompt 2: Show the margin curve from EUR 24 to EUR 30
+- Instructions: paste the block in the next card.
+Then test and Create.
 ```
 
-### Agent 3 — Instructions
+### Agent 3 — Instructions field
 
 ```prompt
 You are Zava Margin & Pricing. You calculate landed cost and gross margin for Smart Launch Shirt rush-order scenarios using the pricing assumptions and order intake in your knowledge.
