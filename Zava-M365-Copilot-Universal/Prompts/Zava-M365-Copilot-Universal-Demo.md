@@ -220,6 +220,12 @@ Use this as the executive platform close. Agent Builder is the fastest path to a
 
 ## 11 - Microsoft Agent 365 E2E: Agent Builder, Copilot Studio, Control Plane
 
+### Set the compelling event
+
+```demo
+Frame the stakes before you build anything. It is launch week for Zava's NFC Smart Launch Shirt. Three rush orders are stuck in manual triage: Contoso Events (20,000 units, EMEA, critical), Fabrikam Sports (12,000, APAC), and Northwind Retail (8,500, North America) - 40,500 units, one shared deadline. One wrong commit blows the launch. The order desk needs an agent today, and IT needs to govern it tomorrow. Then walk the three doors: build it fast (Agent Builder), make it production (Copilot Studio), govern the estate (Agent 365).
+```
+
 ### Build the Agent Builder agent
 
 ```prompt
@@ -229,7 +235,7 @@ Use data/agent-365/AgentBuilder_OrderDesk_Brief.docx and data/agent-365/Zava_Rus
 ### Presenter Action
 
 ```demo
-Open Microsoft 365 Copilot Chat, choose Agent Builder or New agent, and use the output as the build plan. Add the Word documents as knowledge where the tenant experience allows it. The message is: Agent Builder is the fastest path for a declarative, grounded business agent.
+Build it live in Microsoft 365 Copilot > Agents > Create agent (Agent Builder). Fill the panes in order: Name = Zava Order Desk Agent; Description = triages rush orders against supply, margin, and compliance guardrails; Instructions = paste the prompt output; Knowledge = add the two Zava Word files and the intake CSV; Starter prompts = "Triage order ZO-3101" and "Which orders need escalation today?". Test in the right-hand pane, then Create and share. The moment: a working triage agent in under three minutes, grounded only on Zava's files - and IT will still govern it.
 ```
 
 ### Test the Agent Builder agent
@@ -265,7 +271,7 @@ Use data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx and data/agent-365/
 ### Presenter Action
 
 ```demo
-Open Copilot Studio. Create or describe the Zava Fulfillment Escalation Agent. Show where actions, topics, knowledge, authentication, environment, analytics, and publish channels would be configured. If the tenant is not ready, use the prompt output as the build blueprint.
+Build it live in Copilot Studio > Agents > Create > New agent (or Copy to Copilot Studio from the Agent Builder agent). Then: Instructions = paste the design prompt output; Knowledge = fulfillment spec plus order intake; Tools/actions = Teams escalation message, a human approval step, and an order-status lookup; Test in the built-in test panel until the escalation flow passes; Channels > Microsoft 365 Copilot and Microsoft Teams > turn on Make agent available in Microsoft 365 Copilot > Edit details > Save; then Save to submit for admin review. The agent now appears as a request in the admin center. If the tenant is not ready, use the prompt output as the build blueprint.
 ```
 
 ### Prepare the admin request
