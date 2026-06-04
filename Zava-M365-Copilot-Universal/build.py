@@ -112,11 +112,15 @@ def render_demo_view(demo: dict, prev_id, next_id) -> str:
     did = demo["id"]
     meta_bits = []
     if demo.get("duration"):
-        meta_bits.append(f'<span class="meta-pill">⏱ {esc(demo["duration"])} min</span>')
+        meta_bits.append(f'<span class="m-strong">{esc(demo["duration"])} min</span>')
     if demo.get("license"):
-        meta_bits.append(f'<span class="meta-pill">⬢ {esc(demo["license"])}</span>')
-    for s in demo.get("surfaces", []):
-        meta_bits.append(f'<span class="meta-pill ghost">{esc(s)}</span>')
+        meta_bits.append(f'<span class="m-strong">{esc(demo["license"])}</span>')
+    surfaces = demo.get("surfaces", [])
+    if surfaces:
+        meta_bits.append(f'<span>{esc(", ".join(surfaces))}</span>')
+    meta_html = ('<div class="meta-line">'
+                 + '<span class="sep">·</span>'.join(meta_bits)
+                 + "</div>") if meta_bits else ""
     files = demo.get("files") or []
     files_html = ""
     if files:
@@ -146,7 +150,7 @@ def render_demo_view(demo: dict, prev_id, next_id) -> str:
         f'<span class="view-eyebrow">Demo {did}</span>'
         f'<h2 class="view-title">{esc(demo["title"])}</h2>'
         f'<p class="view-summary">{esc(demo.get("summary",""))}</p>'
-        f'<div class="meta-row">{"".join(meta_bits)}</div>'
+        f'{meta_html}'
         f"{files_html}{note_html}"
         f'<div class="steps">{steps}</div>'
         f"{render_sources(demo.get('sources', []))}"
@@ -413,7 +417,8 @@ aside{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
 .brand-name{font-weight:700;font-size:17px;color:var(--text)}
 .brand-name:hover{text-decoration:none;color:var(--accent)}
 .version-badge{font-size:11px;color:var(--muted);background:var(--surface-2);
-  border:1px solid var(--border);border-radius:999px;padding:3px 9px;width:fit-content}
+  border:1px solid var(--border);border-radius:5px;padding:3px 8px;width:fit-content;
+  text-transform:uppercase;letter-spacing:.5px;font-weight:600}
 .search{width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--border);
   background:var(--surface-2);color:var(--text);font-size:13px}
 .search:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
@@ -462,7 +467,7 @@ main{padding:34px clamp(20px,4vw,56px);max-width:1180px;width:100%}
 /* Filter chips */
 .filterbar{margin:0 0 22px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:6px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface);
+.chip{padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface);
   font-size:12.5px;font-weight:600;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:7px}
 .chip .dot{background:var(--c,var(--accent))}
 .chip.active{color:#fff;background:var(--c,var(--accent));border-color:transparent}
@@ -492,7 +497,8 @@ main{padding:34px clamp(20px,4vw,56px);max-width:1180px;width:100%}
 .dc-foot{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;
   border-top:1px solid var(--border);padding-top:8px}
 .opt{font-size:10px;font-weight:700;color:var(--collab);background:var(--surface-2);
-  border-radius:6px;padding:1px 6px;margin-left:6px;text-transform:uppercase;letter-spacing:.4px}
+  border:1px solid var(--border);border-radius:4px;padding:1px 6px;margin-left:6px;
+  text-transform:uppercase;letter-spacing:.4px}
 
 /* Focus demo view */
 .demo-view[data-track="chat"]{--track:var(--chat)}
@@ -502,14 +508,14 @@ main{padding:34px clamp(20px,4vw,56px);max-width:1180px;width:100%}
 .demo-view[data-track="governance"]{--track:var(--governance)}
 .demo-view[data-track="collab"]{--track:var(--collab)}
 .demo-view .view-eyebrow{color:var(--track)}
-.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.meta-pill{font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;
-  background:var(--track,var(--accent));color:#fff}
-.meta-pill.ghost{background:var(--surface-2);color:var(--muted);border:1px solid var(--border)}
+.meta-line{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:16px;
+  font-size:13.5px;color:var(--muted)}
+.meta-line .m-strong{color:var(--text);font-weight:600}
+.meta-line .sep{color:var(--border);font-weight:700}
 .files{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:16px}
 .files-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
 .file-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:var(--surface-2);
-  border:1px solid var(--border);border-radius:7px;padding:3px 9px 3px 6px;color:var(--text)}
+  border:1px solid var(--border);border-radius:5px;padding:3px 9px 3px 6px;color:var(--text)}
 .file-chip .ficon{width:16px;height:16px;flex:none}
 .demo-note{background:var(--accent-soft);border-left:3px solid var(--track,var(--accent));
   padding:11px 15px;border-radius:0 9px 9px 0;font-size:14px;margin:0 0 20px}
@@ -518,10 +524,10 @@ main{padding:34px clamp(20px,4vw,56px);max-width:1180px;width:100%}
   box-shadow:var(--shadow);overflow:hidden}
 .step.prompt{border-left:3px solid var(--track,var(--accent))}
 .step.action{border-left:3px solid var(--governance);background:var(--surface-2)}
-.step-head{display:flex;align-items:center;gap:10px;padding:13px 16px}
-.step-kind{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;
-  padding:3px 8px;border-radius:6px;background:var(--track,var(--accent));color:#fff}
-.step.action .step-kind{background:var(--governance)}
+.step-head{display:flex;align-items:center;gap:11px;padding:13px 16px}
+.step-kind{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+  color:var(--track,var(--accent))}
+.step.action .step-kind{color:var(--governance)}
 .step-head h4{margin:0;font-size:14.5px;font-weight:700;flex:1}
 .copy{font-size:12px;font-weight:600;padding:5px 13px;border-radius:8px;border:1px solid var(--border);
   background:var(--surface);color:var(--text);cursor:pointer}
