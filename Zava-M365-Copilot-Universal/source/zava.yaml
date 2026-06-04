@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.4"
+  version: "5.0.5"
   date: "2026-06-04"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -381,10 +381,19 @@ demos:
       - { label: "Agent flows", url: "https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow" }
       - { label: "Entra Agent identities", url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-use-entra-agent-identities" }
     steps:
-      - kind: action
+      - kind: clickpath
         title: "Agent A (interactive) — create the Fulfillment Escalation agent"
-        text: |
-          Copilot Studio (copilotstudio.microsoft.com) > Create > New agent. Describe it (max 1024 characters): "A Zava fulfilment escalation agent that takes rush orders flagged by the Order Desk, checks live order and inventory status, asks a human for approval when an order is at risk, and notifies the fulfilment team in Teams." Let Copilot Studio generate the name, description, and instructions and suggest triggers, knowledge, and tools, then refine them. Add knowledge = CopilotStudio_Fulfillment_Agent_Spec.docx and Zava_Order_Intake.xlsx. This agent is interactive - it responds to a person in chat.
+        portal: "Copilot Studio"
+        url: "https://copilotstudio.microsoft.com/"
+        path: ["Create", "New agent"]
+        scenario: "The first low-code agent that ACTS — it responds to a person and can call real tools, the line Agent Builder cannot cross."
+        steps:
+          - "Create > New agent to open the Describe-first authoring canvas."
+          - "In Describe (max 1024 characters), paste: 'A Zava fulfilment escalation agent that takes rush orders flagged by the Order Desk, checks live order and inventory status, asks a human for approval when an order is at risk, and notifies the fulfilment team in Teams.'"
+          - "Let Copilot Studio generate the name, description, and instructions and suggest triggers, knowledge, and tools — then refine them."
+          - "Add knowledge: CopilotStudio_Fulfillment_Agent_Spec.docx and Zava_Order_Intake.xlsx."
+        watch: "A working interactive agent scaffold appears — name, instructions, suggested tools — generated from one sentence."
+        say: "This is the interactive sibling: it waits for a person to start it. Agent B will run itself — keep that contrast in mind."
       - kind: prompt
         title: "Agent A — Instructions (refine the generated text)"
         text: |
@@ -396,13 +405,19 @@ demos:
           3. Once you have a decision, use the Teams escalation tool to notify the fulfilment channel with the order ID, the risk, and the approved next action.
 
           Always confirm back to the user: what you checked, who you escalated to, and the current status. Never commit stock or send an external message without an approval.
-      - kind: action
+      - kind: clickpath
         title: "Agent A — add the tools (actions)"
-        text: |
-          Tools > Add a tool > New tool. Add three actions and configure each one - Name, Description (the description drives generative orchestration), "Ask end user before running", Authentication, and how it completes (Don't respond / Write with generative AI / Send specific response / Send adaptive card):
-          1. Connector - Microsoft Teams "Post message in a chat or channel": posts order ID, risk, and approved action to the fulfilment channel. Authentication = end user.
-          2. Approval - request a human decision from the fulfilment lead before any commit; set "Ask end user before running" = Yes.
-          3. MCP - read-only order-status lookup (server in Zava_Public_OrderSignals_MCP_Registration.json) with tools like get_order_risk_signal. Leave inputs on "Dynamically fill with AI" where safe. Tools run in the user's context.
+        portal: "Copilot Studio"
+        url: "https://copilotstudio.microsoft.com/"
+        path: ["Your agent", "Tools", "Add a tool"]
+        scenario: "This is the line Agent Builder cannot cross — attaching real actions that touch real systems. Configure each tool's Name, Description (it drives generative orchestration), Authentication, and completion mode."
+        steps:
+          - "Tools > Add a tool > New tool."
+          - "Connector — Microsoft Teams 'Post message in a chat or channel': posts order ID, risk, and approved action to the fulfilment channel. Authentication = end user."
+          - "Approval — request a human decision from the fulfilment lead before any commit; set 'Ask end user before running' = Yes."
+          - "MCP — read-only order-status lookup (server in Zava_Public_OrderSignals_MCP_Registration.json) with tools like get_order_risk_signal; leave inputs on 'Dynamically fill with AI' where safe."
+        watch: "Three tools attached — a Teams connector, an approval gate, and an MCP read — all running in the user's context."
+        say: "The Description field is what the orchestrator reads to pick a tool, so write it for the AI, not for humans. Every action runs on-behalf-of the user."
       - kind: clickpath
         title: "Agent A — add a topic + trigger"
         portal: "Copilot Studio"
@@ -446,10 +461,19 @@ demos:
           - "Note: every Copilot Studio agent already gets an Agent ID at creation; this setting governs the Entra-backed identity for Conditional Access. Blueprint ID 25664c89-cea5-4ab6-b924-a54fd8a19ae0."
         watch: "The environment now mints Entra-backed Agent IDs — preview today, but this is the identity that makes the autonomous agent governable in demo 11."
         say: "This single toggle is why an autonomous agent isn't a rogue script: it gets a real identity, just like an employee badge."
-      - kind: action
-        title: "Agent B — create the autonomous Inventory Watch agent"
-        text: |
-          Copilot Studio > Create > New agent. Describe it: "An autonomous Zava inventory watch agent that monitors Smart Launch Shirt stock and incoming order signals, and when a SKU drops below its safety threshold or a new rush-order signal arrives, evaluates the risk and raises an escalation - without a person starting the conversation." Refine the generated instructions. Add knowledge = Zava_Inventory_Snapshot.xlsx and Zava_Order_Intake.xlsx.
+      - kind: clickpath
+        title: "Agent B (autonomous) — create the Inventory Watch agent"
+        portal: "Copilot Studio"
+        url: "https://copilotstudio.microsoft.com/"
+        path: ["Create", "New agent"]
+        scenario: "Same builder, but this agent will have NO human starting it — it watches stock and order signals on its own."
+        steps:
+          - "Create > New agent."
+          - "In Describe, paste: 'An autonomous Zava inventory watch agent that monitors Smart Launch Shirt stock and incoming order signals, and when a SKU drops below its safety threshold or a new rush-order signal arrives, evaluates the risk and raises an escalation — without a person starting the conversation.'"
+          - "Refine the generated instructions for conservative, numbers-backed escalations."
+          - "Add knowledge: Zava_Inventory_Snapshot.xlsx and Zava_Order_Intake.xlsx."
+        watch: "A second agent scaffold — identical tooling to Agent A, but we are about to give it a non-conversational trigger instead of a chat topic."
+        say: "Watch what changes next: no topic, no human phrase. A trigger and a flow are what turn this into a digital worker."
       - kind: prompt
         title: "Agent B — Instructions (refine the generated text)"
         text: |
@@ -458,12 +482,19 @@ demos:
           On each run: read the current inventory snapshot and order intake. For every SKU, compare available stock and incoming demand against the safety threshold and the launch deadline. When a SKU is below threshold, or a new rush-order signal would breach cover, take action: post a clear alert (SKU, gap, deadline, recommended action) to the fulfilment channel and open an escalation for the fulfilment lead.
 
           Be conservative: only raise an escalation when a threshold is actually breached, and always include the numbers behind the decision. Log what you checked and what you did.
-      - kind: action
+      - kind: clickpath
         title: "Agent B — make it autonomous: trigger + agent flow"
-        text: |
-          This agent runs without a user, so it needs a non-conversational trigger and an action to take.
-          - Trigger: Triggers > add an event trigger such as "A message is received" or "An activity occurs", or build a scheduled agent flow (a Power Platform flow with a Recurrence trigger, e.g. every 30 minutes) that starts the agent. For an event path, use a connector trigger like "When a new email arrives" or a Dataverse "When a row is added or modified".
-          - Action: Tools > Add a tool > Agent flow that reads inventory and order data and, when the threshold is breached, posts an alert to the fulfilment channel and opens an escalation. Because no user is present, set tools to maker-provided authentication (the agent's own identity), not end-user auth.
+        portal: "Copilot Studio"
+        url: "https://copilotstudio.microsoft.com/"
+        path: ["Your agent", "Triggers / Tools"]
+        scenario: "An autonomous agent needs a non-conversational trigger and an action to take — not a chat topic a person opens."
+        steps:
+          - "Trigger: Triggers > add an event trigger such as 'A message is received' or 'An activity occurs' — OR build a scheduled agent flow (a Power Platform flow with a Recurrence trigger, e.g. every 30 minutes) that starts the agent."
+          - "For an event path, use a connector trigger like 'When a new email arrives' or a Dataverse 'When a row is added or modified'."
+          - "Action: Tools > Add a tool > Agent flow that reads inventory and order data and, when the threshold is breached, posts an alert to the fulfilment channel and opens an escalation."
+          - "Because no user is present, set tools to maker-provided authentication (the agent's own identity), not end-user auth."
+        watch: "The agent now fires on a schedule or event with no person in the loop — and acts under its own identity."
+        say: "This is the moment it becomes a digital worker. That own identity is exactly what Agent 365 governs in demo 11."
       - kind: clickpath
         title: "Agent B — validate the Entra Agent ID"
         portal: "Copilot Studio"

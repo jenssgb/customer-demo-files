@@ -304,7 +304,15 @@ Use Leila only to start the Teams meeting with Facilitator/Interpreter when need
 ### Agent A (interactive) — create the Fulfillment Escalation agent
 
 ```demo
-Copilot Studio (copilotstudio.microsoft.com) > Create > New agent. Describe it (max 1024 characters): "A Zava fulfilment escalation agent that takes rush orders flagged by the Order Desk, checks live order and inventory status, asks a human for approval when an order is at risk, and notifies the fulfilment team in Teams." Let Copilot Studio generate the name, description, and instructions and suggest triggers, knowledge, and tools, then refine them. Add knowledge = CopilotStudio_Fulfillment_Agent_Spec.docx and Zava_Order_Intake.xlsx. This agent is interactive - it responds to a person in chat.
+Scenario: The first low-code agent that ACTS — it responds to a person and can call real tools, the line Agent Builder cannot cross.
+Path: Copilot Studio > Create > New agent
+Open: https://copilotstudio.microsoft.com/
+1. Create > New agent to open the Describe-first authoring canvas.
+2. In Describe (max 1024 characters), paste: 'A Zava fulfilment escalation agent that takes rush orders flagged by the Order Desk, checks live order and inventory status, asks a human for approval when an order is at risk, and notifies the fulfilment team in Teams.'
+3. Let Copilot Studio generate the name, description, and instructions and suggest triggers, knowledge, and tools — then refine them.
+4. Add knowledge: CopilotStudio_Fulfillment_Agent_Spec.docx and Zava_Order_Intake.xlsx.
+On screen: A working interactive agent scaffold appears — name, instructions, suggested tools — generated from one sentence.
+Say: This is the interactive sibling: it waits for a person to start it. Agent B will run itself — keep that contrast in mind.
 ```
 
 ### Agent A — Instructions (refine the generated text)
@@ -323,10 +331,15 @@ Always confirm back to the user: what you checked, who you escalated to, and the
 ### Agent A — add the tools (actions)
 
 ```demo
-Tools > Add a tool > New tool. Add three actions and configure each one - Name, Description (the description drives generative orchestration), "Ask end user before running", Authentication, and how it completes (Don't respond / Write with generative AI / Send specific response / Send adaptive card):
-1. Connector - Microsoft Teams "Post message in a chat or channel": posts order ID, risk, and approved action to the fulfilment channel. Authentication = end user.
-2. Approval - request a human decision from the fulfilment lead before any commit; set "Ask end user before running" = Yes.
-3. MCP - read-only order-status lookup (server in Zava_Public_OrderSignals_MCP_Registration.json) with tools like get_order_risk_signal. Leave inputs on "Dynamically fill with AI" where safe. Tools run in the user's context.
+Scenario: This is the line Agent Builder cannot cross — attaching real actions that touch real systems. Configure each tool's Name, Description (it drives generative orchestration), Authentication, and completion mode.
+Path: Copilot Studio > Your agent > Tools > Add a tool
+Open: https://copilotstudio.microsoft.com/
+1. Tools > Add a tool > New tool.
+2. Connector — Microsoft Teams 'Post message in a chat or channel': posts order ID, risk, and approved action to the fulfilment channel. Authentication = end user.
+3. Approval — request a human decision from the fulfilment lead before any commit; set 'Ask end user before running' = Yes.
+4. MCP — read-only order-status lookup (server in Zava_Public_OrderSignals_MCP_Registration.json) with tools like get_order_risk_signal; leave inputs on 'Dynamically fill with AI' where safe.
+On screen: Three tools attached — a Teams connector, an approval gate, and an MCP read — all running in the user's context.
+Say: The Description field is what the orchestrator reads to pick a tool, so write it for the AI, not for humans. Every action runs on-behalf-of the user.
 ```
 
 ### Agent A — add a topic + trigger
@@ -377,10 +390,18 @@ On screen: The environment now mints Entra-backed Agent IDs — preview today, b
 Say: This single toggle is why an autonomous agent isn't a rogue script: it gets a real identity, just like an employee badge.
 ```
 
-### Agent B — create the autonomous Inventory Watch agent
+### Agent B (autonomous) — create the Inventory Watch agent
 
 ```demo
-Copilot Studio > Create > New agent. Describe it: "An autonomous Zava inventory watch agent that monitors Smart Launch Shirt stock and incoming order signals, and when a SKU drops below its safety threshold or a new rush-order signal arrives, evaluates the risk and raises an escalation - without a person starting the conversation." Refine the generated instructions. Add knowledge = Zava_Inventory_Snapshot.xlsx and Zava_Order_Intake.xlsx.
+Scenario: Same builder, but this agent will have NO human starting it — it watches stock and order signals on its own.
+Path: Copilot Studio > Create > New agent
+Open: https://copilotstudio.microsoft.com/
+1. Create > New agent.
+2. In Describe, paste: 'An autonomous Zava inventory watch agent that monitors Smart Launch Shirt stock and incoming order signals, and when a SKU drops below its safety threshold or a new rush-order signal arrives, evaluates the risk and raises an escalation — without a person starting the conversation.'
+3. Refine the generated instructions for conservative, numbers-backed escalations.
+4. Add knowledge: Zava_Inventory_Snapshot.xlsx and Zava_Order_Intake.xlsx.
+On screen: A second agent scaffold — identical tooling to Agent A, but we are about to give it a non-conversational trigger instead of a chat topic.
+Say: Watch what changes next: no topic, no human phrase. A trigger and a flow are what turn this into a digital worker.
 ```
 
 ### Agent B — Instructions (refine the generated text)
@@ -396,9 +417,15 @@ Be conservative: only raise an escalation when a threshold is actually breached,
 ### Agent B — make it autonomous: trigger + agent flow
 
 ```demo
-This agent runs without a user, so it needs a non-conversational trigger and an action to take.
-- Trigger: Triggers > add an event trigger such as "A message is received" or "An activity occurs", or build a scheduled agent flow (a Power Platform flow with a Recurrence trigger, e.g. every 30 minutes) that starts the agent. For an event path, use a connector trigger like "When a new email arrives" or a Dataverse "When a row is added or modified".
-- Action: Tools > Add a tool > Agent flow that reads inventory and order data and, when the threshold is breached, posts an alert to the fulfilment channel and opens an escalation. Because no user is present, set tools to maker-provided authentication (the agent's own identity), not end-user auth.
+Scenario: An autonomous agent needs a non-conversational trigger and an action to take — not a chat topic a person opens.
+Path: Copilot Studio > Your agent > Triggers / Tools
+Open: https://copilotstudio.microsoft.com/
+1. Trigger: Triggers > add an event trigger such as 'A message is received' or 'An activity occurs' — OR build a scheduled agent flow (a Power Platform flow with a Recurrence trigger, e.g. every 30 minutes) that starts the agent.
+2. For an event path, use a connector trigger like 'When a new email arrives' or a Dataverse 'When a row is added or modified'.
+3. Action: Tools > Add a tool > Agent flow that reads inventory and order data and, when the threshold is breached, posts an alert to the fulfilment channel and opens an escalation.
+4. Because no user is present, set tools to maker-provided authentication (the agent's own identity), not end-user auth.
+On screen: The agent now fires on a schedule or event with no person in the loop — and acts under its own identity.
+Say: This is the moment it becomes a digital worker. That own identity is exactly what Agent 365 governs in demo 11.
 ```
 
 ### Agent B — validate the Entra Agent ID
