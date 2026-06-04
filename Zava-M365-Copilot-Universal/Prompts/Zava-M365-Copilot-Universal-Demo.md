@@ -315,10 +315,10 @@ Create an admin review package for the Zava Fulfillment Escalation Agent. Includ
 Open Microsoft 365 admin center. Go to Agents > All agents > Requests. Select the requested Copilot Studio agent if available. Review Data & tools, owner, capabilities, sources, actions, and requested publish scope. Do not publish broadly in a live customer demo unless the tenant is prepared.
 ```
 
-### Explain Agent 365 registry
+### See your agent in Agent 365 (no prompt - this is an admin surface)
 
-```prompt
-Use data/agent-365/Agent365_Agent_Review_Register.csv. Explain how Microsoft Agent 365 helps the AI admin observe the Zava Order Desk Agent and Zava Fulfillment Escalation Agent. Structure the answer as: inventory, ownership, platform, environment, connectors/actions, risk signals, governance actions, and what would be unsafe without this registry.
+```demo
+Agent 365 is an admin and governance surface, not a chat box - there is no prompt to type. Open Microsoft 365 admin center > Copilot > Agents > All agents. Find the Zava Order Desk Agent you built in demo 7 - it is already listed with no manual registration. Open it and show: Microsoft Entra Agent ID, owner, publisher (built with Agent Builder), status, environment, and the activity view (inputs, outputs, actions, results - preview, read-only, 30-day retention). Say it out loud: "I built this 3 minutes ago and it already has its own identity and activity trail that IT can govern." Backup if the tenant has no Agent 365: open data/agent-365/Agent365_Agent_Review_Register.csv and walk the same fields.
 ```
 
 ### Power Platform Governance vs Agent 365 objection handling
