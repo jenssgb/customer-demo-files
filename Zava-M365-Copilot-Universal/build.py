@@ -101,7 +101,9 @@ def render_step(step: dict) -> str:
             f"<pre>{esc(text)}</pre>"
             "</article>"
         )
-    # action / presenter click-path — NO copy button, NO <pre>
+    if kind == "clickpath":
+        return render_clickpath(step, title)
+    # action / presenter narration — NO copy button, NO <pre>
     body = esc(text).replace("\n", "<br>")
     return (
         '<article class="step action">'
@@ -109,6 +111,73 @@ def render_step(step: dict) -> str:
         f'<span class="step-kind">Presenter</span><h4>{title}</h4>'
         "</div>"
         f'<p class="action-body">{body}</p>'
+        "</article>"
+    )
+
+
+def render_clickpath(step: dict, title: str) -> str:
+    """Render a portal navigation as a bold, followable visual walkthrough.
+
+    YAML fields (all optional except steps):
+        portal:  name of the portal (shown as a pill)
+        url:     deep link opened by the "Open portal" button
+        path:    list of breadcrumb crumbs after the portal
+        scenario: framing/setup callout (what just happened)
+        steps:   ordered list of concrete actions (the click-path)
+        watch:   "on screen" outcome callout (what the audience sees)
+        say:     presenter narration callout
+    """
+    portal = step.get("portal", "")
+    url = step.get("url", "")
+    crumbs = step.get("path", []) or []
+    scenario = step.get("scenario", "")
+    steps = step.get("steps", []) or []
+    watch = step.get("watch", "")
+    say = step.get("say", "")
+
+    head_right = ""
+    if url:
+        label = esc(portal) if portal else "Open portal"
+        head_right = (
+            f'<a class="portal-link" href="{esc(url)}" target="_blank" rel="noopener">'
+            f"{label} ↗</a>"
+        )
+
+    breadcrumb = ""
+    crumb_items = ([portal] if portal else []) + list(crumbs)
+    if crumb_items:
+        chips = '<span class="cp-sep">›</span>'.join(
+            f'<span class="cp-crumb{" start" if i == 0 and portal else ""}">{esc(c)}</span>'
+            for i, c in enumerate(crumb_items)
+        )
+        breadcrumb = f'<div class="cp-breadcrumb">{chips}</div>'
+
+    scenario_html = (
+        f'<div class="cp-callout cp-scenario"><span class="cp-tag">Scenario</span>'
+        f"<p>{esc(scenario)}</p></div>" if scenario else ""
+    )
+    steps_html = ""
+    if steps:
+        items = "".join(f"<li>{esc(s)}</li>" for s in steps)
+        steps_html = f'<ol class="cp-steps">{items}</ol>'
+    watch_html = (
+        f'<div class="cp-callout cp-watch"><span class="cp-tag">On screen</span>'
+        f"<p>{esc(watch)}</p></div>" if watch else ""
+    )
+    say_html = (
+        f'<div class="cp-callout cp-say"><span class="cp-tag">Say</span>'
+        f"<p>{esc(say)}</p></div>" if say else ""
+    )
+
+    return (
+        '<article class="step clickpath">'
+        '<div class="step-head">'
+        f'<span class="step-kind">Click-path</span><h4>{title}</h4>'
+        f"{head_right}"
+        "</div>"
+        '<div class="cp-body">'
+        f"{scenario_html}{breadcrumb}{steps_html}{watch_html}{say_html}"
+        "</div>"
         "</article>"
     )
 
@@ -574,6 +643,43 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
   font-family:"Cascadia Code",Consolas,monospace;font-size:13px;line-height:1.55;
   white-space:pre-wrap;word-break:break-word;color:var(--text)}
 .action-body{margin:0;padding:0 16px 15px;font-size:14px;color:var(--text)}
+
+/* Click-path (bold, followable portal walkthrough) */
+.step.clickpath{border-left:3px solid var(--track,var(--governance))}
+.step.clickpath .step-kind{color:var(--track,var(--governance))}
+.step.clickpath .step-head{flex-wrap:wrap}
+.portal-link{font-size:12px;font-weight:700;padding:5px 12px;border-radius:6px;
+  border:1px solid var(--track,var(--governance));color:var(--track,var(--governance));
+  background:var(--surface);white-space:nowrap}
+.portal-link:hover{background:var(--track,var(--governance));color:#fff;text-decoration:none}
+.cp-body{padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.cp-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:7px;
+  background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:8px 11px}
+.cp-crumb{font-size:12.5px;font-weight:600;color:var(--text);font-family:"Cascadia Code",Consolas,monospace}
+.cp-crumb.start{color:var(--track,var(--governance));font-weight:800}
+.cp-sep{color:var(--muted);font-weight:700;font-size:13px}
+.cp-steps{margin:0;padding:0;list-style:none;counter-reset:cp;display:flex;flex-direction:column;gap:9px}
+.cp-steps li{position:relative;padding:3px 0 3px 40px;font-size:14px;line-height:1.55;
+  counter-increment:cp;min-height:28px;display:flex;align-items:center}
+.cp-steps li::before{content:counter(cp);position:absolute;left:0;top:1px;width:26px;height:26px;
+  border-radius:7px;background:var(--track,var(--governance));color:#fff;font-weight:800;font-size:13px;
+  display:flex;align-items:center;justify-content:center}
+.cp-steps li::after{content:"";position:absolute;left:13px;top:29px;bottom:-9px;width:2px;
+  background:var(--border)}
+.cp-steps li:last-child::after{display:none}
+.cp-callout{display:flex;gap:11px;align-items:flex-start;padding:10px 13px;border-radius:8px;
+  border:1px solid var(--border)}
+.cp-callout p{margin:0;font-size:13.5px;line-height:1.5}
+.cp-tag{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  padding:3px 8px;border-radius:5px;white-space:nowrap;flex:none;margin-top:1px}
+.cp-scenario{background:var(--accent-soft);border-color:transparent}
+.cp-scenario .cp-tag{background:var(--accent);color:#fff}
+.cp-watch{background:rgba(16,124,16,.10);border-color:transparent}
+.cp-watch .cp-tag{background:var(--analysis);color:#fff}
+.cp-watch p{font-weight:600}
+.cp-say{background:var(--surface-2)}
+.cp-say .cp-tag{background:var(--muted);color:#fff}
+.cp-say p{font-style:italic;color:var(--muted)}
 .sources{font-size:12.5px;color:var(--muted);margin:18px 0 0}
 .focus-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;
   margin-top:26px;padding-top:18px;border-top:1px solid var(--border)}
@@ -709,9 +815,28 @@ def render_md(data: dict) -> str:
             lines.append(f"> {d['note']}")
             lines.append("")
         for s in d.get("steps", []):
-            fence = "prompt" if s.get("kind") == "prompt" else "demo"
+            kind = s.get("kind")
             lines.append(f"### {s.get('title','')}")
             lines.append("")
+            if kind == "clickpath":
+                lines.append("```demo")
+                if s.get("scenario"):
+                    lines.append(f"Scenario: {s['scenario']}")
+                crumb = ([s["portal"]] if s.get("portal") else []) + list(s.get("path", []) or [])
+                if crumb:
+                    lines.append("Path: " + " > ".join(crumb))
+                if s.get("url"):
+                    lines.append(f"Open: {s['url']}")
+                for i, stp in enumerate(s.get("steps", []) or [], 1):
+                    lines.append(f"{i}. {stp}")
+                if s.get("watch"):
+                    lines.append(f"On screen: {s['watch']}")
+                if s.get("say"):
+                    lines.append(f"Say: {s['say']}")
+                lines.append("```")
+                lines.append("")
+                continue
+            fence = "prompt" if kind == "prompt" else "demo"
             lines.append(f"```{fence}")
             lines.append(s.get("text", "").rstrip("\n"))
             lines.append("```")
