@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.16"
+  version: "5.0.17"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -818,7 +818,9 @@ context:
       and have NO identity of their own. Copilot Studio agents (demo 10) are low-code, can act, and each gets a Microsoft
       Entra Agent ID. Foundry is the pro-code third type. First-party agents (Researcher & Analyst) are Microsoft-installed
       Copilot experiences — governed differently. Everything you build already shows up in the Microsoft 365 admin
-      center with just an admin role; a Microsoft Agent 365 / E7 license adds the security and risk depth on top. Verified against Microsoft Learn.
+      center with just an admin role; a Microsoft Agent 365 / E7 license adds the security and risk depth on top.
+      For Copilot Studio agents there is a THIRD plane — the Power Platform admin center — that owns build-time governance
+      (environments, ALM, DLP, capacity); Agent 365 does not replace it, the two are complementary. Verified against Microsoft Learn.
     columns:
       - "Capability"
       - "Applies to (agent type)"
@@ -833,6 +835,18 @@ context:
         - "Copilot Studio only — Agent Builder, Foundry & SharePoint drafts are not yet supported"
         - "✓ But only Copilot Studio drafts surface today."
         - "✓ Same limitation — surfaced in the registry."
+      - - "Power Platform inventory — tenant-wide view of every Power-Platform-built agent INCLUDING drafts (Copilot Studio + Agent Builder), with connector mapping & orphaned-owner detection"
+        - "Copilot Studio + Agent Builder (Power Platform-built)"
+        - "✓ Power Platform admin center > Manage > Inventory (or Manage > Copilot Studio). A separate plane from the M365 registry; needs a Power Platform / Dynamics 365 admin role, no Agent 365 license. Unlike the M365 registry it also surfaces Agent Builder drafts."
+        - "✗ Agent 365 does not replace it — the M365 registry is tenant-availability-scoped and shows no Power Platform drafts or environments."
+      - - "Build-time guardrails & ALM: environments, solutions, pipelines, managed environments + DLP / connector / HTTP / channel data policies (tenant · environment · agent level)"
+        - "Copilot Studio (Power Platform environments)"
+        - "✓ Power Platform admin center is the authoritative build/platform-governance plane. DLP data-policy enforcement is on for ALL tenants since early 2025. Needs a PP / Environment Admin role, no Agent 365 license."
+        - "✗ Agent 365 has NO ALM / environment / DLP plane — it consumes the published agent and adds tenant approval + security depth on top; it does not replace Power Platform governance."
+      - - "Capacity & cost governance: per-agent monthly Copilot-credit limit + automatic hard turn-off at the limit"
+        - "Copilot Studio only (Power Platform-billed)"
+        - "✓ Power Platform admin center > Licensing > Copilot Studio > Manage Agents: set a credit cap, see month-to-date billed credits, turn an agent off. No Agent 365 license."
+        - "✗ Not an Agent 365 capability — capacity & spend stay in Power Platform."
       - - "Lifecycle: install/uninstall, enable/disable, assign, block, remove"
         - "Agent Builder + Copilot Studio"
         - "✓ Full lifecycle from the Copilot Control System (CCS)."
@@ -904,7 +918,10 @@ context:
       protection) only apply to Copilot Studio and Foundry agents. The Agent 365 / Microsoft E7 license is what unlocks the
       security & risk depth (Risks column, Security tab, Defender runtime protection, Purview observability) plus 3rd-party
       Registry sync. For Copilot Studio, the M365 admin center is the tenant-wide registry (governance) while the Power
-      Platform admin center keeps the environment-scoped app catalog (distribution, DLP). Two capability classes split cleanly
+      Platform admin center keeps the environment-scoped build plane — ALM (environments, solutions, pipelines, managed
+      environments), DLP / connector data policies, and capacity / credit limits. Three planes, three jobs: Power Platform
+      admin center = how it is built & operated; the baseline M365 registry = what is exposed in the tenant; Agent 365 / E7 =
+      the security & risk depth. Agent 365 does NOT replace Power Platform governance — they are complementary. Two capability classes split cleanly
       by type: only Agent Builder embeds files as knowledge, so the sensitivity-label + embedded-file governance is uniquely
       its; everything that touches a tool layer or an identity (Work IQ / MCP tool governance, ID Protection, ID Governance,
       network/SASE controls) applies to Copilot Studio and Foundry — never to Agent Builder, which is declarative and
@@ -931,6 +948,10 @@ context:
       - { label: "Researcher & Analyst governance (first-party, block tenant-wide, no per-user assign)", url: "https://learn.microsoft.com/microsoft-365/copilot/copilot-agent-install#microsoft-installed-agents-and-features" }
       - { label: "Prompt injection High-risk signal in the registry (AI Prompt Shield, Defender + Entra SSE)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-registry#agents-at-risk" }
       - { label: "Defender for Endpoint AI agent runtime protection (prompt-injection block)", url: "https://learn.microsoft.com/defender-endpoint/ai-agent-runtime-protection-overview" }
+      - { label: "Copilot Studio governance principles (PPAC: ALM, connectors, environment-level DLP)", url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/copilot-studio-experience#copilot-studio-governance-principles" }
+      - { label: "Configure data policies for agents (DLP enforced for all tenants since early 2025)", url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" }
+      - { label: "Power Platform inventory (drafts, Copilot Studio + Agent Builder, PP / D365 admin role)", url: "https://learn.microsoft.com/power-platform/admin/power-platform-inventory" }
+      - { label: "Manage Copilot Studio credits & capacity (per-agent monthly limit, turn off agent)", url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity" }
 
   license_map:
     title: "What is GA, what is Frontier?"
