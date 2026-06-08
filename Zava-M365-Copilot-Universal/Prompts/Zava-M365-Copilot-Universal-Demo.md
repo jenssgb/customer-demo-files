@@ -220,6 +220,13 @@ Submit the flagship now so demo 11 can show "Shared by creator" and "Built by yo
 ### Already visible in the admin center — so what does Agent 365 add? (the FAQ, say it)
 
 ```demo
+Pre-empt the question every admin asks. These Agent Builder agents already appear in the Microsoft 365 admin center WITHOUT an Agent 365 license — under Copilot > Agents (the Copilot Control System). With just an admin role (AI Reader is the least-privilege one) you can already see the whole registry and run the full lifecycle: enable or disable, assign or block per user or group, approve org-catalog submissions, reassign agents that are missing an owner, and pin them. Visibility and governance of the lifecycle are baseline — no extra license.
+What the Agent 365 (or Microsoft E7) license ADDS is the security and risk depth on that same registry: the per-agent Risks column, the Security tab (Defender threat signals + Purview AI observability, DLP, audit), Defender real-time runtime protection, and cross-platform Registry sync. That is demo 11. Point at the 'Baseline vs Agent 365' reference tile for the full row-by-row.
+```
+
+### Wrap-up — fast to create, ready to govern
+
+```demo
 You built one flagship agent in minutes, and your people already built twenty more. They all read and answer — they do not act. That is the deliberate hand-off to demo 10, where Copilot Studio turns one of these into an agent that takes action (interactive and autonomous), and to demo 11, where Agent 365 governs the whole swarm from one control plane.
 ```
 

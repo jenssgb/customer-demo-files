@@ -385,10 +385,9 @@ def render_context_views(data: dict) -> str:
             "</section>"
         )
 
-    # Feature matrix + governance compare + License map (shared card-grid renderer)
+    # Feature matrix + License map (shared card-grid renderer)
     for key, anchor, eyebrow in (
         ("feature_matrix", "ctx-features", "Microsoft Learn verified"),
-        ("agent_governance", "ctx-governance", "Baseline vs Agent 365"),
         ("license_map", "ctx-license", "License & Frontier"),
     ):
         block = ctx.get(key)
@@ -407,6 +406,36 @@ def render_context_views(data: dict) -> str:
             f'<p class="view-summary">{esc(block.get("intro",""))}</p>'
             f'<div class="info-grid">{cards}</div>'
             f"{render_sources(block.get('sources', []))}"
+            "</section>"
+        )
+
+    # Baseline vs Agent 365 — comparison TABLE (not cards: a real side-by-side)
+    gov = ctx.get("agent_governance")
+    if gov:
+        def _gov_cell(txt: str) -> str:
+            t = str(txt).strip()
+            for glyph, cls in (("\u2713", "yes"), ("\u2717", "no"), ("~", "part"), ("\u2014", "part")):
+                if t.startswith(glyph):
+                    return f'<span class="{cls}">{glyph}</span> {esc(t[len(glyph):].lstrip())}'
+            return esc(t)
+        head = "".join(f"<th>{esc(c)}</th>" for c in gov.get("columns", []))
+        body = ""
+        for row in gov.get("rows", []):
+            cells = list(row)
+            rh = f'<th scope="row">{esc(cells[0])}</th>'
+            rest = "".join(f"<td>{_gov_cell(c)}</td>" for c in cells[1:])
+            body += f"<tr>{rh}{rest}</tr>"
+        note = f'<p class="gov-note">{esc(gov["note"])}</p>' if gov.get("note") else ""
+        out.append(
+            '<section class="view ctx-view" id="ctx-governance">'
+            '<a class="back" href="#home">← Back to catalog</a>'
+            '<span class="view-eyebrow">Baseline vs Agent 365</span>'
+            f'<h2 class="view-title">{esc(gov["title"])}</h2>'
+            f'<p class="view-summary">{esc(gov.get("intro",""))}</p>'
+            f'<div class="cmp-wrap"><table class="cmp"><thead><tr>{head}</tr></thead>'
+            f'<tbody>{body}</tbody></table></div>'
+            f'{note}'
+            f"{render_sources(gov.get('sources', []))}"
             "</section>"
         )
 
@@ -702,6 +731,21 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .info-card[data-track="agents"]{--track:var(--agents)}
 .info-card[data-track="governance"]{--track:var(--governance)}
 .info-card[data-track="collab"]{--track:var(--collab)}
+.cmp-wrap{overflow-x:auto;margin:0 0 14px;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.cmp{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
+.cmp th,.cmp td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.cmp thead th{background:var(--surface-2);font-weight:800;font-size:12.5px;border-bottom:2px solid var(--border)}
+.cmp thead th:first-child{width:30%}
+.cmp thead th:last-child{color:var(--governance)}
+.cmp tbody th{font-weight:700;font-size:12.5px;color:var(--text);width:30%}
+.cmp tbody td{color:var(--muted)}
+.cmp td:last-child,.cmp th:last-child{border-right:none}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:none}
+.cmp tbody tr:hover td,.cmp tbody tr:hover th{background:var(--surface-2)}
+.cmp .yes{color:var(--analysis);font-weight:800}
+.cmp .no{color:var(--governance);font-weight:800}
+.cmp .part{color:var(--apps);font-weight:800}
+.gov-note{font-size:12.5px;color:var(--muted);background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 13px;border-radius:0 6px 6px 0;margin:0 0 16px}
 .prose p{margin:0 0 12px;max-width:75ch}
 .timing{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
 .timing li{display:flex;gap:16px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);
