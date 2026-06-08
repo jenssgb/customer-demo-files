@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.21"
+  version: "5.0.22"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -822,6 +822,71 @@ context:
       & Analyst are Microsoft-installed first-party), and 'Filter by what you need' shows which plane delivers each
       control — Baseline (admin role only), Microsoft Agent 365 / E7, Power Platform admin center, or Entra ID P1/P2.
       Agent 365 does NOT replace Power Platform governance — they are complementary planes. Verified against Microsoft Learn.
+    type_benefits:
+      builder:
+        label: "Agent Builder agents"
+        baseline: >-
+          Already fully visible AND governable in the Microsoft 365 admin center with just an admin role — no Agent 365 license.
+          You get registry auto-registration, the full lifecycle (install/uninstall, enable/disable, block, delete), bulk Agent
+          Management Rules, org-catalog approve/reject, ownerless detection with one-click reassign-to-manager, the Power Platform
+          inventory (incl. drafts), the Graph API, and embedded-file knowledge governance — uploaded files get the most-restrictive
+          sensitivity label automatically and only users with extract rights can install the agent.
+        agent365: >-
+          The security & risk DEPTH on top: the per-agent Risks column, the Security tab (Purview AI observability, DLP, audit,
+          compliance-gap evaluation), automatic activity/business-impact telemetry, and Purview DLP that can exclude labeled
+          embedded files from responses. This is the main answer to "what do I gain for my Agent Builder agents" — visibility you
+          already have, but Agent 365 turns it into measurable risk & compliance insight.
+        na: >-
+          Identity-based controls do NOT apply: Agent Builder agents are declarative and knowledge-only — they have NO Entra Agent
+          ID, so no Conditional Access, no ID Protection/Governance, no MCP Tooling-Gateway, no Defender runtime protection and no
+          network/SASE controls. Those are for Copilot Studio & Foundry agents that actually act and carry an identity.
+      studio:
+        label: "Copilot Studio agents"
+        baseline: >-
+          Visible & lifecycle-governable in the M365 admin center with an admin role (registry, drafts, approve, ownerless
+          reassign, delete). The Power Platform admin center is the authoritative BUILD plane — environments, ALM, DLP/connector
+          data policies (enforced for all tenants since early 2025) and per-agent Copilot-credit capacity caps. Each agent already
+          gets a Microsoft Entra Agent ID at creation.
+        agent365: >-
+          The biggest uplift of any type: the Risks column + Security tab, Defender real-time runtime protection (prompt-injection
+          blocked before the tool call — High-severity signal), MCP/Tooling-Gateway governance (approve/reject each server, runtime
+          block, scoped Entra consent, every tool call traced), Conditional Access + ID Protection/Governance on the agent identity,
+          and Entra Internet Access network controls. The acting agent becomes governed like a user object.
+        na: >-
+          Agent 365 does not replace Power Platform: ALM, environments, DLP and capacity/spend stay in the Power Platform admin
+          center. The two planes are complementary — PPAC = how it is built & operated, Agent 365 = security & risk depth on top.
+      foundry:
+        label: "Foundry (pro-code) agents"
+        baseline: >-
+          The pro-code agent type. It surfaces in the converged registry and carries a Microsoft Entra Agent ID, but build & runtime
+          live in Azure AI Foundry rather than the M365 / Power Platform admin centers.
+        agent365: >-
+          Same security & identity depth as Copilot Studio: Risks column + Security tab, Defender runtime protection, Conditional
+          Access + ID Protection/Governance on the agent identity, network/SASE controls, and pro-code MCP routing through the Agent
+          365 Tooling Gateway (Agent 365 SDK, VS Code, Claude Code, GitHub Copilot CLI).
+        na: >-
+          BYO MCP for Azure AI Foundry is NOT yet a supported client surface of the Tooling Gateway (preview), and Foundry build-time
+          governance is not in the M365 admin center.
+      external:
+        label: "3rd-party agents (Bedrock, Vertex AI, Salesforce, Databricks)"
+        baseline: >-
+          Not visible at all in the baseline admin center — it only sees Microsoft-platform agents (Agent Builder, Copilot Studio).
+        agent365: >-
+          Registry sync brings external platforms into the ONE converged registry (preview), so shadow and third-party agents land
+          in the same inventory, risk and governance views as your Microsoft-built agents — the only way to see them centrally.
+        na: >-
+          Build-time configuration stays in the third-party platform; Agent 365 adds tenant-wide visibility & governance, not authoring.
+      firstparty:
+        label: "First-party agents (Researcher & Analyst)"
+        baseline: >-
+          Microsoft-installed, pre-pinned Copilot Chat tools. You can block them tenant-wide in the admin center, but per-user/group
+          assignment is greyed out — they're core Chat, not agents. Not available in GCC/GCCH/DoD.
+        agent365: >-
+          Governed via Copilot Chat / admin policy rather than the agent registry — block tenant-wide, no per-user assignment. They
+          coexist with Agent 365 but stay outside agent-specific settings.
+        na: >-
+          They sit outside the agent registry and agent-specific governance — there is no per-agent Risks column, ownership or
+          identity model for them the way there is for Agent Builder / Copilot Studio / Foundry agents.
     columns:
       - "Capability"
       - "Applies to"

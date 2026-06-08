@@ -470,6 +470,24 @@ def render_context_views(data: dict) -> str:
             '<button class="chip" data-plane="entra" style="--c:#5c2d91"><span class="dot"></span>Entra ID P1·P2</button>'
             '</div><p class="gov-filter-hint" id="gov-filter-hint"></p></div>'
         )
+        tcolors = {"builder": "#5c2d91", "studio": "#2563eb", "foundry": "#107c10",
+                   "external": "#d83b01", "firstparty": "#0078d4"}
+        summaries = ""
+        for key, tb in (gov.get("type_benefits") or {}).items():
+            c = tcolors.get(key, "var(--accent)")
+            na = (f'<div class="gov-sum-row gov-sum-na"><span class="gov-sum-tag">Not for this type</span>'
+                  f'<p>{esc(tb["na"])}</p></div>') if tb.get("na") else ""
+            summaries += (
+                f'<div class="gov-summary hide" data-summary="{key}" style="--c:{c}">'
+                f'<div class="gov-sum-head"><span class="gov-sum-dot"></span>'
+                f'<strong>{esc(tb["label"])}</strong> — what governs them, at a glance</div>'
+                f'<div class="gov-sum-row"><span class="gov-sum-tag gov-sum-base">Baseline · admin role only</span>'
+                f'<p>{esc(tb["baseline"])}</p></div>'
+                f'<div class="gov-sum-row"><span class="gov-sum-tag gov-sum-add">Microsoft Agent 365 / E7 adds</span>'
+                f'<p>{esc(tb["agent365"])}</p></div>'
+                f'{na}</div>'
+            )
+        summary_block = f'<div class="gov-summaries" id="gov-summaries">{summaries}</div>' if summaries else ""
         out.append(
             '<section class="view ctx-view" id="ctx-governance">'
             '<a class="back" href="#home">← Back to catalog</a>'
@@ -477,6 +495,7 @@ def render_context_views(data: dict) -> str:
             f'<h2 class="view-title">{esc(gov["title"])}</h2>'
             f'<p class="view-summary">{esc(gov.get("intro",""))}</p>'
             f'<div class="gov-filters">{type_filter}{plane_filter}</div>'
+            f'{summary_block}'
             f'<div class="cmp-wrap"><table class="cmp cmp-gov"><thead><tr>{head}</tr></thead>'
             f'<tbody>{body}</tbody></table></div>'
             f'{note}'
@@ -847,6 +866,19 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .cmp tbody tr.cmp-group:hover th{background:var(--surface-2)}
 .cmp-gnum{display:inline-block;min-width:22px;margin-right:9px;color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums}
 .cmp tbody tr.hide{display:none}
+.gov-summaries{margin:0 0 16px}
+.gov-summary{border:1px solid var(--border);border-left:4px solid var(--c,var(--accent));border-radius:var(--radius);background:var(--surface);padding:14px 16px;box-shadow:var(--shadow)}
+.gov-summary.hide{display:none}
+.gov-sum-head{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text);margin:0 0 12px}
+.gov-sum-head strong{color:var(--c,var(--accent))}
+.gov-sum-dot{width:10px;height:10px;border-radius:2px;background:var(--c,var(--accent));flex:0 0 auto}
+.gov-sum-row{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:start;padding:8px 0;border-top:1px solid var(--border)}
+.gov-sum-row p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.55}
+.gov-sum-tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:3px 8px;border-radius:4px;line-height:1.35}
+.gov-sum-base{color:var(--analysis);background:rgba(16,124,16,.12)}
+.gov-sum-add{color:var(--governance);background:rgba(216,59,1,.12)}
+.gov-sum-na .gov-sum-tag{color:var(--muted);background:var(--surface-2)}
+@media(max-width:640px){.gov-sum-row{grid-template-columns:1fr;gap:5px}}
 .pac-cmp thead th:first-child{width:26%}
 .pac-cmp thead th:nth-child(2){width:37%}
 .pac-cmp thead th:last-child{width:37%}
@@ -939,6 +971,7 @@ if(govChips){
   const hint=$('#gov-filter-hint');
   const tLabels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party',firstparty:'first-party (Researcher/Analyst)'};
   const pLabels={baseline:'the baseline admin center (admin role only)',agent365:'Microsoft Agent 365 / E7',powerplatform:'Power Platform admin center',entra:'Entra ID P1·P2'};
+  const sumCards=$$('#ctx-governance .gov-summary');
   let curType='all',curPlane='all';
   const apply=()=>{
     let shown=0;
@@ -956,6 +989,7 @@ if(govChips){
       const any=dataRows.some(r=>r.dataset.group===gid&&!r.classList.contains('hide'));
       g.classList.toggle('hide',!any);
     });
+    sumCards.forEach(c=>c.classList.toggle('hide',c.dataset.summary!==curType));
     const parts=[];
     if(curType!=='all')parts.push(tLabels[curType]+' agents');
     if(curPlane!=='all')parts.push('governed via '+pLabels[curPlane]);
