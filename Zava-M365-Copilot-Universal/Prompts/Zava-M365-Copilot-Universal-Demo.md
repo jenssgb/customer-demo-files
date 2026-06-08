@@ -217,7 +217,7 @@ Show the two distribution paths, because they behave differently and demo 11 gov
 Submit the flagship now so demo 11 can show "Shared by creator" and "Built by your org" side by side in the registry.
 ```
 
-### Wrap-up — fast to create, ready to govern
+### Already visible in the admin center — so what does Agent 365 add? (the FAQ, say it)
 
 ```demo
 You built one flagship agent in minutes, and your people already built twenty more. They all read and answer — they do not act. That is the deliberate hand-off to demo 10, where Copilot Studio turns one of these into an agent that takes action (interactive and autonomous), and to demo 11, where Agent 365 governs the whole swarm from one control plane.
@@ -437,7 +437,7 @@ Say: This GUID is the thread that runs all the way into demo 11 — it's how Age
 ### Positioning — the platform ladder (say it briefly)
 
 ```demo
-One ladder, one governance dome. Agent Builder = declarative, knowledge only (demo 7). Copilot Studio = low-code with real tools, interactive or autonomous (this demo). Azure AI Foundry = pro-code engineering path for custom orchestration, evaluation, and rollback (verbal only, not built live). Whatever tool builds the agent, it gets a Microsoft Entra Agent ID and shows up in Microsoft Agent 365 - which is demo 11. Presenter safety: use a classic agent flow rather than the preview Workflows canvas, keep the action on a Zava-owned list, and if freshly published content does not show in an open chat, use Start over. Do not mix in Visual Creator or other prebuilt agents here; they break the platform narrative.
+One ladder, one governance dome. Agent Builder = declarative, knowledge only (demo 7). Copilot Studio = low-code with real tools, interactive or autonomous (this demo). Azure AI Foundry = pro-code engineering path for custom orchestration, evaluation, and rollback (verbal only, not built live). Whatever tool builds the agent, it gets a Microsoft Entra Agent ID and shows up in Microsoft Agent 365 - which is demo 11. One clarification admins always need: a Copilot Studio agent shows up in TWO places - the Power Platform app catalog (Power Platform admin center, environment-scoped, only for distribution and environment management) and the Agent registry (Microsoft 365 admin center, tenant-wide, the governable view that carries the Agent 365 observability and security layer). 'I can already see it in the admin center' is the registry; Agent 365 is what makes that view governed and secured. Presenter safety: use a classic agent flow rather than the preview Workflows canvas, keep the action on a Zava-owned list, and if freshly published content does not show in an open chat, use Start over. Do not mix in Visual Creator or other prebuilt agents here; they break the platform narrative.
 ```
 
 ## 11 - Microsoft Agent 365: govern & secure the agent estate

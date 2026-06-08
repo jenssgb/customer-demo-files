@@ -385,9 +385,10 @@ def render_context_views(data: dict) -> str:
             "</section>"
         )
 
-    # Feature matrix + License map (shared card-grid renderer)
+    # Feature matrix + governance compare + License map (shared card-grid renderer)
     for key, anchor, eyebrow in (
         ("feature_matrix", "ctx-features", "Microsoft Learn verified"),
+        ("agent_governance", "ctx-governance", "Baseline vs Agent 365"),
         ("license_map", "ctx-license", "License & Frontier"),
     ):
         block = ctx.get(key)
@@ -475,6 +476,7 @@ def render_sidebar(data: dict) -> str:
         '<a class="nl" href="#ctx-files" data-search="demo files">📦 Demo files</a>'
         '<a class="nl" href="#ctx-timing" data-search="timing">⏱ Timing</a>'
         '<a class="nl" href="#ctx-features" data-search="feature matrix">✅ Feature matrix</a>'
+        '<a class="nl" href="#ctx-governance" data-search="baseline agent 365 admin center registry governance difference">🛡 Baseline vs Agent 365</a>'
         '<a class="nl" href="#ctx-license" data-search="license frontier">⬢ License &amp; Frontier</a>'
         '<a class="nl" href="#ctx-customer" data-search="customer">👥 Customer briefing</a>'
         '<a class="nl" href="#ctx-qa" data-search="questions">💬 Q&amp;A</a>'
