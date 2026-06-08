@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.6"
+  version: "5.0.7"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -26,7 +26,7 @@ meta:
   repo_url: "https://github.com/jenssgb/customer-demo-files/tree/main/Zava-M365-Copilot-Universal"
   one_liner: >-
     $d=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\zava.zip";$t="$env:TEMP\zava";iwr
-    'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;ri
+    'https://codeload.github.com/jenssgb/customer-demo-files/zip/refs/heads/main' -OutFile $z;ri
     "$d\ZAVA-Demo",$t -r -fo -ea 0;Expand-Archive $z $t -Force;mv
     "$t\customer-demo-files-main\Zava-M365-Copilot-Universal" "$d\ZAVA-Demo";ri $z,$t -r -fo;Start-Process
     msedge "$d\ZAVA-Demo\Zava-M365-Copilot-Universal-Briefing.html";ii "$d\ZAVA-Demo"
