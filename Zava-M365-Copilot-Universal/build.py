@@ -418,21 +418,62 @@ def render_context_views(data: dict) -> str:
                 if t.startswith(glyph):
                     return f'<span class="{cls}">{glyph}</span> {esc(t[len(glyph):].lstrip())}'
             return esc(t)
+
+        def _gov_types(applies: str):
+            """Classify which agent types a row applies to (for the smart filter)."""
+            a = str(applies).lower()
+            always = ("all registry" in a) or ("all agents" in a) or ("via the registry" in a)
+            if "copilot studio only" in a:
+                types = {"studio"}
+            elif "agent builder only" in a:
+                types = {"builder"}
+            elif "platforms only" in a or "3rd-party platforms" in a:
+                types = {"external"}
+            elif always and "+" not in a and "copilot studio" not in a and "agent builder" not in a:
+                types = {"builder", "studio", "foundry", "external"}
+            else:
+                types = set()
+                if "agent builder" in a and "not agent builder" not in a:
+                    types.add("builder")
+                if "copilot studio" in a and "not copilot studio" not in a:
+                    types.add("studio")
+                if "foundry" in a:
+                    types.add("foundry")
+                if ("3rd-party" in a) or ("third-party" in a) or ("external" in a) or ("bedrock" in a):
+                    types.add("external")
+                if always and not types:
+                    types = {"builder", "studio", "foundry", "external"}
+            return types, always
+
         head = "".join(f"<th>{esc(c)}</th>" for c in gov.get("columns", []))
         body = ""
         for row in gov.get("rows", []):
             cells = list(row)
+            types, always = _gov_types(cells[1])
+            dt = " ".join(sorted(types))
+            da = ' data-all="1"' if always else ""
             rh = f'<th scope="row">{esc(cells[0])}</th>'
             applies = f'<td class="applies">{esc(cells[1])}</td>'
             rest = "".join(f"<td>{_gov_cell(c)}</td>" for c in cells[2:])
-            body += f"<tr>{rh}{applies}{rest}</tr>"
+            body += f'<tr data-types="{dt}"{da}>{rh}{applies}{rest}</tr>'
         note = f'<p class="gov-note">{esc(gov["note"])}</p>' if gov.get("note") else ""
+        gov_filter = (
+            '<div class="gov-filter"><span class="gov-filter-lbl">Filter by agent type</span>'
+            '<div class="chips gov-chips" id="gov-chips">'
+            '<button class="chip active" data-gtype="all">All capabilities</button>'
+            '<button class="chip" data-gtype="builder" style="--c:#5c2d91"><span class="dot"></span>Agent Builder</button>'
+            '<button class="chip" data-gtype="studio" style="--c:#2563eb"><span class="dot"></span>Copilot Studio</button>'
+            '<button class="chip" data-gtype="foundry" style="--c:#107c10"><span class="dot"></span>Foundry</button>'
+            '<button class="chip" data-gtype="external" style="--c:#d83b01"><span class="dot"></span>3rd-party</button>'
+            '</div><p class="gov-filter-hint" id="gov-filter-hint"></p></div>'
+        )
         out.append(
             '<section class="view ctx-view" id="ctx-governance">'
             '<a class="back" href="#home">← Back to catalog</a>'
             '<span class="view-eyebrow">Baseline vs Agent 365</span>'
             f'<h2 class="view-title">{esc(gov["title"])}</h2>'
             f'<p class="view-summary">{esc(gov.get("intro",""))}</p>'
+            f'{gov_filter}'
             f'<div class="cmp-wrap"><table class="cmp"><thead><tr>{head}</tr></thead>'
             f'<tbody>{body}</tbody></table></div>'
             f'{note}'
@@ -749,6 +790,11 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .cmp .no{color:var(--governance);font-weight:800}
 .cmp .part{color:var(--apps);font-weight:800}
 .gov-note{font-size:12.5px;color:var(--muted);background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 13px;border-radius:0 6px 6px 0;margin:0 0 16px}
+.gov-filter{margin:0 0 14px}
+.gov-filter-lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.gov-chips{margin:0}
+.gov-filter-hint{font-size:12px;color:var(--muted);margin:8px 0 0;min-height:16px}
+.cmp tbody tr.hide{display:none}
 .prose p{margin:0 0 12px;max-width:75ch}
 .timing{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
 .timing li{display:flex;gap:16px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);
@@ -819,11 +865,32 @@ chips.innerHTML='<button class="chip active" data-track="all">All tracks</button
   }).join('');
 chips.addEventListener('click',e=>{
   const b=e.target.closest('.chip');if(!b)return;
-  $$('.chip').forEach(c=>c.classList.toggle('active',c===b));
+  [...chips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
   const t=b.dataset.track;
   $$('.demo-card').forEach(c=>{c.style.display=(t==='all'||c.dataset.track===t)?'':'none';});
   $$('.track-group').forEach(g=>{g.style.display=(t==='all'||g.dataset.track===t)?'':'none';});
 });
+
+// governance table — smart filter by agent type
+const govChips=$('#gov-chips');
+if(govChips){
+  const rows=$$('#ctx-governance .cmp tbody tr');
+  const hint=$('#gov-filter-hint');
+  const labels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party'};
+  govChips.addEventListener('click',e=>{
+    const b=e.target.closest('.chip');if(!b)return;
+    [...govChips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
+    const t=b.dataset.gtype;
+    let shown=0;
+    rows.forEach(r=>{
+      const types=(r.dataset.types||'').split(' ').filter(Boolean);
+      const vis=(t==='all')||r.dataset.all==='1'||types.includes(t);
+      r.classList.toggle('hide',!vis);
+      if(vis)shown++;
+    });
+    hint.textContent=(t==='all')?'':shown+' of '+rows.length+' capabilities apply to '+labels[t]+' agents (rows marked “all registry agents” always shown).';
+  });
+}
 """
 
 
