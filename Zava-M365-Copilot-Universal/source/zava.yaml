@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.13"
+  version: "5.0.14"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -872,6 +872,26 @@ context:
         - "Copilot Studio (auto-emitted) + others via the registry"
         - "~ Basic inventory, status and 'at risk / exceptions' views only."
         - "✓ Automatic telemetry (no SDK instrumentation) — adoption, health, business impact."
+      - - "Embedded-file knowledge: sensitivity label auto-applied + 'embedded files' inventory filter (File name · sensitivity · SharePoint container ID)"
+        - "Agent Builder ONLY (the only builder that embeds files as knowledge)"
+        - "✓ Most-restrictive label of the uploaded files is applied automatically; filter the registry to audit which agents carry embedded content."
+        - "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited)."
+      - - "Work IQ / MCP tool-server governance: allow or block tool servers, scoped per-agent consent, every tool call traced"
+        - "Copilot Studio + Foundry / pro-code (tool-calling agents) — NOT Agent Builder"
+        - "~ You manage which of these agents are installed, but not the tool layer itself."
+        - "✓ M365 admin center > Agents and tools: activate/block Work IQ & custom MCP servers, scope permissions, full per-call observability in Defender."
+      - - "Risk-based controls on the agent identity: ID Protection (block high/medium/low-risk agents) + ID Governance (sponsors, access reviews, time-bound least-privilege access packages)"
+        - "Copilot Studio + Foundry — NOT Agent Builder (no identity)"
+        - "✗ Needs Microsoft Entra ID P2 (ID Protection) / P1 (ID Governance) on top."
+        - "✓ Agent 365 license + Entra ID P1/P2: agent-risk Conditional Access, access reviews, sponsor accountability so access doesn't outlive the need."
+      - - "Network controls / SASE: monitor & block malicious or non-compliant agent network traffic"
+        - "Copilot Studio agents on user devices (+ on-device agents) — NOT Agent Builder"
+        - "✗ Requires Microsoft Entra Internet Access (Global Secure Access)."
+        - "✓ Agent 365 + Entra Internet Access: stop agents reaching disallowed destinations at the network edge."
+      - - "Programmatic registry management via Microsoft Graph API (bulk list agents, fetch agent details)"
+        - "All registry agents"
+        - "✓ Preview Graph endpoints (copilotPackages) work with the AI Administrator role — no extra license."
+        - "✓ Automate bulk onboarding, governance and compliance reporting across the converged registry."
     note: >-
       Bottom line on agent types: every Agent Builder and Copilot Studio agent is visible AND governable in the baseline admin
       center with just an admin role — no Agent 365 license. The split that matters: Agent Builder agents are declarative,
@@ -879,7 +899,11 @@ context:
       protection) only apply to Copilot Studio and Foundry agents. The Agent 365 / Microsoft E7 license is what unlocks the
       security & risk depth (Risks column, Security tab, Defender runtime protection, Purview observability) plus 3rd-party
       Registry sync. For Copilot Studio, the M365 admin center is the tenant-wide registry (governance) while the Power
-      Platform admin center keeps the environment-scoped app catalog (distribution, DLP).
+      Platform admin center keeps the environment-scoped app catalog (distribution, DLP). Two capability classes split cleanly
+      by type: only Agent Builder embeds files as knowledge, so the sensitivity-label + embedded-file governance is uniquely
+      its; everything that touches a tool layer or an identity (Work IQ / MCP tool governance, ID Protection, ID Governance,
+      network/SASE controls) applies to Copilot Studio and Foundry — never to Agent Builder, which is declarative and
+      identity-less. Several identity controls also need Entra ID P1/P2 or Entra Internet Access in addition to the Agent 365 license.
     sources:
       - { label: "Types of agents you can manage (MCS DA / CEA / BP, Foundry, Agent Builder, …)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview#types-of-agents" }
       - { label: "Manage agents in the Microsoft 365 admin center (baseline CCS)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps" }
@@ -889,6 +913,11 @@ context:
       - { label: "Governance & lifecycle actions in the admin center", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-actions" }
       - { label: "Agent details: Risks column & Security tab need E7 / Agent 365", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-details" }
       - { label: "Registry sync — third-party platforms (preview)", url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry" }
+      - { label: "Agent Builder embedded-file knowledge: sensitivity labels & inventory filter", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source" }
+      - { label: "Work IQ / MCP tooling-server governance (allow / block, scoped consent, tracing)", url: "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview" }
+      - { label: "Access control with Entra: ID Protection, ID Governance, SASE network controls", url: "https://learn.microsoft.com/security/security-for-ai/agent-365-security" }
+      - { label: "Agent identity licensing (P1/P2, Entra Internet Access for network controls)", url: "https://learn.microsoft.com/entra/agent-id/what-are-agent-identities" }
+      - { label: "Agent Registry Microsoft Graph API (bulk management, preview)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-registry#microsoft-graph-api-for-agent-registry-and-agent-details-preview" }
       - { label: "Microsoft Agent 365 overview (observe · govern · secure)", url: "https://learn.microsoft.com/microsoft-agent-365/overview" }
       - { label: "Transition agent security to Agent 365 (July 1, 2026)", url: "https://learn.microsoft.com/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" }
 
