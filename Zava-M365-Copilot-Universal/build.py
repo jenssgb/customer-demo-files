@@ -423,7 +423,9 @@ def render_context_views(data: dict) -> str:
             """Classify which agent types a row applies to (for the smart filter)."""
             a = str(applies).lower()
             always = ("all registry" in a) or ("all agents" in a) or ("via the registry" in a)
-            if "copilot studio only" in a:
+            if ("first-party" in a) or ("1p" in a):
+                types = {"firstparty"}
+            elif "copilot studio only" in a:
                 types = {"studio"}
             elif "agent builder only" in a:
                 types = {"builder"}
@@ -465,6 +467,7 @@ def render_context_views(data: dict) -> str:
             '<button class="chip" data-gtype="studio" style="--c:#2563eb"><span class="dot"></span>Copilot Studio</button>'
             '<button class="chip" data-gtype="foundry" style="--c:#107c10"><span class="dot"></span>Foundry</button>'
             '<button class="chip" data-gtype="external" style="--c:#d83b01"><span class="dot"></span>3rd-party</button>'
+            '<button class="chip" data-gtype="firstparty" style="--c:#0078d4"><span class="dot"></span>First-party (Researcher/Analyst)</button>'
             '</div><p class="gov-filter-hint" id="gov-filter-hint"></p></div>'
         )
         out.append(
@@ -876,7 +879,7 @@ const govChips=$('#gov-chips');
 if(govChips){
   const rows=$$('#ctx-governance .cmp tbody tr');
   const hint=$('#gov-filter-hint');
-  const labels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party'};
+  const labels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party',firstparty:'first-party (Researcher/Analyst)'};
   govChips.addEventListener('click',e=>{
     const b=e.target.closest('.chip');if(!b)return;
     [...govChips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
@@ -884,11 +887,11 @@ if(govChips){
     let shown=0;
     rows.forEach(r=>{
       const types=(r.dataset.types||'').split(' ').filter(Boolean);
-      const vis=(t==='all')||r.dataset.all==='1'||types.includes(t);
+      const vis=(t==='all')||(r.dataset.all==='1'&&t!=='firstparty')||types.includes(t);
       r.classList.toggle('hide',!vis);
       if(vis)shown++;
     });
-    hint.textContent=(t==='all')?'':shown+' of '+rows.length+' capabilities apply to '+labels[t]+' agents (rows marked “all registry agents” always shown).';
+    hint.textContent=(t==='all')?'':shown+' of '+rows.length+' capabilities apply to '+labels[t]+' agents'+(t==='firstparty'?' (they sit outside agent-specific settings).':' (rows marked “all registry agents” always shown).');
   });
 }
 """

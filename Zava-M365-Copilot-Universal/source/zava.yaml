@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.15"
+  version: "5.0.16"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -813,10 +813,11 @@ context:
   agent_governance:
     title: "Agent governance: baseline admin center vs Microsoft Agent 365"
     intro: >-
-      Read the 'Applies to' column first — it says WHICH agent type each row is about. Two types appear in this demo:
+      Read the 'Applies to' column first — it says WHICH agent type each row is about. Types in this demo:
       Agent Builder agents (demo 7) are declarative and knowledge-only — they run on the Microsoft 365 Copilot platform
       and have NO identity of their own. Copilot Studio agents (demo 10) are low-code, can act, and each gets a Microsoft
-      Entra Agent ID. Foundry is the pro-code third type. Everything you build already shows up in the Microsoft 365 admin
+      Entra Agent ID. Foundry is the pro-code third type. First-party agents (Researcher & Analyst) are Microsoft-installed
+      Copilot experiences — governed differently. Everything you build already shows up in the Microsoft 365 admin
       center with just an admin role; a Microsoft Agent 365 / E7 license adds the security and risk depth on top. Verified against Microsoft Learn.
     columns:
       - "Capability"
@@ -844,10 +845,10 @@ context:
         - "Agent Builder (shared) + Copilot Studio (requested)"
         - "✓ Requests view. Only an AI Administrator or Global Administrator may approve."
         - "✓ Surfaced as 'Pending requests' governance cards."
-      - - "Ownership: find 'Missing an owner', assign / reassign owner"
-        - "Agent Builder + Copilot Studio"
-        - "✓ The ownerless filter and Assign-owner action are in the baseline admin center."
-        - "✓ Surfaced proactively as 'Agents without owners' cards."
+      - - "Ownership: find ownerless agents, assign / reassign owner (incl. access to the previous owner's uploaded files)"
+        - "Agent Builder + Copilot Studio (reassign is supported for these two types only)"
+        - "✓ 'Agents without owners' dashboard: live count, one-click filter, real-time update when a user is hard-deleted; then block, delete or assign a new owner. The new owner inherits the previous owner's uploaded files."
+        - "✓ Surfaced proactively as 'Agents without owners' governance cards."
       - - "Per-agent Risks column in the registry"
         - "All registry agents"
         - "✗ Not shown."
@@ -856,10 +857,10 @@ context:
         - "All registry agents"
         - "✗ Not available."
         - "✓ Requires E7 / Agent 365: monitor activity, protect sensitive data, evaluate compliance gaps."
-      - - "Defender real-time runtime protection (blocks prompt injection before the tool call)"
-        - "Copilot Studio + Foundry (the acting agents)"
+      - - "Defender real-time runtime protection — AI Prompt Shield flags/blocks prompt injection at runtime (the #1 OWASP-LLM risk), before the tool call"
+        - "Copilot Studio + Foundry (the acting agents); local AI agents via Defender for Endpoint"
         - "✗ —"
-        - "✓ From July 1, 2026 this layer requires an Agent 365 license (was Defender for Cloud Apps)."
+        - "✓ Prompt injection shows as a HIGH-severity signal in the Risks column (source: Defender + Entra SSE). From July 1, 2026 this layer requires an Agent 365 license (was Defender for Cloud Apps)."
       - - "Entra Agent ID + Conditional Access on the agent's own identity"
         - "Copilot Studio + Foundry — NOT Agent Builder (it has no identity)"
         - "~ Copilot Studio agents get an Entra Agent ID; applying Conditional Access / identity governance needs Entra Agent ID licensing. Agent Builder agents have no app registration or Agent ID at all."
@@ -872,10 +873,10 @@ context:
         - "Copilot Studio (auto-emitted) + others via the registry"
         - "~ Basic inventory, status and 'at risk / exceptions' views only."
         - "✓ Automatic telemetry (no SDK instrumentation) — adoption, health, business impact."
-      - - "Embedded-file knowledge: sensitivity label auto-applied + 'embedded files' inventory filter (File name · sensitivity · SharePoint container ID)"
+      - - "Govern files attached to an agent: embedded-file knowledge (sensitivity label auto-applied) + 'embedded files' inventory filter (File name · sensitivity · SharePoint container ID)"
         - "Agent Builder ONLY (the only builder that embeds files as knowledge)"
-        - "✓ Most-restrictive label of the uploaded files is applied automatically; filter the registry to audit which agents carry embedded content."
-        - "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited)."
+        - "✓ Most-restrictive label of the uploaded 20-file max (.docx/.pptx/.xlsx/.pdf/.txt) is applied automatically; only users with extract rights to that label can install/use the agent; files live in tenant-owned SharePoint Embedded containers; audit via the registry filter. Note: Purview Information Barriers are NOT supported on embedded files."
+        - "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited); a SharePoint .agent file is governed by DLP via its .agent extension condition."
       - - "Work IQ / MCP tool-server governance: allow or block tool servers, scoped per-agent consent, every tool call traced"
         - "Copilot Studio + Foundry / pro-code (tool-calling agents) — NOT Agent Builder"
         - "~ You manage which of these agents are installed, but not the tool layer itself."
@@ -892,6 +893,10 @@ context:
         - "All registry agents"
         - "✓ Preview Graph endpoints (copilotPackages) work with the AI Administrator role — no extra license."
         - "✓ Automate bulk onboarding, governance and compliance reporting across the converged registry."
+      - - "First-party Microsoft-installed agents (Researcher & Analyst) — preinstalled/pre-pinned Copilot Chat tools"
+        - "First-party (1P) — NOT Agent Builder / Copilot Studio; exempt from agent-specific settings"
+        - "✓ Block tenant-wide in the admin center; per-user/group assignment is greyed out (they're core Chat, not agents). Not available in GCC/GCCH/DoD."
+        - "✓ They coexist with Agent 365 and obey agent governance, but stay part of core Copilot Chat — they don't fall under agent-specific settings."
     note: >-
       Bottom line on agent types: every Agent Builder and Copilot Studio agent is visible AND governable in the baseline admin
       center with just an admin role — no Agent 365 license. The split that matters: Agent Builder agents are declarative,
@@ -904,6 +909,9 @@ context:
       its; everything that touches a tool layer or an identity (Work IQ / MCP tool governance, ID Protection, ID Governance,
       network/SASE controls) applies to Copilot Studio and Foundry — never to Agent Builder, which is declarative and
       identity-less. Several identity controls also need Entra ID P1/P2 or Entra Internet Access in addition to the Agent 365 license.
+      Two special cases: Researcher & Analyst are first-party Microsoft-installed Copilot Chat tools — you can block them
+      tenant-wide but not assign them per user/group, and they sit outside agent-specific settings. And prompt injection (the
+      #1 OWASP-LLM risk) is caught at runtime by Defender / AI Prompt Shield and surfaced as a HIGH-severity Risks signal.
     sources:
       - { label: "Types of agents you can manage (MCS DA / CEA / BP, Foundry, Agent Builder, …)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview#types-of-agents" }
       - { label: "Manage agents in the Microsoft 365 admin center (baseline CCS)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps" }
@@ -920,6 +928,9 @@ context:
       - { label: "Agent Registry Microsoft Graph API (bulk management, preview)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-registry#microsoft-graph-api-for-agent-registry-and-agent-details-preview" }
       - { label: "Microsoft Agent 365 overview (observe · govern · secure)", url: "https://learn.microsoft.com/microsoft-agent-365/overview" }
       - { label: "Transition agent security to Agent 365 (July 1, 2026)", url: "https://learn.microsoft.com/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" }
+      - { label: "Researcher & Analyst governance (first-party, block tenant-wide, no per-user assign)", url: "https://learn.microsoft.com/microsoft-365/copilot/copilot-agent-install#microsoft-installed-agents-and-features" }
+      - { label: "Prompt injection High-risk signal in the registry (AI Prompt Shield, Defender + Entra SSE)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-registry#agents-at-risk" }
+      - { label: "Defender for Endpoint AI agent runtime protection (prompt-injection block)", url: "https://learn.microsoft.com/defender-endpoint/ai-agent-runtime-protection-overview" }
 
   license_map:
     title: "What is GA, what is Frontier?"
