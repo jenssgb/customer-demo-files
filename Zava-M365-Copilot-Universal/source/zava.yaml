@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.7"
+  version: "5.0.8"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -201,7 +201,7 @@ demos:
     license: "Microsoft 365 Copilot"
     surfaces: [Agent Builder]
     files: [Zava_Employee_Handbook.docx, Zava_Travel_Expense_Policy.docx, Zava_IT_Onboarding_Guide.docx, Zava_Security_Acceptable_Use.docx, Zava_HR_Leave_PTO_Policy.docx, Zava_Facilities_Access_Policy.docx]
-    note: "Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real."
+    note: "Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real. Presenter prep & known issues: share agents only to Security Groups (or security-enabled M365 Groups / Teams) — Distribution Groups are a documented Known Issue and silently fail; if Restricted SharePoint Search is on in the tenant you cannot use SharePoint as a knowledge source; Agent Builder agents are not supported in Teams chat, so always demo them in the Microsoft 365 Copilot surface; if the 'Allow web search' Copilot policy is off, the policy wins over the agent's web-knowledge toggle."
     sources:
       - { label: "Build agents with Agent Builder", url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents" }
       - { label: "Agent Builder", url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder" }
@@ -370,6 +370,19 @@ demos:
           - "Let Copilot Studio refine the name, description, and instructions, then move to Tools."
         watch: "The same policy agent now lives in Copilot Studio with its knowledge — ready to gain one real action."
         say: "We didn't start over. We graduated a light, answer-only agent into one that can act. The original Policy Navigator still serves read-only questions in Microsoft 365."
+      - kind: clickpath
+        title: "Agent A — leave it as a Draft first (a Copilot Studio differentiator)"
+        portal: "Microsoft 365 admin center"
+        url: "https://admin.cloud.microsoft/"
+        path: ["Agents", "Overview"]
+        scenario: "Only Copilot Studio agents surface as Draft in the Agent Overview — Agent Builder agents do not. Before publishing, show the unpublished Service Desk already visible to the admin as a Draft. That is governance reaching agents before they ever ship."
+        steps:
+          - "Keep the Service Desk unpublished for a moment (do not publish yet)."
+          - "In the admin session open Microsoft 365 admin center > Agents > Overview, then Explore > All agents > Registry."
+          - "Filter Platform = Copilot Studio and Status = Draft; the unpublished Service Desk appears with owner and environment."
+          - "Contrast out loud: the demo-7 Agent Builder swarm never shows a Draft state — only Copilot Studio gives the admin this earlier, deeper visibility."
+        watch: "An agent nobody has published yet is already listed as Draft — the admin sees it before any user can."
+        say: "This is the first proof that Copilot Studio is the deeper-governance path: the admin sees the agent as a draft, before it is ever shipped. Agent Builder agents only appear once they are shared."
       - kind: prompt
         title: "Agent A — Instructions (refine the generated text)"
         text: |
@@ -497,7 +510,7 @@ demos:
     license: "Copilot + E5"
     surfaces: [Microsoft 365 admin center, Microsoft Defender, Microsoft Entra, Microsoft Purview]
     files: [Agent365_Governance_Checklist.docx, Agent365_Agent_Review_Register.xlsx, Agent365_vs_PowerPlatform_Governance.xlsx]
-    note: "Demos 7 and 10 built the estate — a flagship Policy Navigator plus a swarm of ~20 employee-experience agents in Agent Builder, and two Copilot Studio agents (the interactive Employee Service Desk and the autonomous Onboarding Concierge). This demo builds NOTHING. It follows one arc — SEE the estate, APPROVE what acts, then CATCH three real incidents — so the audience watches governance and security work."
+    note: "Demos 7 and 10 built the estate — a flagship Policy Navigator plus a swarm of ~20 employee-experience agents in Agent Builder, and two Copilot Studio agents (the interactive Employee Service Desk and the autonomous Onboarding Concierge). This demo builds NOTHING. It follows one arc — SEE the estate, APPROVE what acts, then CATCH three real incidents — so the audience watches governance and security work. PRESENTER SAFETY (propagation is not instant): seed 5-10 prompts per hero agent 30-60 min before so Overview/Registry/Usage are not empty; prepare Pinning the day before (can take up to 6 hours to reach end users); act LIVE with Block, not Delete (Delete is permanent and can lag up to 24 hours in the UI); the Risks column shows only High-severity risks and can trail the Defender/Purview portals by up to ~1 hour — so narrate risk from the registry but verify in the security portal. Approval is AI Administrator / Global Administrator only; Global Reader / AI Reader / Security Reader / Reports Reader can see but not act; Power Platform Admin owns environments and DLP."
     sources:
       - { label: "Agent 365 overview", url: "https://learn.microsoft.com/microsoft-agent-365/overview" }
       - { label: "Manage agents (admin)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview" }
@@ -531,11 +544,12 @@ demos:
         scenario: "Reading agents need no gate, but the two Copilot Studio agents ACT, so publishing them put them in the IT queue (demo 10). Nothing that acts reaches production without an IT decision."
         steps:
           - "Open Agents > Requests; the Employee Service Desk and Onboarding Concierge are waiting (submitted automatically when you published in demo 10)."
-          - "Open the Employee Service Desk request > Data & tools tab: review owner, data sources (the policy library), the one action (Create Service Ticket), target users, risk, and mitigations."
+          - "Open the Employee Service Desk request > Data & tools tab: review owner, data sources (the policy library), the one action (Create Service Ticket), target users, risk, and mitigations. In the Publish wizard set Users/Groups, a Policy Template, and review Permissions / Admin consent."
           - "Approve with a scope — publish to the demo security group only, not everyone. Only an AI Administrator or Global Administrator can approve; everyone else can see but not act."
+          - "Show a Pending update (optional, very strong): have the maker publish a tiny change to the Service Desk just before the session. It surfaces here as 'Pending update', and the older approved version keeps serving users until you approve the new one — enterprise ALM without a pipeline."
           - "Leave the Onboarding Concierge pending for now — its over-permission flag is Incident 3."
-        watch: "The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose, with its action reviewed and on record."
-        say: "The reading agents just work; the moment an agent can act, IT decides who gets it and how widely. Approve, scope, ship - the same control you use for any new tool."
+        watch: "The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose; a 'Pending update' shows the live version is protected until the new one is approved."
+        say: "The reading agents just work; the moment an agent can act, IT decides who gets it and how widely. And a pending update never disrupts users — the approved version keeps running until you sign off. Approve, scope, ship - the same control you use for any new tool."
       - kind: clickpath
         title: "Incident 1 — prompt injection against the autonomous Onboarding Concierge"
         portal: "Microsoft Defender"
@@ -560,8 +574,9 @@ demos:
           - "On the Registry, the 'Agents without owners' tile increments in real time the moment the user is hard-deleted — no manual refresh."
           - "Click the 'Agents without owners' tile; the list one-click-filters to exactly the orphaned agents, flagged 'No owner assigned (Critical)'."
           - "Open the Onboarding Concierge — because it is autonomous, an ownerless running agent is the real risk; its Entra Agent ID is still valid even though the person is gone."
-          - "Choose the lifecycle action: Assign new owner and hand it to the HR operations lead (keep the agent, give it accountability) — or Block / Delete an agent you no longer want."
-          - "Repeat for the orphaned swarm agents; note their identities and access survive reassignment, so nothing breaks."
+          - "Show the automated path too: Agent management rules can 'Reassign ownerless agents created with Agent Builder to the previous owner's manager' — so the swarm self-heals (the former owner needs a manager set in Entra for this to fire)."
+          - "Then do it by hand for the autonomous one: Assign new owner and hand it to the HR operations lead (keep the agent, give it accountability) — or Block / Delete an agent you no longer want. Live, prefer Block; Delete is permanent and can lag up to 24 hours in the UI."
+          - "Note identities and access survive reassignment, so nothing breaks."
         watch: "The orphaned agents are flagged Critical 'No owner assigned' within seconds of the account deletion; you reassign the autonomous one to a live owner and clean up the rest — nothing silently keeps running headless."
         say: "When a person leaves, their agents do not vanish and they do not run wild. Agent 365 catches the orphan instantly and forces a decision: re-home it or retire it. The agent's identity is separate from the human's."
       - kind: clickpath
@@ -721,7 +736,7 @@ context:
     title: "Ten minutes before the demo"
     roles:
       - { name: "User roles", body: "Preston Morales is the primary ZAVA demo user for the full Microsoft 365 Copilot flow. MOD Administrator stays separate for admin settings, Copilot Studio, Agent 365, connector, and MCP governance. Selma shows Copilot Chat without a full Copilot license. Leila starts Teams meetings with Facilitator or Interpreter only when the simulator path needs it." }
-      - { name: "Agent trilogy roles (demos 7-11)", body: "Keep makers fully licensed: one Agent Builder maker and one Copilot Studio maker. The consumer who runs the agents should also be fully licensed (the Copilot Chat user is only an optional bonus with Pay-as-you-go). The approver must be an AI Administrator or Global Administrator — AI Reader / Global Reader can see but not approve. Build one or two swarm agents under a disposable maker you will hard-delete to show the ownerless incident in demo 11." }
+      - { name: "Agent trilogy roles (demos 7-11)", body: "Keep makers fully licensed: one Agent Builder maker and one Copilot Studio maker. The consumer who runs the agents should also be fully licensed (the Copilot Chat user is only an optional bonus with Pay-as-you-go). Governance roles are split deliberately: only an AI Administrator or Global Administrator can APPROVE a request; Global Reader / AI Reader / Security Reader / Reports Reader can SEE the estate but not act; a Power Platform Administrator (or Environment Admin) owns the Copilot Studio environments and DLP. Use least privilege — do not run the whole demo as Global Admin. Build one or two swarm agents under a disposable maker you will hard-delete to show the ownerless incident in demo 11." }
       - { name: "Tabs", body: "In Preston's session, open m365copilot.com, Excel, Outlook, Word, PowerPoint, and Agent Builder. In the admin session, keep Microsoft 365 admin center, Copilot Studio, and Power Platform ready." }
       - { name: "Files", body: "Place all files from the ZAVA-Demo folder in Preston's OneDrive or upload them step by step." }
       - { name: "Model choice", body: "Use Think Deeper or an advanced reasoning mode for complex analysis prompts if available." }

@@ -122,7 +122,7 @@ Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show e
 
 ## 7 - Agent Builder: Company Policy Navigator + the swarm
 
-> Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real.
+> Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real. Presenter prep & known issues: share agents only to Security Groups (or security-enabled M365 Groups / Teams) — Distribution Groups are a documented Known Issue and silently fail; if Restricted SharePoint Search is on in the tenant you cannot use SharePoint as a knowledge source; Agent Builder agents are not supported in Teams chat, so always demo them in the Microsoft 365 Copilot surface; if the 'Allow web search' Copilot policy is off, the policy wins over the agent's web-knowledge toggle.
 
 ### How to build (read once)
 
@@ -284,6 +284,20 @@ On screen: The same policy agent now lives in Copilot Studio with its knowledge 
 Say: We didn't start over. We graduated a light, answer-only agent into one that can act. The original Policy Navigator still serves read-only questions in Microsoft 365.
 ```
 
+### Agent A — leave it as a Draft first (a Copilot Studio differentiator)
+
+```demo
+Scenario: Only Copilot Studio agents surface as Draft in the Agent Overview — Agent Builder agents do not. Before publishing, show the unpublished Service Desk already visible to the admin as a Draft. That is governance reaching agents before they ever ship.
+Path: Microsoft 365 admin center > Agents > Overview
+Open: https://admin.cloud.microsoft/
+1. Keep the Service Desk unpublished for a moment (do not publish yet).
+2. In the admin session open Microsoft 365 admin center > Agents > Overview, then Explore > All agents > Registry.
+3. Filter Platform = Copilot Studio and Status = Draft; the unpublished Service Desk appears with owner and environment.
+4. Contrast out loud: the demo-7 Agent Builder swarm never shows a Draft state — only Copilot Studio gives the admin this earlier, deeper visibility.
+On screen: An agent nobody has published yet is already listed as Draft — the admin sees it before any user can.
+Say: This is the first proof that Copilot Studio is the deeper-governance path: the admin sees the agent as a draft, before it is ever shipped. Agent Builder agents only appear once they are shared.
+```
+
 ### Agent A — Instructions (refine the generated text)
 
 ```prompt
@@ -419,7 +433,7 @@ One ladder, one governance dome. Agent Builder = declarative, knowledge only (de
 
 ## 11 - Microsoft Agent 365: govern & secure the agent estate
 
-> Demos 7 and 10 built the estate — a flagship Policy Navigator plus a swarm of ~20 employee-experience agents in Agent Builder, and two Copilot Studio agents (the interactive Employee Service Desk and the autonomous Onboarding Concierge). This demo builds NOTHING. It follows one arc — SEE the estate, APPROVE what acts, then CATCH three real incidents — so the audience watches governance and security work.
+> Demos 7 and 10 built the estate — a flagship Policy Navigator plus a swarm of ~20 employee-experience agents in Agent Builder, and two Copilot Studio agents (the interactive Employee Service Desk and the autonomous Onboarding Concierge). This demo builds NOTHING. It follows one arc — SEE the estate, APPROVE what acts, then CATCH three real incidents — so the audience watches governance and security work. PRESENTER SAFETY (propagation is not instant): seed 5-10 prompts per hero agent 30-60 min before so Overview/Registry/Usage are not empty; prepare Pinning the day before (can take up to 6 hours to reach end users); act LIVE with Block, not Delete (Delete is permanent and can lag up to 24 hours in the UI); the Risks column shows only High-severity risks and can trail the Defender/Purview portals by up to ~1 hour — so narrate risk from the registry but verify in the security portal. Approval is AI Administrator / Global Administrator only; Global Reader / AI Reader / Security Reader / Reports Reader can see but not act; Power Platform Admin owns environments and DLP.
 
 ### Set the stage (say it first)
 
@@ -449,11 +463,12 @@ Scenario: Reading agents need no gate, but the two Copilot Studio agents ACT, so
 Path: Microsoft 365 admin center > Agents > All agents > Requests
 Open: https://admin.cloud.microsoft/
 1. Open Agents > Requests; the Employee Service Desk and Onboarding Concierge are waiting (submitted automatically when you published in demo 10).
-2. Open the Employee Service Desk request > Data & tools tab: review owner, data sources (the policy library), the one action (Create Service Ticket), target users, risk, and mitigations.
+2. Open the Employee Service Desk request > Data & tools tab: review owner, data sources (the policy library), the one action (Create Service Ticket), target users, risk, and mitigations. In the Publish wizard set Users/Groups, a Policy Template, and review Permissions / Admin consent.
 3. Approve with a scope — publish to the demo security group only, not everyone. Only an AI Administrator or Global Administrator can approve; everyone else can see but not act.
-4. Leave the Onboarding Concierge pending for now — its over-permission flag is Incident 3.
-On screen: The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose, with its action reviewed and on record.
-Say: The reading agents just work; the moment an agent can act, IT decides who gets it and how widely. Approve, scope, ship - the same control you use for any new tool.
+4. Show a Pending update (optional, very strong): have the maker publish a tiny change to the Service Desk just before the session. It surfaces here as 'Pending update', and the older approved version keeps serving users until you approve the new one — enterprise ALM without a pipeline.
+5. Leave the Onboarding Concierge pending for now — its over-permission flag is Incident 3.
+On screen: The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose; a 'Pending update' shows the live version is protected until the new one is approved.
+Say: The reading agents just work; the moment an agent can act, IT decides who gets it and how widely. And a pending update never disrupts users — the approved version keeps running until you sign off. Approve, scope, ship - the same control you use for any new tool.
 ```
 
 ### Incident 1 — prompt injection against the autonomous Onboarding Concierge
@@ -480,8 +495,9 @@ Open: https://admin.cloud.microsoft/
 1. On the Registry, the 'Agents without owners' tile increments in real time the moment the user is hard-deleted — no manual refresh.
 2. Click the 'Agents without owners' tile; the list one-click-filters to exactly the orphaned agents, flagged 'No owner assigned (Critical)'.
 3. Open the Onboarding Concierge — because it is autonomous, an ownerless running agent is the real risk; its Entra Agent ID is still valid even though the person is gone.
-4. Choose the lifecycle action: Assign new owner and hand it to the HR operations lead (keep the agent, give it accountability) — or Block / Delete an agent you no longer want.
-5. Repeat for the orphaned swarm agents; note their identities and access survive reassignment, so nothing breaks.
+4. Show the automated path too: Agent management rules can 'Reassign ownerless agents created with Agent Builder to the previous owner's manager' — so the swarm self-heals (the former owner needs a manager set in Entra for this to fire).
+5. Then do it by hand for the autonomous one: Assign new owner and hand it to the HR operations lead (keep the agent, give it accountability) — or Block / Delete an agent you no longer want. Live, prefer Block; Delete is permanent and can lag up to 24 hours in the UI.
+6. Note identities and access survive reassignment, so nothing breaks.
 On screen: The orphaned agents are flagged Critical 'No owner assigned' within seconds of the account deletion; you reassign the autonomous one to a live owner and clean up the rest — nothing silently keeps running headless.
 Say: When a person leaves, their agents do not vanish and they do not run wild. Agent 365 catches the orphan instantly and forces a decision: re-home it or retire it. The agent's identity is separate from the human's.
 ```
