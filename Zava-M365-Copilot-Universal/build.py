@@ -423,8 +423,9 @@ def render_context_views(data: dict) -> str:
         for row in gov.get("rows", []):
             cells = list(row)
             rh = f'<th scope="row">{esc(cells[0])}</th>'
-            rest = "".join(f"<td>{_gov_cell(c)}</td>" for c in cells[1:])
-            body += f"<tr>{rh}{rest}</tr>"
+            applies = f'<td class="applies">{esc(cells[1])}</td>'
+            rest = "".join(f"<td>{_gov_cell(c)}</td>" for c in cells[2:])
+            body += f"<tr>{rh}{applies}{rest}</tr>"
         note = f'<p class="gov-note">{esc(gov["note"])}</p>' if gov.get("note") else ""
         out.append(
             '<section class="view ctx-view" id="ctx-governance">'
@@ -735,10 +736,12 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .cmp{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
 .cmp th,.cmp td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
 .cmp thead th{background:var(--surface-2);font-weight:800;font-size:12.5px;border-bottom:2px solid var(--border)}
-.cmp thead th:first-child{width:30%}
+.cmp thead th:first-child{width:24%}
+.cmp thead th:nth-child(2){width:18%}
 .cmp thead th:last-child{color:var(--governance)}
-.cmp tbody th{font-weight:700;font-size:12.5px;color:var(--text);width:30%}
+.cmp tbody th{font-weight:700;font-size:12.5px;color:var(--text);width:24%}
 .cmp tbody td{color:var(--muted)}
+.cmp td.applies{color:var(--apps);font-weight:700;font-size:12px;line-height:1.4}
 .cmp td:last-child,.cmp th:last-child{border-right:none}
 .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:none}
 .cmp tbody tr:hover td,.cmp tbody tr:hover th{background:var(--surface-2)}

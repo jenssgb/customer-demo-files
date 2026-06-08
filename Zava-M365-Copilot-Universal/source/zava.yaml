@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.12"
+  version: "5.0.13"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -813,61 +813,83 @@ context:
   agent_governance:
     title: "Agent governance: baseline admin center vs Microsoft Agent 365"
     intro: >-
-      Yes — agents you build in Agent Builder or Copilot Studio already appear in the Microsoft 365 admin center,
-      and you can govern their whole lifecycle there with just an admin role (no extra license). What a Microsoft
-      Agent 365 (or Microsoft E7) license adds is the security and risk depth on top of that same registry —
-      the Risks column, the Security tab, Defender runtime protection, Purview observability, and cross-platform
-      Registry sync. Read each row left to right. Verified against Microsoft Learn.
+      Read the 'Applies to' column first — it says WHICH agent type each row is about. Two types appear in this demo:
+      Agent Builder agents (demo 7) are declarative and knowledge-only — they run on the Microsoft 365 Copilot platform
+      and have NO identity of their own. Copilot Studio agents (demo 10) are low-code, can act, and each gets a Microsoft
+      Entra Agent ID. Foundry is the pro-code third type. Everything you build already shows up in the Microsoft 365 admin
+      center with just an admin role; a Microsoft Agent 365 / E7 license adds the security and risk depth on top. Verified against Microsoft Learn.
     columns:
       - "Capability"
+      - "Applies to (agent type)"
       - "Baseline — Copilot Control System (admin role only, no extra license)"
       - "Adds with Microsoft Agent 365 / Microsoft E7"
     rows:
-      - - "See every agent in one inventory (Agent Builder, Copilot Studio, and more)"
-        - "✓ Agents > All agents in the Microsoft 365 admin center. Needs only an admin role — AI Reader is the least-privilege one — not a special license."
-        - "✓ Same registry, now the converged Agent 365 control plane, plus the Agent Map for agent-to-resource relationships."
-      - - "Lifecycle & access: enable/disable, assign or block per user or group, install, remove, delete"
+      - - "Appears in the agent registry / inventory automatically on creation"
+        - "Agent Builder + Copilot Studio (+ Foundry, SharePoint, 3rd-party)"
+        - "✓ Microsoft 365 admin center > Agents > All agents. Needs only an admin role — AI Reader is least-privilege — not a license."
+        - "✓ Same registry, now the converged Agent 365 control plane, plus the Agent Map."
+      - - "Draft / unpublished agents are visible to admins"
+        - "Copilot Studio only — Agent Builder, Foundry & SharePoint drafts are not yet supported"
+        - "✓ But only Copilot Studio drafts surface today."
+        - "✓ Same limitation — surfaced in the registry."
+      - - "Lifecycle: install/uninstall, enable/disable, assign, block, remove"
+        - "Agent Builder + Copilot Studio"
         - "✓ Full lifecycle from the Copilot Control System (CCS)."
-        - "✓ Unchanged — the same actions, surfaced inside the registry."
-      - - "Org catalog: approve or reject agent requests, publish to the Agent Store"
+        - "✓ Unchanged — same actions inside the registry."
+      - - "Delete the agent"
+        - "Agent Builder + Copilot Studio (mechanism differs)"
+        - "✓ Agent Builder: owner deletes via the registry. Copilot Studio: needs Power Platform environment-admin rights; the Entra identity is deleted too."
+        - "✓ Unchanged."
+      - - "Org catalog: approve / reject requests, publish to the Agent Store"
+        - "Agent Builder (shared) + Copilot Studio (requested)"
         - "✓ Requests view. Only an AI Administrator or Global Administrator may approve."
-        - "✓ Unchanged — surfaced as 'Pending requests' governance cards."
-      - - "Ownership: assign an owner, find agents that are 'Missing an owner'"
-        - "✓ The ownerless filter and Assign-owner action are already in the baseline admin center."
-        - "✓ Same, surfaced proactively as 'Agents without owners' governance cards."
+        - "✓ Surfaced as 'Pending requests' governance cards."
+      - - "Ownership: find 'Missing an owner', assign / reassign owner"
+        - "Agent Builder + Copilot Studio"
+        - "✓ The ownerless filter and Assign-owner action are in the baseline admin center."
+        - "✓ Surfaced proactively as 'Agents without owners' cards."
       - - "Per-agent Risks column in the registry"
+        - "All registry agents"
         - "✗ Not shown."
-        - "✓ Requires a Microsoft E7 or Agent 365 license. Aggregates Entra + Defender + Purview signals per agent."
-      - - "Security tab per agent — Defender threat signals + Purview AI observability, DLP, audit"
+        - "✓ Requires Microsoft E7 / Agent 365. Aggregates Entra + Defender + Purview signals."
+      - - "Security tab per agent — Defender signals + Purview AI observability, DLP, audit"
+        - "All registry agents"
         - "✗ Not available."
-        - "✓ Requires E7 / Agent 365: monitor agent activity, protect sensitive data, evaluate compliance gaps."
+        - "✓ Requires E7 / Agent 365: monitor activity, protect sensitive data, evaluate compliance gaps."
       - - "Defender real-time runtime protection (blocks prompt injection before the tool call)"
+        - "Copilot Studio + Foundry (the acting agents)"
         - "✗ —"
-        - "✓ From July 1, 2026 this security layer for Copilot Studio & Foundry agents requires an Agent 365 license (was Defender for Cloud Apps)."
-      - - "Registry sync: pull in third-party agents (Bedrock, Vertex AI, Salesforce, Databricks)"
+        - "✓ From July 1, 2026 this layer requires an Agent 365 license (was Defender for Cloud Apps)."
+      - - "Entra Agent ID + Conditional Access on the agent's own identity"
+        - "Copilot Studio + Foundry — NOT Agent Builder (it has no identity)"
+        - "~ Copilot Studio agents get an Entra Agent ID; applying Conditional Access / identity governance needs Entra Agent ID licensing. Agent Builder agents have no app registration or Agent ID at all."
+        - "✓ Governed like a user object — least-privilege access packages, connector permissions targetable with CA."
+      - - "Registry sync of external agents (Bedrock, Vertex AI, Salesforce, Databricks)"
+        - "3rd-party platforms only (not Agent Builder / Copilot Studio)"
         - "✗ Microsoft-platform agents only."
         - "✓ Connect external platforms into the one registry (preview)."
-      - - "Entra Agent ID identity controls (Conditional Access, identity governance on the agent itself)"
-        - "~ Every agent has an Entra Agent ID, but applying Conditional Access / identity-governance policies needs Entra Agent ID licensing."
-        - "✓ Governed like a user object — least-privilege access packages, lifecycle enforced from the registry."
-      - - "Activity / usage dashboard with automatic telemetry & business-impact metrics"
+      - - "Automatic activity / usage telemetry + business-impact metrics"
+        - "Copilot Studio (auto-emitted) + others via the registry"
         - "~ Basic inventory, status and 'at risk / exceptions' views only."
-        - "✓ Automatic telemetry (no SDK instrumentation) — adoption, health and business-impact views."
+        - "✓ Automatic telemetry (no SDK instrumentation) — adoption, health, business impact."
     note: >-
-      Key correction worth saying out loud: the agents are visible AND governable in the baseline admin center without an
-      Agent 365 license — viewing and managing the registry only needs an admin role. The Agent 365 / Microsoft E7 license
-      unlocks the security & risk depth (Risks column, Security tab, Defender runtime protection, Purview AI observability)
-      plus cross-platform Registry sync. For Copilot Studio specifically: the M365 admin center shows the tenant-wide Agent
-      registry (governance), while the Power Platform admin center keeps the environment-scoped app catalog (distribution, DLP).
+      Bottom line on agent types: every Agent Builder and Copilot Studio agent is visible AND governable in the baseline admin
+      center with just an admin role — no Agent 365 license. The split that matters: Agent Builder agents are declarative,
+      knowledge-only and have NO Entra identity, so identity-based controls (Conditional Access, connector scopes, runtime
+      protection) only apply to Copilot Studio and Foundry agents. The Agent 365 / Microsoft E7 license is what unlocks the
+      security & risk depth (Risks column, Security tab, Defender runtime protection, Purview observability) plus 3rd-party
+      Registry sync. For Copilot Studio, the M365 admin center is the tenant-wide registry (governance) while the Power
+      Platform admin center keeps the environment-scoped app catalog (distribution, DLP).
     sources:
+      - { label: "Types of agents you can manage (MCS DA / CEA / BP, Foundry, Agent Builder, …)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview#types-of-agents" }
       - { label: "Manage agents in the Microsoft 365 admin center (baseline CCS)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps" }
-      - { label: "Agent Registry convergence with Agent 365 (view needs role, not license)", url: "https://learn.microsoft.com/entra/agent-id/agent-registry-convergence" }
+      - { label: "Agent registry integration for Copilot Studio (auto-register, drafts, delete)", url: "https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry" }
+      - { label: "Copilot Studio vs Agent Builder identity (Agent Builder has no Agent ID)", url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-certificates-configuration-values" }
+      - { label: "Agent registry convergence (view needs role, not license)", url: "https://learn.microsoft.com/entra/agent-id/agent-registry-convergence" }
       - { label: "Governance & lifecycle actions in the admin center", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-actions" }
-      - { label: "Agent roles & permissions (who can approve / assign owner)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-roles-perms" }
       - { label: "Agent details: Risks column & Security tab need E7 / Agent 365", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-details" }
       - { label: "Registry sync — third-party platforms (preview)", url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry" }
       - { label: "Microsoft Agent 365 overview (observe · govern · secure)", url: "https://learn.microsoft.com/microsoft-agent-365/overview" }
-      - { label: "Agent registry vs Power Platform app catalog (Copilot Studio)", url: "https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry" }
       - { label: "Transition agent security to Agent 365 (July 1, 2026)", url: "https://learn.microsoft.com/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" }
 
   license_map:
