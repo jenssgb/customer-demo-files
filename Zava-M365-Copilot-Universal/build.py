@@ -409,7 +409,7 @@ def render_context_views(data: dict) -> str:
             "</section>"
         )
 
-    # Baseline vs Agent 365 — comparison TABLE (not cards: a real side-by-side)
+    # Baseline vs Agent 365 — grouped comparison TABLE with two filter axes
     gov = ctx.get("agent_governance")
     if gov:
         def _gov_cell(txt: str) -> str:
@@ -419,55 +419,55 @@ def render_context_views(data: dict) -> str:
                     return f'<span class="{cls}">{glyph}</span> {esc(t[len(glyph):].lstrip())}'
             return esc(t)
 
-        def _gov_types(applies: str):
-            """Classify which agent types a row applies to (for the smart filter)."""
-            a = str(applies).lower()
-            always = ("all registry" in a) or ("all agents" in a) or ("via the registry" in a)
-            if ("first-party" in a) or ("1p" in a):
-                types = {"firstparty"}
-            elif "copilot studio only" in a:
-                types = {"studio"}
-            elif "agent builder only" in a:
-                types = {"builder"}
-            elif "platforms only" in a or "3rd-party platforms" in a:
-                types = {"external"}
-            elif always and "+" not in a and "copilot studio" not in a and "agent builder" not in a:
-                types = {"builder", "studio", "foundry", "external"}
-            else:
-                types = set()
-                if "agent builder" in a and "not agent builder" not in a:
-                    types.add("builder")
-                if "copilot studio" in a and "not copilot studio" not in a:
-                    types.add("studio")
-                if "foundry" in a:
-                    types.add("foundry")
-                if ("3rd-party" in a) or ("third-party" in a) or ("external" in a) or ("bedrock" in a):
-                    types.add("external")
-                if always and not types:
-                    types = {"builder", "studio", "foundry", "external"}
-            return types, always
-
-        head = "".join(f"<th>{esc(c)}</th>" for c in gov.get("columns", []))
+        cols = gov.get("columns", [])
+        ncols = len(cols)
+        head = "".join(f"<th>{esc(c)}</th>" for c in cols)
         body = ""
-        for row in gov.get("rows", []):
-            cells = list(row)
-            types, always = _gov_types(cells[1])
-            dt = " ".join(sorted(types))
-            da = ' data-all="1"' if always else ""
-            rh = f'<th scope="row">{esc(cells[0])}</th>'
-            applies = f'<td class="applies">{esc(cells[1])}</td>'
-            rest = "".join(f"<td>{_gov_cell(c)}</td>" for c in cells[2:])
-            body += f'<tr data-types="{dt}"{da}>{rh}{applies}{rest}</tr>'
+        for gi, group in enumerate(gov.get("groups", []), start=1):
+            body += (
+                f'<tr class="cmp-group" data-group="{gi}">'
+                f'<th colspan="{ncols}">'
+                f'<span class="cmp-gnum">{gi:02d}</span>{esc(group["label"])}'
+                "</th></tr>"
+            )
+            for row in group.get("rows", []):
+                types = set(row.get("types", []))
+                is_all = bool(row.get("all"))
+                if is_all:
+                    types |= {"builder", "studio", "foundry", "external"}
+                dt = " ".join(sorted(types))
+                da = ' data-all="1"' if is_all else ""
+                planes = " ".join(sorted(set(row.get("planes", []))))
+                rh = f'<th scope="row">{esc(row["cap"])}</th>'
+                applies = f'<td class="applies">{esc(row.get("applies", ""))}</td>'
+                cells = (
+                    f'<td>{_gov_cell(row.get("baseline", ""))}</td>'
+                    f'<td>{_gov_cell(row.get("agent365", ""))}</td>'
+                )
+                body += (
+                    f'<tr data-group="{gi}" data-types="{dt}"{da} '
+                    f'data-planes="{planes}">{rh}{applies}{cells}</tr>'
+                )
         note = f'<p class="gov-note">{esc(gov["note"])}</p>' if gov.get("note") else ""
-        gov_filter = (
+        type_filter = (
             '<div class="gov-filter"><span class="gov-filter-lbl">Filter by agent type</span>'
             '<div class="chips gov-chips" id="gov-chips">'
-            '<button class="chip active" data-gtype="all">All capabilities</button>'
+            '<button class="chip active" data-gtype="all">All agent types</button>'
             '<button class="chip" data-gtype="builder" style="--c:#5c2d91"><span class="dot"></span>Agent Builder</button>'
             '<button class="chip" data-gtype="studio" style="--c:#2563eb"><span class="dot"></span>Copilot Studio</button>'
             '<button class="chip" data-gtype="foundry" style="--c:#107c10"><span class="dot"></span>Foundry</button>'
             '<button class="chip" data-gtype="external" style="--c:#d83b01"><span class="dot"></span>3rd-party</button>'
             '<button class="chip" data-gtype="firstparty" style="--c:#0078d4"><span class="dot"></span>First-party (Researcher/Analyst)</button>'
+            "</div></div>"
+        )
+        plane_filter = (
+            '<div class="gov-filter"><span class="gov-filter-lbl">Filter by what you need</span>'
+            '<div class="chips gov-chips" id="gov-planes">'
+            '<button class="chip active" data-plane="all">Any plane</button>'
+            '<button class="chip" data-plane="baseline" style="--c:#107c10"><span class="dot"></span>Baseline · admin role only</button>'
+            '<button class="chip" data-plane="agent365" style="--c:#d83b01"><span class="dot"></span>Microsoft Agent 365 · E7</button>'
+            '<button class="chip" data-plane="powerplatform" style="--c:#2563eb"><span class="dot"></span>Power Platform admin center</button>'
+            '<button class="chip" data-plane="entra" style="--c:#5c2d91"><span class="dot"></span>Entra ID P1·P2</button>'
             '</div><p class="gov-filter-hint" id="gov-filter-hint"></p></div>'
         )
         out.append(
@@ -476,8 +476,8 @@ def render_context_views(data: dict) -> str:
             '<span class="view-eyebrow">Baseline vs Agent 365</span>'
             f'<h2 class="view-title">{esc(gov["title"])}</h2>'
             f'<p class="view-summary">{esc(gov.get("intro",""))}</p>'
-            f'{gov_filter}'
-            f'<div class="cmp-wrap"><table class="cmp"><thead><tr>{head}</tr></thead>'
+            f'<div class="gov-filters">{type_filter}{plane_filter}</div>'
+            f'<div class="cmp-wrap"><table class="cmp cmp-gov"><thead><tr>{head}</tr></thead>'
             f'<tbody>{body}</tbody></table></div>'
             f'{note}'
             f"{render_sources(gov.get('sources', []))}"
@@ -838,10 +838,14 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .cmp .no{color:var(--governance);font-weight:800}
 .cmp .part{color:var(--apps);font-weight:800}
 .gov-note{font-size:12.5px;color:var(--muted);background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 13px;border-radius:0 6px 6px 0;margin:0 0 16px}
-.gov-filter{margin:0 0 14px}
+.gov-filters{display:flex;flex-direction:column;gap:12px;margin:0 0 16px;padding:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius)}
+.gov-filter{margin:0}
 .gov-filter-lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .gov-chips{margin:0}
-.gov-filter-hint{font-size:12px;color:var(--muted);margin:8px 0 0;min-height:16px}
+.gov-filter-hint{font-size:12px;color:var(--muted);margin:10px 0 0;min-height:16px;font-weight:600}
+.cmp tbody tr.cmp-group th{width:auto;background:var(--surface-2);color:var(--text);font-weight:800;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;border-bottom:2px solid var(--border)}
+.cmp tbody tr.cmp-group:hover th{background:var(--surface-2)}
+.cmp-gnum{display:inline-block;min-width:22px;margin-right:9px;color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums}
 .cmp tbody tr.hide{display:none}
 .pac-cmp thead th:first-child{width:26%}
 .pac-cmp thead th:nth-child(2){width:37%}
@@ -926,24 +930,46 @@ chips.addEventListener('click',e=>{
   $$('.track-group').forEach(g=>{g.style.display=(t==='all'||g.dataset.track===t)?'':'none';});
 });
 
-// governance table — smart filter by agent type
+// governance table — two filter axes (agent type + what you need), AND-combined
 const govChips=$('#gov-chips');
 if(govChips){
-  const rows=$$('#ctx-governance .cmp tbody tr');
+  const planeChips=$('#gov-planes');
+  const dataRows=$$('#ctx-governance .cmp tbody tr:not(.cmp-group)');
+  const groupRows=$$('#ctx-governance .cmp tbody tr.cmp-group');
   const hint=$('#gov-filter-hint');
-  const labels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party',firstparty:'first-party (Researcher/Analyst)'};
-  govChips.addEventListener('click',e=>{
-    const b=e.target.closest('.chip');if(!b)return;
-    [...govChips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
-    const t=b.dataset.gtype;
+  const tLabels={builder:'Agent Builder',studio:'Copilot Studio',foundry:'Foundry',external:'3rd-party',firstparty:'first-party (Researcher/Analyst)'};
+  const pLabels={baseline:'the baseline admin center (admin role only)',agent365:'Microsoft Agent 365 / E7',powerplatform:'Power Platform admin center',entra:'Entra ID P1·P2'};
+  let curType='all',curPlane='all';
+  const apply=()=>{
     let shown=0;
-    rows.forEach(r=>{
+    dataRows.forEach(r=>{
       const types=(r.dataset.types||'').split(' ').filter(Boolean);
-      const vis=(t==='all')||(r.dataset.all==='1'&&t!=='firstparty')||types.includes(t);
+      const planes=(r.dataset.planes||'').split(' ').filter(Boolean);
+      const tv=(curType==='all')||(r.dataset.all==='1'&&curType!=='firstparty')||types.includes(curType);
+      const pv=(curPlane==='all')||planes.includes(curPlane);
+      const vis=tv&&pv;
       r.classList.toggle('hide',!vis);
       if(vis)shown++;
     });
-    hint.textContent=(t==='all')?'':shown+' of '+rows.length+' capabilities apply to '+labels[t]+' agents'+(t==='firstparty'?' (they sit outside agent-specific settings).':' (rows marked “all registry agents” always shown).');
+    groupRows.forEach(g=>{
+      const gid=g.dataset.group;
+      const any=dataRows.some(r=>r.dataset.group===gid&&!r.classList.contains('hide'));
+      g.classList.toggle('hide',!any);
+    });
+    const parts=[];
+    if(curType!=='all')parts.push(tLabels[curType]+' agents');
+    if(curPlane!=='all')parts.push('governed via '+pLabels[curPlane]);
+    hint.textContent=parts.length?(shown+' of '+dataRows.length+' capabilities — '+parts.join(' · ')):'';
+  };
+  govChips.addEventListener('click',e=>{
+    const b=e.target.closest('.chip');if(!b)return;
+    [...govChips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
+    curType=b.dataset.gtype;apply();
+  });
+  if(planeChips)planeChips.addEventListener('click',e=>{
+    const b=e.target.closest('.chip');if(!b)return;
+    [...planeChips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active',c===b));
+    curPlane=b.dataset.plane;apply();
   });
 }
 """

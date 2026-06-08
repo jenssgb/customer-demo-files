@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.19"
+  version: "5.0.21"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -813,104 +813,161 @@ context:
   agent_governance:
     title: "Agent governance: baseline admin center vs Microsoft Agent 365"
     intro: >-
-      Read the 'Applies to' column first — it says WHICH agent type each row is about. Types in this demo:
-      Agent Builder agents (demo 7) are declarative and knowledge-only — they run on the Microsoft 365 Copilot platform
-      and have NO identity of their own. Copilot Studio agents (demo 10) are low-code, can act, and each gets a Microsoft
-      Entra Agent ID. Foundry is the pro-code third type. First-party agents (Researcher & Analyst) are Microsoft-installed
-      Copilot experiences — governed differently. Everything you build already shows up in the Microsoft 365 admin
-      center with just an admin role; a Microsoft Agent 365 / E7 license adds the security and risk depth on top.
-      For Copilot Studio agents there is a THIRD plane — the Power Platform admin center — that owns build-time governance
-      (environments, ALM, DLP, capacity); Agent 365 does not replace it, the two are complementary. Verified against Microsoft Learn.
+      One question, answered in one grid: everything you build already shows up in the Microsoft 365 admin center with
+      just an admin role (AI Reader is least-privilege — not a license), and a Microsoft Agent 365 / E7 license adds the
+      security, risk and identity depth on top. The rows are grouped by job (inventory, lifecycle, the Power Platform
+      build plane, security, identity, tooling/data, first-party) so you can scan one theme at a time. Two filters sit
+      above the table: 'Filter by agent type' narrows to the agent kind you care about (Agent Builder is declarative
+      and identity-less; Copilot Studio is low-code, acts, and gets an Entra Agent ID; Foundry is pro-code; Researcher
+      & Analyst are Microsoft-installed first-party), and 'Filter by what you need' shows which plane delivers each
+      control — Baseline (admin role only), Microsoft Agent 365 / E7, Power Platform admin center, or Entra ID P1/P2.
+      Agent 365 does NOT replace Power Platform governance — they are complementary planes. Verified against Microsoft Learn.
     columns:
       - "Capability"
-      - "Applies to (agent type)"
-      - "Baseline — Copilot Control System (admin role only, no extra license)"
-      - "Adds with Microsoft Agent 365 / Microsoft E7"
-    rows:
-      - - "Appears in the agent registry / inventory automatically on creation"
-        - "Agent Builder + Copilot Studio (+ Foundry, SharePoint, 3rd-party)"
-        - "✓ Microsoft 365 admin center > Agents > All agents. Needs only an admin role — AI Reader is least-privilege — not a license."
-        - "✓ Same registry, now the converged Agent 365 control plane, plus the Agent Map."
-      - - "Draft / unpublished agents are visible to admins"
-        - "Copilot Studio only — Agent Builder, Foundry & SharePoint drafts are not yet supported"
-        - "✓ But only Copilot Studio drafts surface today."
-        - "✓ Same limitation — surfaced in the registry."
-      - - "Power Platform inventory — tenant-wide view of every Power-Platform-built agent INCLUDING drafts (Copilot Studio + Agent Builder), with connector mapping & orphaned-owner detection"
-        - "Copilot Studio + Agent Builder (Power Platform-built)"
-        - "✓ Power Platform admin center > Manage > Inventory (or Manage > Copilot Studio). A separate plane from the M365 registry; needs a Power Platform / Dynamics 365 admin role, no Agent 365 license. Unlike the M365 registry it also surfaces Agent Builder drafts."
-        - "✗ Agent 365 does not replace it — the M365 registry is tenant-availability-scoped and shows no Power Platform drafts or environments."
-      - - "Build-time guardrails & ALM: environments, solutions, pipelines, managed environments + DLP / connector / HTTP / channel data policies (tenant · environment · agent level)"
-        - "Copilot Studio (Power Platform environments)"
-        - "✓ Power Platform admin center is the authoritative build/platform-governance plane. DLP data-policy enforcement is on for ALL tenants since early 2025. Needs a PP / Environment Admin role, no Agent 365 license."
-        - "✗ Agent 365 has NO ALM / environment / DLP plane — it consumes the published agent and adds tenant approval + security depth on top; it does not replace Power Platform governance."
-      - - "Capacity & cost governance: per-agent monthly Copilot-credit limit + automatic hard turn-off at the limit"
-        - "Copilot Studio only (Power Platform-billed)"
-        - "✓ Power Platform admin center > Licensing > Copilot Studio > Manage Agents: set a credit cap, see month-to-date billed credits, turn an agent off. No Agent 365 license."
-        - "✗ Not an Agent 365 capability — capacity & spend stay in Power Platform."
-      - - "Lifecycle: install/uninstall, enable/disable, assign, block, remove"
-        - "Agent Builder + Copilot Studio"
-        - "✓ Full lifecycle from the Copilot Control System (CCS)."
-        - "✓ Unchanged — same actions inside the registry."
-      - - "Delete the agent"
-        - "Agent Builder + Copilot Studio (mechanism differs)"
-        - "✓ Agent Builder: owner deletes via the registry. Copilot Studio: needs Power Platform environment-admin rights; the Entra identity is deleted too."
-        - "✓ Unchanged."
-      - - "Org catalog: approve / reject requests, publish to the Agent Store"
-        - "Agent Builder (shared) + Copilot Studio (requested)"
-        - "✓ Requests view. Only an AI Administrator or Global Administrator may approve."
-        - "✓ Surfaced as 'Pending requests' governance cards."
-      - - "Ownership: find ownerless agents, assign / reassign owner (incl. access to the previous owner's uploaded files)"
-        - "Agent Builder + Copilot Studio (reassign is supported for these two types only)"
-        - "✓ 'Agents without owners' dashboard: live count, one-click filter, real-time update when a user is hard-deleted; then block, delete or assign a new owner. The new owner inherits the previous owner's uploaded files."
-        - "✓ Surfaced proactively as 'Agents without owners' governance cards."
-      - - "Per-agent Risks column in the registry"
-        - "All registry agents"
-        - "✗ Not shown."
-        - "✓ Requires Microsoft E7 / Agent 365. Aggregates Entra + Defender + Purview signals."
-      - - "Security tab per agent — Defender signals + Purview AI observability, DLP, audit"
-        - "All registry agents"
-        - "✗ Not available."
-        - "✓ Requires E7 / Agent 365: monitor activity, protect sensitive data, evaluate compliance gaps."
-      - - "Defender real-time runtime protection — AI Prompt Shield flags/blocks prompt injection at runtime (the #1 OWASP-LLM risk), before the tool call"
-        - "Copilot Studio + Foundry (the acting agents); local AI agents via Defender for Endpoint"
-        - "✗ —"
-        - "✓ Prompt injection shows as a HIGH-severity signal in the Risks column (source: Defender + Entra SSE). From July 1, 2026 this layer requires an Agent 365 license (was Defender for Cloud Apps)."
-      - - "Entra Agent ID + Conditional Access on the agent's own identity"
-        - "Copilot Studio + Foundry — NOT Agent Builder (it has no identity)"
-        - "~ Copilot Studio agents get an Entra Agent ID; applying Conditional Access / identity governance needs Entra Agent ID licensing. Agent Builder agents have no app registration or Agent ID at all."
-        - "✓ Governed like a user object — least-privilege access packages, connector permissions targetable with CA."
-      - - "Registry sync of external agents (Bedrock, Vertex AI, Salesforce, Databricks)"
-        - "3rd-party platforms only (not Agent Builder / Copilot Studio)"
-        - "✗ Microsoft-platform agents only."
-        - "✓ Connect external platforms into the one registry (preview)."
-      - - "Automatic activity / usage telemetry + business-impact metrics"
-        - "Copilot Studio (auto-emitted) + others via the registry"
-        - "~ Basic inventory, status and 'at risk / exceptions' views only."
-        - "✓ Automatic telemetry (no SDK instrumentation) — adoption, health, business impact."
-      - - "Govern files attached to an agent: embedded-file knowledge (sensitivity label auto-applied) + 'embedded files' inventory filter (File name · sensitivity · SharePoint container ID)"
-        - "Agent Builder ONLY (the only builder that embeds files as knowledge)"
-        - "✓ Most-restrictive label of the uploaded 20-file max (.docx/.pptx/.xlsx/.pdf/.txt) is applied automatically; only users with extract rights to that label can install/use the agent; files live in tenant-owned SharePoint Embedded containers; audit via the registry filter. Note: Purview Information Barriers are NOT supported on embedded files."
-        - "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited); a SharePoint .agent file is governed by DLP via its .agent extension condition."
-      - - "Agent 365 MCP / tool-server governance via the Tooling Gateway: approve/reject each server, server-level block enforced at runtime across every surface, tools-snapshot transparency, scoped per-server Entra consent, every tool call traced in Defender"
-        - "Copilot Studio (low-code) + pro-code surfaces (Agent 365 SDK, VS Code, Claude Code, GitHub Copilot CLI) — NOT Agent Builder declarative agents"
-        - "~ You manage which agents are installed, but not the MCP tool layer itself."
-        - "✓ M365 admin center > Agents & tools: all Work IQ and BYO MCP calls route through the Agent 365 Tooling Gateway. Each MCP server = one permission on the Agent 365 app; the agent gets access only after admin consent. Block once → blocked for every user and agent at runtime. BYO MCP is preview; supported client surfaces are Copilot Studio, VS Code, Claude Code & GitHub Copilot CLI — Azure AI Foundry and Microsoft 365 declarative agents (Agent Builder) are NOT yet supported."
-      - - "Risk-based controls on the agent identity: ID Protection (block high/medium/low-risk agents) + ID Governance (sponsors, access reviews, time-bound least-privilege access packages)"
-        - "Copilot Studio + Foundry — NOT Agent Builder (no identity)"
-        - "✗ Needs Microsoft Entra ID P2 (ID Protection) / P1 (ID Governance) on top."
-        - "✓ Agent 365 license + Entra ID P1/P2: agent-risk Conditional Access, access reviews, sponsor accountability so access doesn't outlive the need."
-      - - "Network controls / SASE: monitor & block malicious or non-compliant agent network traffic"
-        - "Copilot Studio agents on user devices (+ on-device agents) — NOT Agent Builder"
-        - "✗ Requires Microsoft Entra Internet Access (Global Secure Access)."
-        - "✓ Agent 365 + Entra Internet Access: stop agents reaching disallowed destinations at the network edge."
-      - - "Programmatic registry management via Microsoft Graph API (bulk list agents, fetch agent details)"
-        - "All registry agents"
-        - "✓ Preview Graph endpoints (copilotPackages) work with the AI Administrator role — no extra license."
-        - "✓ Automate bulk onboarding, governance and compliance reporting across the converged registry."
-      - - "First-party Microsoft-installed agents (Researcher & Analyst) — preinstalled/pre-pinned Copilot Chat tools"
-        - "First-party (1P) — NOT Agent Builder / Copilot Studio; exempt from agent-specific settings"
-        - "✓ Block tenant-wide in the admin center; per-user/group assignment is greyed out (they're core Chat, not agents). Not available in GCC/GCCH/DoD."
-        - "✓ They coexist with Agent 365 and obey agent governance, but stay part of core Copilot Chat — they don't fall under agent-specific settings."
+      - "Applies to"
+      - "Baseline — admin role only, no extra license"
+      - "Microsoft Agent 365 / E7 adds"
+    groups:
+      - label: "Inventory & visibility — what shows up, and where"
+        rows:
+          - cap: "Appears in the agent registry / inventory automatically on creation"
+            applies: "All registry agents — Agent Builder + Copilot Studio (+ Foundry, SharePoint, 3rd-party)"
+            all: true
+            planes: [baseline]
+            baseline: "✓ Microsoft 365 admin center > Agents > All agents. Needs only an admin role — AI Reader is least-privilege — not a license."
+            agent365: "✓ Same registry, now the converged Agent 365 control plane, plus the Agent Map."
+          - cap: "Draft / unpublished agents are visible to admins"
+            applies: "Copilot Studio only — Agent Builder, Foundry & SharePoint drafts are not yet supported"
+            types: [studio]
+            planes: [baseline]
+            baseline: "✓ But only Copilot Studio drafts surface today."
+            agent365: "✓ Same limitation — surfaced in the registry."
+          - cap: "Power Platform inventory — tenant-wide view of every Power-Platform-built agent INCLUDING drafts, with connector mapping & orphaned-owner detection"
+            applies: "Copilot Studio + Agent Builder (Power Platform-built)"
+            types: [studio, builder]
+            planes: [powerplatform]
+            baseline: "✓ Power Platform admin center > Manage > Inventory (or Manage > Copilot Studio). A separate plane from the M365 registry; needs a Power Platform / Dynamics 365 admin role, no Agent 365 license. Unlike the M365 registry it also surfaces Agent Builder drafts."
+            agent365: "✗ Agent 365 does not replace it — the M365 registry is tenant-availability-scoped and shows no Power Platform drafts or environments."
+          - cap: "Programmatic registry management via Microsoft Graph API (bulk list agents, fetch agent details)"
+            applies: "All registry agents"
+            all: true
+            planes: [baseline]
+            baseline: "✓ Preview Graph endpoints (copilotPackages) work with the AI Administrator role — no extra license."
+            agent365: "✓ Automate bulk onboarding, governance and compliance reporting across the converged registry."
+      - label: "Lifecycle, ownership & catalog — keep the estate accountable"
+        rows:
+          - cap: "Lifecycle: install/uninstall, enable/disable, assign, block, remove (incl. bulk Agent Management Rules)"
+            applies: "Agent Builder + Copilot Studio"
+            types: [builder, studio]
+            planes: [baseline]
+            baseline: "✓ Full lifecycle from the Copilot Control System (CCS); rule-based bulk actions install 1P agents & reassign ownerless Agent Builder agents."
+            agent365: "✓ Unchanged — same actions inside the registry."
+          - cap: "Delete the agent"
+            applies: "Agent Builder + Copilot Studio (mechanism differs)"
+            types: [builder, studio]
+            planes: [baseline, powerplatform]
+            baseline: "✓ Agent Builder: owner deletes via the registry. Copilot Studio: needs Power Platform environment-admin rights; the Entra identity is deleted too."
+            agent365: "✓ Unchanged."
+          - cap: "Org catalog: approve / reject requests, publish to the Agent Store"
+            applies: "Agent Builder (shared) + Copilot Studio (requested)"
+            types: [builder, studio]
+            planes: [baseline]
+            baseline: "✓ Requests view. Only an AI Administrator or Global Administrator may approve."
+            agent365: "✓ Surfaced as 'Pending requests' governance cards."
+          - cap: "Ownership: find ownerless agents, assign / reassign owner (incl. access to the previous owner's uploaded files)"
+            applies: "Agent Builder + Copilot Studio (reassign is supported for these two types only)"
+            types: [builder, studio]
+            planes: [baseline]
+            baseline: "✓ 'Agents without owners' dashboard: live count, one-click filter, real-time update when a user is hard-deleted; then block, delete or assign a new owner. The new owner inherits the previous owner's uploaded files; the previous owner loses all access."
+            agent365: "✓ Surfaced proactively as 'Agents without owners' governance cards."
+      - label: "Build & platform plane — Power Platform (Copilot Studio)"
+        rows:
+          - cap: "Build-time guardrails & ALM: environments, solutions, pipelines, managed environments + DLP / connector / HTTP / channel data policies (tenant · environment · agent level)"
+            applies: "Copilot Studio (Power Platform environments)"
+            types: [studio]
+            planes: [powerplatform]
+            baseline: "✓ Power Platform admin center is the authoritative build/platform-governance plane. DLP data-policy enforcement is on for ALL tenants since early 2025. Needs a PP / Environment Admin role, no Agent 365 license."
+            agent365: "✗ Agent 365 has NO ALM / environment / DLP plane — it consumes the published agent and adds tenant approval + security depth on top; it does not replace Power Platform governance."
+          - cap: "Capacity & cost governance: per-agent monthly Copilot-credit limit + automatic hard turn-off at the limit"
+            applies: "Copilot Studio only (Power Platform-billed)"
+            types: [studio]
+            planes: [powerplatform]
+            baseline: "✓ Power Platform admin center > Licensing > Copilot Studio > Manage Agents: set a credit cap, see month-to-date billed credits, turn an agent off. No Agent 365 license."
+            agent365: "✗ Not an Agent 365 capability — capacity & spend stay in Power Platform."
+      - label: "Security, risk & runtime protection — Agent 365 / E7 depth"
+        rows:
+          - cap: "Per-agent Risks column in the registry"
+            applies: "All registry agents"
+            all: true
+            planes: [agent365]
+            baseline: "✗ Not shown."
+            agent365: "✓ Requires Microsoft E7 / Agent 365. Aggregates Entra + Defender + Purview signals."
+          - cap: "Security tab per agent — Defender signals + Purview AI observability, DLP, audit"
+            applies: "All registry agents"
+            all: true
+            planes: [agent365]
+            baseline: "✗ Not available."
+            agent365: "✓ Requires E7 / Agent 365: monitor activity, protect sensitive data, evaluate compliance gaps."
+          - cap: "Defender real-time runtime protection — AI Prompt Shield flags/blocks prompt injection at runtime (the #1 OWASP-LLM risk), before the tool call"
+            applies: "Copilot Studio + Foundry (the acting agents); local AI agents via Defender for Endpoint"
+            types: [studio, foundry]
+            planes: [agent365]
+            baseline: "✗ —"
+            agent365: "✓ Prompt injection shows as a HIGH-severity signal in the Risks column (source: Defender + Entra SSE). From July 1, 2026 this layer requires an Agent 365 license (was Defender for Cloud Apps)."
+          - cap: "Automatic activity / usage telemetry + business-impact metrics"
+            applies: "Copilot Studio (auto-emitted) + others via the registry"
+            all: true
+            planes: [agent365]
+            baseline: "~ Basic inventory, status and 'at risk / exceptions' views only."
+            agent365: "✓ Automatic telemetry (no SDK instrumentation) — adoption, health, business impact."
+      - label: "Identity, access & network — the agent as a governed principal"
+        rows:
+          - cap: "Entra Agent ID + Conditional Access on the agent's own identity"
+            applies: "Copilot Studio + Foundry — NOT Agent Builder (it has no identity)"
+            types: [studio, foundry]
+            planes: [entra, agent365]
+            baseline: "~ Copilot Studio agents get an Entra Agent ID; applying Conditional Access / identity governance needs Entra Agent ID licensing. Agent Builder agents have no app registration or Agent ID at all."
+            agent365: "✓ Governed like a user object — least-privilege access packages, connector permissions targetable with CA."
+          - cap: "Risk-based controls on the agent identity: ID Protection (block high/medium/low-risk agents) + ID Governance (sponsors, access reviews, time-bound least-privilege access packages)"
+            applies: "Copilot Studio + Foundry — NOT Agent Builder (no identity)"
+            types: [studio, foundry]
+            planes: [entra, agent365]
+            baseline: "✗ Needs Microsoft Entra ID P2 (ID Protection) / P1 (ID Governance) on top."
+            agent365: "✓ Agent 365 license + Entra ID P1/P2: agent-risk Conditional Access, access reviews, sponsor accountability so access doesn't outlive the need."
+          - cap: "Network controls / SASE: monitor & block malicious or non-compliant agent network traffic"
+            applies: "Copilot Studio agents on user devices (+ on-device agents) — NOT Agent Builder"
+            types: [studio]
+            planes: [entra, agent365]
+            baseline: "✗ Requires Microsoft Entra Internet Access (Global Secure Access)."
+            agent365: "✓ Agent 365 + Entra Internet Access: stop agents reaching disallowed destinations at the network edge."
+      - label: "Tooling, data & cross-platform — what the agent can reach"
+        rows:
+          - cap: "Agent 365 MCP / tool-server governance via the Tooling Gateway: approve/reject each server, server-level block enforced at runtime across every surface, tools-snapshot transparency, scoped per-server Entra consent, every tool call traced in Defender"
+            applies: "Copilot Studio (low-code) + pro-code surfaces (Agent 365 SDK, VS Code, Claude Code, GitHub Copilot CLI) — NOT Agent Builder declarative agents"
+            types: [studio, foundry]
+            planes: [agent365]
+            baseline: "~ You manage which agents are installed, but not the MCP tool layer itself."
+            agent365: "✓ M365 admin center > Agents & tools: all Work IQ and BYO MCP calls route through the Agent 365 Tooling Gateway. Each MCP server = one permission on the Agent 365 app; the agent gets access only after admin consent. Block once → blocked for every user and agent at runtime. BYO MCP is preview; supported client surfaces are Copilot Studio, VS Code, Claude Code & GitHub Copilot CLI — Azure AI Foundry and Microsoft 365 declarative agents (Agent Builder) are NOT yet supported."
+          - cap: "Govern files attached to an agent: embedded-file knowledge (sensitivity label auto-applied) + 'embedded files' inventory filter (File name · sensitivity · SharePoint container ID)"
+            applies: "Agent Builder ONLY (the only builder that embeds files as knowledge)"
+            types: [builder]
+            planes: [baseline, agent365]
+            baseline: "✓ Most-restrictive label of the uploaded 20-file max (.docx/.pptx/.xlsx/.pdf/.txt) is applied automatically; only users with extract rights to that label can install/use the agent; files live in tenant-owned SharePoint Embedded containers; audit via the registry filter. Note: Purview Information Barriers are NOT supported on embedded files."
+            agent365: "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited); a SharePoint .agent file is governed by DLP via its .agent extension condition."
+          - cap: "Registry sync of external agents (Bedrock, Vertex AI, Salesforce, Databricks)"
+            applies: "3rd-party platforms only (not Agent Builder / Copilot Studio)"
+            types: [external]
+            planes: [agent365]
+            baseline: "✗ Microsoft-platform agents only."
+            agent365: "✓ Connect external platforms into the one registry (preview)."
+      - label: "First-party Microsoft agents — governed differently"
+        rows:
+          - cap: "First-party Microsoft-installed agents (Researcher & Analyst) — preinstalled/pre-pinned Copilot Chat tools"
+            applies: "First-party (1P) — NOT Agent Builder / Copilot Studio; exempt from agent-specific settings"
+            types: [firstparty]
+            planes: [baseline]
+            baseline: "✓ Block tenant-wide in the admin center; per-user/group assignment is greyed out (they're core Chat, not agents). Not available in GCC/GCCH/DoD."
+            agent365: "~ Governed via Copilot Chat / admin policy, not the agent registry — block tenant-wide, no per-user assignment."
     note: >-
       Bottom line on agent types: every Agent Builder and Copilot Studio agent is visible AND governable in the baseline admin
       center with just an admin role — no Agent 365 license. The split that matters: Agent Builder agents are declarative,
