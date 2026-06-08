@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.18"
+  version: "5.0.19"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -891,10 +891,10 @@ context:
         - "Agent Builder ONLY (the only builder that embeds files as knowledge)"
         - "✓ Most-restrictive label of the uploaded 20-file max (.docx/.pptx/.xlsx/.pdf/.txt) is applied automatically; only users with extract rights to that label can install/use the agent; files live in tenant-owned SharePoint Embedded containers; audit via the registry filter. Note: Purview Information Barriers are NOT supported on embedded files."
         - "✓ Purview DLP can exclude labeled files so their content isn't used in responses (only cited); a SharePoint .agent file is governed by DLP via its .agent extension condition."
-      - - "Work IQ / MCP tool-server governance: allow or block tool servers, scoped per-agent consent, every tool call traced"
-        - "Copilot Studio + Foundry / pro-code (tool-calling agents) — NOT Agent Builder"
-        - "~ You manage which of these agents are installed, but not the tool layer itself."
-        - "✓ M365 admin center > Agents and tools: activate/block Work IQ & custom MCP servers, scope permissions, full per-call observability in Defender."
+      - - "Agent 365 MCP / tool-server governance via the Tooling Gateway: approve/reject each server, server-level block enforced at runtime across every surface, tools-snapshot transparency, scoped per-server Entra consent, every tool call traced in Defender"
+        - "Copilot Studio (low-code) + pro-code surfaces (Agent 365 SDK, VS Code, Claude Code, GitHub Copilot CLI) — NOT Agent Builder declarative agents"
+        - "~ You manage which agents are installed, but not the MCP tool layer itself."
+        - "✓ M365 admin center > Agents & tools: all Work IQ and BYO MCP calls route through the Agent 365 Tooling Gateway. Each MCP server = one permission on the Agent 365 app; the agent gets access only after admin consent. Block once → blocked for every user and agent at runtime. BYO MCP is preview; supported client surfaces are Copilot Studio, VS Code, Claude Code & GitHub Copilot CLI — Azure AI Foundry and Microsoft 365 declarative agents (Agent Builder) are NOT yet supported."
       - - "Risk-based controls on the agent identity: ID Protection (block high/medium/low-risk agents) + ID Governance (sponsors, access reviews, time-bound least-privilege access packages)"
         - "Copilot Studio + Foundry — NOT Agent Builder (no identity)"
         - "✗ Needs Microsoft Entra ID P2 (ID Protection) / P1 (ID Governance) on top."
@@ -940,6 +940,7 @@ context:
       - { label: "Registry sync — third-party platforms (preview)", url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry" }
       - { label: "Agent Builder embedded-file knowledge: sensitivity labels & inventory filter", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-details#manage-agents-with-embedded-file-content-as-a-knowledge-source" }
       - { label: "Work IQ / MCP tooling-server governance (allow / block, scoped consent, tracing)", url: "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview" }
+      - { label: "BYO MCP server via the Tooling Gateway — supported surfaces exclude Foundry & declarative agents (preview)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/manage-tools-for-agent#bring-your-own-byo-mcp-server" }
       - { label: "Access control with Entra: ID Protection, ID Governance, SASE network controls", url: "https://learn.microsoft.com/security/security-for-ai/agent-365-security" }
       - { label: "Agent identity licensing (P1/P2, Entra Internet Access for network controls)", url: "https://learn.microsoft.com/entra/agent-id/what-are-agent-identities" }
       - { label: "Agent Registry Microsoft Graph API (bulk management, preview)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-registry#microsoft-graph-api-for-agent-registry-and-agent-details-preview" }
