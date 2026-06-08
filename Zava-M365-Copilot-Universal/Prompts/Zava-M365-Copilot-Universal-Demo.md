@@ -122,7 +122,7 @@ Open the PowerPoint seed deck or use the PowerPoint Agent. The goal is to show e
 
 ## 7 - Agent Builder: Company Policy Navigator + the swarm
 
-> Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real. Presenter prep & known issues: share agents only to Security Groups (or security-enabled M365 Groups / Teams) — Distribution Groups are a documented Known Issue and silently fail; if Restricted SharePoint Search is on in the tenant you cannot use SharePoint as a knowledge source; Agent Builder agents are not supported in Teams chat, so always demo them in the Microsoft 365 Copilot surface; if the 'Allow web search' Copilot policy is off, the policy wins over the agent's web-knowledge toggle.
+> Storyline shift: demos 1-6 ran the rush-order decision flow. The agent trilogy (7-10-11) now shows the OTHER half of Zava's day — the internal employee-experience agents staff build for themselves. Agent Builder agents are declarative: they ground on knowledge and answer. They cannot run actions or call APIs — that boundary is the deliberate hand-off to Copilot Studio in demo 10. Build the flagship live; the other ~20 agents are pre-built before the demo so the registry and Agent Map in demo 11 feel real. Presenter prep & known issues: share agents only to Security Groups (or security-enabled M365 Groups / Teams) — Distribution Groups are a documented Known Issue and silently fail; if Restricted SharePoint Search is on in the tenant you cannot use SharePoint as a knowledge source; Agent Builder agents are not supported in Teams chat, so always demo them in the Microsoft 365 Copilot surface; if the 'Allow web search' Copilot policy is off, the policy wins over the agent's web-knowledge toggle; embedded files carry their own limits — Information Barriers are not supported, and Sensitivity Labels, Extract Rights, password protection or DKE can block a file from being installed or used, so test embedded docs before the session.
 
 ### How to build (read once)
 
@@ -197,6 +197,15 @@ Six area agents (one SharePoint folder / policy doc each, "Only use specified so
 Then 12-18 micro-agents, each a single narrow topic (parking, visitor passes, password reset, phishing reporting, new-starter checklist, mileage, sabbaticals, etc.) so the total reaches 20+.
 
 IMPORTANT: build one or two of these under a disposable maker account — you will hard-delete that user in demo 11 to show the ownerless-agent incident live.
+```
+
+### License boundary — the Copilot Chat user (say it, optional 30s)
+
+```demo
+Quick contrast that pre-empts the licensing question. Selma is a Copilot Chat user WITHOUT a full Copilot license. The line is simple and worth showing or saying:
+- A web-grounded Agent Builder agent (knowledge = public websites only) works for her at no extra cost.
+- The moment an agent grounds on TENANT data — SharePoint, OneDrive, Copilot connectors — an unlicensed user needs metered usage (pay-as-you-go) or a Copilot license; otherwise it silently will not answer.
+So the Zava Policy Navigator (SharePoint-grounded) is demoed with a full-Copilot user (Preston); Selma is only the contrast that makes the licensing edge explicit. Do not make her the main user for a tenant-grounded agent unless pay-as-you-go is already configured.
 ```
 
 ### Shared by creator vs Built by your org (Org Catalog)
@@ -466,8 +475,9 @@ Open: https://admin.cloud.microsoft/
 2. Open the Employee Service Desk request > Data & tools tab: review owner, data sources (the policy library), the one action (Create Service Ticket), target users, risk, and mitigations. In the Publish wizard set Users/Groups, a Policy Template, and review Permissions / Admin consent.
 3. Approve with a scope — publish to the demo security group only, not everyone. Only an AI Administrator or Global Administrator can approve; everyone else can see but not act.
 4. Show a Pending update (optional, very strong): have the maker publish a tiny change to the Service Desk just before the session. It surfaces here as 'Pending update', and the older approved version keeps serving users until you approve the new one — enterprise ALM without a pipeline.
-5. Leave the Onboarding Concierge pending for now — its over-permission flag is Incident 3.
-On screen: The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose; a 'Pending update' shows the live version is protected until the new one is approved.
+5. Curate discoverability: go to Agents > Manage pinned agents and pin the approved Employee Service Desk to the demo group so it surfaces for them automatically. Pin the DAY BEFORE — it can take up to 6 hours to reach end users, so never pin live.
+6. Leave the Onboarding Concierge pending for now — its over-permission flag is Incident 3.
+On screen: The Employee Service Desk moves from 'awaiting review' to 'published with scope' — available only to the group you chose, pinned for easy discovery; a 'Pending update' shows the live version is protected until the new one is approved.
 Say: The reading agents just work; the moment an agent can act, IT decides who gets it and how widely. And a pending update never disrupts users — the approved version keeps running until you sign off. Approve, scope, ship - the same control you use for any new tool.
 ```
 
