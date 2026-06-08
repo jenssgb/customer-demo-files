@@ -484,6 +484,50 @@ def render_context_views(data: dict) -> str:
             "</section>"
         )
 
+    # PPAC vs Agent 365 — standalone objection-handling TABLE
+    pac = ctx.get("pac_governance")
+    if pac:
+        def _pac_cell(txt: str) -> str:
+            t = str(txt).strip()
+            for glyph, cls in (("\u2713", "yes"), ("\u2717", "no"), ("~", "part"), ("\u2014", "part")):
+                if t.startswith(glyph):
+                    return f'<span class="{cls}">{glyph}</span> {esc(t[len(glyph):].lstrip())}'
+            return esc(t)
+
+        phead = "".join(f"<th>{esc(c)}</th>" for c in pac["columns"])
+        prows = ""
+        for row in pac.get("rows", []):
+            q, ppac, a365 = row[0], row[1], row[2]
+            prows += (
+                "<tr>"
+                f'<th scope="row">{esc(q)}</th>'
+                f"<td>{_pac_cell(ppac)}</td>"
+                f'<td class="pac-add">{_pac_cell(a365)}</td>'
+                "</tr>"
+            )
+        pverdict = (
+            f'<div class="pac-verdict"><span class="pac-verdict-tag">Bottom line</span>'
+            f'<p>{esc(pac["verdict"])}</p></div>'
+            if pac.get("verdict")
+            else ""
+        )
+        pnote = (
+            f'<div class="gov-note">{esc(pac["note"])}</div>' if pac.get("note") else ""
+        )
+        out.append(
+            '<section class="view ctx-view" id="ctx-pac">'
+            '<a class="back" href="#home">← Back to catalog</a>'
+            '<span class="view-eyebrow">PPAC vs Agent 365</span>'
+            f'<h2 class="view-title">{esc(pac["title"])}</h2>'
+            f'<p class="view-summary">{esc(pac.get("intro",""))}</p>'
+            f"{pverdict}"
+            f'<div class="cmp-wrap"><table class="cmp pac-cmp"><thead><tr>{phead}</tr></thead>'
+            f"<tbody>{prows}</tbody></table></div>"
+            f"{pnote}"
+            f"{render_sources(pac.get('sources', []))}"
+            "</section>"
+        )
+
     # Customer
     customer = ctx.get("customer")
     if customer:
@@ -551,6 +595,7 @@ def render_sidebar(data: dict) -> str:
         '<a class="nl" href="#ctx-timing" data-search="timing">⏱ Timing</a>'
         '<a class="nl" href="#ctx-features" data-search="feature matrix">✅ Feature matrix</a>'
         '<a class="nl" href="#ctx-governance" data-search="baseline agent 365 admin center registry governance difference">🛡 Baseline vs Agent 365</a>'
+        '<a class="nl" href="#ctx-pac" data-search="ppac power platform admin center agent 365 why need objection complementary build plane tenant">🔀 PPAC vs Agent 365</a>'
         '<a class="nl" href="#ctx-license" data-search="license frontier">⬢ License &amp; Frontier</a>'
         '<a class="nl" href="#ctx-customer" data-search="customer">👥 Customer briefing</a>'
         '<a class="nl" href="#ctx-qa" data-search="questions">💬 Q&amp;A</a>'
@@ -798,6 +843,13 @@ pre{margin:0;padding:14px 16px;background:var(--surface-2);border-top:1px solid 
 .gov-chips{margin:0}
 .gov-filter-hint{font-size:12px;color:var(--muted);margin:8px 0 0;min-height:16px}
 .cmp tbody tr.hide{display:none}
+.pac-cmp thead th:first-child{width:26%}
+.pac-cmp thead th:nth-child(2){width:37%}
+.pac-cmp thead th:last-child{width:37%}
+.pac-cmp td.pac-add{background:var(--accent-soft);color:var(--text);border-left:2px solid var(--accent)}
+.pac-verdict{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,var(--accent-soft),var(--surface-2));border:1px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin:0 0 16px}
+.pac-verdict-tag{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 9px;border-radius:4px;margin-top:1px}
+.pac-verdict p{margin:0;font-size:13px;line-height:1.55;color:var(--text)}
 .prose p{margin:0 0 12px;max-width:75ch}
 .timing{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
 .timing li{display:flex;gap:16px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);

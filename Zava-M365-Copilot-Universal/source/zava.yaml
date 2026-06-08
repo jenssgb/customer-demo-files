@@ -18,7 +18,7 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.17"
+  version: "5.0.18"
   date: "2026-06-08"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -952,6 +952,76 @@ context:
       - { label: "Configure data policies for agents (DLP enforced for all tenants since early 2025)", url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" }
       - { label: "Power Platform inventory (drafts, Copilot Studio + Agent Builder, PP / D365 admin role)", url: "https://learn.microsoft.com/power-platform/admin/power-platform-inventory" }
       - { label: "Manage Copilot Studio credits & capacity (per-agent monthly limit, turn off agent)", url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity" }
+
+  # Standalone answer to the single most-asked objection in every Copilot Studio
+  # account: "Why do I need Agent 365 when I already run everything in PPAC?"
+  pac_governance:
+    title: "Power Platform admin center vs Microsoft Agent 365 — \"why do I need Agent 365 if I already have PPAC?\""
+    intro: >-
+      The honest answer is NOT "Agent 365 replaces PPAC". They are two planes that answer two different questions.
+      Power Platform admin center governs HOW a Copilot Studio agent is built and operated inside Power Platform
+      (environments, ALM, DLP, connectors, capacity). Agent 365 governs WHAT is exposed across your WHOLE tenant,
+      what it can access, what is risky, how it is used, and what to do about it — including Microsoft first-party and
+      third-party agents that PPAC never sees. Read this table left-to-right: the question you are really asking, what
+      PPAC already gives you, and the net-new value Agent 365 adds on top. Verified against Microsoft Learn (2026-06-08).
+    verdict: >-
+      Bottom line for the customer: keep PPAC as your build & platform-governance plane — Agent 365 does not take that away.
+      Add Agent 365 the moment you need ONE tenant-wide inventory across every agent platform, a request/approval gate for
+      Microsoft 365 Copilot & Teams, agent risk & Security depth (Defender runtime block, Purview AI observability), Entra
+      Agent-ID identity controls, or visibility into third-party & shadow agents. PPAC alone cannot answer "what is exposed
+      and risky across my whole tenant" — that is exactly the gap Agent 365 fills.
+    columns:
+      - "The question you're really asking"
+      - "Power Platform admin center (you already have this)"
+      - "Microsoft Agent 365 (the net-new value on top)"
+    rows:
+      - - "What scope does it govern?"
+        - "One Power Platform plane: agents built in Copilot Studio (+ Agent Builder), per environment, under your maker / DLP / capacity regime."
+        - "The whole tenant: every agent available to employees — Microsoft 1P (Researcher/Analyst), Copilot Studio, Agent Builder, Foundry, SharePoint AND third-party platforms."
+      - - "What shows up in the inventory?"
+        - "Power Platform inventory: only Power-Platform-built agents, including drafts, with connector mapping & orphaned-owner detection. Needs a PP / D365 admin role."
+        - "Agent registry: all tenant-available agents in ONE list, plus overview analytics, risk cards and activity — the cross-platform view PPAC cannot give."
+      - - "Who governs the build & ALM?"
+        - "PPAC is the authoritative build plane: environments, solutions, pipelines, managed environments, DLP / connector / HTTP data policies (enforced for all tenants since early 2025)."
+        - "✗ No ALM/environment/DLP plane — Agent 365 consumes the published agent. It does NOT replace Power Platform build governance."
+      - - "Who controls capacity & cost?"
+        - "PPAC > Licensing > Copilot Studio: per-agent monthly Copilot-credit limit + automatic hard turn-off at the cap."
+        - "✗ Not a capacity tool — spend & credits stay in Power Platform."
+      - - "How is org-wide distribution approved?"
+        - "DLP can block publishing to a channel, but there is no tenant release-review queue."
+        - "✓ Requests flow in the M365 admin center: review capabilities, knowledge & actions, then Publish or Reject for Microsoft 365 Copilot & Teams."
+      - - "How deep is the security & risk view?"
+        - "Platform-scoped: onboard external threat detection, makers see protection status & blocked-message counts."
+        - "✓ Per-agent Risks column + Security tab: Defender real-time runtime block (prompt injection), Purview AI observability, DLP, audit, eDiscovery — needs Agent 365 / E7."
+      - - "Is the agent's identity governable?"
+        - "Connector DLP & advanced connector policies at the environment level."
+        - "✓ Entra Agent ID surfaces connector permissions as API permissions — target them with Conditional Access, ID Protection (block risky agents) & ID Governance access reviews."
+      - - "How do I clean up ownerless agents tenant-wide?"
+        - "Reassign via the Power Platform API, per environment."
+        - "✓ 'Agents without owners' card: live count, one-click filter, real-time on user-delete, then block / delete / assign across the tenant."
+      - - "What about non-Power-Platform & shadow agents?"
+        - "✗ Out of scope — PPAC has no view beyond Power Platform."
+        - "✓ Registry sync for Bedrock / Vertex AI / Salesforce / Databricks (preview) + a dedicated Shadow AI page for unmanaged local agents."
+      - - "Which admin role model?"
+        - "Environment-scoped Power Platform roles: PP Admin, Environment Admin / Maker, System Admin."
+        - "Tenant-wide M365 roles: AI Administrator / AI Reader, aligned with Entra Agent-ID roles for identity-centric governance."
+    note: >-
+      Use this as the rebuttal slide when a customer says "we already have Power Platform DLP and ALM, why Agent 365?".
+      The overlap (inventory, ownership) is real but shallow — the SCOPES differ: PPAC = how it's built & run in Power
+      Platform; Agent 365 = what's exposed, risky and used across the whole tenant, including agents PPAC can't see. Sell
+      them as complementary, never as a replacement. Several Agent 365 security/identity rows additionally need Defender,
+      Purview or Entra ID P1/P2 entitlements on top of the Agent 365 / E7 license.
+    sources:
+      - { label: "Power Platform inventory (all PP-built agents incl. drafts; PP / D365 admin role)", url: "https://learn.microsoft.com/power-platform/admin/power-platform-inventory" }
+      - { label: "Copilot Studio governance principles (PPAC: ALM, connectors, environment-level DLP)", url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/copilot-studio-experience#copilot-studio-governance-principles" }
+      - { label: "Configure data policies for agents (DLP enforced for all tenants since early 2025)", url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" }
+      - { label: "Manage Copilot Studio credits & capacity (per-agent monthly limit, turn off agent)", url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity" }
+      - { label: "Microsoft Agent 365 overview (tenant control plane: observe · govern · secure)", url: "https://learn.microsoft.com/microsoft-agent-365/overview" }
+      - { label: "Agent management in the M365 admin center (registry, requests, owner / risk cards)", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview" }
+      - { label: "Agent details: Risks column & Security tab need E7 / Agent 365", url: "https://learn.microsoft.com/microsoft-365/admin/manage/agent-details" }
+      - { label: "Copilot Studio Entra Agent ID — connector permissions & Conditional Access", url: "https://learn.microsoft.com/microsoft-agent-365/builder/identity" }
+      - { label: "Registry sync — third-party platforms (Bedrock / Vertex / Salesforce / Databricks, preview)", url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry" }
+      - { label: "Defender for Endpoint AI agent runtime protection (prompt-injection block)", url: "https://learn.microsoft.com/defender-endpoint/ai-agent-runtime-protection-overview" }
 
   license_map:
     title: "What is GA, what is Frontier?"
