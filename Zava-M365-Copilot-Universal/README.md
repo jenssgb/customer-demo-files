@@ -63,10 +63,10 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `Zava_Operations_Plan.docx` | Word seed document for the operations plan |
 | `Zava_Executive_Story.pptx` | PowerPoint seed deck for the executive story |
 | `data/Zava_Rush_Order_Context.docx` | Business context for Chat, Word, and PowerPoint |
-| `data/Zava_Inventory_Snapshot.csv` | Inventory data for analysis and charts |
-| `data/Zava_Order_Intake.csv` | Multiple rush-order requests for agent test cases |
-| `data/Zava_Risk_Register.csv` | Risk register with owners and mitigations |
-| `data/Zava_Pricing_Assumptions.csv` | Price-floor and margin assumptions |
+| `data/Zava_Inventory_Snapshot.xlsx` | Inventory data for analysis and charts |
+| `data/Zava_Order_Intake.xlsx` | Multiple rush-order requests for agent test cases |
+| `data/Zava_Risk_Register.xlsx` | Risk register with owners and mitigations |
+| `data/Zava_Pricing_Assumptions.xlsx` | Price-floor and margin assumptions |
 | `data/Zava_Email_Thread.docx` | Email-thread context for Outlook and Copilot Chat |
 | `data/Zava_Launch_Brief.docx` | Product and campaign context |
 | `data/Zava_Meeting_Transcript.docx` | Meeting context and action items |
@@ -76,17 +76,17 @@ This demo uses the strongest generic storyline: **Zava receives an urgent enterp
 | `data/agent-365/AgentBuilder_OrderDesk_Brief.docx` | Agent Builder source brief for the Agent 365 E2E module |
 | `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` | Copilot Studio production-agent specification for the Agent 365 E2E module |
 | `data/agent-365/Agent365_Governance_Checklist.docx` | Observe, govern, secure checklist for Agent 365 presenter and admin review |
-| `data/agent-365/Agent365_Agent_Review_Register.csv` | Mock agent inventory and review register for Agent 365 backup evidence |
-| `data/agent-365/Agent365_vs_PowerPlatform_Governance.csv` | Concrete objection-handling dataset: Power Platform Governance vs Agent 365 |
-| `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv` | Learn-verified matrix for Agent Builder knowledge, Copilot connectors, Copilot Studio MCP, and Agent 365 tool governance |
+| `data/agent-365/Agent365_Agent_Review_Register.xlsx` | Mock agent inventory and review register for Agent 365 backup evidence |
+| `data/agent-365/Agent365_vs_PowerPlatform_Governance.xlsx` | Concrete objection-handling dataset: Power Platform Governance vs Agent 365 |
+| `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.xlsx` | Learn-verified matrix for Agent Builder knowledge, Copilot connectors, Copilot Studio MCP, and Agent 365 tool governance |
 | `data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json` | BYO MCP registration template for the Copilot Studio / Agent 365 tool-governance UI demo |
-| `data/agent-365/Zava_Order_Intake.csv` | Agent Builder and Copilot Studio test orders for the Agent 365 E2E module |
+| `data/agent-365/Zava_Order_Intake.xlsx` | Agent Builder and Copilot Studio test orders for the Agent 365 E2E module |
 | `data/agent-365/Zava_Rush_Order_Context.docx` | Business context for the Agent Builder agent in the Agent 365 E2E module |
 | `data/finance-close/` | SAP actuals, TM1 budget/forecast, variance flat table, and mapping rules for the month-end close extension |
 | `data/legal-review/` | Contract, legal playbook, and counterparty memo for the Word Legal Agent extension |
 | `Deploy-Zava-Demo-Content.ps1` | Upload script for the CDX OneDrive or SharePoint demo folder |
 
-Note: The PromptPrompter script and this README remain Markdown because they are tooling and documentation files. The demo grounding data in `data/` is now Word, Excel, CSV, or PowerPoint friendly; no Markdown files are used as Copilot grounding data.
+Note: The PromptPrompter script and this README remain Markdown because they are tooling and documentation files. The demo grounding data in `data/` is now Word, Excel, JSON, or PowerPoint friendly; no Markdown files are used as Copilot grounding data.
 
 ## Microsoft Learn Feature Matrix
 
@@ -133,13 +133,13 @@ Agent 365 is not positioned as another assistant in the Zava story. It is the en
 | Step | Product / capability | What to show | Backup path |
 | --- | --- | --- | --- |
 | 1 | Agent Builder in Microsoft 365 Copilot | Build the Zava Order Desk Agent from `data/agent-365/AgentBuilder_OrderDesk_Brief.docx` and `data/agent-365/Zava_Rush_Order_Context.docx`. | Use the prompt output as the build plan if authoring is unavailable. |
-| 2 | Agent Builder test | Test order ZO-3102 from `data/agent-365/Zava_Order_Intake.csv` to prove the repeatable agent workflow. | Run in Copilot Chat with uploaded files if the built agent is not ready. |
-| 3 | Admin extension lane for Agent Builder | As admin, show Microsoft 365 admin center > Settings > Search & intelligence > Data sources for Copilot connector readiness; as Preston, show Agent Builder > Knowledge where public URLs and admin-enabled Copilot connectors appear as knowledge sources. | Use `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv` as the presenter checklist. Agent Builder consumes connector content as knowledge; it does not directly run MCP/API tools. |
-| 4 | Copilot Studio MCP and Agent 365 tool governance | In Copilot Studio > Tools > Add a tool > Model Context Protocol, show the setup path for a production MCP/API tool. Then show Microsoft 365 admin center > Agents > Tools for approve/reject/block/unblock governance. | Use `data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json`, `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.csv`, and `data/agent-365/Agent365_Agent_Review_Register.csv` as non-secret backup evidence. |
+| 2 | Agent Builder test | Test order ZO-3102 from `data/agent-365/Zava_Order_Intake.xlsx` to prove the repeatable agent workflow. | Run in Copilot Chat with uploaded files if the built agent is not ready. |
+| 3 | Admin extension lane for Agent Builder | As admin, show Microsoft 365 admin center > Settings > Search & intelligence > Data sources for Copilot connector readiness; as Preston, show Agent Builder > Knowledge where public URLs and admin-enabled Copilot connectors appear as knowledge sources. | Use `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.xlsx` as the presenter checklist. Agent Builder consumes connector content as knowledge; it does not directly run MCP/API tools. |
+| 4 | Copilot Studio MCP and Agent 365 tool governance | In Copilot Studio > Tools > Add a tool > Model Context Protocol, show the setup path for a production MCP/API tool. Then show Microsoft 365 admin center > Agents > Tools for approve/reject/block/unblock governance. | Use `data/agent-365/Zava_Public_OrderSignals_MCP_Registration.json`, `data/agent-365/AgentBuilder_Connector_MCP_Extension_Plan.xlsx`, and `data/agent-365/Agent365_Agent_Review_Register.xlsx` as non-secret backup evidence. |
 | 5 | Microsoft Copilot Studio | Build or describe the Zava Fulfillment Escalation Agent with topics, actions, approvals, environment governance, analytics, and publish channels. | Use `data/agent-365/CopilotStudio_Fulfillment_Agent_Spec.docx` as the implementation blueprint. |
-| 6 | Requested Copilot Studio agent | Microsoft 365 admin center > Agents > All agents > Requests. Review Data & tools, owner, actions, and publish scope. | Use `data/agent-365/Agent365_Agent_Review_Register.csv` if no pending request exists. |
-| 7 | Power Platform Governance vs Agent 365 | Show that Power Platform Governance covers environments, connectors, DLP and maker controls, while Agent 365 adds agent-level registry, ownership, usage, activity, risk and lifecycle governance across supported agent platforms. | Use `data/agent-365/Agent365_vs_PowerPlatform_Governance.csv` as the objection-handling proof. |
-| 8 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | If the UI is unavailable, state the tenant limitation and use the CSV register as backup evidence. |
+| 6 | Requested Copilot Studio agent | Microsoft 365 admin center > Agents > All agents > Requests. Review Data & tools, owner, actions, and publish scope. | Use `data/agent-365/Agent365_Agent_Review_Register.xlsx` if no pending request exists. |
+| 7 | Power Platform Governance vs Agent 365 | Show that Power Platform Governance covers environments, connectors, DLP and maker controls, while Agent 365 adds agent-level registry, ownership, usage, activity, risk and lifecycle governance across supported agent platforms. | Use `data/agent-365/Agent365_vs_PowerPlatform_Governance.xlsx` as the objection-handling proof. |
+| 8 | Microsoft Agent 365 registry | Microsoft 365 admin center > Agents > All agents / registry. Show inventory, owner, publisher, platform, environment, connectors/tools, and status. | If the UI is unavailable, state the tenant limitation and use the Excel register as backup evidence. |
 | 9 | Microsoft Agent 365 activity / observability | Show activity, usage, tool invocation, or high-level admin signals where available. | State that all-agents activity view is preview, user-scoped, read-only, and 30-day retained. |
 | 10 | Microsoft Agent 365 governance | Explain approve/publish, assign, block, reassign, delete, ownerless agent review, and audit readiness. | Do not click destructive actions live; explain the available controls. |
 | 11 | Microsoft Agent 365 security and compliance | Tie the agent story to Entra identity/access, Purview audit/DLP, and Defender threat detection where available. | Keep this as a positioning close unless the tenant has configured views. |
