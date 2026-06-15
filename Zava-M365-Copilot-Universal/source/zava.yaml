@@ -18,8 +18,8 @@ meta:
     Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.22"
-  date: "2026-06-08"
+  version: "5.0.23"
+  date: "2026-06-15"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
   repo_folder: "Zava-M365-Copilot-Universal"
