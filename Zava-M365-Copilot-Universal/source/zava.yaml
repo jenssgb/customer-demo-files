@@ -14,11 +14,11 @@ meta:
   customer: Zava
   title: "Zava: from rush-order signal to executive decision"
   subtitle: >-
-    One connected business flow across Microsoft 365 Copilot — Chat, Excel,
-    Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
+    One connected business flow across Microsoft 365 Copilot Premium — Work IQ and
+    Microsoft Graph-grounded Chat, Excel, Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.23"
+  version: "5.0.24"
   date: "2026-06-15"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -38,7 +38,7 @@ meta:
 
 # Tracks define BOTH the color of a demo and how the catalog groups it.
 tracks:
-  - { id: chat,       label: "Context & framing",      color: "#0078d4", desc: "Copilot Chat & Pages turn scattered context into a shared situation brief." }
+  - { id: chat,       label: "Work IQ & Graph",         color: "#0078d4", desc: "Microsoft 365 Copilot Chat uses Work IQ and Microsoft Graph to turn work context into a shared situation brief." }
   - { id: analysis,   label: "Analysis & research",    color: "#107c10", desc: "Analyst, Researcher, Excel & finance data turn evidence into decision options." }
   - { id: apps,       label: "Microsoft 365 apps",     color: "#2563eb", desc: "Outlook, Word, PowerPoint, Notebooks & Legal Agent move the decision into daily work." }
   - { id: agents,     label: "Agents & platform",      color: "#5c2d91", desc: "Agent Builder, Copilot Studio, MCP & the platform ladder — reusable to production." }
@@ -51,27 +51,28 @@ tracks:
 demos:
   - id: 1
     track: chat
-    title: "Copilot Chat situation brief"
-    summary: "Turn scattered context into a decision-ready boardroom brief and a shared Copilot Page."
+    title: "M365 Copilot Chat: Work IQ situation brief"
+    summary: "Start with the Premium core: Copilot uses Work IQ and Microsoft Graph context from mail, meetings, files, and people to create the decision brief."
     duration: 7
-    license: "Copilot Chat"
-    surfaces: [Copilot Chat, Copilot Pages]
+    license: "Microsoft 365 Copilot Premium"
+    surfaces: [Microsoft 365 Copilot Chat, Work IQ, Microsoft Graph, Copilot Pages]
     files: [Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, Zava_Executive_Decision_Memo.docx]
     sources:
+      - { label: "Microsoft 365 Copilot overview", url: "https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview" }
       - { label: "Copilot Chat overview", url: "https://learn.microsoft.com/copilot/overview" }
     steps:
       - kind: prompt
         title: "Create the boardroom brief"
         text: |
-          You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, and Zava_Executive_Decision_Memo.docx. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance.
+          You are my Chief of Staff at Zava. Use my Microsoft 365 work context first: recent emails, meetings, shared files, and decisions about the Zava rush order. If the named files are available, use Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, and Zava_Executive_Decision_Memo.docx as the evidence pack. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance. Cite the work context you used.
       - kind: action
         title: "Presenter action"
         text: |
-          Sign in as Preston Morales for the main ZAVA flow. Open Microsoft 365 Copilot Chat and upload the files or reference them from Preston's OneDrive. Emphasize that Copilot turns scattered context into a decision-ready situation brief.
+          Start here before any Analyst or agent moment. Sign in as Preston Morales and open Microsoft 365 Copilot Chat in work context. Explain the Premium value plainly: this is not generic chat — Copilot can reason over Preston's Microsoft Graph signals: mail, meetings, files, people, and permissions. If the tenant is not pre-seeded with the Zava history, reference the files from Preston's OneDrive or upload them as the fallback path, and call that out honestly.
       - kind: prompt
         title: "Structure the Copilot Page"
         text: |
-          Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from it immediately.
+          Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Work context and evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from the same shared context immediately.
 
   - id: 2
     track: analysis
@@ -751,7 +752,7 @@ context:
       business demo: retail, supply chain, finance, sales, and executive decisioning in one storyline.
     notes:
       - "Microsoft Ignite uses Zava as a fictional athletic-wear demo company. This version turns that concept into a universal Microsoft 365 Copilot demo: one urgent order, scattered context, operational risk, margin pressure, and an executive commitment."
-      - "Feature grounding: Copilot Chat provides secure AI chat with Enterprise Data Protection, file upload, Copilot Pages, and agents. Microsoft 365 Copilot adds work grounding through Microsoft Graph, Office app integration, and broader agent access."
+      - "Feature grounding: the first proof point is Microsoft 365 Copilot Premium in Chat: Work IQ and Microsoft Graph bring together mail, meetings, files, people, permissions, and recent work so Copilot can reason over business context. Analyst, Office Agents, Agent Builder, and Agent 365 come after that core value is clear."
     sources:
       - { label: "Microsoft Ignite BRK284", url: "https://ignite.microsoft.com/en-US/sessions/BRK284" }
       - { label: "Copilot Chat overview", url: "https://learn.microsoft.com/copilot/overview" }
@@ -772,8 +773,8 @@ context:
     title: "45-minute live run"
     rows:
       - { when: "00:00", what: "Frame the stakes", note: "20,000 shirts, 14 days, customer response by 17:00." }
-      - { when: "03:00", what: "Copilot Chat", note: "Condense context, find action items, and shape the decision." }
-      - { when: "10:00", what: "Analyst agent and Copilot in Excel", note: "Feasibility, risk, price floor, and management summary." }
+      - { when: "03:00", what: "Work IQ in M365 Copilot Chat", note: "Show the Premium core first: Microsoft Graph-grounded work context across mail, meetings, files, people, and permissions." }
+      - { when: "10:00", what: "Analyst agent and Copilot in Excel", note: "Now extend the same context into feasibility, risk, price floor, and management summary." }
       - { when: "20:00", what: "Copilot in Outlook and Word", note: "Customer response and operations plan." }
       - { when: "28:00", what: "Copilot in PowerPoint", note: "Executive story for the launch review." }
       - { when: "32:00", what: "Build agents", note: "Flagship Policy Navigator + the swarm in Agent Builder, then the Employee Service Desk and autonomous Onboarding Concierge in Copilot Studio." }
@@ -782,7 +783,8 @@ context:
   qa:
     title: "Discussion answers"
     items:
-      - { q: "Copilot Chat vs. Microsoft 365 Copilot?", a: "Copilot Chat is the secure entry point with web grounding, file upload, Pages, and agents. Microsoft 365 Copilot adds work grounding through Microsoft Graph and deep Office integration." }
+      - { q: "What is the Premium value before Analyst and agents?", a: "Start with Work IQ in Microsoft 365 Copilot Chat: Copilot uses Microsoft Graph signals — mail, meetings, files, people, permissions, and recent work — to create a business-grounded answer. Analyst and agents are the extension, not the starting point." }
+      - { q: "Copilot Chat vs. Microsoft 365 Copilot?", a: "Copilot Chat is the secure entry point with web grounding, file upload, Pages, and agents. Microsoft 365 Copilot Premium adds work grounding through Microsoft Graph, Work IQ, deep Office integration, and broader agent access." }
       - { q: "Why so many files?", a: "Premium demos need real grounding: email, meeting notes, data, memo, risk register, Office artifacts, finance exports, and legal documents make the workflow realistic." }
       - { q: "What is the main proof point?", a: "The demo is not about prompting. It is a product-led decision flow across Chat, Analyst, Excel, Outlook, Word, PowerPoint, Agent Builder, Agent 365, Notebooks, Finance controls, and Legal Agent in Word." }
       - { q: "What is the agent value?", a: "The agent repeats the process for new orders and packages sources, rules, and escalation logic." }
@@ -791,7 +793,8 @@ context:
     title: "Feature matrix for this demo"
     intro: "Verified with Microsoft Learn. Scenario labels use visible product, feature, or agent names."
     cards:
-      - { track: chat, h: "Copilot Chat and file upload", p: "Can do: secure AI chat with web grounding, file upload, Copilot Pages, image generation, and agents. Limits: without a Microsoft 365 Copilot add-on license, Copilot Chat is not automatically grounded in Microsoft Graph data. Demo implication: upload or reference the Zava files explicitly." }
+      - { track: chat, h: "Microsoft 365 Copilot Chat with Work IQ", p: "Can do: use Work IQ and Microsoft Graph signals — mail, meetings, files, people, permissions, and recent work — to ground answers in the user's business context. Limits: without a Microsoft 365 Copilot add-on license, Copilot Chat is not automatically grounded in Microsoft Graph data. Demo implication: open with this premium work-grounded Chat moment before Analyst or agents; if the tenant is not pre-seeded, reference the Zava files from OneDrive as the honest fallback." }
+      - { track: chat, h: "Copilot Chat and file upload", p: "Can do: secure AI chat with web grounding, file upload, Copilot Pages, image generation, and agents. Limits: file upload is a fallback path, not the main Premium proof point. Demo implication: use uploaded files only when the tenant does not contain the Zava work history in Graph." }
       - { track: chat, h: "Enterprise Data Protection", p: "Can do: prompts and responses for Entra-signed-in users are covered by DPA and Product Terms. Limits: web queries and Anthropic-based capabilities have additional data-handling notes. Demo implication: position security clearly and avoid blanket compliance claims." }
       - { track: analysis, h: "Excel Edit with Copilot", p: "Can do: edit workbooks through chat, including tables, charts, PivotTables, and formulas. Limits: formerly Agent Mode; availability depends on license, client, rollout, and tenant configuration. Demo implication: keep the prepared workbook ready; use Chat with XLSX upload as backup." }
       - { track: apps, h: "Word, Excel, and PowerPoint Agents", p: "Can do: create Office files directly from Copilot Chat and work with organizational data for licensed users. Requirements: Anthropic models must be enabled. Limits: region, tenant, government and sovereign cloud restrictions apply. Demo implication: treat as an optional wow moment; seed files are the backup." }

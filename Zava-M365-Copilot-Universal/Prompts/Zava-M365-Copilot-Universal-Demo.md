@@ -1,23 +1,23 @@
 # Zava Top Microsoft 365 Copilot Demo
 
-## 1 - Copilot Chat situation brief
+## 1 - M365 Copilot Chat: Work IQ situation brief
 
 ### Create the boardroom brief
 
 ```prompt
-You are my Chief of Staff at Zava. Use Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, and Zava_Executive_Decision_Memo.docx. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance.
+You are my Chief of Staff at Zava. Use my Microsoft 365 work context first: recent emails, meetings, shared files, and decisions about the Zava rush order. If the named files are available, use Zava_Rush_Order_Context.docx, Zava_Email_Thread.docx, Zava_Meeting_Transcript.docx, and Zava_Executive_Decision_Memo.docx as the evidence pack. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance. Cite the work context you used.
 ```
 
 ### Presenter action
 
 ```demo
-Sign in as Preston Morales for the main ZAVA flow. Open Microsoft 365 Copilot Chat and upload the files or reference them from Preston's OneDrive. Emphasize that Copilot turns scattered context into a decision-ready situation brief.
+Start here before any Analyst or agent moment. Sign in as Preston Morales and open Microsoft 365 Copilot Chat in work context. Explain the Premium value plainly: this is not generic chat — Copilot can reason over Preston's Microsoft Graph signals: mail, meetings, files, people, and permissions. If the tenant is not pre-seeded with the Zava history, reference the files from Preston's OneDrive or upload them as the fallback path, and call that out honestly.
 ```
 
 ### Structure the Copilot Page
 
 ```prompt
-Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from it immediately.
+Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Work context and evidence to verify, 3) Customer response principles. Write it so that Zoe, Maya, Omar, Lena, and Rafael can continue working from the same shared context immediately.
 ```
 
 ## 2 - Copilot Analyst agent
