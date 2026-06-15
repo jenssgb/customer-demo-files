@@ -1,5 +1,61 @@
 # Zava Top Microsoft 365 Copilot Demo
 
+## 0 - Copilot Chat Premium warm-up
+
+### Presenter setup
+
+```demo
+Use this as the gentle Premium on-ramp before the Zava rush-order story starts. Stay in Microsoft 365 Copilot Chat as Preston Morales. Keep it simple: the audience should see everyday value before Analyst, Office files, agents, and governance.
+```
+
+### Calendar overview
+
+```prompt
+Look at my calendar for today and tomorrow. Summarize the important meetings, likely preparation work, conflicts, and anything I should follow up on before the day gets busy.
+```
+
+### Work-context catch-up
+
+```prompt
+Catch me up on the most important work activity since yesterday afternoon. Use my recent emails, meetings, chats, and shared files. Group the answer by topic, tell me what changed, and call out anything that needs my decision.
+```
+
+### Simple research
+
+```prompt
+Research current market signals for connected sportswear and smart apparel. Give me five useful findings, separate web research from my work context, and end with three questions Zava leadership should discuss.
+```
+
+### Quick vs Think Deeper
+
+```demo
+Run the same lightweight question first in the normal or quick mode, then switch to Think Deeper or the advanced reasoning mode if available. Say the difference plainly: quick is for everyday catch-up; deeper reasoning is for multi-step analysis where assumptions and trade-offs matter.
+```
+
+### Mode comparison question
+
+```prompt
+Should I prioritize customer response speed, margin protection, or delivery certainty for an urgent strategic order? Think through the trade-offs and give me a short executive recommendation.
+```
+
+### Scheduled prompt
+
+```demo
+Show scheduled prompts only if the tenant has the feature available. Keep it as an everyday productivity moment: schedule a recurring weekday morning catch-up that summarizes calendar, urgent email, and open decisions. If the UI is not available, explain it as a feature to configure later and move on.
+```
+
+### Scheduled prompt example
+
+```prompt
+Every weekday at 08:00, create a morning brief for me: today's meetings, urgent emails since yesterday, open commitments, decisions I owe, and three suggested priorities. Keep it short enough to read in two minutes.
+```
+
+### Optional: Agent Builder code interpreter
+
+```demo
+Do not frame code interpreter as plain Copilot Chat. Frame it as an Agent Builder capability: a maker can turn on code interpreter for a declarative agent when the scenario needs Python-backed calculations, charts, or file generation. Keep this optional and do not let it steal the opening from the simple Chat warm-up.
+```
+
 ## 1 - M365 Copilot Chat: Work IQ situation brief
 
 ### Create the boardroom brief

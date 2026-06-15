@@ -18,7 +18,7 @@ meta:
     Microsoft Graph-grounded Chat, Excel, Outlook, Word, PowerPoint, Office Agents, Agent Builder, Researcher, Analyst,
     Teams Facilitator & Interpreter, Copilot Studio, Microsoft Agent 365,
     Finance close, Legal review, and Copilot Notebooks.
-  version: "5.0.24"
+  version: "5.0.25"
   date: "2026-06-15"
   status_line: "Status June 3, 2026 · verified with Microsoft Learn."
   accent: "#b11f4b"
@@ -49,6 +49,57 @@ tracks:
 # DEMOS — the heart of the deck. One entry = one focusable demo.
 # -----------------------------------------------------------------------------
 demos:
+  - id: 0
+    track: chat
+    title: "Copilot Chat Premium warm-up"
+    summary: "Simple everyday entry points before the Zava business scenario: calendar, work catch-up, quick research, mode switch, scheduled prompts, and optional code interpreter positioning."
+    duration: 6
+    license: "Microsoft 365 Copilot Premium"
+    surfaces: [Microsoft 365 Copilot Chat, Work IQ, Microsoft Graph, Copilot Pages, Agent Builder]
+    sources:
+      - { label: "Microsoft 365 Copilot overview", url: "https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-overview" }
+      - { label: "Get started writing prompts", url: "https://support.microsoft.com/microsoft-365-copilot/get-started-writing-prompts-in-microsoft-365-copilot" }
+      - { label: "Conversation modes", url: "https://support.microsoft.com/microsoft-copilot/conversation-modes-in-microsoft-copilot" }
+      - { label: "Scheduled prompts", url: "https://learn.microsoft.com/microsoft-365/copilot/scheduled-prompts" }
+      - { label: "Code interpreter for agents", url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/code-interpreter" }
+    steps:
+      - kind: action
+        title: "Presenter setup"
+        text: |
+          Use this as the gentle Premium on-ramp before the Zava rush-order story starts. Stay in Microsoft 365 Copilot Chat as Preston Morales. Keep it simple: the audience should see everyday value before Analyst, Office files, agents, and governance.
+      - kind: prompt
+        title: "Calendar overview"
+        text: |
+          Look at my calendar for today and tomorrow. Summarize the important meetings, likely preparation work, conflicts, and anything I should follow up on before the day gets busy.
+      - kind: prompt
+        title: "Work-context catch-up"
+        text: |
+          Catch me up on the most important work activity since yesterday afternoon. Use my recent emails, meetings, chats, and shared files. Group the answer by topic, tell me what changed, and call out anything that needs my decision.
+      - kind: prompt
+        title: "Simple research"
+        text: |
+          Research current market signals for connected sportswear and smart apparel. Give me five useful findings, separate web research from my work context, and end with three questions Zava leadership should discuss.
+      - kind: action
+        title: "Quick vs Think Deeper"
+        text: |
+          Run the same lightweight question first in the normal or quick mode, then switch to Think Deeper or the advanced reasoning mode if available. Say the difference plainly: quick is for everyday catch-up; deeper reasoning is for multi-step analysis where assumptions and trade-offs matter.
+      - kind: prompt
+        title: "Mode comparison question"
+        text: |
+          Should I prioritize customer response speed, margin protection, or delivery certainty for an urgent strategic order? Think through the trade-offs and give me a short executive recommendation.
+      - kind: action
+        title: "Scheduled prompt"
+        text: |
+          Show scheduled prompts only if the tenant has the feature available. Keep it as an everyday productivity moment: schedule a recurring weekday morning catch-up that summarizes calendar, urgent email, and open decisions. If the UI is not available, explain it as a feature to configure later and move on.
+      - kind: prompt
+        title: "Scheduled prompt example"
+        text: |
+          Every weekday at 08:00, create a morning brief for me: today's meetings, urgent emails since yesterday, open commitments, decisions I owe, and three suggested priorities. Keep it short enough to read in two minutes.
+      - kind: action
+        title: "Optional: Agent Builder code interpreter"
+        text: |
+          Do not frame code interpreter as plain Copilot Chat. Frame it as an Agent Builder capability: a maker can turn on code interpreter for a declarative agent when the scenario needs Python-backed calculations, charts, or file generation. Keep this optional and do not let it steal the opening from the simple Chat warm-up.
+
   - id: 1
     track: chat
     title: "M365 Copilot Chat: Work IQ situation brief"
