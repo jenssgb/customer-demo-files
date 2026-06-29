@@ -454,10 +454,10 @@ Chat · Work IQ · Excel · Outlook · Word · PowerPoint · Agents · Studio ·
 
   <div class="oneliner-wrap">
     <div class="oneliner-label">
-      <span>$ powershell one-liner — downloads per-demo folders to %UserProfile%\Downloads\</span>
+      <span>$ powershell one-liner — downloads per-demo folders to %UserProfile%\Desktop\</span>
       <button class="copy-btn" onclick="copyOneliner(this)">[ copy ]</button>
     </div>
-    <div class="oneliner-code" id="ol-text">$dl=[Environment]::GetFolderPath('UserProfile')+'\Downloads';$z="$env:TEMP\cdf.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;$tmp="$env:TEMP\cdf_x";ri $tmp -r -fo -ea 0;Expand-Archive $z $tmp -Force;$src="$tmp\customer-demo-files-main\M365-Copilot-Universal";Get-ChildItem $src -Directory|ForEach-Object{$dst="$dl\$($_.Name)";ri $dst -r -fo -ea 0;cp $_.FullName $dst -Recurse};ri $z,$tmp -r -fo</div>
+    <div class="oneliner-code" id="ol-text">$dl=[Environment]::GetFolderPath('Desktop');$z="$env:TEMP\cdf.zip";iwr 'https://github.com/jenssgb/customer-demo-files/archive/refs/heads/main.zip' -OutFile $z;$tmp="$env:TEMP\cdf_x";ri $tmp -r -fo -ea 0;Expand-Archive $z $tmp -Force;$src="$tmp\customer-demo-files-main\M365-Copilot-Universal";Get-ChildItem $src -Directory|ForEach-Object{$dst="$dl\$($_.Name)";ri $dst -r -fo -ea 0;cp $_.FullName $dst -Recurse};ri $z,$tmp -r -fo</div>
   </div>
 </div>
 
