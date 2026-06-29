@@ -358,7 +358,7 @@ body.lang-en div.l-en  { display: block; }
   <div class="sb-group">
     <div class="sb-group-label">— chat &amp; work iq —</div>
     <div class="sb-item" onclick="nav('d0')"><span class="cursor">›</span><span class="label">copilot chat (e3/e5)</span><span class="dur">7m</span></div>
-    <div class="sb-item" onclick="nav('d1')"><span class="cursor">›</span><span class="label">work iq brief</span><span class="dur">7m</span></div>
+    <div class="sb-item" onclick="nav('d1')"><span class="cursor">›</span><span class="label">work iq — meetings &amp; transcripts</span><span class="dur">6m</span></div>
   </div>
 
   <div class="sb-group">
@@ -436,7 +436,7 @@ Chat · Work IQ · Excel · Outlook · Word · PowerPoint · Agents · Studio ·
     <div class="toc-grid">
       <div class="toc-row" onclick="nav('d0')"><span class="toc-id">00</span><span class="toc-dot" style="background:#22c55e"></span><span class="toc-lbl">Copilot Chat (E3/E5 inkl.)</span><span class="toc-dur">7m</span></div>
       <div class="toc-row" onclick="nav('d7')"><span class="toc-id">07</span><span class="toc-dot" style="background:#a78bfa"></span><span class="toc-lbl">Agent Builder</span><span class="toc-dur">10m</span></div>
-      <div class="toc-row" onclick="nav('d1')"><span class="toc-id">01</span><span class="toc-dot" style="background:#22c55e"></span><span class="toc-lbl">Work IQ brief</span><span class="toc-dur">7m</span></div>
+      <div class="toc-row" onclick="nav('d1')"><span class="toc-id">01</span><span class="toc-dot" style="background:#22c55e"></span><span class="toc-lbl">Work IQ — Meetings &amp; Transcripts 6m</span><span class="toc-dur"></span></div>
       <div class="toc-row" onclick="nav('d8')"><span class="toc-id">08</span><span class="toc-dot" style="background:#60a5fa"></span><span class="toc-lbl">Researcher + Coach</span><span class="toc-dur">opt</span></div>
       <div class="toc-row" onclick="nav('d2')"><span class="toc-id">02</span><span class="toc-dot" style="background:#60a5fa"></span><span class="toc-lbl">Analyst agent</span><span class="toc-dur">7m</span></div>
       <div class="toc-row" onclick="nav('d9')"><span class="toc-id">09</span><span class="toc-dot" style="background:#94a3b8"></span><span class="toc-lbl">Teams Facilitator</span><span class="toc-dur">opt</span></div>
@@ -519,37 +519,52 @@ Chat · Work IQ · Excel · Outlook · Word · PowerPoint · Agents · Studio ·
 <!-- ── DEMO 01 — Work IQ ── -->
 <div id="section-d1" class="section">
   <div class="s-head">
-    <div class="s-breadcrumb"><span class="track-dot" style="background:#22c55e"></span>demo_01 · chat &amp; work iq · 7 min · Microsoft 365 Copilot Premium</div>
-    <div class="s-title">Work IQ Situation Brief</div>
-    <div class="s-summary">Start with the Premium core: Copilot uses Work IQ and Microsoft Graph signals — mail, meetings, files, people — to create the executive decision brief, then structures it as a shared Copilot Page.</div>
+    <div class="s-breadcrumb"><span class="track-dot" style="background:#22c55e"></span>demo_01 · chat &amp; work iq · 6 min · <span class="l-de">M365 Copilot Premium</span><span class="l-en">M365 Copilot Premium</span></div>
+    <div class="s-title"><span class="l-de">Work IQ — Meetings, Transkripte, Follow-up</span><span class="l-en">Work IQ — Meetings, Transcripts, Follow-up</span></div>
+    <div class="s-summary"><span class="l-de">Copilot kennt deinen Arbeitstag. Kurze Fragen — präzise Antworten aus Kalender, Teams-Meetings und E-Mails. Kein Suchen, kein Navigieren.</span><span class="l-en">Copilot knows your workday. Short questions — precise answers from calendar, Teams meetings and email. No searching, no navigating.</span></div>
     <div class="s-meta">
-      <div class="s-chip">surface: <span>M365 Copilot Chat · Work IQ · Microsoft Graph · Copilot Pages</span></div>
+      <div class="s-chip">surface: <span>Copilot Chat (m365copilot.com) · Work IQ · Microsoft Graph · Teams Transcripts</span></div>
     </div>
   </div>
   <div class="s-divider"></div>
 
   <div class="block">
-    <div class="block-label">// files</div>
-    <div class="file-grid">
-      <div class="file-row"><span class="arr">→</span>Contoso_Rush_Order_Context.docx</div>
-      <div class="file-row"><span class="arr">→</span>Contoso_Email_Thread.docx</div>
-      <div class="file-row"><span class="arr">→</span>Contoso_Meeting_Transcript.docx</div>
-      <div class="file-row"><span class="arr">→</span>Contoso_Executive_Decision_Memo.docx</div>
-    </div>
+    <div class="block-label">// <span class="l-de">keine Dateien nötig — Copilot nutzt deinen Graph (Kalender, E-Mail, Teams)</span><span class="l-en">no files needed — Copilot uses your Graph (calendar, email, Teams)</span></div>
   </div>
 
   <div class="block">
-    <div class="block-label">// prompts</div>
+    <div class="block-label">// <span class="l-de">prompts — schritt für schritt</span><span class="l-en">prompts — step by step</span></div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">create the boardroom brief</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-body">You are my Chief of Staff at Contoso. Use my Microsoft 365 work context first: recent emails, meetings, shared files, and decisions about the Contoso rush order. If the named files are available, use Contoso_Rush_Order_Context.docx, Contoso_Email_Thread.docx, Contoso_Meeting_Transcript.docx, and Contoso_Executive_Decision_Memo.docx as the evidence pack. Create a boardroom briefing in seven points: decision, deadline, customer objective, critical dependencies, risks, open owner actions, and recommended executive stance. Cite the work context you used.</div>
+      <div class="prompt-card-head"><span class="prompt-name"><span class="l-de">01 — tagesüberblick</span><span class="l-en">01 — day overview</span></span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-body"><span class="l-de">Was steht heute an?</span><span class="l-en">What's on my plate today?</span></div>
     </div>
+    <div class="prompt-tipp"><span class="l-de">Copilot zieht Kalender, offene E-Mails und zuletzt bearbeitete Dateien zusammen — alles ohne Parameter.</span><span class="l-en">Copilot pulls calendar, open emails and recently edited files — all without parameters.</span></div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">structure as a Copilot Page</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-body">Format the briefing as a Copilot Page with three sections: 1) Decision statement, 2) Work context and evidence to verify, 3) Customer response principles. Write it so the entire leadership team can continue working from the same shared context immediately.</div>
+      <div class="prompt-card-head"><span class="prompt-name"><span class="l-de">02 — letztes Kundengespräch</span><span class="l-en">02 — last customer call</span></span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-body"><span class="l-de">Zeig mein letztes Meeting mit dem Kunden.</span><span class="l-en">Show my last meeting with the customer.</span></div>
     </div>
+    <div class="prompt-tipp"><span class="l-de">Copilot sucht in Teams-Kalendereinträgen. Kundenname anpassen — z.B. "mit Contoso" oder "mit [Firma]".</span><span class="l-en">Copilot searches Teams calendar entries. Adjust customer name — e.g. "with Contoso" or "with [company]".</span></div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name"><span class="l-de">03 — transkript öffnen</span><span class="l-en">03 — open transcript</span></span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-body"><span class="l-de">Öffne das Transkript dazu.</span><span class="l-en">Open the transcript for this meeting.</span></div>
+    </div>
+    <div class="prompt-tipp"><span class="l-de">Nur bei aufgezeichneten Teams-Meetings. Transkript erscheint direkt im Chat — scrollbar, durchsuchbar.</span><span class="l-en">Only for recorded Teams meetings. Transcript appears directly in chat — scrollable, searchable.</span></div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name"><span class="l-de">04 — kernproblem des kunden</span><span class="l-en">04 — customer's key issue</span></span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-body"><span class="l-de">Was hat der Kunde als Hauptproblem genannt?</span><span class="l-en">What was the customer's main concern?</span></div>
+    </div>
+    <div class="prompt-tipp"><span class="l-de">Copilot analysiert das Transkript und antwortet mit Zitaten. Zeigt wie gut Copilot "zuhört".</span><span class="l-en">Copilot analyses the transcript and responds with citations. Shows how well Copilot "listens".</span></div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name"><span class="l-de">05 — follow-up mail</span><span class="l-en">05 — follow-up email</span></span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-body"><span class="l-de">Schreib eine kurze Follow-up-Mail ans Team.</span><span class="l-en">Write a short follow-up email to the team.</span></div>
+    </div>
+    <div class="prompt-tipp"><span class="l-de">Fasst die Meeting-Outcomes zusammen. "In Outlook öffnen" klicken → direkt versenden.</span><span class="l-en">Summarises meeting outcomes. Click "Open in Outlook" → send directly.</span></div>
+
   </div>
 </div>
 
