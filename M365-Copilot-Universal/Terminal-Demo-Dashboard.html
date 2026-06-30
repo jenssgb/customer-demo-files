@@ -376,6 +376,7 @@ body.lang-en div.l-en  { display: block; }
     <div class="sb-item" onclick="nav('d12')"><span class="cursor">›</span><span class="label">notebooks · decision memo</span><span class="dur">8m</span></div>
     <div class="sb-item" onclick="nav('nb2')"><span class="cursor">›</span><span class="label">notebooks · account strategy</span><span class="dur">7m</span></div>
     <div class="sb-item" onclick="nav('nb3')"><span class="cursor">›</span><span class="label">notebooks · enablement</span><span class="dur">6m</span></div>
+    <div class="sb-item" onclick="nav('nb4')"><span class="cursor">›</span><span class="label">notebooks · apollo 11</span><span class="dur">8m</span></div>
   </div>
 
   <div class="sb-group">
@@ -495,6 +496,7 @@ Chat · Work IQ · Excel · Outlook · Word · PowerPoint · Agents · Studio ·
       <div class="toc-row" onclick="nav('cw2')"><span class="toc-id">CW2</span><span class="toc-dot" style="background:#5b21b6"></span><span class="toc-lbl">Cowork &#xb7; Campaign Pack</span><span class="toc-dur">8m</span></div>
       <div class="toc-row" onclick="nav('nb3')"><span class="toc-id">NB3</span><span class="toc-dot" style="background:#60a5fa"></span><span class="toc-lbl">Notebooks &#xb7; Enablement</span><span class="toc-dur">6m</span></div>
       <div class="toc-row" onclick="nav('cw3')"><span class="toc-id">CW3</span><span class="toc-dot" style="background:#7c3aed"></span><span class="toc-lbl">Cowork &#xb7; Weekly Rhythm</span><span class="toc-dur">7m</span></div>
+      <div class="toc-row" onclick="nav('nb4')"><span class="toc-id">NB4</span><span class="toc-dot" style="background:#1d4e89"></span><span class="toc-lbl">Notebooks &#xb7; Apollo 11</span><span class="toc-dur">8m</span></div>
     </div>
 
     <div class="block-label" style="margin-bottom:12px">// nova tablet &#xb7; chat vs work iq &#xb7; model choice</div>
@@ -1406,6 +1408,92 @@ Include:
 - the source concept each question tests
 
 Make the questions practical, not academic.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- -- NB4 - Notebooks: Apollo 11 universal demo -- -->
+<div id="section-nb4" class="section">
+  <div class="s-head">
+    <div class="s-breadcrumb"><span class="track-dot" style="background:#1d4e89"></span>notebooks_04 &#xb7; 8 min &#xb7; Copilot Notebooks &#xb7; Apollo 11</div>
+    <div class="s-title">Copilot Notebooks &#8212; Apollo 11 Mission Briefing</div>
+    <div class="s-summary">A Notebook demo every audience can follow: load five Apollo 11 source files, then ask Copilot to build a timeline, explain the hard parts, separate evidence from assumptions, and turn the result into a short briefing or classroom quiz.</div>
+    <div class="s-meta">
+      <div class="s-chip">surface: <span>Microsoft 365 Copilot App &#8594; Notebooks</span></div>
+      <div class="s-chip">files: <span>Apollo11_Mission_Brief.docx &#xb7; Timeline.docx &#xb7; FAQ.docx &#xb7; Media Notes.docx &#xb7; Mission Data.xlsx</span></div>
+    </div>
+  </div>
+  <div class="s-divider"></div>
+
+  <div class="block">
+    <div class="block-label">// setup &#8212; create notebook + add sources</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">&#8594;</span>Desktop folder: d13 - Copilot Notebooks (Apollo 11)</div>
+      <div class="file-row"><span class="arr">&#8594;</span>New notebook: &quot;Apollo 11 Mission Briefing&quot;</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Add all five Apollo11_* files from the folder.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Notebook instruction: &quot;Use only the sources in this notebook. Explain things for a general audience. Separate facts, interpretation, and open questions. Use concise tables when comparing timeline, risks, or roles.&quot;</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// prompts</div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; source map</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Start here. It shows the audience that a Notebook is a curated working context, not random web search.</div>
+      <div class="prompt-body">Build a source map for this notebook.
+
+For each source, tell me:
+1. What part of the Apollo 11 story it helps explain
+2. Which audience would benefit most: executive, student, engineer, or general audience
+3. What evidence looks strongest
+4. What could be misunderstood if we oversimplify it
+
+Use a concise table.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; explain the mission in 90 seconds</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; This is the main demo moment: Copilot turns multiple sources into one clear story that anyone can follow.</div>
+      <div class="prompt-body">Create a 90-second spoken briefing that explains Apollo 11 to someone who knows almost nothing about spaceflight.
+
+Include:
+- the mission goal
+- the three crew roles
+- why the landing was difficult
+- what the 1201/1202 alarms meant in plain English
+- why Michael Collins mattered even though he did not walk on the Moon
+- the one leadership lesson people should remember
+
+Make it natural, not like an encyclopedia article.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; risk table</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Great for business audiences: same historical topic, but framed as risk management and decision quality.</div>
+      <div class="prompt-body">Create a risk table for Apollo 11.
+
+Use the mission brief, timeline, FAQ, media notes, and spreadsheet.
+
+Columns:
+Risk, evidence from the sources, why it mattered, mitigation or response, and modern project lesson.
+
+After the table, identify the single most teachable risk moment and explain why.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">4 &#xb7; quiz + myth-busting</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Shows reusable output: same Notebook becomes enablement, classroom material, or meeting prep.</div>
+      <div class="prompt-body">Create a short audience quiz from this notebook.
+
+Include:
+- 6 multiple-choice questions
+- 3 true/false myth-busting questions
+- answer key
+- one-sentence explanation for each answer
+
+Avoid trivia. Focus on mission roles, risk decisions, and what people commonly misunderstand.</div>
     </div>
 
   </div>
