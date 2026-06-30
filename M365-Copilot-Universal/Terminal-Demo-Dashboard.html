@@ -393,6 +393,7 @@ body.lang-en div.l-en  { display: block; }
   <div class="sb-group">
     <div class="sb-group-label">— collaboration —</div>
     <div class="sb-item" onclick="nav('d9')"><span class="cursor">›</span><span class="label">teams facilitator</span><span class="opt-badge">opt</span></div>
+    <div class="sb-item" onclick="nav('tf1')"><span class="cursor">›</span><span class="label">facilitator recap e2e</span><span class="dur">18m</span></div>
   </div>
 
   <div class="sb-group">
@@ -486,6 +487,12 @@ Chat · Work IQ · Excel · Outlook · Word · PowerPoint · Agents · Studio ·
       <div class="toc-row" onclick="nav('ap5')"><span class="toc-id">AP5</span><span class="toc-dot" style="background:#a78bfa"></span><span class="toc-lbl">SharePoint Agent</span><span class="toc-dur">5m</span></div>
       <div class="toc-row" onclick="nav('ap6')"><span class="toc-id">AP6</span><span class="toc-dot" style="background:#22c55e"></span><span class="toc-lbl">OneNote &amp; Whiteboard</span><span class="toc-dur">4m</span></div>
       <div class="toc-row" onclick="nav('ap7')"><span class="toc-id">AP7</span><span class="toc-dot" style="background:#fbbf24"></span><span class="toc-lbl">Forms + Surveys Agent</span><span class="toc-dur">4m</span></div>
+    </div>
+
+    <div class="block-label" style="margin-bottom:12px">// teams facilitator &#xb7; recap e2e</div>
+    <div class="toc-grid" style="margin-bottom:32px">
+      <div class="toc-row" onclick="nav('tf1')"><span class="toc-id">TF1</span><span class="toc-dot" style="background:#6264a7"></span><span class="toc-lbl">Facilitator &#xb7; Recap &#xb7; Audio Overview</span><span class="toc-dur">18m</span></div>
+      <div class="toc-row" onclick="nav('ap4')"><span class="toc-id">AP4</span><span class="toc-dot" style="background:#6264a7"></span><span class="toc-lbl">Audio + Video Recap Quick Demo</span><span class="toc-dur">5m</span></div>
     </div>
 
     <div class="block-label" style="margin-bottom:12px">// notebooks &#xb7; cowork (smartretail tablet s1)</div>
@@ -1064,6 +1071,89 @@ Be concise, neutral, and quotable. You explain policy; you do not approve reques
       <div class="prompt-card-head"><span class="prompt-name">interpreter — global meeting positioning</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
       <div class="prompt-body">Use the Teams Interpreter agent. Demonstrate how a German production lead, an English-speaking COO, and a Singapore logistics owner can follow the same Contoso decision meeting in their preferred language. Keep the explanation short and focus on global collaboration.</div>
     </div>
+  </div>
+</div>
+
+<!-- -- TF1 - Teams Facilitator + Recap end-to-end -- -->
+<div id="section-tf1" class="section">
+  <div class="s-head">
+    <div class="s-breadcrumb"><span class="track-dot" style="background:#6264a7"></span>teams_facilitator_01 &#xb7; 18 min &#xb7; Teams &#xb7; Copilot &#xb7; Recap</div>
+    <div class="s-title">Teams Facilitator E2E &#8212; Live Meeting to Recap, Audio Recap &amp; Podcast</div>
+    <div class="s-summary">A complete meeting lifecycle demo: schedule a real Teams meeting with Facilitator, generate AI notes during the meeting, review Recap afterwards, create an Audio Recap in the Teams Meet app, optionally generate a Video Recap in Microsoft 365 Copilot Chat, then turn the same material into a Notebook Audio Overview.</div>
+    <div class="s-meta">
+      <div class="s-chip">surface: <span>Teams Calendar &#8594; Meeting Options &#8594; Facilitator &#8594; Recap &#8594; Meet app &#8594; Copilot Notebooks</span></div>
+      <div class="s-chip">verified: <span>Microsoft Support &#xb7; Facilitator, Teams Recap, Audio Recap, Video Recap, Copilot Notebooks</span></div>
+    </div>
+  </div>
+  <div class="s-divider"></div>
+
+  <div class="block">
+    <div class="block-label">// demo files</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">&#8594;</span>Desktop folder: d14 - Teams Facilitator Recap E2E</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator_E2E_Meeting_Agenda.docx &#8212; paste into Teams invite</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator_E2E_Role_Cards.docx &#8212; live discussion script</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator_E2E_Click_Guide.docx &#8212; complete click path + backup paths</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator_E2E_Backup_Transcript.docx &#8212; fallback if recording/transcription is unavailable</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// verified requirements</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator: Microsoft 365 Copilot license required to add or turn on; internal participants can see updates.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Facilitator can be added to scheduled meetings only; not channel meetings, instant meetings, or Teams calls.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Post-meeting Copilot/Facilitator questions need transcription if you want the spoken meeting content after the meeting.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Teams Recap appears after meetings/events that were recorded or transcribed.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Audio Recap uses transcripts, can combine up to 8 meetings, is stored in OneDrive, and expires after 60 days.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Video Recap uses the original Teams recording; currently not editable, cannot be shared, English-only, and generally needs a 10+ minute recording.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Notebook Audio Overview requires at least one reference file; path is Notebook &#8594; Quick create &#8594; Audio overview.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// e2e runbook</div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; schedule meeting with facilitator</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Teams &#8594; Calendar &#8594; New meeting &#8594; Teams meeting on &#8594; Options &#8594; Copilot and other AI. Set Allow Copilot and Facilitator to &quot;During and after the meeting&quot;, then turn Facilitator on.</div>
+      <div class="prompt-body">Meeting title: Contoso Rush Order War Room
+
+Paste the agenda from Facilitator_E2E_Meeting_Agenda.docx into the meeting invite. Invite at least one internal participant if possible. In Meeting options, open Copilot and other AI, set Allow Copilot and Facilitator to During and after the meeting, turn Facilitator on, and apply.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; run live meeting + facilitator</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Use the role cards. Start recording/transcription if tenant policy allows it. If Facilitator is not on: More actions &#8594; Turn on Facilitator.</div>
+      <div class="prompt-body">@Facilitator, here is the agenda: context and decision needed 2 minutes, inventory and capacity 4 minutes, freight and customer commitment 4 minutes, finance approval and risk tradeoff 4 minutes, decision owners and next actions 3 minutes.
+
+Track the agenda, capture decisions, blockers, owners, deadlines, and follow-up tasks. If we drift, tell us what topic we should return to.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; recap after meeting</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Teams &#8594; Chat &#8594; meeting chat &#8594; Recap tab. Show Notes, AI summary, transcript, topics/speakers if available, then open Copilot in Recap.</div>
+      <div class="prompt-body">What decisions were made in this meeting? Give me a table with decision, owner, deadline, dependency, and risk. Then list the three questions a senior leader would ask before approving the plan.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">4 &#xb7; teams audio recap</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Teams &#8594; ... View more apps &#8594; Meet &#8594; Audio recaps &#8594; + &#8594; choose time period/style &#8594; select meeting(s) &#8594; Generate.</div>
+      <div class="prompt-body">Generate an audio recap for the Contoso Rush Order War Room. Use a concise executive style. Focus on the decision, unresolved risk, owners, deadlines, and what I need to do next.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">5 &#xb7; video recap in copilot chat</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Microsoft 365 Copilot Chat &#8594; reference the recorded meeting. If not available in tenant, use this as positioning and fall back to Recap + Audio Recap.</div>
+      <div class="prompt-body">Recap the recorded Contoso Rush Order War Room as a 3-minute video recap. Highlight the decision moment, the finance/logistics tradeoff, the customer commitment, and the final owner list.</div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-head"><span class="prompt-name">6 &#xb7; notebook podcast / audio overview</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Microsoft 365 Copilot &#8594; Notebooks &#8594; New notebook &#8594; add the four d14 files &#8594; Quick create &#8594; Audio overview. This is the &quot;podcast&quot; moment.</div>
+      <div class="prompt-body">Create an audio overview of this notebook for an executive who missed the meeting. Emphasize the business decision, the tradeoffs, the risks, the owners, and what needs to happen in the next four hours.</div>
+    </div>
+
   </div>
 </div>
 
