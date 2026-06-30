@@ -1078,8 +1078,8 @@ Be concise, neutral, and quotable. You explain policy; you do not approve reques
 <div id="section-tf1" class="section">
   <div class="s-head">
     <div class="s-breadcrumb"><span class="track-dot" style="background:#6264a7"></span>teams_facilitator_01 &#xb7; 18 min &#xb7; Teams &#xb7; Copilot &#xb7; Recap</div>
-    <div class="s-title">Teams Facilitator E2E &#8212; Live Meeting to Recap, Audio Recap &amp; Podcast</div>
-    <div class="s-summary">A complete meeting lifecycle demo: schedule a real Teams meeting with Facilitator, generate AI notes during the meeting, review Recap afterwards, create an Audio Recap in the Teams Meet app, optionally generate a Video Recap in Microsoft 365 Copilot Chat, then turn the same material into a Notebook Audio Overview.</div>
+    <div class="s-title">Teams Facilitator E2E &#8212; Live Meeting to Recap, Audio Recap &amp; Notebook Audio Overview</div>
+    <div class="s-summary">A complete meeting lifecycle demo with real product navigation: schedule a Teams meeting with Facilitator, generate AI notes during the meeting, review Recap afterwards, create an Audio Recap in the Teams Meet app, optionally generate a Video Recap in Copilot Chat, then use Copilot Notebooks Quick create for an Audio Overview.</div>
     <div class="s-meta">
       <div class="s-chip">surface: <span>Teams Calendar &#8594; Meeting Options &#8594; Facilitator &#8594; Recap &#8594; Meet app &#8594; Copilot Notebooks</span></div>
       <div class="s-chip">verified: <span>Microsoft Support &#xb7; Facilitator, Teams Recap, Audio Recap, Video Recap, Copilot Notebooks</span></div>
@@ -1105,55 +1105,60 @@ Be concise, neutral, and quotable. You explain policy; you do not approve reques
       <div class="file-row"><span class="arr">&#8594;</span>Facilitator can be added to scheduled meetings only; not channel meetings, instant meetings, or Teams calls.</div>
       <div class="file-row"><span class="arr">&#8594;</span>Post-meeting Copilot/Facilitator questions need transcription if you want the spoken meeting content after the meeting.</div>
       <div class="file-row"><span class="arr">&#8594;</span>Teams Recap appears after meetings/events that were recorded or transcribed.</div>
-      <div class="file-row"><span class="arr">&#8594;</span>Audio Recap uses transcripts, can combine up to 8 meetings, is stored in OneDrive, and expires after 60 days.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Audio Recap is generated from Teams Meet app / Recap entry points, uses transcripts, can combine up to 8 meetings, is stored in OneDrive, and expires after 60 days.</div>
       <div class="file-row"><span class="arr">&#8594;</span>Video Recap uses the original Teams recording; currently not editable, cannot be shared, English-only, and generally needs a 10+ minute recording.</div>
-      <div class="file-row"><span class="arr">&#8594;</span>Notebook Audio Overview requires at least one reference file; path is Notebook &#8594; Quick create &#8594; Audio overview.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Notebook Audio Overview is not a chat prompt. It requires at least one reference file; path is Notebook &#8594; Created content &#8594; Quick create &#8594; Audio overview.</div>
     </div>
   </div>
 
   <div class="block">
-    <div class="block-label">// e2e runbook</div>
-
-    <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; schedule meeting with facilitator</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Teams &#8594; Calendar &#8594; New meeting &#8594; Teams meeting on &#8594; Options &#8594; Copilot and other AI. Set Allow Copilot and Facilitator to &quot;During and after the meeting&quot;, then turn Facilitator on.</div>
-      <div class="prompt-body">Meeting title: Contoso Rush Order War Room
-
-Paste the agenda from Facilitator_E2E_Meeting_Agenda.docx into the meeting invite. Invite at least one internal participant if possible. In Meeting options, open Copilot and other AI, set Allow Copilot and Facilitator to During and after the meeting, turn Facilitator on, and apply.</div>
+    <div class="block-label">// e2e click runbook</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">01</span>Schedule: Teams &#8594; Calendar &#8594; New meeting &#8594; Teams meeting toggle on &#8594; paste agenda into invite body.</div>
+      <div class="file-row"><span class="arr">02</span>Meeting options: Options &#8594; Copilot and other AI &#8594; Allow Copilot and Facilitator = During and after the meeting &#8594; Facilitator toggle on &#8594; Apply.</div>
+      <div class="file-row"><span class="arr">03</span>Run live: Join meeting &#8594; start transcription (and recording if you want Recap/video) &#8594; if needed More actions &#8594; Turn on Facilitator.</div>
+      <div class="file-row"><span class="arr">04</span>Show live value: open Notes; AI-generated notes start after a few minutes. Show agenda timer/checkmarks if agenda is detected.</div>
+      <div class="file-row"><span class="arr">05</span>After meeting: Teams &#8594; Chat &#8594; meeting chat &#8594; Recap tab (or View recap from meeting thumbnail) &#8594; Notes / AI summary / transcript / Copilot.</div>
+      <div class="file-row"><span class="arr">06</span>Audio Recap: Teams &#8594; ... View more apps &#8594; Meet &#8594; Audio recaps &#8594; + &#8594; choose time period + style &#8594; select up to 8 transcribed meetings &#8594; Generate.</div>
+      <div class="file-row"><span class="arr">07</span>Audio playback: play/pause, skip 10 seconds, playback speed, chapters, and transcript. Do not paste a prompt here; this is generated through the UI.</div>
+      <div class="file-row"><span class="arr">08</span>Video Recap: Microsoft 365 Copilot Chat &#8594; reference recorded meeting &#8594; prompt with /meeting reference. Use only if available in tenant.</div>
+      <div class="file-row"><span class="arr">09</span>Notebook Audio Overview: Microsoft 365 Copilot &#8594; Notebooks &#8594; New notebook &#8594; add d14 files as references &#8594; Created content &#8594; Quick create &#8594; Audio overview.</div>
     </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// only copy where the product expects text input</div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; run live meeting + facilitator</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Use the role cards. Start recording/transcription if tenant policy allows it. If Facilitator is not on: More actions &#8594; Turn on Facilitator.</div>
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; @Facilitator agenda handoff</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Use this in the meeting chat only if Facilitator did not pick up the invite agenda or you want to reset the timer.</div>
       <div class="prompt-body">@Facilitator, here is the agenda: context and decision needed 2 minutes, inventory and capacity 4 minutes, freight and customer commitment 4 minutes, finance approval and risk tradeoff 4 minutes, decision owners and next actions 3 minutes.
 
 Track the agenda, capture decisions, blockers, owners, deadlines, and follow-up tasks. If we drift, tell us what topic we should return to.</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; recap after meeting</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; Copilot in Recap question</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
       <div class="prompt-tipp">&#8594; Teams &#8594; Chat &#8594; meeting chat &#8594; Recap tab. Show Notes, AI summary, transcript, topics/speakers if available, then open Copilot in Recap.</div>
       <div class="prompt-body">What decisions were made in this meeting? Give me a table with decision, owner, deadline, dependency, and risk. Then list the three questions a senior leader would ask before approving the plan.</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">4 &#xb7; teams audio recap</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Teams &#8594; ... View more apps &#8594; Meet &#8594; Audio recaps &#8594; + &#8594; choose time period/style &#8594; select meeting(s) &#8594; Generate.</div>
-      <div class="prompt-body">Generate an audio recap for the Contoso Rush Order War Room. Use a concise executive style. Focus on the decision, unresolved risk, owners, deadlines, and what I need to do next.</div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">5 &#xb7; video recap in copilot chat</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; Video Recap prompt in Copilot Chat</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
       <div class="prompt-tipp">&#8594; Microsoft 365 Copilot Chat &#8594; reference the recorded meeting. If not available in tenant, use this as positioning and fall back to Recap + Audio Recap.</div>
-      <div class="prompt-body">Recap the recorded Contoso Rush Order War Room as a 3-minute video recap. Highlight the decision moment, the finance/logistics tradeoff, the customer commitment, and the final owner list.</div>
+      <div class="prompt-body">Recap /meeting as a 3-minute video recap. Highlight the decision moment, the finance/logistics tradeoff, the customer commitment, and the final owner list.</div>
     </div>
 
-    <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">6 &#xb7; notebook podcast / audio overview</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Microsoft 365 Copilot &#8594; Notebooks &#8594; New notebook &#8594; add the four d14 files &#8594; Quick create &#8594; Audio overview. This is the &quot;podcast&quot; moment.</div>
-      <div class="prompt-body">Create an audio overview of this notebook for an executive who missed the meeting. Emphasize the business decision, the tradeoffs, the risks, the owners, and what needs to happen in the next four hours.</div>
-    </div>
+  </div>
 
+  <div class="block">
+    <div class="block-label">// notebook audio overview &#8212; do not prompt</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">&#8594;</span>Open Microsoft 365 Copilot &#8594; Notebooks &#8594; New notebook.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Add references: agenda, role cards, click guide, backup transcript.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Left pane: Created content &#8594; Quick create &#8594; Audio overview.</div>
+      <div class="file-row"><span class="arr">&#8594;</span>Presenter talktrack: &quot;This is the podcast-style catch-up. No prompt engineering; Copilot uses the notebook references.&quot;</div>
+    </div>
   </div>
 </div>
 
