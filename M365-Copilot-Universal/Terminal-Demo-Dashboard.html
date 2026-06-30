@@ -1302,63 +1302,35 @@ Be conservative: only act on confirmed new-starter records, follow the policy ex
   </div>
 
   <div class="block">
-    <div class="block-label">// prompts</div>
+    <div class="block-label">// notebook product flow &#8212; click first, ask only where there is a message box</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">01</span>Create the notebook and add the reference files. This is the real setup moment.</div>
+      <div class="file-row"><span class="arr">02</span>Right pane: ask one short information question about the sources.</div>
+      <div class="file-row"><span class="arr">03</span>Create &#8594; Mind map. Let Copilot generate it automatically; expand nodes and use Explain for details.</div>
+      <div class="file-row"><span class="arr">04</span>Created content &#8594; Quick create &#8594; Audio overview. Choose format, voice, style, duration, then Generate audio.</div>
+      <div class="file-row"><span class="arr">05</span>Only then ask a follow-up question if the audience wants a specific answer or table.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// right-pane questions</div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; source map</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Run first. Copilot maps each file to a business question and audience. This frames Notebooks as structured reasoning &#8212; not just file summarization. Great opener for customers who think &quot;it&apos;s just RAG.&quot;</div>
-      <div class="prompt-body">Before we make any recommendation, build me a source map of this notebook.
-
-For each source, tell me:
-1. What business question it helps answer
-2. Which audience it is most useful for: executive sponsor, CIO/security, retail operations, finance, or sales team
-3. What evidence in the source looks strongest
-4. What is missing or needs validation
-
-Keep it concise and use a table.</div>
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; what is in this notebook?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Message Copilot in the right pane. Keep it simple: prove grounding before asking for outputs.</div>
+      <div class="prompt-body">What are the most important facts in this notebook for deciding whether to expand the SmartRetail Tablet S1 pilot?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; launch decision memo (main demo moment)</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; This is the &quot;wow&quot; prompt. Watch source citations appear (Northwind Traders, Fabrikam Fashion, Adventure Works). Point out that Copilot synthesized Excel metrics and Word narrative simultaneously &#8212; grounded, not hallucinated.</div>
-      <div class="prompt-body">I am meeting the executive sponsor in 20 minutes. Create a one-page launch decision memo for expanding the SmartRetail Tablet S1 pilot.
-
-Include:
-- Recommended decision
-- Why now
-- Evidence from the pilot results and customer feedback
-- Top 3 risks and mitigations
-- What the CIO/security team will likely challenge
-- The next 3 actions we should take this week
-
-Write it in a crisp executive style. Do not use marketing language.</div>
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; decision answer</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; After the Mind map, ask for the decision in plain language.</div>
+      <div class="prompt-body">Should we expand the pilot? Give me the recommendation, the strongest evidence, and the top three risks.</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; pressure-test the recommendation</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Copilot critiques its own plan. Powerful for executives: AI that prepares you for the hard meeting, not just the easy summary. Demonstrates &quot;AI avoiding optimism bias.&quot;</div>
-      <div class="prompt-body">Now pressure-test your recommendation.
-
-Act as a skeptical CIO and CFO. Identify the five hardest objections to this launch plan. For each objection:
-- Explain why it is a real concern
-- Point to the source evidence that triggered it
-- Give me a strong, honest response
-- Mark whether the response is strong, medium, or weak based on the current evidence</div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">4 &#xb7; 7-minute customer talktrack</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Close Notebooks with a spoken narrative for the actual customer meeting. Natural bridge to Cowork: &quot;Now the thinking is done &#8212; let&apos;s delegate the work.&quot;</div>
-      <div class="prompt-body">Turn the decision memo into a 7-minute customer-facing talktrack for a VP Retail Operations and CIO audience.
-
-Use this structure:
-1. Business pain
-2. Why the pilot results matter
-3. What changes for store managers and associates
-4. How IT stays in control
-5. Recommended next step
-
-Make it sound natural, not like a slide script.</div>
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; customer-ready summary</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Use this only if you need a written answer after the clicked assets.</div>
+      <div class="prompt-body">Turn that answer into a short customer-ready summary for a VP Retail Operations and CIO.</div>
     </div>
 
   </div>
@@ -1390,50 +1362,35 @@ Make it sound natural, not like a slide script.</div>
   </div>
 
   <div class="block">
-    <div class="block-label">// prompts</div>
+    <div class="block-label">// notebook product flow &#8212; click first, ask only where there is a message box</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">01</span>Create notebook and add the four account strategy references.</div>
+      <div class="file-row"><span class="arr">02</span>Right pane: ask one short question about which accounts matter most.</div>
+      <div class="file-row"><span class="arr">03</span>Create &#8594; Mind map. Expand account and risk nodes; click Explain for one node.</div>
+      <div class="file-row"><span class="arr">04</span>Created content &#8594; Quick create &#8594; Audio overview if you want the spoken account catch-up.</div>
+      <div class="file-row"><span class="arr">05</span>Follow-up question: ask for the next action plan only after the audience has seen the grounded map.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// right-pane questions</div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; account prioritization table</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Copilot combines quantitative pilot metrics with qualitative notes. It should not blindly pick the biggest account. Realistic prioritization = strongest signal for sales/CS leadership.</div>
-      <div class="prompt-body">Compare the pilot accounts and recommend the two best accounts to prioritize for regional rollout.
-
-Use both:
-- quantitative pilot metrics
-- qualitative customer feedback and meeting notes
-
-Return a table with:
-Account, reason to prioritize, strongest evidence, biggest risk, recommended next meeting objective, and confidence level.</div>
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; which accounts first?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Message Copilot in the right pane after references are loaded.</div>
+      <div class="prompt-body">Which two pilot accounts should we prioritize first, and what evidence supports that?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; 14-day action plan for top 2 accounts</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Notebook output goes operational. The plan should be concrete enough for an account team to use immediately &#8212; not a slide summary, but actual next steps with owners and risks.</div>
-      <div class="prompt-body">Create a 14-day action plan for the top two recommended accounts.
-
-For each account include:
-- workstream
-- owner role
-- concrete next action
-- proof point needed
-- risk to manage
-- suggested deadline
-
-Make the plan practical enough that an account team could use it immediately.</div>
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; why not the others?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Ask this after clicking through the Mind map nodes.</div>
+      <div class="prompt-body">Why should we not prioritize the other accounts right now?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; Teams update draft</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Same context &#8594; different output format in 30 seconds. Show the contrast: deep analysis (prompt 2) &#8594; short team message (prompt 3). Same notebook, zero re-prompting.</div>
-      <div class="prompt-body">Draft a short Teams update to the Contoso account team.
-
-Tone: direct, human, not overly polished.
-Include:
-- which accounts we should prioritize
-- why
-- what we need this week
-- what risks need owner attention
-
-Keep it under 180 words.</div>
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; what do we do next?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Final text answer, if the audience wants an operational takeaway.</div>
+      <div class="prompt-body">What are the next five actions for the account team this week?</div>
     </div>
 
   </div>
@@ -1465,44 +1422,35 @@ Keep it under 180 words.</div>
   </div>
 
   <div class="block">
-    <div class="block-label">// prompts</div>
+    <div class="block-label">// notebook product flow &#8212; click first, ask only where there is a message box</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">01</span>Create notebook and add product brief, FAQ, playbook, and feedback notes.</div>
+      <div class="file-row"><span class="arr">02</span>Right pane: ask one short readiness question.</div>
+      <div class="file-row"><span class="arr">03</span>Create &#8594; Mind map. Expand product story, security, objections, and proof-point nodes.</div>
+      <div class="file-row"><span class="arr">04</span>Click a node &#8594; Explain to open the deeper breakdown in Copilot Chat.</div>
+      <div class="file-row"><span class="arr">05</span>Created content &#8594; Quick create &#8594; Audio overview for a listenable seller catch-up.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// right-pane questions</div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; 15-minute study guide</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Scenario: &quot;A new rep joins at 9am and demos SmartRetail Tablet at 10am.&quot; Copilot pulls product story, proof points, security message, and objection handlers &#8212; from the notebook, not from memory or the internet.</div>
-      <div class="prompt-body">Create a 15-minute study guide for a new enterprise sales specialist who needs to demo the SmartRetail Tablet S1 tomorrow.
-
-Include:
-- the core customer problem
-- the product story in plain English
-- the three strongest proof points
-- the security message
-- the top objections and how to answer them
-- a 5-minute practice exercise</div>
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; what must a seller know?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Simple question in the right pane; then click Mind map for structure.</div>
+      <div class="prompt-body">What are the five things a seller must understand before presenting SmartRetail Tablet S1?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; live role-play &#8212; skeptical CIO</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Interactive coaching. Intentionally give a mediocre answer about security &#8212; let Copilot grade and coach you live. This is the most memorable moment in any enablement demo: AI as sales coach.</div>
-      <div class="prompt-body">Run a realistic role-play.
-
-You are the skeptical CIO of a retail customer. I am the Contoso sales specialist.
-
-Start with a tough opening objection about security, device management, and Copilot data access. After I answer, grade my response and coach me to improve it.</div>
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; toughest objection?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Ask after expanding the security/objection nodes in the Mind map.</div>
+      <div class="prompt-body">What is the toughest customer objection in these sources, and how should I answer it?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; certification quiz</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Generate the quiz &#8594; copy into Microsoft Forms. Shows Notebooks as a content factory for reusable enablement assets. Good close: &quot;What can you do with this Notebook after our session today?&quot;</div>
-      <div class="prompt-body">Create a short readiness quiz for the sales team.
-
-Include:
-- 8 multiple-choice questions
-- 3 scenario questions
-- answer key
-- the source concept each question tests
-
-Make the questions practical, not academic.</div>
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; practice question</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Short coaching loop, not a giant generated artifact.</div>
+      <div class="prompt-body">Ask me one realistic CIO question about this product, then coach my answer.</div>
     </div>
 
   </div>
@@ -1532,63 +1480,35 @@ Make the questions practical, not academic.</div>
   </div>
 
   <div class="block">
-    <div class="block-label">// prompts</div>
+    <div class="block-label">// notebook product flow &#8212; click first, ask only where there is a message box</div>
+    <div class="file-grid">
+      <div class="file-row"><span class="arr">01</span>Create notebook and add all five Apollo 11 references.</div>
+      <div class="file-row"><span class="arr">02</span>Right pane: ask a simple &quot;what is this about?&quot; question.</div>
+      <div class="file-row"><span class="arr">03</span>Create &#8594; Mind map. Expand mission roles, landing risk, alarms, and leadership lessons.</div>
+      <div class="file-row"><span class="arr">04</span>Click any node &#8594; Explain for deeper context grounded in the notebook.</div>
+      <div class="file-row"><span class="arr">05</span>Created content &#8594; Quick create &#8594; Audio overview for the podcast-style version.</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-label">// right-pane questions</div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; source map</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Start here. It shows the audience that a Notebook is a curated working context, not random web search.</div>
-      <div class="prompt-body">Build a source map for this notebook.
-
-For each source, tell me:
-1. What part of the Apollo 11 story it helps explain
-2. Which audience would benefit most: executive, student, engineer, or general audience
-3. What evidence looks strongest
-4. What could be misunderstood if we oversimplify it
-
-Use a concise table.</div>
+      <div class="prompt-card-head"><span class="prompt-name">1 &#xb7; what is the story?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; First simple question in the right pane.</div>
+      <div class="prompt-body">What is the Apollo 11 story in this notebook, in plain language?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; explain the mission in 90 seconds</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; This is the main demo moment: Copilot turns multiple sources into one clear story that anyone can follow.</div>
-      <div class="prompt-body">Create a 90-second spoken briefing that explains Apollo 11 to someone who knows almost nothing about spaceflight.
-
-Include:
-- the mission goal
-- the three crew roles
-- why the landing was difficult
-- what the 1201/1202 alarms meant in plain English
-- why Michael Collins mattered even though he did not walk on the Moon
-- the one leadership lesson people should remember
-
-Make it natural, not like an encyclopedia article.</div>
+      <div class="prompt-card-head"><span class="prompt-name">2 &#xb7; why was landing hard?</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Ask after expanding the landing-risk node in the Mind map.</div>
+      <div class="prompt-body">Why was the Moon landing difficult, and what did the crew have to decide in the moment?</div>
     </div>
 
     <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; risk table</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Great for business audiences: same historical topic, but framed as risk management and decision quality.</div>
-      <div class="prompt-body">Create a risk table for Apollo 11.
-
-Use the mission brief, timeline, FAQ, media notes, and spreadsheet.
-
-Columns:
-Risk, evidence from the sources, why it mattered, mitigation or response, and modern project lesson.
-
-After the table, identify the single most teachable risk moment and explain why.</div>
-    </div>
-
-    <div class="prompt-card">
-      <div class="prompt-card-head"><span class="prompt-name">4 &#xb7; quiz + myth-busting</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
-      <div class="prompt-tipp">&#8594; Shows reusable output: same Notebook becomes enablement, classroom material, or meeting prep.</div>
-      <div class="prompt-body">Create a short audience quiz from this notebook.
-
-Include:
-- 6 multiple-choice questions
-- 3 true/false myth-busting questions
-- answer key
-- one-sentence explanation for each answer
-
-Avoid trivia. Focus on mission roles, risk decisions, and what people commonly misunderstand.</div>
+      <div class="prompt-card-head"><span class="prompt-name">3 &#xb7; one lesson</span><button class="copy-btn" onclick="cp(this)">[ copy ]</button></div>
+      <div class="prompt-tipp">&#8594; Short final question, after Audio Overview or Mind map.</div>
+      <div class="prompt-body">What is the one leadership lesson from Apollo 11 that a business audience should remember?</div>
     </div>
 
   </div>
