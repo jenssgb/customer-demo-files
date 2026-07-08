@@ -1,0 +1,7 @@
+todo
+----
+- send falcon plan to nestor
+- fix the budget file (there are like 3 copies)
+- decide sensor vendor
+- book the room for the review
+- rename all these files properly one day

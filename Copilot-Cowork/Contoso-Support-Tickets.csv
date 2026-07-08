@@ -1,0 +1,19 @@
+TicketID,OpenedUTC,Product,Severity,Region,Customer,Subject,Status,AssignedTo
+INC-48213,2026-07-03T18:42:00Z,Northwind Sensor Hub,Sev1,EMEA,Fabrikam GmbH,Hub offline after firmware 2.3 update,Open,Adele Vance
+INC-48214,2026-07-03T19:05:00Z,C-Series Valve,Sev3,EMEA,Tailspin Toys,Request for updated datasheet,Resolved,Alex Wilber
+INC-48215,2026-07-03T21:17:00Z,Northwind Sensor Hub,Sev2,AMER,Adventure Works,Intermittent dropouts on gateway,Open,Adele Vance
+INC-48216,2026-07-04T02:31:00Z,Contoso Cloud Portal,Sev2,APAC,Wingtip Ltd,Cannot export device report to CSV,Open,Lidia Holloway
+INC-48217,2026-07-04T06:58:00Z,C-Series Valve,Sev1,AMER,Northwind Traders,Pressure reading stuck at zero on batch C-2231,Open,Isaiah Langer
+INC-48218,2026-07-04T08:12:00Z,Northwind Sensor Hub,Sev3,EMEA,Proseware Inc,How to reset admin password,Resolved,Alex Wilber
+INC-48219,2026-07-04T10:44:00Z,Contoso Cloud Portal,Sev2,EMEA,Fabrikam GmbH,SSO login loop after tenant change,Open,Lidia Holloway
+INC-48220,2026-07-04T13:26:00Z,C-Series Valve,Sev1,AMER,Northwind Traders,Second unit failing on batch C-2231,Open,Isaiah Langer
+INC-48221,2026-07-04T15:09:00Z,Northwind Sensor Hub,Sev2,APAC,Wingtip Ltd,Gateway firmware rollback needed,Open,Adele Vance
+INC-48222,2026-07-04T17:53:00Z,Contoso Cloud Portal,Sev3,AMER,Adventure Works,Feature request: dark mode dashboard,Open,Lidia Holloway
+INC-48223,2026-07-05T01:14:00Z,Northwind Sensor Hub,Sev2,EMEA,Contoso Retail,Latency spikes during nightly sync,Open,Adele Vance
+INC-48224,2026-07-05T04:39:00Z,C-Series Valve,Sev3,APAC,Wingtip Ltd,Calibration guide unclear,Resolved,Alex Wilber
+INC-48225,2026-07-05T09:22:00Z,Contoso Cloud Portal,Sev1,AMER,Northwind Traders,Portal outage in US-East region,Open,Diego Siciliani
+INC-48226,2026-07-05T12:48:00Z,Northwind Sensor Hub,Sev2,EMEA,Fabrikam GmbH,Duplicate device entries after re-pairing,Open,Adele Vance
+INC-48227,2026-07-05T16:31:00Z,C-Series Valve,Sev2,EMEA,Tailspin Toys,Valve actuator noisy at high load,Open,Isaiah Langer
+INC-48228,2026-07-06T03:05:00Z,Contoso Cloud Portal,Sev3,APAC,Wingtip Ltd,Add German language to portal UI,Open,Lidia Holloway
+INC-48229,2026-07-06T05:52:00Z,Northwind Sensor Hub,Sev1,AMER,Adventure Works,Fleet-wide connectivity loss after 2.3,Open,Adele Vance
+INC-48230,2026-07-06T06:40:00Z,C-Series Valve,Sev3,EMEA,Proseware Inc,Warranty extension question,Open,Alex Wilber

@@ -1,0 +1,10 @@
+Project Falcon - kickoff notes (jan 14)
+
+attendees: megan, adele, nestor, patti
+- scope still fuzzy, need to lock by end of month
+- adele owns the sensor integration piece
+- budget not approved yet, patti chasing finance
+- next meeting: tbd
+- ACTION: someone clean up this folder, it's a mess
+
+random note: the q3 numbers file has two versions, use the FINAL one

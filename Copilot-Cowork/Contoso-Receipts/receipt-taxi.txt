@@ -1,0 +1,9 @@
+YELLOW CAB - SEATTLE
+------------------------
+Date: 2026-06-18
+Trip: SEA Airport -> Downtown Marriott
+Fare:      $ 38.00
+Tip:       $  4.50
+TOTAL:     $ 42.50
+Payment: Corporate AMEX ****1007
+Thank you for riding!

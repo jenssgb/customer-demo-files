@@ -1,0 +1,11 @@
+Key,Summary,Priority,Component,Status,Assignee,Created,Sprint
+NW-1042,Sensor Hub loses pairing after 2.4 firmware flash,Blocker,Firmware,In Progress,Grady Archie,2026-06-29,Northwind 2.4
+NW-1047,Cloud Portal export times out for fleets over 500 devices,Blocker,Portal,In Review,Lidia Holloway,2026-06-30,Northwind 2.4
+NW-1051,C-Series valve telemetry drops every 6 hours,Critical,Telemetry,In Progress,Isaiah Langer,2026-07-01,Northwind 2.4
+NW-1055,OTA update rollback corrupts device config,Blocker,Firmware,Open,Grady Archie,2026-07-02,Northwind 2.4
+NW-1058,Login loop on SSO tenants with custom domains,Critical,Identity,In Progress,Diego Siciliani,2026-07-02,Northwind 2.4
+NW-1063,Dashboard charts render blank on Safari,Major,Portal,Open,Lidia Holloway,2026-07-03,Northwind 2.4
+NW-1069,Memory leak in gateway service after 48h uptime,Blocker,Gateway,In Progress,Grady Archie,2026-07-04,Northwind 2.4
+NW-1072,Alert thresholds reset to default on restart,Critical,Telemetry,Open,Isaiah Langer,2026-07-05,Northwind 2.4
+NW-1077,Localization strings missing for DE and FR,Major,Portal,Open,Lidia Holloway,2026-07-05,Northwind 2.4
+NW-1081,Certificate rotation fails on air-gapped installs,Blocker,Security,In Review,Diego Siciliani,2026-07-06,Northwind 2.4
