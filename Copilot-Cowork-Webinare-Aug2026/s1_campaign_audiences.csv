@@ -1,0 +1,11 @@
+Segment,Persona,Contact Name,Email,Region,Language,Last Touch,Offer
+Existing Customers,IT Decision Maker,Anke Berg,anke.berg@northwind-demo.example,DACH,DE,2026-04-18,FY26 spring release upgrade
+Existing Customers,IT Decision Maker,Tom Nash,tom.nash@fabrikam-demo.example,US-East,EN,2026-05-02,FY26 spring release upgrade
+Existing Customers,Operations Lead,Priya Raman,priya.raman@tailspin-demo.example,Asia,EN,2026-03-30,FY26 spring release upgrade
+Trial Users,Hands-on Evaluator,Marco Rossi,marco.rossi@contoso-trial.example,Europe,EN,2026-05-20,Extend trial + onboarding session
+Trial Users,Hands-on Evaluator,Lena Vogt,lena.vogt@adatum-demo.example,DACH,DE,2026-05-19,Extend trial + onboarding session
+Trial Users,Hands-on Evaluator,Sara Lin,sara.lin@wingtip-demo.example,US-East,EN,2026-05-11,Extend trial + onboarding session
+Lapsed Leads,Budget Owner,Georg Hoffmann,georg.hoffmann@litware-demo.example,DACH,DE,2025-11-08,Win-back: 3 months included
+Lapsed Leads,Budget Owner,Dana Cole,dana.cole@proseware-demo.example,US-East,EN,2025-12-14,Win-back: 3 months included
+Partners,Channel Manager,Ravi Menon,ravi.menon@vanarsdel-demo.example,Asia,EN,2026-04-25,Partner co-sell kit
+Partners,Channel Manager,Julia Weiss,julia.weiss@coho-demo.example,DACH,DE,2026-04-27,Partner co-sell kit
