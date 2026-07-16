@@ -1,0 +1,65 @@
+CEO QUARTERLY UPDATE — Q1 2026
+Prepared for Board of Directors | April 15, 2026
+Author: Sarah Chen, Chief Executive Officer
+
+---
+
+EXECUTIVE SUMMARY
+
+Q1 2026 was our strongest quarter to date — both financially and operationally. We crossed $90M ARR run-rate, recorded our first profitable quarter at scale, and delivered record new bookings. The land-and-expand motion is working: NRR hit 114%, the best in company history. Customer churn revenue came in 13% below target. We're executing the plan.
+
+---
+
+TOP 3 WINS THIS QUARTER
+
+WIN 1: Crossed $90M ARR Run-Rate
+In March 2026, we crossed the $90M ARR run-rate threshold — a milestone we had set as our 2026 Year goal. We hit it in Q1. Three enterprise deals closed in the last two weeks of March, including our largest single deal to date: a $1.2M 3-year contract with Hartwell Financial Group. The team delivered this while maintaining record efficiency (LTV/CAC now 8.0x).
+
+WIN 2: First Profitable Quarter at Scale
+EBITDA came in at $4.1M — 41% above Q1 2025 and $300K ahead of plan. Net Income was $1.8M, marking our first profitable quarter since Series B. Gross margin expanded to 73.2% (+2.8pp YoY), driven by the shift in services mix and the infrastructure optimization program that Engineering completed in February. We are on track for 20%+ EBITDA margin by Q4 2026.
+
+WIN 3: Customer Success Transformation Complete
+The Customer Success team restructuring (begun in Q3 2025) is now delivering measurable results. Gross churn rate dropped to 1.4% — the lowest in our history and 0.6pp below our already-aggressive target. eNPS hit 54 (up from 38 in Q1 2025). Customer attrition is at 8.4%, down from 12.1% a year ago. This is the most significant operational transformation we've made in 18 months.
+
+---
+
+TOP 2 RISKS THIS QUARTER
+
+RISK 1: Infrastructure Cost Overrun (Amber)
+Cloud infrastructure spend came in at $2.1M — 6.1% above budget. The primary driver is compute costs from our new GenAI feature suite, which launched in February and saw faster-than-expected adoption (2.4x projected usage in first 30 days). We have a three-point action plan: (1) spot instance migration for batch workloads — targeting 18% reduction, (2) caching layer implementation — ETA end of April, (3) renegotiation of our Azure commitment tier, scheduled for May. We expect to be back within budget by Q2 end. This is manageable and does not impact our full-year guidance.
+
+RISK 2: Engineering Headcount Gap (Amber)
+We ended Q1 with 312 employees — 3 below plan — due to three senior backend engineering roles that remained open through Q1. These positions are critical to our Q2 product roadmap (specifically the self-serve onboarding improvements). Two offers are extended and expected to close this week. The third role has been escalated to executive level recruiting. Current gap has introduced a 3-week delay risk on the self-serve project. Contingency: the team has re-scoped the MVP to reduce scope by 20%, which should absorb the delay without impacting the Q2 customer commitments.
+
+---
+
+STRATEGIC PRIORITIES FOR Q2 2026
+
+PRIORITY 1: Self-Serve Onboarding Launch (By June 30)
+Our biggest Q2 deliverable. Self-serve activation will remove the current 14-day average onboarding time and reduce CAC by an estimated 12% for the SMB segment. Beta is live with 22 design partners. Customer feedback is strong. Launch target: June 30. This unlocks our PLG (product-led growth) motion which we have been building toward since Q3 2025.
+
+PRIORITY 2: Mid-Market Sales Expansion
+Average deal size grew to $80,900 in Q1 (+$11.6K YoY), validating the upmarket motion. In Q2 we are launching a dedicated Mid-Market pod of 6 AEs (hiring completes April 30) and the first vertical-specific product package (Financial Services). Target: 30% of new bookings from mid-market deals by Q4 2026 (currently at 19%).
+
+PRIORITY 3: International Expansion — UK Go-Live
+Our UK entity is now established. First UK Sales hire starts May 1. UK website is live. Three UK pipeline deals in negotiation (combined ARR potential: €1.4M). We are targeting first UK customer signed by July 31. This is a bet on geographic diversification ahead of potential US market saturation in our core verticals.
+
+---
+
+BOARD ASKS
+
+1. Introductions to 2-3 CFO-level contacts at Series C/D companies who have navigated the infrastructure cost optimization challenge — our VP Engineering would benefit from peer learning.
+
+2. Input on timing for Series C positioning. With LTV/CAC at 8x and our first profitable quarter, we believe H2 2026 is the right window. Would value the board's perspective on market conditions and optimal sequencing.
+
+3. Approval of the Q2 Mid-Market headcount plan (6 AEs, 1 SDR, 1 Sales Engineer) — total Q2 cost $1.1M incremental, fully modeled in the revised FY2026 operating plan distributed last week.
+
+---
+
+CLOSING NOTE
+
+Q1 felt different. The team is executing with confidence. The product is resonating. The metrics tell the story: growing fast, getting more profitable, keeping customers. Q2 sets up the next chapter — self-serve, mid-market, and international. I am proud of what this team has built and excited for what comes next.
+
+Sarah Chen
+CEO, LoopSync
+April 15, 2026

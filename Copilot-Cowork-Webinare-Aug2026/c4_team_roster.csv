@@ -1,0 +1,16 @@
+Name,Role,Email,Department,Location,Availability_Q3
+James Okafor,Product Manager (Owner),james.okafor@nexora.io,Product,London,Full
+Sarah Chen,VP Product (Stakeholder),sarah.chen@nexora.io,Product,New York,10 hrs/week
+Marcus Webb,CFO (Budget Owner),marcus.webb@nexora.io,Finance,New York,As needed
+David Osei,CTO (Exec Sponsor),david.osei@nexora.io,Engineering,San Francisco,As needed
+Priya Sharma,Lead Backend Engineer,priya.sharma@nexora.io,Engineering,Bangalore,Full
+Tom Richter,Backend Engineer,tom.richter@nexora.io,Engineering,Berlin,Full
+Layla Hassan,Frontend Lead,layla.hassan@nexora.io,Engineering,London,Full
+Kwame Asante,Frontend Engineer,kwame.asante@nexora.io,Engineering,Accra,Full
+Nina Brandt,UX Designer,nina.brandt@nexora.io,Design,Berlin,60% (shared with Atlas project)
+Samuel Yoon,Product Designer,samuel.yoon@nexora.io,Design,Seoul,60% (shared with Atlas project)
+Chris Delgado,QA Lead,chris.delgado@nexora.io,QA,Austin,Full
+Mei Lin,DevOps / Infrastructure,mei.lin@nexora.io,Infrastructure,Singapore,30% (at 90% capacity team-wide)
+Fatima Al-Rashid,Security Engineer,fatima.al-rashid@nexora.io,Security,Dubai,Part-time from Phase 2
+Paul Eze,Customer Success Lead,paul.eze@nexora.io,Customer Success,Lagos,Advisory (voice of customer)
+Anya Petrov,Technical Writer,anya.petrov@nexora.io,Product,Prague,From Phase 3 only

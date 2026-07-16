@@ -1,0 +1,42 @@
+PROJECT BRIEF — Customer Portal 2.0
+Prepared by: James Okafor, Product Manager, Nexora Inc.
+Date: Thursday, May 15, 2026 (dumped in my lap at 4:47pm)
+
+Background:
+Customer Portal 1.0 launched in 2019. It's running on a monolith that nobody wants to touch.
+Support tickets mentioning the portal: 43% of total volume. NPS for portal-related interactions: -12.
+Customer success has been escalating for 6 months. Enterprise churn in Q1: 3 accounts cited portal friction.
+
+What we're building:
+A redesigned B2B Customer Portal that lets customers manage their licenses, submit support tickets,
+view usage analytics, download invoices, and manage user access — all in one place.
+API-first. Mobile-responsive. SSO via Azure AD.
+
+Budget: $380,000
+Timeline: June 2026 – December 2026 (6 months)
+Target launch: January 5, 2027
+
+Objectives:
+1. Reduce portal-related support tickets by 40% within 90 days of launch
+2. Increase self-service resolution rate from 18% to 55%
+3. Achieve portal NPS of +30 or better by Q1 2027
+4. Migrate all 847 active enterprise accounts before Feb 28, 2027
+
+Key phases:
+Phase 1 (June–July): Discovery, architecture, API design
+Phase 2 (August–October): Core build — auth, license mgmt, ticket portal, analytics dashboard
+Phase 3 (November–December): UAT, migration, launch prep
+
+Known risks:
+- Legacy API from 2017 has zero documentation. Backend team estimates 3 weeks just to map endpoints.
+- dependency on Infrastructure team for SSO rollout — they're already at 90% capacity in Q3
+- Only 2 enterprise design tokens available (Design team constraint)
+- Migration window is fixed: Dec 22–Jan 4 (holiday freeze exception approved)
+
+Success owner: VP Product (Sarah Chen — stakeholder, tight timeline expectations)
+Budget owner: CFO (Marcus Webb)
+Exec sponsor: CTO (David Osei)
+
+Notes from Thursday Slack message (verbatim):
+"Hey James — you're owning Portal 2.0. Kickoff is Tuesday. I need the charter, RACI, and a deck ready.
+ Budget's been approved. Team roster attached. Good luck 👍" — Sarah Chen, 4:47pm

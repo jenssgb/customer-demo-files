@@ -1,0 +1,48 @@
+timestamp_utc,event_type,severity,region,component,description,source,actor
+2026-05-21 04:17:03,alert,P1,EMEA,database,Connection pool exhaustion detected — active connections at 98% (490/500),PagerDuty,auto
+2026-05-21 04:17:08,alert,P1,EMEA,api-gateway,API error rate spike: 23% (threshold 2%),Datadog,auto
+2026-05-21 04:17:11,alert,P1,EMEA,frontend,503 errors on /dashboard and /reports endpoints — first user-visible impact,Synthetics,auto
+2026-05-21 04:18:44,incident_opened,P1,Global,platform,P1 incident declared: INC-2026-0521-001 — Nexova platform degradation,PagerDuty,auto
+2026-05-21 04:19:02,page_sent,P1,Global,on-call,On-call SRE paged: Priya Kapoor,PagerDuty,auto
+2026-05-21 04:19:58,page_sent,P1,Global,on-call,Secondary SRE paged: Marcus Webb,PagerDuty,auto
+2026-05-21 04:21:15,acknowledgment,P1,Global,on-call,Priya Kapoor acknowledged page,PagerDuty,priya.kapoor
+2026-05-21 04:22:30,action,P1,EMEA,database,Priya began investigating DB connection pool — reviewing active queries in slow log,SSH,priya.kapoor
+2026-05-21 04:24:00,alert,P1,AMER,database,Connection pool exhaustion spreading to AMER region — connections at 95%,Datadog,auto
+2026-05-21 04:24:55,escalation,P1,Global,on-call,Incident escalated — on-call engineering manager Ben Hoover paged,PagerDuty,auto
+2026-05-21 04:26:10,acknowledgment,P1,Global,on-call,Marcus Webb acknowledged page — joined incident Slack channel,Slack,marcus.webb
+2026-05-21 04:27:00,finding,P1,EMEA,database,"Priya identified blocking query: long-running analytics export job launched at 03:52 UTC, holding 180 connections for 25+ minutes",SSH,priya.kapoor
+2026-05-21 04:28:30,action,P1,EMEA,database,Attempted kill of analytics job — job rescheduled itself via cron before kill could complete,SSH,priya.kapoor
+2026-05-21 04:29:05,alert,P1,APAC,database,APAC region now showing connection exhaustion — 88% pool utilization,Datadog,auto
+2026-05-21 04:29:20,finding,P1,Global,database,Root cause identified: analytics export cron job missing connection limit — running without max_connections cap,SSH,priya.kapoor
+2026-05-21 04:30:00,acknowledgment,P1,Global,engineering,Ben Hoover joined incident — confirmed severity P1,Slack,ben.hoover
+2026-05-21 04:31:15,action,P1,Global,database,Marcus disabled cron job scheduler to prevent re-spawn — manual kill of analytics process initiated,SSH,marcus.webb
+2026-05-21 04:32:44,action,P1,Global,database,Analytics process killed successfully — connection pool usage dropped from 99% to 72%,SSH,priya.kapoor
+2026-05-21 04:33:00,metric,info,EMEA,api-gateway,API error rate declining: 23% → 11%,Datadog,auto
+2026-05-21 04:35:20,metric,info,AMER,api-gateway,AMER API error rate declining: 19% → 8%,Datadog,auto
+2026-05-21 04:36:00,action,P1,Global,database,Applied emergency connection limit patch (max 20 connections) to analytics service config,SSH,marcus.webb
+2026-05-21 04:37:30,metric,info,APAC,api-gateway,APAC API error rate declining: 15% → 4%,Datadog,auto
+2026-05-21 04:38:00,metric,info,Global,database,Connection pool stabilizing across all regions — global utilization at 58%,Datadog,auto
+2026-05-21 04:39:15,finding,P1,Global,analytics,"Analytics export job: 'monthly_active_user_export_enterprise' — v2.3.1 deployed May 19, connection limit config omitted",SSH,priya.kapoor
+2026-05-21 04:40:00,customer_impact,P1,EMEA,frontend,EMEA customer reports confirmed — 503s on dashboard. Enterprise accounts Hartwell Corp and DataBridge affected.,Zendesk,auto
+2026-05-21 04:41:30,customer_impact,P1,AMER,frontend,AMER Tier-1 customer LoopSync reporting outage — P1 support ticket raised,Zendesk,auto
+2026-05-21 04:42:00,communication,P1,Global,status-page,Incident posted on status.nexova.io — 'Investigating degradation to API and dashboard services',StatusPage,ben.hoover
+2026-05-21 04:45:00,metric,info,EMEA,api-gateway,EMEA API error rate: 3% (approaching normal threshold 2%),Datadog,auto
+2026-05-21 04:47:00,metric,info,AMER,api-gateway,AMER API error rate: 1.8% — below threshold,Datadog,auto
+2026-05-21 04:49:00,metric,info,APAC,api-gateway,APAC API error rate: 1.5% — below threshold,Datadog,auto
+2026-05-21 04:50:00,metric,info,Global,frontend,503 errors resolved across all regions — frontend fully recoverable,Synthetics,auto
+2026-05-21 04:52:30,action,info,Global,analytics,Analytics export re-queued manually with 20-connection cap — running safely,SSH,marcus.webb
+2026-05-21 05:00:00,monitoring,info,Global,platform,Extended monitoring window opened — watching for re-occurrence,Datadog,priya.kapoor
+2026-05-21 05:10:00,update,info,Global,status-page,Status page updated: 'Services restored. Monitoring in progress.',StatusPage,ben.hoover
+2026-05-21 05:15:00,meeting,info,Global,on-call,Incident review call: Priya / Marcus / Ben — root cause confirmed and documented,Zoom,ben.hoover
+2026-05-21 05:45:00,action,info,Global,database,PR #4821 raised: add connection_limit param to all scheduled analytics jobs,GitHub,marcus.webb
+2026-05-21 06:00:00,metric,info,Global,database,Connection pool steady at 41% — all regions nominal,Datadog,auto
+2026-05-21 06:30:00,action,info,Global,monitoring,New alert threshold added: page at 75% connection pool (was 98%),PagerDuty,priya.kapoor
+2026-05-21 07:00:00,action,info,Global,analytics,"Analytics export config audit started — checking all 12 cron jobs for missing connection limits",SSH,marcus.webb
+2026-05-21 07:15:00,finding,info,Global,analytics,3 additional analytics jobs found missing connection_limit config — capped manually,SSH,marcus.webb
+2026-05-21 07:45:00,action,info,Global,database,Emergency config fix deployed to production via hotfix release v2.3.2,GitHub,ben.hoover
+2026-05-21 08:00:00,communication,info,Global,status-page,Status page updated: 'All systems operational. Post-incident review in progress.',StatusPage,ben.hoover
+2026-05-21 08:15:00,communication,info,Global,customer,Direct outreach initiated to Hartwell Corp and LoopSync — customer success team notified,Zendesk,ben.hoover
+2026-05-21 08:30:00,metric,info,Global,platform,All SLI metrics nominal — error rate 0.3% | latency p99 180ms | availability 99.97% (rolling 1h),Datadog,auto
+2026-05-21 09:00:00,action,info,Global,analytics,Full audit complete — all analytics jobs now have connection limits. PR #4821 merged.,GitHub,priya.kapoor
+2026-05-21 09:30:00,communication,info,Global,customer,Customer-facing status summary drafted and sent to affected enterprise accounts,Email,ben.hoover
+2026-05-21 09:44:00,incident_closed,info,Global,platform,INC-2026-0521-001 closed. MTTR: 5h 27m. RCA complete. Prevention measures in progress.,PagerDuty,ben.hoover

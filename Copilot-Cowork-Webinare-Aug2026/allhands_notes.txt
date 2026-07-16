@@ -1,0 +1,117 @@
+NEXORA INC. — Q2 2026 ALL-HANDS MEETING
+CEO Notes (rough draft — Thursday presentation)
+Prepared by: Marcus Webb, CEO
+Date: Thursday, June 5, 2026
+Audience: ~420 employees (San Francisco HQ + remote)
+Format: 60 min total — 20 slides, 3 breakout Q&A slots
+
+==============================================================
+OPENING / TONE-SETTER
+==============================================================
+- This has been the quarter we stopped playing defense and started playing offense
+- Personally: I'm proud of every single one of you — Q2 was hard, and you delivered
+- We closed $47.2M ARR. Goal was $44M. Let that sink in.
+- Net Revenue Retention hit 118% — that means our existing customers are growing with us
+- Theme: "From Startup Mode to Scale Mode" — today we announce what that means for everyone
+
+==============================================================
+COMPANY WINS — TOP 5 THIS QUARTER
+==============================================================
+1. LANDMARK DEAL: Signed Deutsche Telekom (5,000 seats, €2.1M ARR) — our largest single contract ever
+   - Took 14 months of pipeline. Sales + Solutions + Legal: all-in.
+   - Shoutout to Priya Nair, Liam Torres, and the EMEA team
+
+2. PRODUCT MILESTONE: Launched Nexora AI Core 2.0 on May 15
+   - Reduced avg. query time from 4.2s → 0.9s
+   - 94% of customers upgraded within 3 weeks (record adoption)
+   - Engineering pulled 4 all-nighters. We see you.
+
+3. CUSTOMER LOVE: NPS jumped from 41 → 58
+   - First time ever above 50
+   - G2 "Leader" badge in 3 new categories: Data Analytics, AI Platforms, Enterprise BI
+
+4. TEAM GROWTH: Hired 47 net new people in Q2
+   - Opened Berlin office (12 people, growing to 25 by Q4)
+   - Engineering now 38% women — up from 29% a year ago
+
+5. PARTNERSHIP: Microsoft co-sell agreement signed (June 1)
+   - Nexora AI Core listed in Azure Marketplace
+   - Pipeline impact: 23 qualified leads already in Week 1
+
+==============================================================
+Q2 FINANCIAL PERFORMANCE
+==============================================================
+[Reference q2_results.csv for exact numbers — use charts]
+- Total ARR: $47.2M (vs $44M target = 107%)
+- QoQ growth: +19.4% (vs +14% in Q1)
+- New logos: 38 (target: 30)
+- Gross Margin: 74.1% (vs 72% target)
+- Churn Rate: 3.2% (down from 4.8% in Q1 — major improvement)
+- NRR: 118% (target 112%)
+- Headcount: 423 employees (up from 376 end of Q1)
+- Cash: $31.4M runway. 18+ months at current burn.
+
+==============================================================
+STRATEGIC PRIORITIES FOR H2 2026
+==============================================================
+Priority 1 — SCALE THE MACHINE (Sales)
+- Expand EMEA: 3 new markets (Netherlands, Sweden, UAE)
+- SDR team doubles from 18 → 36 by September
+- New sales methodology: MEDDPICC rolling out July 14
+- Target: $62M ARR by Dec 31
+
+Priority 2 — WIN WITH PRODUCT (Engineering + Product)
+- Q3: Launch Nexora Workflows (agent automation layer)
+- Acquisition: We acquired Loopback.io (workflow startup, 8-person team) — joining us July 1
+  * CONFIDENTIAL until Monday announcement — do NOT share externally yet
+- Infra migration to multi-region active-active by August
+- Data residency: EU cluster goes live July 22 (needed for Deutsche Telekom + GDPR)
+
+Priority 3 — PEOPLE & CULTURE AT SCALE
+- Introducing role levels and career ladders — launching July 7
+- Comp review completed: 89% of employees at or above market median (up from 71%)
+- New PTO policy: unlimited PTO replaced with minimum 15 days mandatory + 10 flexible
+  * Why the change: data showed average was 8 days. That's not healthy.
+- Manager training program: "Lead at Nexora" — all 64 managers start July
+
+==============================================================
+TEAM SPOTLIGHTS
+==============================================================
+1. Customer Success — Team of the Quarter
+   - Reduced time-to-value from 63 days → 29 days
+   - Managed the Deutsche Telekom onboarding flawlessly
+   - Theresa Banks (CSM Lead) called out by customer CTO in LinkedIn post
+
+2. Infrastructure Team
+   - Zero downtime in Q2 — 99.98% uptime
+   - Cut cloud costs by $340K QoQ through reserved instance optimization
+   - "Ghost team" — nobody notices you when you're great. We notice.
+
+3. New Joiner Spotlight: Berlin Office
+   - 12 people, 6 nationalities, started April 1 with nothing but a lease
+   - Already closed 2 deals and built the EU data pipeline
+   - Sophie Braun (Eng Lead) and Jonas Keller (Sales Lead) — take a bow
+
+==============================================================
+Q3 GOALS (WHAT WE'RE AIMING FOR)
+==============================================================
+- ARR: $55M by September 30
+- New logos: 45+
+- Launch Nexora Workflows beta (target: 50 design partners)
+- EU data residency LIVE
+- NPS: hold or improve (target: 58+)
+- Engagement score (from next Pulse survey): target 75+ (current: 68)
+
+==============================================================
+OPEN Q&A / CLOSING
+==============================================================
+- Q&A slot 1: after wins/financial section (10 min)
+- Q&A slot 2: after strategic priorities (10 min)
+- Q&A slot 3: end of session (15 min)
+- Slido for anonymous questions — link in calendar invite
+
+Closing line (TBD, something like):
+"The companies that win at scale are the ones that don't forget what made them great. 
+At Nexora, that's you. Let's go build something that matters."
+
+— Marcus

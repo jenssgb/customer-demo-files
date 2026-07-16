@@ -1,0 +1,141 @@
+NEXORA INC. — BOARD OF DIRECTORS UPDATE
+Q2 2026 FINANCIAL REVIEW
+Prepared for: Board Meeting, June 9, 2026
+Prepared by: Sarah Kim, CFO
+Draft Status: DRAFT — NOT FOR DISTRIBUTION
+
+---
+
+EXECUTIVE SUMMARY
+
+Q2 2026 was a mixed quarter for Nexora. We delivered strong gross margin performance and maintained disciplined cost control across all operating expense lines. However, New ARR came in below plan, and we are proactively revising our full-year outlook ahead of this board session.
+
+We remain confident in our core business fundamentals. Our Net Revenue Retention is 118% — above plan — and customer health scores are at an all-time high. The Q2 miss is concentrated in two specific, addressable areas which we have already begun to remediate.
+
+---
+
+FINANCIAL HIGHLIGHTS — H1 2026
+
+[PLACEHOLDER: Insert H1 KPI table from actuals model]
+
+Key metrics to highlight:
+- Total H1 Revenue: [PLACEHOLDER — insert from actuals]
+- H1 Gross Margin: [PLACEHOLDER]
+- H1 EBITDA: [PLACEHOLDER]
+- Net Revenue Retention: 118% (above 115% plan)
+- Customer Count: 847 (above 820 plan)
+
+---
+
+REVENUE PERFORMANCE — H1 2026
+
+[THIS SECTION NEEDS TO BE REWRITTEN TO REFLECT H1 MISS]
+
+Original draft below — update with honest language acknowledging the gap, root causes, and scenarios.
+
+--- BEGIN ORIGINAL DRAFT (TO BE REPLACED) ---
+
+We are pleased to report that Nexora delivered another quarter of strong business momentum in Q2 2026. Revenue growth continues on its planned trajectory, with New ARR tracking in line with our full-year targets. Our go-to-market motion is operating effectively across all three regions, and we are well-positioned to deliver on our FY2026 commitments.
+
+Note to Sarah: This section needs to be completely rewritten. We missed Q2 revenue by ~$593K. The board will ask hard questions. We need to be direct about the miss, not spin it. Two root causes: (1) Americas SDR restructure in February created a 6-8 week pipeline gap that hit conversion in Q2. Deals in the pipeline but conversion rate dropped from 24% to 17%. (2) Three large EMEA enterprise deals ($210K, $195K, $188K) — Vanterra Group, Solaris Systems, Meridian Holdings — all pushed from June close to Q3. Customer health is fine, CRM stage is active, but procurement cycles extended. This is NOT churn risk, it's timing. We need to present the reforecast honestly. Base case uses Q2 run rate flat for H2. Upside assumes the three EMEA deals close in Q3 plus recovery in Americas conversion rate. Downside assumes conversion stays depressed and one of the three EMEA deals slips to Q4.
+
+--- END ORIGINAL DRAFT ---
+
+---
+
+OPERATIONAL PERFORMANCE
+
+Customer Success:
+- Net Revenue Retention: 118% (plan: 115%)
+- Gross Churn Rate: 2.1% (plan: 2.5%) — best quarter since Q2 2024
+- Customers at Health Score 80+: 71% of ARR (plan: 65%)
+- NPS: +52 (Q1: +48)
+
+Product & Engineering:
+- Shipped 3 major feature releases: Advanced Analytics (Apr), API v3 (May), Workflow Builder GA (Jun)
+- P0/P1 incidents: 2 (plan: ≤3)
+- Enterprise deployment time: 18 days avg (plan: 21 days)
+
+Go-to-Market:
+- Sales headcount: 47 quota-carrying reps (plan: 52 — 5 open roles, backfill Q3)
+- Americas SDR team restructure completed May 2026 — new motion ramping
+- Pipeline coverage: 3.1x for Q3 (plan: 3.0x) — quality improved
+- Closed-won deal size (Enterprise): $167K avg (plan: $145K) — positive mix shift
+
+---
+
+COST PERFORMANCE
+
+[PLACEHOLDER: Insert OPEX variance analysis]
+
+Operating expenses came in $89.6K under plan for H1, driven by:
+- Hiring timing (5 open roles, primarily sales)
+- Reduced T&E in Q2 (conference calendar shift to Q3)
+- R&D contractor optimization
+
+We maintained gross margins above 62% across both quarters, with slight compression vs plan due to revenue mix shift toward lower-margin professional services.
+
+---
+
+STRATEGIC PRIORITIES UPDATE
+
+1. Enterprise Motion: On track. Average deal size growing. 3 new logos >$200K ACV in H1.
+2. Product-Led Growth: Freemium cohort conversion running 2.1% vs 1.8% plan. 
+3. APAC Expansion: Singapore office opened April 2026. First local enterprise deal signed May.
+4. Platform Partnerships: Microsoft integration launched June 1. 12 partner-sourced deals in pipeline.
+
+---
+
+RISKS & MITIGATIONS
+
+[PLACEHOLDER: Update risk register with Q2 actuals context]
+
+Current open risks:
+- Americas pipeline recovery: New SDR motion showing early signals (23% conversion in June vs 17% in April/May). Full recovery expected Q3.
+- EMEA deal slippage: Three deals confirmed active by regional VP. Procurement extension, not at-risk. Targeting Q3 close.
+- Macroeconomic: Enterprise buying cycles extending industry-wide (Gartner Q2 survey). Counter: higher average deal value compensating for fewer deals.
+- Hiring lag: 5 open sales roles. Time-to-hire averaging 67 days. Using contractors as bridge.
+
+---
+
+FULL-YEAR OUTLOOK
+
+[THIS SECTION NEEDS REFORECAST SCENARIOS — TO BE BUILT IN EXCEL MODEL]
+
+Note: Insert 3-scenario reforecast table here once model is complete:
+- Base Case: H2 runs at Q2 actuals run-rate + EMEA deals close Q3
+- Upside: Americas conversion recovers to plan + all 3 EMEA deals Q3
+- Downside: Recovery delayed to Q4, one EMEA deal slips
+
+FY2026 Original Budget: $19.1M total revenue
+H1 Actuals: $7.734M (vs $8.42M budget, -8.1%)
+Implied H2 need (Base): [PLACEHOLDER]
+
+---
+
+CAPITAL & CASH POSITION
+
+- Cash & equivalents as of June 30: $18.4M (16.5 months runway at current burn)
+- Monthly burn (H1 avg): $1.12M
+- Accounts receivable: $4.2M (DSO: 38 days, plan: 42 days)
+- No debt outstanding
+- Series B runway: Extended — not a near-term priority given cash position
+
+---
+
+APPENDIX
+
+A. Headcount Summary
+- Total employees: 184 (plan: 196)
+- Open roles: 12 (7 Sales, 3 R&D, 2 G&A)
+
+B. Net Revenue Retention Bridge
+[PLACEHOLDER]
+
+C. Cohort Analysis
+[PLACEHOLDER]
+
+---
+
+END OF DRAFT
+Action required before board: Rewrite Revenue Performance section, insert scenario table, update all placeholders.

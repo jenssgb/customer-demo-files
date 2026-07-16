@@ -1,0 +1,86 @@
+ON-CALL INCIDENT NOTES — INC-2026-0521-001
+Nexova Platform — Production Incident
+Date: May 21, 2026 | Time: ~04:17 UTC
+
+=== PRIYA KAPOOR (Lead SRE) ===
+
+04:19 — Got paged. Dashboard alerts already lit up. DB connection pool at 98% in eu-west.
+Checked Datadog first — API error rate spiking hard, 23%. Not a deploy. Last deploy was May 19 (analytics v2.3.1).
+
+04:22 — SSH'd into prod-db-eu-01. Running `SHOW PROCESSLIST` — saw 180+ connections all from one process: "monthly_active_user_export_enterprise". ALL in status "executing", some had been running for 30+ minutes. This is NOT normal. That job should never hold more than 20 connections.
+
+04:27 — Pulled the job config. Analytics export v2.3.1. Found the bug immediately — connection_limit param is just *gone* from the config. Someone removed it in the migration script. The job was spinning up as many connections as it needed with no cap.
+
+04:28 — Tried to kill the job. Cron respawned it before the kill finished. Classic.
+
+04:29 — Called Marcus to disable the cron scheduler while I killed the process manually. Took two attempts. Pool started draining.
+
+04:32 — Pool below 72%. Error rates started dropping across all three regions in sequence — EMEA first, then AMER, then APAC. Makes sense given where the DB primary is.
+
+04:39 — Confirmed root cause: analytics v2.3.1 PR (#4798, merged May 19) — config schema migration script dropped the connection_limit field. Nobody caught it in review because the job still ran successfully in staging (staging DB has unlimited connections in test env). No canary deploy for analytics jobs.
+
+05:00 — Opened extended monitoring window. Wanted to make sure the pool stayed stable and we didn't see secondary effects (cache warming, delayed queue processing).
+
+Key observation: We didn't have a 75% pool utilization alert — we only alert at 95%. By the time we got paged, we were already at 98% and cascading. That's too late. Need early warning.
+
+What went wrong in process: 
+- No connection_limit validation in CI/CD pipeline
+- Staging environment doesn't enforce connection limits (different from prod)
+- Analytics job changes not flagged as "risky" in PR template
+- Alert threshold too late (95% instead of 75%)
+
+Personal note: This is the second time in 6 months we've had an unguarded scheduled job cause a cascade. After the batch processor incident in November, we said we'd add db-config linting to CI. That PR has been sitting for 3 months. We need to actually ship it.
+
+=== MARCUS WEBB (On-Call Engineer) ===
+
+04:20 — Got paged. Joined Slack bridge. Priya already had the kill in progress.
+04:26 — My job: disable cron scheduler so the job can't respawn.
+Ran: `kubectl patch cronjob monthly-analytics-export -p '{"spec":{"suspend":true}}'`
+Confirmed suspended. Then backed up Priya on the manual kill.
+
+04:36 — Applied emergency patch: set connection_limit=20 in analytics service env var. Not ideal but stops the bleeding if the job needs to run again before we ship the real fix.
+
+04:39 — Joined Priya's call with Ben. We reviewed the v2.3.1 PR. The migration script is the culprit — line 47 of db_schema_migrate.py. The field was renamed in the schema model but the migration script didn't carry the default value forward. Classic quiet failure.
+
+04:45 — Raised P1 ticket with full RCA notes. Started drafting the hotfix.
+
+05:45 — PR #4821 up: adds connection_limit as required field (not optional) with validation in CI that will block any analytics job config change that doesn't include it.
+
+07:00 — Ran the audit. Found 3 more jobs in the analytics service with the same missing field:
+1. weekly_cohort_analysis — missing since v2.1.0
+2. enterprise_usage_report — missing since v2.2.3  
+3. retention_curve_generator — added last week, never had the field
+
+All three manually capped at 20 for now. PR #4821 will enforce going forward.
+
+07:45 — Hotfix v2.3.2 shipped. All 4 affected jobs now have validated connection limits in prod.
+
+Action I'd recommend: We need a runbook for "connection pool exhaustion". This happened in November and we re-diagnosed it from scratch. 30 minutes of that response time could have been cut if we had a one-pager. I'll write it this week.
+
+=== BEN HOOVER (Engineering Manager, Incident Commander) ===
+
+04:30 — Joined. Priya and Marcus had already ID'd root cause and were in recovery. My focus: comms and coordination.
+
+04:42 — Opened status page incident. Kept it vague initially — "Investigating degradation" — until we had confirmed scope.
+
+04:40 — Zendesk alerts: two enterprise accounts reporting impact:
+- Hartwell Corp (EU-region, Tier 1 enterprise): dashboard 503s, user reported approx 04:20 UTC
+- LoopSync (US-region, Tier 1): API failures starting ~04:24, their CTO emailed directly
+
+SLA situation: Our Enterprise SLA is 99.9% monthly uptime = max 43.8 min downtime/month. EMEA user-visible impact: ~33 minutes (04:17–04:50). AMER: ~26 minutes (04:24–04:50). APAC: ~21 minutes (04:29–04:50). 
+
+For EMEA: 33 minutes. We're close to the monthly SLA limit. Need to calculate cumulative for May. If there was any other downtime this month, Hartwell may be in SLA breach territory and eligible for service credit.
+
+Financial note: Standard SLA credit is 10% of monthly invoice for each hour (or part thereof) of excess downtime beyond SLA. Hartwell: $18,500/month. If breach confirmed: $1,850 credit. LoopSync: $12,200/month → $1,220 credit. Need finance to confirm.
+
+05:15 — Bridge call with Priya and Marcus. Confirmed RCA. I documented it.
+
+08:15 — Customer success outreach to Hartwell and LoopSync initiated. 
+
+09:30 — Sent written summary to both accounts. They accepted it but Hartwell flagged they want the formal post-mortem doc within 48 hours. That's on me.
+
+09:44 — Closed incident. MTTR from first alert to all-clear: 5 hours 27 minutes.
+
+My bigger concern: this is the SECOND cascade from an analytics job in 6 months. After November's incident we had a retro. We made commitments. The DB linting PR stalled because Q2 hiring took priority. That's a process failure, not a technical one. The retro action items need a real owner with real deadlines, not a parking lot in Confluence.
+
+We're also understaffed on SRE — 2 on-call engineers for a global platform. On-call fatigue is real. This one woke Priya at 4am on a Wednesday. She was on-call last week too. We need to either hire or rotate the schedule differently.

@@ -1,0 +1,91 @@
+===== EXEC FEEDBACK — QBR PRE-BRIEF NOTES =====
+CSM: Jordan Ellis
+Date compiled: Sunday, May 25, 2026
+Source: QBR email threads, call notes, Slack messages, VOC survey responses
+
+---
+
+MERIDIAN PARTNERS
+Contact: David Kwan, CTO
+Last interaction: May 14 (email — Jordan sent project status update, no reply)
+Prior QBR (Feb 10): David said "We need to see meaningful progress on the compliance module by April or we'll have a problem." → April deadline missed.
+
+David's feedback (VOC survey, Apr 30): 
+"Honestly disappointed. We were told 10 weeks. We're at week 15 and I have regulators asking me questions I can't answer. My IT team has been waiting 6 weeks for a security review response. Nobody's escalated this. I've lost confidence in the implementation team."
+
+Open actions from last QBR (all overdue):
+- [OVERDUE] Provide security architecture diagram by March 15 → Not done
+- [OVERDUE] Schedule weekly implementation call by Feb 20 → Skipped 3 of last 5 weeks
+- [OVERDUE] Escalate IT security review to vendor CTO level by Apr 1 → Not done
+- [PENDING] Introduce new technical lead (following team restructure) → Scheduled for QBR
+
+Risk signal: David mentioned in passing to our mutual contact (Ben at FintechConnect) that they are "evaluating alternatives." NOT confirmed — should be probed carefully.
+
+Jordan's prep note: David is analytical, data-driven, does not respond to relationship talk. He needs a concrete recovery plan with names and dates, not apologies. Bring the Gantt chart. Have the escalation path ready.
+
+---
+
+NEXFLOW SYSTEMS
+Contact: Sara Okafor, CFO (NEW — replaced Mark Huang who left March 14)
+Last interaction: May 19 (intro email from Jordan, no reply yet)
+Prior QBR (Feb 28): Was with Mark Huang — focus on adoption metrics. Mark gave strong NPS ("I love the product, just need to get the rest of the team onboard"). Mark left two weeks after.
+
+Sara's background (from LinkedIn + internal notes):
+- Former McKinsey, joined Nexflow as CFO to drive Series C cost efficiency
+- Focus: ROI, headcount efficiency, vendor consolidation
+- No prior exposure to our platform
+- Her first "vendor audit" is scheduled for Q3 — we need to land before that
+
+Sara's feedback (email chain, May 8 — forwarded by Mark's replacement):
+"I've asked the team to pull together all SaaS spend ahead of my Q3 review. I need to understand what we're getting for $320k/year. Usage numbers I've been shown are at 44% of seats — that's a concern. I want to see a clear ROI case before we renew."
+
+Open actions:
+- [OVERDUE] Deliver usage report by Apr 15 → Not done (Mark's departure caused handover gap)
+- [PENDING] Schedule executive briefing with Sara → THIS QBR IS THE FIRST MEETING
+
+Jordan's prep note: Sara has never seen our product. Treat this like a first discovery call. She doesn't care about features — she cares about dollars saved or earned. Lead with ROI. Bring the benchmark comparison (we have this in sales deck). Usage at 44% is the elephant in the room — address it head-on with an adoption plan.
+
+---
+
+STEELBRIDGE MANUFACTURING
+Contact: Helen Marsh, CTO
+Last interaction: May 20 (call — Helen raised ERP integration delay again, tone was flat and tired)
+Prior QBR (Jan 30): Helen was cautiously optimistic about Phase 2. "If we get the ERP integration done by March, I can make the case to the board for expansion."
+
+Helen's feedback (call notes, May 20 — from Priya's notes):
+"I'm going to be honest with you. I went to bat for this project internally. I told our CEO we'd be live by March. It's now late May and we're talking about a Q3 patch from your vendor. My credibility is on the line. I need a realistic timeline and I need it in writing. Not a slide — a signed commitment."
+
+Previous exec signal (April call):
+Helen asked: "What would it cost to bring in additional resources to accelerate the timeline?" → This is a buying signal for a professional services expansion, but the budget is nearly exhausted. She needs a change order conversation.
+
+Open actions:
+- [OVERDUE] Provide vendor patch roadmap with dates by May 1 → Partial (got general Q3 guidance, not confirmed dates)
+- [OVERDUE] Present recovery plan with milestones by May 15 → Done in part, but Helen wants written commitment
+- [PENDING] Intro call with our Professional Services lead → Need to schedule
+
+Jordan's prep note: Helen is frustrated but still engaged — that's recoverable. What she needs is: (1) a written recovery plan with committed dates, and (2) someone senior from our side to own the outcome. If we can bring a VP-level sponsor to this QBR it would change the dynamic entirely. Check if VP of CS (Rachel) can join.
+
+---
+
+CRESTWOOD CAPITAL
+Contact: Rebecca Torres, CFO
+Last interaction: May 6 (welcome email from Jordan, warm reply)
+Upsell signal: Gary Chen (old CFO) had approved budget for additional 50 seats (expansion worth $85k ARR) before he left. Rebecca has not been briefed on this.
+
+Rebecca's reply (May 6):
+"Thanks Jordan — I've heard good things about the platform from the team. I'd love to get a proper overview of what we have and where we're getting value. The Q3 vendor review is coming up so timing is good."
+
+Jordan's prep note: Rebecca is open and engaged. This is a re-sell, not a save. Priority: show her the value Gary saw, surface the expansion opportunity, and get her bought in before the Q3 review. ROI story + the 50-seat expansion are the two agenda items.
+
+---
+
+VANTAGE RETAIL GROUP
+Contact: Tom Bradley, CEO
+Last interaction: April 28 (QBR — Tom flagged competitive eval)
+Upsell signal: VP Operations (Claire Su) has been pushing Tom to expand our deployment to the supply chain team (+3 departments, estimated $60k expansion). Tom is receptive but wants to see competitive eval results first.
+
+Tom's feedback (April 28 QBR notes):
+"I like what you're doing but my board wants to know we've done our diligence. We're running a 6-week POC with one other vendor. Results due early June. If you're better, I want to expand. If not, we have a different conversation."
+
+Jordan's prep note: Do NOT try to derail the POC — it will backfire. Instead, help Tom look good: send him the independent ROI report (from Forrester) and offer to help him build the eval scorecard. Make sure Claire Su is in the QBR — she's the champion. Ask Tom to define what "winning" looks like in the POC.
+

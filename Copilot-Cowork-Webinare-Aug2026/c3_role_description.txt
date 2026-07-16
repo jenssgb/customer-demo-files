@@ -1,0 +1,96 @@
+ROLE DESCRIPTION
+================
+Job Title:     Senior Product Manager — Platform Integrations
+Department:    Product Management
+Reports To:    VP of Product
+Location:      Hybrid (Berlin HQ / Remote)
+Start Date:    Monday, May 11, 2026
+Employment:    Full-time, permanent
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ABOUT THE ROLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You will own the product strategy for our third-party integrations platform —
+the layer that connects our core SaaS product to 60+ partner ecosystems
+(CRM, ERP, marketing automation, data warehouses). This is a high-visibility,
+high-ownership role sitting at the intersection of product, engineering, and
+business development.
+
+You will work closely with the Engineering Lead (Integrations), the
+Partnerships team, and enterprise customers to define what gets built,
+validate that it delivers value, and communicate the roadmap to stakeholders.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KEY RESPONSIBILITIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Define and own the Platform Integrations roadmap for FY2026 and beyond
+2. Conduct customer discovery interviews (min. 4/month in first quarter)
+3. Write clear, actionable product specs (PRDs) in Confluence — no ambiguity
+4. Prioritize backlog with engineering using RICE or similar framework
+5. Run weekly sync with engineering pod (8 engineers); bi-weekly with partners
+6. Define success metrics for every feature; monitor post-launch
+7. Present roadmap and progress in quarterly Business Reviews
+8. Collaborate with GTM team on launch briefs and sales enablement
+9. Manage relationships with 5 strategic integration partners
+10. Represent product in enterprise customer escalations
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SUCCESS METRICS — FIRST 90 DAYS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+30 Days:
+• Completed onboarding modules in LMS (compliance, product, architecture)
+• Met all 6 direct team members and 3 key cross-functional partners
+• Shadowed 2 customer calls; read last 6 months of customer feedback
+• Reviewed current integrations roadmap and asked clarifying questions
+
+60 Days:
+• Submitted first PRD (scope: pre-agreed "quick win" feature)
+• Facilitated first backlog refinement session with engineering pod
+• Presented "State of the Platform" findings to VP of Product
+• Identified top 3 customer pain points not yet on the roadmap
+
+90 Days:
+• Owned and shipped at least one integration improvement end-to-end
+• Proposed updated Q3 roadmap priorities with supporting data
+• Established weekly rhythm with all key stakeholders
+• Set personal OKRs for Q3 with manager sign-off
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TOOLS & SYSTEMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Product:       Productboard (roadmap), Confluence (specs), Jira (backlog)
+• Communication: Microsoft Teams, Outlook
+• Analytics:     Mixpanel, Looker, Snowflake (SQL basics helpful)
+• Design:        Figma (reviewer, not creator)
+• Docs:          SharePoint (team wiki, templates, OKRs)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KEY READS FOR WEEK 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• "Platform Integrations — Architecture Overview" (Confluence, pinned)
+• "FY2026 Product Strategy" (SharePoint → Product → Strategy)
+• "Top 20 Customer Requests Q1 2026" (Productboard)
+• "Integrations Reliability Incident Report — March 2026" (Jira)
+• "Partner Ecosystem Map — May 2026" (SharePoint → Partnerships)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DIRECT TEAM (INTRO MEETINGS — FIRST WEEK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+See team_contacts.csv for contact details and suggested talking points.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HIRING MANAGER NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Sarah (VP of Product): "We need someone who can bring structure without
+slowing us down. The integrations space has been running on tribal knowledge.
+Your most important job in month 1 is to LISTEN before you fix."
+
+Preferred working style: async-first, weekly 1:1s on Wednesdays,
+slack messages answered within 4h during working hours.
